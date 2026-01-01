@@ -1,0 +1,25 @@
+# robots.txt for موكيت ومفروشات السريع
+# https://alsari-carpets.com
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://alsari-carpets.com/sitemap.xml
+
+# Crawl-delay (optional, for polite crawling)
+Crawl-delay: 1
+
+# Allow all search engine bots
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Yandex
+Allow: /
+
+# Block admin or private areas (if any)
+# Disallow: /admin/
+# Disallow: /private/
