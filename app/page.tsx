@@ -7,11 +7,13 @@ import { About } from '@/components/About';
 import { ProductGallery } from '@/components/ProductGallery';
 import { ServiceAreas } from '@/components/ServiceAreas';
 import { Testimonials } from '@/components/Testimonials';
+import { FAQ } from '@/components/FAQ';
 import { Contact } from '@/components/Contact';
 import { Footer } from '@/components/Footer';
 import { FloatingButtons } from '@/components/FloatingButtons';
 import { WelcomePopup } from '@/components/WelcomePopup';
 import { ProductDetail } from '@/components/ProductDetail';
+import { Breadcrumb } from '@/components/Breadcrumb';
 
 export default function Home() {
     const [showPopup, setShowPopup] = useState(false);
@@ -39,17 +41,27 @@ export default function Home() {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
+    // Home page breadcrumb
+    const homeBreadcrumb = [
+        { label: 'الرئيسية' }
+    ];
+
     return (
         <div className="min-h-screen bg-white" dir="rtl">
             <Navigation onBackToHome={currentPage === 'product' ? handleBackToHome : undefined} />
 
             {currentPage === 'home' ? (
                 <>
+                    {/* Breadcrumb for Home - Hidden visually but good for SEO */}
+                    <div className="sr-only">
+                        <Breadcrumb items={homeBreadcrumb} />
+                    </div>
                     <Hero />
                     <About />
                     <ProductGallery onProductClick={handleProductClick} />
                     <ServiceAreas />
                     <Testimonials />
+                    <FAQ />
                     <Contact />
                     <Footer />
                     {showPopup && <WelcomePopup onClose={() => setShowPopup(false)} />}

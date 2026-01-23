@@ -2,16 +2,24 @@
 
 import { motion } from 'motion/react';
 import { ChevronDown } from 'lucide-react';
+import Image from 'next/image';
+import Link from 'next/link';
 
 export function Hero() {
     return (
         <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden">
-            {/* Background Image with Overlay */}
+            {/* Background Image with Overlay - Using next/image with priority for LCP */}
             <div className="absolute inset-0">
-                <img
-                    src="https://images.unsplash.com/photo-1764141011737-d7b2bd824454?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjBjYXJwZXQlMjBlbGVnYW50JTIwaW50ZXJpb3J8ZW58MXx8fHwxNzY3MTIxMjg0fDA&ixlib=rb-4.1.0&q=80&w=1080"
-                    alt="Luxury Carpet"
-                    className="w-full h-full object-cover"
+                <Image
+                    src="/home/hero-moket-alsurye-riyadh.jpg"
+                    alt="موكيت ومفروشات السريع - أفضل موكيت وسجاد ومفروشات في الرياض - صالة عرض فاخرة"
+                    fill
+                    priority
+                    quality={85}
+                    sizes="100vw"
+                    className="object-cover"
+                    placeholder="blur"
+                    blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAMCAgMCAgMDAwMEAwMEBQgFBQQEBQoHBwYIDAoMCwsKCwsNDhIQDQ4RDgsLEBYQERMUFRUVDA8XGBYUGBIUFRT/2wBDAQMEBAUEBQkFBQkUDQsNFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBT/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBEQCEQwBPwAB//9k="
                 />
                 <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60"></div>
             </div>
@@ -48,9 +56,31 @@ export function Hero() {
                         transition={{ duration: 0.8, delay: 0.6 }}
                         className="text-xl md:text-2xl text-[#E6F5FF] max-w-3xl mx-auto"
                     >
-                        نحول مساحاتك إلى تحف فنية بأرقى السجاد والموكيت في الرياض
+                        نحول مساحاتك إلى تحف فنية بأرقى{' '}
+                        <Link href="#products" className="text-[#0088FF] hover:underline">السجاد والموكيت</Link>
+                        {' '}في الرياض
                     </motion.p>
 
+                    {/* CTA Buttons with Internal Linking */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: 0.8 }}
+                        className="flex flex-wrap justify-center gap-4 mt-8"
+                    >
+                        <Link
+                            href="#products"
+                            className="px-8 py-4 bg-[#0088FF] text-white rounded-xl hover:bg-[#005CB8] transition-colors shadow-lg hover:shadow-xl"
+                        >
+                            تصفح منتجاتنا من الموكيت والسجاد
+                        </Link>
+                        <Link
+                            href="#about"
+                            className="px-8 py-4 bg-white/10 backdrop-blur-sm text-white border border-white/30 rounded-xl hover:bg-white/20 transition-colors"
+                        >
+                            تعرف على مفروشات السريع
+                        </Link>
+                    </motion.div>
                 </motion.div>
 
                 {/* Scroll Indicator */}
@@ -77,7 +107,7 @@ export function Hero() {
                             <svg className="w-6 h-6 text-[#0088FF]" fill="currentColor" viewBox="0 0 20 20">
                                 <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                             </svg>
-                            <span className="text-[#1A1A1A]">شحن مجاني</span>
+                            <span className="text-[#1A1A1A]">شحن مجاني للرياض</span>
                         </div>
                         <div className="flex items-center gap-2">
                             <svg className="w-6 h-6 text-[#0088FF]" fill="currentColor" viewBox="0 0 20 20">

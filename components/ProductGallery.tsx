@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Heart, Eye, Grid3x3, List } from 'lucide-react';
 import { products, getCategories } from '@/lib/products';
 import Image from 'next/image';
+import Link from 'next/link';
 
 interface ProductGalleryProps {
     onProductClick: (productId: string) => void;
@@ -20,6 +21,11 @@ export function ProductGallery({ onProductClick }: ProductGalleryProps) {
         return selectedCategory === 'الكل' || product.category === selectedCategory;
     });
 
+    // Generate SEO-friendly alt text
+    const getProductImageAlt = (product: typeof products[0]) => {
+        return `${product.name} - ${product.category} من موكيت ومفروشات السريع الرياض`;
+    };
+
     return (
         <section id="products" className="py-20 bg-white">
             <div className="container mx-auto px-4 lg:px-8">
@@ -34,19 +40,27 @@ export function ProductGallery({ onProductClick }: ProductGalleryProps) {
                         منتجاتنا
                     </span>
                     <h2 className="text-3xl md:text-4xl lg:text-5xl text-[#1A1A1A] mb-6">
-                        تشكيلة فريدة من السجاد والموكيت
+                        تشكيلة فريدة من <span className="text-[#0088FF]">السجاد والموكيت</span>
                     </h2>
+                    <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                        اكتشف مجموعتنا الواسعة من{' '}
+                        <strong>الموكيت والسجاد والمفروشات والأرضيات</strong>
+                        {' '}في الرياض. جودة عالية وتصميمات عصرية من{' '}
+                        <strong>مفروشات السريع</strong>.
+                    </p>
                 </motion.div>
 
                 {/* Filters */}
                 <div className="mb-8 space-y-4">
                     <div className="flex flex-wrap items-center justify-between gap-4">
                         {/* Category Filter */}
-                        <div className="flex flex-wrap gap-2">
+                        <div className="flex flex-wrap gap-2" role="tablist" aria-label="فلتر الفئات">
                             {categories.map((category) => (
                                 <button
                                     key={category}
                                     onClick={() => setSelectedCategory(category)}
+                                    role="tab"
+                                    aria-selected={selectedCategory === category}
                                     className={`px-4 py-2 rounded-lg transition-all ${selectedCategory === category
                                         ? 'bg-[#0088FF] text-white'
                                         : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
@@ -61,6 +75,7 @@ export function ProductGallery({ onProductClick }: ProductGalleryProps) {
                         <div className="flex items-center gap-2">
                             <button
                                 onClick={() => setViewMode('grid')}
+                                aria-label="عرض شبكي"
                                 className={`p-2 rounded-lg transition-all ${viewMode === 'grid'
                                     ? 'bg-[#0088FF] text-white'
                                     : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
@@ -70,6 +85,7 @@ export function ProductGallery({ onProductClick }: ProductGalleryProps) {
                             </button>
                             <button
                                 onClick={() => setViewMode('list')}
+                                aria-label="عرض قائمة"
                                 className={`p-2 rounded-lg transition-all ${viewMode === 'list'
                                     ? 'bg-[#0088FF] text-white'
                                     : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
@@ -96,7 +112,7 @@ export function ProductGallery({ onProductClick }: ProductGalleryProps) {
                         }
                     >
                         {filteredProducts.map((product, index) => (
-                            <motion.div
+                            <motion.article
                                 key={product.id}
                                 initial={{ opacity: 0, y: 30 }}
                                 animate={{ opacity: 1, y: 0 }}
@@ -105,13 +121,15 @@ export function ProductGallery({ onProductClick }: ProductGalleryProps) {
                                     }`}
                                 onClick={() => onProductClick(product.id)}
                             >
-                                {/* Image */}
+                                {/* Image with SEO Alt */}
                                 <div className={`relative overflow-hidden ${viewMode === 'list' ? 'w-1/3' : 'h-64'}`}>
                                     <Image
                                         src={product.image}
-                                        alt={product.name}
+                                        alt={getProductImageAlt(product)}
                                         fill
+                                        sizes={viewMode === 'list' ? '33vw' : '(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw'}
                                         className="object-cover group-hover:scale-110 transition-transform duration-500"
+                                        loading={index < 6 ? 'eager' : 'lazy'}
                                     />
                                     <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4">
                                         <button
@@ -119,6 +137,7 @@ export function ProductGallery({ onProductClick }: ProductGalleryProps) {
                                                 e.stopPropagation();
                                             }}
                                             className="p-3 bg-white rounded-full hover:bg-[#0088FF] hover:text-white transition-colors"
+                                            aria-label="إضافة إلى المفضلة"
                                         >
                                             <Heart size={20} />
                                         </button>
@@ -128,6 +147,7 @@ export function ProductGallery({ onProductClick }: ProductGalleryProps) {
                                                 onProductClick(product.id);
                                             }}
                                             className="p-3 bg-white rounded-full hover:bg-[#0088FF] hover:text-white transition-colors"
+                                            aria-label="عرض التفاصيل"
                                         >
                                             <Eye size={20} />
                                         </button>
@@ -137,7 +157,7 @@ export function ProductGallery({ onProductClick }: ProductGalleryProps) {
                                 {/* Content */}
                                 <div className={`p-6 ${viewMode === 'list' ? 'flex-1' : ''}`}>
                                     <div className="mb-2">
-                                        <span className="inline-block px-3 py-1 bg-[#0088FF]/10 text-[#0088FF] rounded-full">
+                                        <span className="inline-block px-3 py-1 bg-[#0088FF]/10 text-[#0088FF] rounded-full text-sm">
                                             {product.category}
                                         </span>
                                     </div>
@@ -173,12 +193,12 @@ export function ProductGallery({ onProductClick }: ProductGalleryProps) {
                                         </button>
                                     </div>
                                 </div>
-                            </motion.div>
+                            </motion.article>
                         ))}
                     </motion.div>
                 </AnimatePresence>
 
-                {/* CTA */}
+                {/* CTA with Internal Links */}
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -186,13 +206,20 @@ export function ProductGallery({ onProductClick }: ProductGalleryProps) {
                     transition={{ duration: 0.6 }}
                     className="text-center mt-12"
                 >
+                    <p className="text-gray-600 mb-4">
+                        لم تجد ما تبحث عنه؟ تصفح جميع أنواع{' '}
+                        <Link href="#about" className="text-[#0088FF] hover:underline">
+                            الموكيت والسجاد من السريع
+                        </Link>
+                        {' '}أو تواصل معنا مباشرة.
+                    </p>
                     <a
-                        href="https://wa.me/966540079507"
+                        href="https://wa.me/966540079507?text=السلام عليكم، أريد الاستفسار عن منتجات الموكيت والمفروشات"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-block px-8 py-4 bg-[#1A1A1A] text-white rounded-lg hover:bg-[#0088FF] transition-colors"
                     >
-                        تواصل معنا للمزيد
+                        تواصل معنا للمزيد من المنتجات
                     </a>
                 </motion.div>
             </div>

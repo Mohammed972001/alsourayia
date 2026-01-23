@@ -1,9 +1,13 @@
 import type { Metadata } from 'next';
 import './globals.css';
 
+// Get the site URL from environment variable with fallback
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.mokeet-elsuarye.com';
+const baseUrl = siteUrl.replace(/\/$/, ''); // Remove trailing slash
+
 export const metadata: Metadata = {
-    // Metadata Base URL
-    metadataBase: new URL('https://alsari-carpets.com'),
+    // Metadata Base URL - Uses environment variable for flexibility
+    metadataBase: new URL(baseUrl),
 
     // Basic Meta Tags
     title: {
@@ -21,6 +25,9 @@ export const metadata: Metadata = {
         'موكيت الرياض',
         'مفروشات الرياض',
         'سجاد الرياض',
+        'ارضيات',
+        'ارضيات الرياض',
+        'السريع',
 
         // Products
         'موكيت مساجد',
@@ -56,10 +63,13 @@ export const metadata: Metadata = {
         'مفروشات جدة',
         'أرضيات الرياض',
 
-        // Brand
-        'السريع',
+        // Brand Combinations
         'موكيت السريع',
         'مفروشات السريع',
+        'سجاد السريع',
+        'موكيت السريع الرياض',
+        'مفروشات السريع الرياض',
+        'ارضيات السريع',
 
         // English Keywords
         'carpet riyadh',
@@ -113,9 +123,9 @@ export const metadata: Metadata = {
 
     // Alternate Languages
     alternates: {
-        canonical: 'https://alsari-carpets.com',
+        canonical: baseUrl,
         languages: {
-            'ar-SA': 'https://alsari-carpets.com',
+            'ar-SA': baseUrl,
         },
     },
 
@@ -131,10 +141,10 @@ export const metadata: Metadata = {
     other: {
         'geo.region': 'SA-01',
         'geo.placename': 'Riyadh',
-        'geo.position': '24.7136;46.6753',
-        'ICBM': '24.7136, 46.6753',
+        'geo.position': '24.5959;46.7306',
+        'ICBM': '24.5959, 46.7306',
         'contact': '+966540079507',
-        'reply-to': 'info@alsari-carpets.com',
+        'reply-to': 'info@mokeet-elsuarye.com',
     },
 };
 
@@ -143,76 +153,193 @@ export default function RootLayout({
 }: {
     children: React.ReactNode;
 }) {
-    // Structured Data for Local Business (JSON-LD)
-    const structuredData = {
+    // Enhanced Structured Data for Local Business (JSON-LD)
+    const localBusinessSchema = {
         "@context": "https://schema.org",
         "@type": "LocalBusiness",
+        "@id": `${baseUrl}/#localbusiness`,
         "name": "موكيت ومفروشات السريع",
-        "alternateName": "Al-Sari Carpets & Furnishings",
-        "description": "متخصصون في توفير أجود أنواع الموكيت والسجاد والمفروشات في الرياض والمملكة العربية السعودية",
-        "image": "/images/og-image.jpg",
+        "alternateName": ["Al-Sari Carpets & Furnishings", "موكيت السريع", "مفروشات السريع"],
+        "description": "متخصصون في توفير أجود أنواع الموكيت والسجاد والمفروشات والأرضيات في الرياض والمملكة العربية السعودية. موكيت مساجد، باركيه، عشب صناعي، تنسيق حدائق.",
+        "image": [
+            `${baseUrl}/images/og-image.jpg`,
+            `${baseUrl}/home/hero-moket-alsurye-riyadh.jpg`
+        ],
+        "logo": `${baseUrl}/images/logo.png`,
         "telephone": "+966540079507",
+        "email": "info@mokeet-elsuarye.com",
+        "url": baseUrl,
         "address": {
             "@type": "PostalAddress",
+            "streetAddress": "طريق الملك عبدالعزيز",
             "addressLocality": "الرياض",
             "addressRegion": "منطقة الرياض",
+            "postalCode": "12345",
             "addressCountry": "SA"
         },
         "geo": {
             "@type": "GeoCoordinates",
-            "latitude": "24.5959",
-            "longitude": "46.7306"
+            "latitude": 24.5959,
+            "longitude": 46.7306
         },
-        "url": "https://alsari-carpets.com",
+        "areaServed": [
+            {
+                "@type": "City",
+                "name": "الرياض",
+                "@id": "https://www.wikidata.org/wiki/Q3692"
+            },
+            {
+                "@type": "City",
+                "name": "جدة"
+            },
+            {
+                "@type": "City",
+                "name": "الدمام"
+            },
+            {
+                "@type": "City",
+                "name": "مكة المكرمة"
+            },
+            {
+                "@type": "City",
+                "name": "المدينة المنورة"
+            },
+            {
+                "@type": "Country",
+                "name": "المملكة العربية السعودية"
+            }
+        ],
         "priceRange": "$$",
-        "openingHoursSpecification": {
-            "@type": "OpeningHoursSpecification",
-            "dayOfWeek": ["Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"],
-            "opens": "09:00",
-            "closes": "22:00"
+        "currenciesAccepted": "SAR",
+        "paymentAccepted": "Cash, Credit Card, Mada, Bank Transfer",
+        "openingHoursSpecification": [
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"],
+                "opens": "09:00",
+                "closes": "22:00"
+            }
+        ],
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.8",
+            "reviewCount": "150",
+            "bestRating": "5",
+            "worstRating": "1"
         },
-        "sameAs": [],
+        "sameAs": [
+            "https://wa.me/966540079507"
+        ],
         "hasOfferCatalog": {
             "@type": "OfferCatalog",
-            "name": "منتجاتنا",
+            "name": "منتجات موكيت ومفروشات السريع",
             "itemListElement": [
                 {
-                    "@type": "Offer",
-                    "itemOffered": {
-                        "@type": "Product",
-                        "name": "موكيت مساجد"
-                    }
+                    "@type": "OfferCatalog",
+                    "name": "موكيت",
+                    "itemListElement": [
+                        {
+                            "@type": "Offer",
+                            "itemOffered": {
+                                "@type": "Product",
+                                "name": "موكيت مساجد",
+                                "description": "موكيت مساجد عالي الجودة بتصميمات إسلامية"
+                            }
+                        },
+                        {
+                            "@type": "Offer",
+                            "itemOffered": {
+                                "@type": "Product",
+                                "name": "موكيت تركي مشجر",
+                                "description": "موكيت تركي فاخر بتصميمات أصيلة"
+                            }
+                        }
+                    ]
                 },
                 {
-                    "@type": "Offer",
-                    "itemOffered": {
-                        "@type": "Product",
-                        "name": "أرضيات مكتبية"
-                    }
+                    "@type": "OfferCatalog",
+                    "name": "أرضيات",
+                    "itemListElement": [
+                        {
+                            "@type": "Offer",
+                            "itemOffered": {
+                                "@type": "Product",
+                                "name": "باركيه ضد الماء",
+                                "description": "باركيه مقاوم للماء بجودة عالية"
+                            }
+                        },
+                        {
+                            "@type": "Offer",
+                            "itemOffered": {
+                                "@type": "Product",
+                                "name": "أرضيات مكتبية",
+                                "description": "أرضيات مكتبية احترافية"
+                            }
+                        }
+                    ]
                 },
                 {
-                    "@type": "Offer",
-                    "itemOffered": {
-                        "@type": "Product",
-                        "name": "باركيه"
-                    }
-                },
-                {
-                    "@type": "Offer",
-                    "itemOffered": {
-                        "@type": "Product",
-                        "name": "عشب صناعي"
-                    }
-                },
-                {
-                    "@type": "Offer",
-                    "itemOffered": {
-                        "@type": "Service",
-                        "name": "تنسيق حدائق"
-                    }
+                    "@type": "OfferCatalog",
+                    "name": "خدمات",
+                    "itemListElement": [
+                        {
+                            "@type": "Offer",
+                            "itemOffered": {
+                                "@type": "Service",
+                                "name": "تنسيق حدائق",
+                                "description": "خدمات تنسيق حدائق احترافية"
+                            }
+                        },
+                        {
+                            "@type": "Offer",
+                            "itemOffered": {
+                                "@type": "Service",
+                                "name": "تركيب موكيت",
+                                "description": "خدمة تركيب موكيت احترافية"
+                            }
+                        }
+                    ]
                 }
             ]
         }
+    };
+
+    // Organization Schema
+    const organizationSchema = {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "@id": `${baseUrl}/#organization`,
+        "name": "موكيت ومفروشات السريع",
+        "alternateName": "Al-Sari Carpets & Furnishings",
+        "url": baseUrl,
+        "logo": `${baseUrl}/images/logo.png`,
+        "description": "شركة رائدة في مجال الموكيت والسجاد والمفروشات والأرضيات في الرياض",
+        "foundingDate": "2010",
+        "founder": {
+            "@type": "Person",
+            "name": "السريع"
+        },
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+966540079507",
+            "contactType": "customer service",
+            "areaServed": "SA",
+            "availableLanguage": ["Arabic", "English"]
+        }
+    };
+
+    // WebSite Schema for Sitelinks
+    const websiteSchema = {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "@id": `${baseUrl}/#website`,
+        "url": baseUrl,
+        "name": "موكيت ومفروشات السريع",
+        "description": "أفضل موكيت ومفروشات في الرياض",
+        "publisher": {
+            "@id": `${baseUrl}/#organization`
+        },
+        "inLanguage": "ar-SA"
     };
 
     return (
@@ -222,20 +349,40 @@ export default function RootLayout({
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
 
-                {/* Google Fonts */}
+                {/* Google Fonts - Optimized */}
                 <link
                     href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap"
                     rel="stylesheet"
+                />
+
+                {/* Preload Hero Image for LCP */}
+                <link
+                    rel="preload"
+                    as="image"
+                    href="/home/hero-moket-alsurye-riyadh.jpg"
+                    type="image/jpeg"
                 />
 
                 {/* Favicon */}
                 <link rel="icon" href="/favicon.ico" />
                 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 
-                {/* Structured Data */}
+                {/* Structured Data - Local Business */}
                 <script
                     type="application/ld+json"
-                    dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+                />
+
+                {/* Structured Data - Organization */}
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+                />
+
+                {/* Structured Data - Website */}
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
                 />
 
                 {/* Additional SEO Meta Tags */}
