@@ -1,4 +1,5 @@
 import { MetadataRoute } from 'next';
+import { productsDetails } from '@/data/products';
 
 /**
  * Dynamic Sitemap Generator for Next.js App Router
@@ -6,6 +7,8 @@ import { MetadataRoute } from 'next';
  * This file generates a sitemap.xml automatically at build time and runtime.
  * It uses the NEXT_PUBLIC_SITE_URL environment variable to ensure correct URLs
  * across all environments (local, preview, production).
+ * 
+ * IMPORTANT: All product pages are now dynamically included from the products data.
  * 
  * @see https://nextjs.org/docs/app/api-reference/file-conventions/metadata/sitemap
  */
@@ -20,8 +23,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // Current date for lastModified
     const currentDate = new Date();
 
-    return [
-        // الصفحة الرئيسية - Home Page
+    // Static pages
+    const staticPages: MetadataRoute.Sitemap = [
+        // الصفحة الرئيسية - Home Page (Highest Priority)
         {
             url: baseUrl,
             lastModified: currentDate,
@@ -45,60 +49,28 @@ export default function sitemap(): MetadataRoute.Sitemap {
             priority: 0.9,
         },
 
-        // موكيت مساجد - Mosque Carpets
+        // قسم مناطق الخدمة - Service Areas Section
         {
-            url: `${baseUrl}/products/mosque-carpets`,
+            url: `${baseUrl}/#service-areas`,
             lastModified: currentDate,
             changeFrequency: 'monthly',
-            priority: 0.8,
+            priority: 0.7,
         },
 
-        // أرضيات مكتبية - Office Flooring
+        // قسم آراء العملاء - Testimonials Section
         {
-            url: `${baseUrl}/products/office-flooring`,
+            url: `${baseUrl}/#testimonials`,
             lastModified: currentDate,
             changeFrequency: 'monthly',
-            priority: 0.8,
+            priority: 0.6,
         },
 
-        // باركيه - Parquet
+        // قسم الأسئلة الشائعة - FAQ Section
         {
-            url: `${baseUrl}/products/parket`,
+            url: `${baseUrl}/#faq`,
             lastModified: currentDate,
             changeFrequency: 'monthly',
-            priority: 0.8,
-        },
-
-        // عشب صناعي - Artificial Grass
-        {
-            url: `${baseUrl}/products/artificial-grass`,
-            lastModified: currentDate,
-            changeFrequency: 'monthly',
-            priority: 0.8,
-        },
-
-        // فينيل - Vinyl
-        {
-            url: `${baseUrl}/products/vinyl-roll`,
-            lastModified: currentDate,
-            changeFrequency: 'monthly',
-            priority: 0.8,
-        },
-
-        // موكيت - Carpet
-        {
-            url: `${baseUrl}/products/mokite`,
-            lastModified: currentDate,
-            changeFrequency: 'monthly',
-            priority: 0.8,
-        },
-
-        // تنسيق حدائق - Garden Landscaping
-        {
-            url: `${baseUrl}/products/garden-flooring`,
-            lastModified: currentDate,
-            changeFrequency: 'monthly',
-            priority: 0.8,
+            priority: 0.7,
         },
 
         // قسم التواصل - Contact Section
@@ -106,7 +78,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
             url: `${baseUrl}/#contact`,
             lastModified: currentDate,
             changeFrequency: 'monthly',
-            priority: 0.7,
+            priority: 0.8,
         },
     ];
+
+    // Dynamic product pages - Generated from products data
+    const productPages: MetadataRoute.Sitemap = productsDetails.map((product) => ({
+        url: `${baseUrl}/products/${product.id}`,
+        lastModified: currentDate,
+        changeFrequency: 'monthly' as const,
+        priority: 0.8,
+    }));
+
+    // Combine static and dynamic pages
+    return [...staticPages, ...productPages];
 }

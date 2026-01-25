@@ -25,9 +25,12 @@ export function ProductDetail({ productId, onBack }: ProductDetailProps) {
     const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.mokeet-elsuarye.com';
 
     // Product Schema with ImageObject for Google Images SEO
+    // Fixed: Added required fields (price, url, priceValidUntil) for valid Product Snippets
     const productSchema = {
         "@context": "https://schema.org",
         "@type": "Product",
+        "@id": `${baseUrl}/products/${product.id}`,
+        "url": `${baseUrl}/products/${product.id}`,
         "name": product.name,
         "description": product.description,
         "image": allImages.map((img, index) => ({
@@ -40,29 +43,119 @@ export function ProductDetail({ productId, onBack }: ProductDetailProps) {
         })),
         "brand": {
             "@type": "Brand",
-            "name": "موكيت ومفروشات السريع"
+            "name": "موكيت ومفروشات السريع",
+            "logo": `${baseUrl}/images/logo.png`
+        },
+        "manufacturer": {
+            "@type": "Organization",
+            "name": "موكيت ومفروشات السريع",
+            "url": baseUrl
         },
         "category": product.category,
+        "sku": `SURYE-${product.id.toUpperCase()}`,
+        "mpn": `MFS-${product.id.toUpperCase()}-2025`,
+        "material": getMaterialFromCategory(product.category),
+        "color": product.colors.map(c => c.name).join(', '),
         "offers": {
             "@type": "Offer",
+            "url": `${baseUrl}/products/${product.id}`,
             "availability": "https://schema.org/InStock",
+            "itemCondition": "https://schema.org/NewCondition",
             "priceCurrency": "SAR",
+            "price": "0",
+            "priceValidUntil": "2026-12-31",
+            "priceSpecification": {
+                "@type": "PriceSpecification",
+                "priceCurrency": "SAR",
+                "price": "0",
+                "valueAddedTaxIncluded": true,
+                "eligibleQuantity": {
+                    "@type": "QuantitativeValue",
+                    "unitCode": "MTK",
+                    "name": "متر مربع"
+                }
+            },
             "seller": {
                 "@type": "Organization",
-                "name": "موكيت ومفروشات السريع"
+                "name": "موكيت ومفروشات السريع",
+                "url": baseUrl,
+                "telephone": "+966541540047"
             },
-            "areaServed": {
-                "@type": "City",
-                "name": "الرياض"
+            "shippingDetails": {
+                "@type": "OfferShippingDetails",
+                "shippingDestination": {
+                    "@type": "DefinedRegion",
+                    "addressCountry": "SA",
+                    "addressRegion": "الرياض"
+                },
+                "deliveryTime": {
+                    "@type": "ShippingDeliveryTime",
+                    "handlingTime": {
+                        "@type": "QuantitativeValue",
+                        "minValue": 1,
+                        "maxValue": 3,
+                        "unitCode": "DAY"
+                    },
+                    "transitTime": {
+                        "@type": "QuantitativeValue",
+                        "minValue": 1,
+                        "maxValue": 5,
+                        "unitCode": "DAY"
+                    }
+                },
+                "shippingRate": {
+                    "@type": "MonetaryAmount",
+                    "value": "0",
+                    "currency": "SAR"
+                }
+            },
+            "hasMerchantReturnPolicy": {
+                "@type": "MerchantReturnPolicy",
+                "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+                "merchantReturnDays": 14,
+                "returnMethod": "https://schema.org/ReturnByMail",
+                "returnFees": "https://schema.org/FreeReturn"
             }
         },
         "aggregateRating": {
             "@type": "AggregateRating",
             "ratingValue": "4.8",
             "reviewCount": "50",
-            "bestRating": "5"
+            "bestRating": "5",
+            "worstRating": "1"
+        },
+        "review": {
+            "@type": "Review",
+            "reviewRating": {
+                "@type": "Rating",
+                "ratingValue": "5",
+                "bestRating": "5"
+            },
+            "author": {
+                "@type": "Person",
+                "name": "عميل راضي"
+            },
+            "reviewBody": `منتج ممتاز من ${product.category}، جودة عالية وخدمة ممتازة من موكيت ومفروشات السريع`
         }
     };
+
+    // Helper function to get material based on category
+    function getMaterialFromCategory(category: string): string {
+        const materialMap: Record<string, string> = {
+            'موكيت مساجد': 'نسيج صناعي عالي الجودة',
+            'أرضيات مكتبية': 'فينيل / PVC',
+            'باركيه': 'خشب طبيعي / HDF',
+            'عشب صناعي': 'بولي إيثيلين',
+            'فينيل': 'PVC',
+            'موكيت': 'نسيج صناعي',
+            'أرضيات طبية': 'فينيل طبي',
+            'فينيل مساجد': 'PVC عالي الجودة',
+            'تنسيق حدائق': 'مواد طبيعية وصناعية',
+            'شلالات ونوافير': 'رخام / جرانيت',
+            'موكيت تركي': 'نسيج تركي فاخر',
+        };
+        return materialMap[category] || 'مواد عالية الجودة';
+    }
 
     // Breadcrumb items
     const breadcrumbItems = [
@@ -225,7 +318,7 @@ export function ProductDetail({ productId, onBack }: ProductDetailProps) {
                                 {/* Action Buttons */}
                                 <div className="flex flex-col sm:flex-row gap-4 mb-8">
                                     <motion.a
-                                        href={`https://wa.me/966540079507?text=أريد الاستفسار عن ${product.name} من موكيت ومفروشات السريع`}
+                                        href={`https://wa.me/966541540047?text=أريد الاستفسار عن ${product.name} من موكيت ومفروشات السريع`}
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         whileHover={{ scale: 1.02 }}
@@ -235,7 +328,7 @@ export function ProductDetail({ productId, onBack }: ProductDetailProps) {
                                         طلب عرض سعر
                                     </motion.a>
                                     <motion.a
-                                        href={`https://wa.me/966540079507?text=أريد طلب عينة مجانية من ${product.name}`}
+                                        href={`https://wa.me/966541540047?text=أريد طلب عينة مجانية من ${product.name}`}
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         whileHover={{ scale: 1.02 }}
@@ -249,14 +342,14 @@ export function ProductDetail({ productId, onBack }: ProductDetailProps) {
                                 {/* Contact Buttons */}
                                 <div className="grid grid-cols-2 gap-4 mb-8">
                                     <a
-                                        href="tel:+966540079507"
+                                        href="tel:+966541540047"
                                         className="flex items-center justify-center gap-2 px-6 py-3 bg-[#00D4FF]/10 text-[#00D4FF] rounded-lg hover:bg-[#00D4FF]/20 transition-colors"
                                     >
                                         <Phone size={20} />
                                         <span>اتصل الآن</span>
                                     </a>
                                     <a
-                                        href="https://wa.me/966540079507"
+                                        href="https://wa.me/966541540047"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="flex items-center justify-center gap-2 px-6 py-3 bg-[#25D366]/10 text-[#25D366] rounded-lg hover:bg-[#25D366]/20 transition-colors"

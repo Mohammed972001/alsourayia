@@ -98,8 +98,8 @@ export function FAQ() {
                             <button
                                 onClick={() => toggleFAQ(index)}
                                 className={`w-full flex items-center justify-between p-5 rounded-xl transition-all ${openIndex === index
-                                        ? 'bg-[#0088FF] text-white shadow-lg'
-                                        : 'bg-white text-[#1A1A1A] shadow-md hover:shadow-lg'
+                                    ? 'bg-[#0088FF] text-white shadow-lg'
+                                    : 'bg-white text-[#1A1A1A] shadow-md hover:shadow-lg'
                                     }`}
                                 aria-expanded={openIndex === index}
                                 aria-controls={`faq-answer-${index}`}
@@ -142,7 +142,7 @@ export function FAQ() {
                 >
                     <p className="text-gray-600 mb-4">لم تجد إجابة سؤالك؟</p>
                     <a
-                        href="https://wa.me/966540079507?text=السلام عليكم، لدي استفسار..."
+                        href="https://wa.me/966541540047?text=السلام عليكم، لدي استفسار..."
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-2 px-8 py-4 bg-[#25D366] text-white rounded-xl hover:bg-[#128C7E] transition-colors shadow-lg hover:shadow-xl"

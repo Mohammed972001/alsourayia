@@ -120,7 +120,7 @@ export function Navigation({ onBackToHome }: NavigationProps) {
                     {/* CTA Button */}
                     <div className="hidden lg:flex items-center gap-4">
                         <a
-                            href="tel:+966540079507"
+                            href="tel:+966541540047"
                             className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all ${isScrolled
                                     ? 'bg-[#0088FF] text-white hover:bg-[#005CB8]'
                                     : 'bg-white/20 text-white hover:bg-white/30'
@@ -163,11 +163,11 @@ export function Navigation({ onBackToHome }: NavigationProps) {
                             ))}
                             <div className="pt-4 border-t">
                                 <a
-                                    href="tel:+966540079507"
+                                    href="tel:+966541540047"
                                     className="flex items-center justify-center gap-2 w-full px-4 py-3 bg-[#0088FF] text-white rounded-lg hover:bg-[#005CB8] transition-colors"
                                 >
                                     <Phone size={18} />
-                                    <span>اتصل الآن: 966540079507+</span>
+                                    <span>اتصل الآن: 966541540047+</span>
                                 </a>
                             </div>
                         </div>

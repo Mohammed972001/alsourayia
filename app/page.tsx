@@ -14,6 +14,7 @@ import { FloatingButtons } from '@/components/FloatingButtons';
 import { WelcomePopup } from '@/components/WelcomePopup';
 import { ProductDetail } from '@/components/ProductDetail';
 import { Breadcrumb } from '@/components/Breadcrumb';
+import { SEOContent } from '@/components/SEOContent';
 
 export default function Home() {
     const [showPopup, setShowPopup] = useState(false);
@@ -58,6 +59,7 @@ export default function Home() {
                     </div>
                     <Hero />
                     <About />
+                    <SEOContent />
                     <ProductGallery onProductClick={handleProductClick} />
                     <ServiceAreas />
                     <Testimonials />

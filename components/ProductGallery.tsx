@@ -214,7 +214,7 @@ export function ProductGallery({ onProductClick }: ProductGalleryProps) {
                         {' '}أو تواصل معنا مباشرة.
                     </p>
                     <a
-                        href="https://wa.me/966540079507?text=السلام عليكم، أريد الاستفسار عن منتجات الموكيت والمفروشات"
+                        href="https://wa.me/966541540047?text=السلام عليكم، أريد الاستفسار عن منتجات الموكيت والمفروشات"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-block px-8 py-4 bg-[#1A1A1A] text-white rounded-lg hover:bg-[#0088FF] transition-colors"

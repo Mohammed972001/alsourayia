@@ -14,7 +14,7 @@ export const metadata: Metadata = {
         default: 'موكيت ومفروشات السريع | أفضل موكيت ومفروشات الرياض',
         template: '%s | موكيت ومفروشات السريع'
     },
-    description: 'موكيت ومفروشات السريع - الرائدون في توفير أجود أنواع الموكيت والسجاد والمفروشات في الرياض والمملكة العربية السعودية. موكيت مساجد، أرضيات مكتبية، باركيه، عشب صناعي، تنسيق حدائق. خدمة تركيب احترافية وضمان شامل. اتصل الآن 966540079507+',
+    description: 'موكيت ومفروشات السريع - الرائدون في توفير أجود أنواع الموكيت والسجاد والمفروشات في الرياض والمملكة العربية السعودية. موكيت مساجد، أرضيات مكتبية، باركيه، عشب صناعي، تنسيق حدائق. خدمة تركيب احترافية وضمان شامل. اتصل الآن 966541540047+',
 
     // Keywords for SEO
     keywords: [
@@ -143,7 +143,7 @@ export const metadata: Metadata = {
         'geo.placename': 'Riyadh',
         'geo.position': '24.5959;46.7306',
         'ICBM': '24.5959, 46.7306',
-        'contact': '+966540079507',
+        'contact': '+966541540047',
         'reply-to': 'info@mokeet-elsuarye.com',
     },
 };
@@ -166,7 +166,7 @@ export default function RootLayout({
             `${baseUrl}/home/hero-moket-alsurye-riyadh.jpg`
         ],
         "logo": `${baseUrl}/images/logo.png`,
-        "telephone": "+966540079507",
+        "telephone": "+966541540047",
         "email": "info@mokeet-elsuarye.com",
         "url": baseUrl,
         "address": {
@@ -228,7 +228,7 @@ export default function RootLayout({
             "worstRating": "1"
         },
         "sameAs": [
-            "https://wa.me/966540079507"
+            "https://wa.me/966541540047"
         ],
         "hasOfferCatalog": {
             "@type": "OfferCatalog",
@@ -321,7 +321,7 @@ export default function RootLayout({
         },
         "contactPoint": {
             "@type": "ContactPoint",
-            "telephone": "+966540079507",
+            "telephone": "+966541540047",
             "contactType": "customer service",
             "areaServed": "SA",
             "availableLanguage": ["Arabic", "English"]

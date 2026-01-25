@@ -19,7 +19,7 @@ export function FloatingButtons() {
                 onMouseLeave={() => setShowTooltip({ ...showTooltip, whatsapp: false })}
             >
                 <motion.a
-                    href="https://wa.me/966540079507"
+                    href="https://wa.me/966541540047"
                     target="_blank"
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.1 }}
@@ -55,7 +55,7 @@ export function FloatingButtons() {
                 onMouseLeave={() => setShowTooltip({ ...showTooltip, call: false })}
             >
                 <motion.a
-                    href="tel:+966540079507"
+                    href="tel:+966541540047"
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
                     className="flex items-center justify-center w-16 h-16 bg-[#0088FF] text-white rounded-full shadow-2xl hover:shadow-3xl transition-all relative group"

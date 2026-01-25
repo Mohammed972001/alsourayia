@@ -84,11 +84,11 @@ export function Footer() {
 
                             {/* Contact Info */}
                             <div className="space-y-3 mb-6">
-                                <a href="tel:+966540079507" className="flex items-center gap-3 text-gray-400 hover:text-[#0088FF] transition-colors">
+                                <a href="tel:+966541540047" className="flex items-center gap-3 text-gray-400 hover:text-[#0088FF] transition-colors">
                                     <Phone size={18} />
-                                    <span dir="ltr">+966 540 079 507</span>
+                                    <span dir="ltr">+966 541 540 047</span>
                                 </a>
-                                <a href="https://wa.me/966540079507" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-gray-400 hover:text-[#25D366] transition-colors">
+                                <a href="https://wa.me/966541540047" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-gray-400 hover:text-[#25D366] transition-colors">
                                     <MessageCircle size={18} />
                                     <span>واتساب</span>
                                 </a>
@@ -101,7 +101,7 @@ export function Footer() {
                             {/* Social Media */}
                             <div className="flex items-center gap-4">
                                 {[
-                                    { name: 'واتساب', icon: '💬', href: 'https://wa.me/966540079507' },
+                                    { name: 'واتساب', icon: '💬', href: 'https://wa.me/966541540047' },
                                     { name: 'Instagram', icon: '📷', href: '#' },
                                     { name: 'Twitter', icon: '𝕏', href: '#' },
                                 ].map((social) => (
