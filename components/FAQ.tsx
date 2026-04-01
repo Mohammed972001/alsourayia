@@ -1,8 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
-import { ChevronDown, HelpCircle } from 'lucide-react';
 
 interface FAQItem {
     question: string;
@@ -43,7 +41,6 @@ export function FAQ() {
         setOpenIndex(openIndex === index ? null : index);
     };
 
-    // FAQ Schema for SEO
     const faqSchema = {
         "@context": "https://schema.org",
         "@type": "FAQPage",
@@ -58,98 +55,156 @@ export function FAQ() {
     };
 
     return (
-        <section id="faq" className="py-20 bg-gradient-to-b from-white to-[#E6F5FF]/30">
-            {/* FAQ Schema */}
+        <section id="faq" style={{ backgroundColor: '#d4d0c8', padding: '8px', fontFamily: 'Tahoma, sans-serif' }}>
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
             />
 
-            <div className="container mx-auto px-4 lg:px-8">
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
-                    className="text-center mb-12"
-                >
-                    <span className="inline-flex items-center gap-2 px-4 py-2 bg-[#0088FF]/10 text-[#0088FF] rounded-full mb-4">
-                        <HelpCircle size={18} />
-                        الأسئلة الشائعة
-                    </span>
-                    <h2 className="text-3xl md:text-4xl lg:text-5xl text-[#1A1A1A] mb-6">
-                        كل ما تريد معرفته عن <span className="text-[#0088FF]">موكيت ومفروشات السريع</span>
-                    </h2>
-                    <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                        إجابات على أكثر الأسئلة شيوعاً حول خدماتنا ومنتجاتنا من الموكيت والسجاد والمفروشات في الرياض
-                    </p>
-                </motion.div>
+            <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
+                <div className="win-window">
+                    <div className="win-titlebar">
+                        <svg width="14" height="14" viewBox="0 0 14 14" style={{ imageRendering: 'pixelated', flexShrink: 0 }}>
+                            <circle cx="7" cy="7" r="6" fill="#c0c0c0" stroke="#808080" />
+                            <text x="7" y="11" textAnchor="middle" fontSize="10" fontWeight="bold" fill="#000080">?</text>
+                        </svg>
+                        <span style={{ marginRight: '6px' }}>الأسئلة الشائعة - تعليمات ومعلومات</span>
+                    </div>
 
-                <div className="max-w-3xl mx-auto">
-                    {faqData.map((faq, index) => (
-                        <motion.div
-                            key={index}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.5, delay: index * 0.1 }}
-                            className="mb-4"
-                        >
-                            <button
-                                onClick={() => toggleFAQ(index)}
-                                className={`w-full flex items-center justify-between p-5 rounded-xl transition-all ${openIndex === index
-                                    ? 'bg-[#0088FF] text-white shadow-lg'
-                                    : 'bg-white text-[#1A1A1A] shadow-md hover:shadow-lg'
-                                    }`}
-                                aria-expanded={openIndex === index}
-                                aria-controls={`faq-answer-${index}`}
-                            >
-                                <span className="text-lg font-medium text-right">{faq.question}</span>
-                                <motion.div
-                                    animate={{ rotate: openIndex === index ? 180 : 0 }}
-                                    transition={{ duration: 0.3 }}
-                                >
-                                    <ChevronDown size={24} />
-                                </motion.div>
-                            </button>
-                            <AnimatePresence>
-                                {openIndex === index && (
-                                    <motion.div
-                                        id={`faq-answer-${index}`}
-                                        initial={{ height: 0, opacity: 0 }}
-                                        animate={{ height: 'auto', opacity: 1 }}
-                                        exit={{ height: 0, opacity: 0 }}
-                                        transition={{ duration: 0.3 }}
-                                        className="overflow-hidden"
-                                    >
-                                        <div className="p-5 bg-white rounded-b-xl shadow-inner border-t border-gray-100">
-                                            <p className="text-gray-600 leading-relaxed">{faq.answer}</p>
+                    <div style={{ padding: '12px' }}>
+                        {/* Header */}
+                        <div style={{
+                            backgroundColor: '#000080',
+                            color: 'white',
+                            padding: '4px 12px',
+                            fontSize: '13px',
+                            fontWeight: 'bold',
+                            marginBottom: '12px',
+                            borderTop: '2px solid #0000cc',
+                            borderLeft: '2px solid #0000cc',
+                            borderBottom: '2px solid #000040',
+                            borderRight: '2px solid #000040',
+                        }}>
+                            كل ما تريد معرفته عن موكيت ومفروشات السريع
+                        </div>
+
+                        {/* Two-column layout: FAQ list on right, answer on left */}
+                        <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+                            {/* Questions list */}
+                            <div style={{ minWidth: '240px', flex: '0 0 240px' }}>
+                                <div style={{
+                                    backgroundColor: '#000080',
+                                    color: 'white',
+                                    padding: '2px 6px',
+                                    fontSize: '11px',
+                                    fontWeight: 'bold',
+                                    marginBottom: '2px',
+                                }}>
+                                    قائمة الأسئلة
+                                </div>
+                                <div className="win-sunken" style={{ backgroundColor: 'white', padding: '0' }}>
+                                    {faqData.map((faq, index) => (
+                                        <div
+                                            key={index}
+                                            className="win-listitem"
+                                            onClick={() => toggleFAQ(index)}
+                                            style={{
+                                                backgroundColor: openIndex === index ? '#000080' : undefined,
+                                                color: openIndex === index ? 'white' : '#000000',
+                                                borderBottom: '1px solid #e8e8e8',
+                                                padding: '4px 8px',
+                                                fontSize: '12px',
+                                                cursor: 'pointer',
+                                            }}
+                                        >
+                                            <span style={{ marginLeft: '6px', color: openIndex === index ? '#ffff00' : '#000080' }}>?</span>
+                                            {faq.question}
                                         </div>
-                                    </motion.div>
-                                )}
-                            </AnimatePresence>
-                        </motion.div>
-                    ))}
-                </div>
+                                    ))}
+                                </div>
+                            </div>
 
-                {/* CTA */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: 0.3 }}
-                    className="text-center mt-12"
-                >
-                    <p className="text-gray-600 mb-4">لم تجد إجابة سؤالك؟</p>
-                    <a
-                        href="https://wa.me/966541540047?text=السلام عليكم، لدي استفسار..."
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-8 py-4 bg-[#25D366] text-white rounded-xl hover:bg-[#128C7E] transition-colors shadow-lg hover:shadow-xl"
-                    >
-                        تواصل معنا عبر واتساب
-                    </a>
-                </motion.div>
+                            {/* Answer panel */}
+                            <div style={{ flex: 1, minWidth: '200px' }}>
+                                <div style={{
+                                    backgroundColor: '#000080',
+                                    color: 'white',
+                                    padding: '2px 6px',
+                                    fontSize: '11px',
+                                    fontWeight: 'bold',
+                                    marginBottom: '2px',
+                                }}>
+                                    الإجابة
+                                </div>
+                                <div className="win-sunken" style={{
+                                    backgroundColor: 'white',
+                                    padding: '12px',
+                                    minHeight: '180px',
+                                    fontSize: '12px',
+                                    lineHeight: 1.7,
+                                    color: '#000000',
+                                }}>
+                                    {openIndex !== null ? (
+                                        <>
+                                            <div style={{
+                                                fontWeight: 'bold',
+                                                color: '#000080',
+                                                marginBottom: '8px',
+                                                borderBottom: '1px solid #c0c0c0',
+                                                paddingBottom: '4px',
+                                                fontSize: '13px',
+                                            }}>
+                                                {faqData[openIndex].question}
+                                            </div>
+                                            <p>{faqData[openIndex].answer}</p>
+                                        </>
+                                    ) : (
+                                        <span style={{ color: '#808080', fontStyle: 'italic' }}>
+                                            اختر سؤالاً من القائمة على اليمين لعرض الإجابة
+                                        </span>
+                                    )}
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* CTA */}
+                        <div style={{
+                            marginTop: '12px',
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '8px',
+                            padding: '8px',
+                            borderTop: '1px solid #808080',
+                        }}>
+                            <span style={{ fontSize: '12px' }}>لم تجد إجابة سؤالك؟</span>
+                            <a
+                                href="https://wa.me/966541540047?text=السلام عليكم، لدي استفسار..."
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                style={{
+                                    textDecoration: 'none',
+                                    display: 'inline-block',
+                                    padding: '4px 12px',
+                                    backgroundColor: '#008000',
+                                    color: 'white',
+                                    borderTop: '2px solid #00cc00',
+                                    borderLeft: '2px solid #00cc00',
+                                    borderBottom: '2px solid #004000',
+                                    borderRight: '2px solid #004000',
+                                    fontSize: '12px',
+                                    fontFamily: 'Tahoma, sans-serif',
+                                    fontWeight: 'bold',
+                                }}
+                            >
+                                تواصل معنا عبر واتساب
+                            </a>
+                        </div>
+                    </div>
+
+                    <div className="win-statusbar">
+                        <span>{faqData.length} سؤال وجواب</span>
+                    </div>
+                </div>
             </div>
         </section>
     );

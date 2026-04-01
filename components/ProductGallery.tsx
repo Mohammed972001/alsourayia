@@ -1,14 +1,11 @@
 'use client';
 
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
-import { Heart, Eye, Grid3x3, List } from 'lucide-react';
 import { products, getCategories } from '@/lib/products';
 import Image from 'next/image';
 import Link from 'next/link';
 
 export function ProductGallery() {
-    const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
     const [selectedCategory, setSelectedCategory] = useState('الكل');
 
     const categories = getCategories();
@@ -17,199 +14,231 @@ export function ProductGallery() {
         return selectedCategory === 'الكل' || product.category === selectedCategory;
     });
 
-    // Generate SEO-friendly alt text
     const getProductImageAlt = (product: typeof products[0]) => {
         return `${product.name} - ${product.category} من موكيت ومفروشات السريع الرياض`;
     };
 
     return (
-        <section id="products" className="py-20 bg-white">
-            <div className="container mx-auto px-4 lg:px-8">
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
-                    className="text-center mb-12"
-                >
-                    <span className="inline-block px-4 py-2 bg-[#0088FF]/10 text-[#0088FF] rounded-full mb-4">
-                        منتجاتنا
-                    </span>
-                    <h2 className="text-3xl md:text-4xl lg:text-5xl text-[#1A1A1A] mb-6">
-                        تشكيلة فريدة من <span className="text-[#0088FF]">السجاد والموكيت</span>
-                    </h2>
-                    <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                        اكتشف مجموعتنا الواسعة من{' '}
-                        <strong>الموكيت والسجاد والمفروشات والأرضيات</strong>
-                        {' '}في الرياض. جودة عالية وتصميمات عصرية من{' '}
-                        <strong>مفروشات السريع</strong>.
-                    </p>
-                </motion.div>
+        <section id="products" style={{ backgroundColor: '#d4d0c8', padding: '8px', fontFamily: 'Tahoma, sans-serif' }}>
+            <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
 
-                {/* Filters */}
-                <div className="mb-8 space-y-4">
-                    <div className="flex flex-wrap items-center justify-between gap-4">
-                        {/* Category Filter */}
-                        <div className="flex flex-wrap gap-2" role="tablist" aria-label="فلتر الفئات">
-                            {categories.map((category) => (
-                                <button
-                                    key={category}
-                                    onClick={() => setSelectedCategory(category)}
-                                    role="tab"
-                                    aria-selected={selectedCategory === category}
-                                    className={`px-4 py-2 rounded-lg transition-all ${selectedCategory === category
-                                        ? 'bg-[#0088FF] text-white'
-                                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                                        }`}
-                                >
-                                    {category}
-                                </button>
-                            ))}
-                        </div>
-
-                        {/* View Mode Toggle */}
-                        <div className="flex items-center gap-2">
-                            <button
-                                onClick={() => setViewMode('grid')}
-                                aria-label="عرض شبكي"
-                                className={`p-2 rounded-lg transition-all ${viewMode === 'grid'
-                                    ? 'bg-[#0088FF] text-white'
-                                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                                    }`}
-                            >
-                                <Grid3x3 size={20} />
-                            </button>
-                            <button
-                                onClick={() => setViewMode('list')}
-                                aria-label="عرض قائمة"
-                                className={`p-2 rounded-lg transition-all ${viewMode === 'list'
-                                    ? 'bg-[#0088FF] text-white'
-                                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                                    }`}
-                            >
-                                <List size={20} />
-                            </button>
-                        </div>
+                {/* Products Window */}
+                <div className="win-window">
+                    <div className="win-titlebar">
+                        <svg width="14" height="14" viewBox="0 0 14 14" style={{ imageRendering: 'pixelated', flexShrink: 0 }}>
+                            <rect x="1" y="2" width="12" height="10" fill="#c0c0c0" stroke="#808080" strokeWidth="1" />
+                            <rect x="3" y="4" width="3" height="3" fill="#0000ff" />
+                            <rect x="8" y="4" width="3" height="3" fill="#0000ff" />
+                        </svg>
+                        <span style={{ marginRight: '6px' }}>المنتجات - موكيت وسجاد ومفروشات</span>
                     </div>
-                </div>
 
-                {/* Products Grid/List */}
-                <AnimatePresence mode="wait">
-                    <motion.div
-                        key={viewMode}
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.3 }}
-                        className={
-                            viewMode === 'grid'
-                                ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'
-                                : 'space-y-6'
-                        }
-                    >
-                        {filteredProducts.map((product, index) => (
-                            <motion.article
-                                key={product.id}
-                                initial={{ opacity: 0, y: 30 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.5, delay: index * 0.1 }}
-                                className={`group relative bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all ${viewMode === 'list' ? 'flex gap-6' : ''
-                                    }`}
+                    {/* Toolbar */}
+                    <div className="win-raised" style={{
+                        padding: '4px 8px',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '4px',
+                        flexWrap: 'wrap',
+                        borderBottom: '1px solid #808080',
+                    }}>
+                        <span style={{ fontSize: '11px', fontWeight: 'bold', marginLeft: '8px' }}>عرض حسب الفئة:</span>
+                        {categories.map((category) => (
+                            <button
+                                key={category}
+                                onClick={() => setSelectedCategory(category)}
+                                style={{
+                                    padding: '2px 8px',
+                                    fontSize: '11px',
+                                    fontFamily: 'Tahoma, sans-serif',
+                                    cursor: 'pointer',
+                                    backgroundColor: selectedCategory === category ? '#000080' : '#d4d0c8',
+                                    color: selectedCategory === category ? 'white' : '#000000',
+                                    borderTop: selectedCategory === category ? '2px solid #000040' : '2px solid white',
+                                    borderLeft: selectedCategory === category ? '2px solid #000040' : '2px solid white',
+                                    borderBottom: selectedCategory === category ? '2px solid #0000cc' : '2px solid #808080',
+                                    borderRight: selectedCategory === category ? '2px solid #0000cc' : '2px solid #808080',
+                                }}
                             >
-                                {/* Image with SEO-friendly Link */}
-                                <Link href={`/products/${product.id}`} className={`relative overflow-hidden block ${viewMode === 'list' ? 'w-1/3' : 'h-64'}`}>
-                                    <Image
-                                        src={product.image}
-                                        alt={getProductImageAlt(product)}
-                                        fill
-                                        sizes={viewMode === 'list' ? '33vw' : '(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw'}
-                                        className="object-cover group-hover:scale-110 transition-transform duration-500"
-                                        loading={index < 6 ? 'eager' : 'lazy'}
-                                    />
-                                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4">
-                                        <span
-                                            onClick={(e) => { e.preventDefault(); e.stopPropagation(); }}
-                                            className="p-3 bg-white rounded-full hover:bg-[#0088FF] hover:text-white transition-colors cursor-pointer"
-                                            aria-label="إضافة إلى المفضلة"
-                                        >
-                                            <Heart size={20} />
-                                        </span>
-                                        <span
-                                            className="p-3 bg-white rounded-full hover:bg-[#0088FF] hover:text-white transition-colors"
-                                            aria-label="عرض التفاصيل"
-                                        >
-                                            <Eye size={20} />
-                                        </span>
-                                    </div>
-                                </Link>
+                                {category}
+                            </button>
+                        ))}
+                        <div style={{ flex: 1 }} />
+                        <span style={{ fontSize: '11px', color: '#808080' }}>
+                            {filteredProducts.length} عنصر
+                        </span>
+                    </div>
 
-                                {/* Content */}
-                                <div className={`p-6 ${viewMode === 'list' ? 'flex-1' : ''}`}>
-                                    <div className="mb-2">
-                                        <span className="inline-block px-3 py-1 bg-[#0088FF]/10 text-[#0088FF] rounded-full text-sm">
-                                            {product.category}
-                                        </span>
-                                    </div>
-                                    <h3 className="text-xl text-[#1A1A1A] mb-2">
-                                        <Link href={`/products/${product.id}`} className="hover:text-[#0088FF] transition-colors">
-                                            {product.name}
-                                        </Link>
-                                    </h3>
-                                    <p className="text-gray-600 mb-4 line-clamp-2">{product.description}</p>
-                                    <div className="flex items-center gap-2 mb-4">
-                                        <span className="text-gray-600">الألوان:</span>
-                                        <div className="flex gap-1">
-                                            {product.colors.slice(0, 3).map((color) => (
+                    <div style={{ padding: '8px' }}>
+                        {/* Header */}
+                        <div style={{
+                            backgroundColor: '#000080',
+                            color: 'white',
+                            padding: '4px 12px',
+                            fontSize: '14px',
+                            fontWeight: 'bold',
+                            marginBottom: '8px',
+                            borderTop: '2px solid #0000cc',
+                            borderLeft: '2px solid #0000cc',
+                            borderBottom: '2px solid #000040',
+                            borderRight: '2px solid #000040',
+                        }}>
+                            تشكيلة فريدة من السجاد والموكيت والمفروشات
+                        </div>
+
+                        {/* Products Grid - Explorer-style icons */}
+                        <div style={{
+                            display: 'grid',
+                            gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))',
+                            gap: '6px',
+                        }}>
+                            {filteredProducts.map((product, index) => (
+                                <div
+                                    key={product.id}
+                                    className="win-raised"
+                                    style={{ overflow: 'hidden', cursor: 'pointer' }}
+                                    onMouseEnter={(e) => {
+                                        (e.currentTarget as HTMLDivElement).style.backgroundColor = '#e8e8e8';
+                                    }}
+                                    onMouseLeave={(e) => {
+                                        (e.currentTarget as HTMLDivElement).style.backgroundColor = '';
+                                    }}
+                                >
+                                    {/* Product Image */}
+                                    <Link href={`/products/${product.id}`} style={{ textDecoration: 'none', display: 'block' }}>
+                                        <div style={{ position: 'relative', height: '150px', overflow: 'hidden' }}>
+                                            <Image
+                                                src={product.image}
+                                                alt={getProductImageAlt(product)}
+                                                fill
+                                                sizes="(max-width: 768px) 100vw, 220px"
+                                                style={{ objectFit: 'cover' }}
+                                                loading={index < 6 ? 'eager' : 'lazy'}
+                                            />
+                                            {/* Category badge */}
+                                            <div style={{
+                                                position: 'absolute',
+                                                top: '4px',
+                                                right: '4px',
+                                                backgroundColor: '#000080',
+                                                color: 'white',
+                                                fontSize: '10px',
+                                                padding: '1px 4px',
+                                                border: '1px solid #0000cc',
+                                            }}>
+                                                {product.category}
+                                            </div>
+                                        </div>
+                                    </Link>
+
+                                    {/* Product Info */}
+                                    <div style={{ padding: '6px 8px', backgroundColor: '#d4d0c8' }}>
+                                        <div style={{ borderBottom: '1px solid #808080', paddingBottom: '4px', marginBottom: '4px' }}>
+                                            <Link
+                                                href={`/products/${product.id}`}
+                                                style={{
+                                                    textDecoration: 'none',
+                                                    color: '#000000',
+                                                    fontSize: '12px',
+                                                    fontWeight: 'bold',
+                                                    display: 'block',
+                                                }}
+                                                onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = '#000080'; }}
+                                                onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = '#000000'; }}
+                                            >
+                                                {product.name}
+                                            </Link>
+                                        </div>
+                                        <p style={{ fontSize: '11px', color: '#444444', marginBottom: '6px', lineHeight: 1.4 }}>
+                                            {product.description.substring(0, 60)}...
+                                        </p>
+
+                                        {/* Color swatches */}
+                                        <div style={{ display: 'flex', alignItems: 'center', gap: '4px', marginBottom: '6px' }}>
+                                            <span style={{ fontSize: '10px', color: '#666' }}>الألوان:</span>
+                                            {product.colors.slice(0, 4).map((color) => (
                                                 <span
                                                     key={color.name}
-                                                    className="w-5 h-5 rounded-full border border-gray-300"
-                                                    style={{ backgroundColor: color.value }}
                                                     title={color.name}
+                                                    style={{
+                                                        width: '12px',
+                                                        height: '12px',
+                                                        backgroundColor: color.value,
+                                                        border: '1px solid #808080',
+                                                        display: 'inline-block',
+                                                    }}
                                                 />
                                             ))}
-                                            {product.colors.length > 3 && (
-                                                <span className="text-gray-500 text-sm">+{product.colors.length - 3}</span>
-                                            )}
                                         </div>
-                                    </div>
-                                    <div className="flex items-center justify-end">
+
                                         <Link
                                             href={`/products/${product.id}`}
-                                            className="px-6 py-2 bg-[#0088FF] text-white rounded-lg hover:bg-[#005CB8] transition-colors"
+                                            style={{
+                                                textDecoration: 'none',
+                                                display: 'inline-block',
+                                                padding: '3px 10px',
+                                                backgroundColor: '#d4d0c8',
+                                                color: '#000000',
+                                                borderTop: '2px solid white',
+                                                borderLeft: '2px solid white',
+                                                borderBottom: '2px solid #808080',
+                                                borderRight: '2px solid #808080',
+                                                fontSize: '11px',
+                                                fontFamily: 'Tahoma, sans-serif',
+                                            }}
                                         >
                                             عرض التفاصيل
                                         </Link>
                                     </div>
                                 </div>
-                            </motion.article>
-                        ))}
-                    </motion.div>
-                </AnimatePresence>
+                            ))}
+                        </div>
 
-                {/* CTA with Internal Links */}
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
-                    className="text-center mt-12"
-                >
-                    <p className="text-gray-600 mb-4">
-                        لم تجد ما تبحث عنه؟ تصفح جميع أنواع{' '}
-                        <Link href="/#about" className="text-[#0088FF] hover:underline">
-                            الموكيت والسجاد من السريع
-                        </Link>
-                        {' '}أو تواصل معنا مباشرة.
-                    </p>
-                    <a
-                        href="https://wa.me/966541540047?text=السلام عليكم، أريد الاستفسار عن منتجات الموكيت والمفروشات"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-block px-8 py-4 bg-[#1A1A1A] text-white rounded-lg hover:bg-[#0088FF] transition-colors"
-                    >
-                        تواصل معنا للمزيد من المنتجات
-                    </a>
-                </motion.div>
+                        {/* CTA */}
+                        <div style={{
+                            marginTop: '12px',
+                            padding: '8px',
+                            backgroundColor: '#ffffc0',
+                            border: '1px solid #808000',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'space-between',
+                            flexWrap: 'wrap',
+                            gap: '8px',
+                        }}>
+                            <div style={{ fontSize: '12px', color: '#000000' }}>
+                                <strong>لم تجد ما تبحث عنه؟</strong> تواصل معنا مباشرة عبر واتساب
+                            </div>
+                            <a
+                                href="https://wa.me/966541540047?text=السلام عليكم، أريد الاستفسار عن منتجات الموكيت والمفروشات"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                style={{
+                                    textDecoration: 'none',
+                                    display: 'inline-block',
+                                    padding: '4px 12px',
+                                    backgroundColor: '#008000',
+                                    color: 'white',
+                                    borderTop: '2px solid #00cc00',
+                                    borderLeft: '2px solid #00cc00',
+                                    borderBottom: '2px solid #004000',
+                                    borderRight: '2px solid #004000',
+                                    fontSize: '12px',
+                                    fontFamily: 'Tahoma, sans-serif',
+                                    fontWeight: 'bold',
+                                }}
+                            >
+                                تواصل عبر واتساب
+                            </a>
+                        </div>
+                    </div>
+
+                    <div className="win-statusbar">
+                        <span>{filteredProducts.length} منتج معروض</span>
+                        <span style={{ borderLeft: '1px solid #808080', borderRight: '1px solid white', width: '2px', margin: '0 4px' }} />
+                        <span>اضغط مرتين لعرض التفاصيل</span>
+                    </div>
+                </div>
             </div>
         </section>
     );

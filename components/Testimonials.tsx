@@ -1,7 +1,5 @@
 'use client';
 
-import { motion } from 'motion/react';
-import { Star, Quote } from 'lucide-react';
 import { useState } from 'react';
 
 export function Testimonials() {
@@ -13,7 +11,7 @@ export function Testimonials() {
             name: 'أحمد بن سعيد',
             role: 'رجل أعمال',
             rating: 5,
-            text: 'خدمة رائعة ومنتجات عالية الجودة. السجاد الذي اشتريته من السُريع  حول منزلي إلى قصر فاخر. أنصح الجميع بالتعامل معهم.',
+            text: 'خدمة رائعة ومنتجات عالية الجودة. السجاد الذي اشتريته من السُريع حول منزلي إلى قصر فاخر. أنصح الجميع بالتعامل معهم.',
             image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop',
         },
         {
@@ -21,7 +19,7 @@ export function Testimonials() {
             name: 'فاطمة العتيبي',
             role: 'مصممة داخلية',
             rating: 5,
-            text: 'تعاملت مع السُريع في عدة مشاريع وكانت النتائج دائماً مبهرة. الجودة والاحترافية والالتزام بالمواعيد يجعلهم الخيار الأول لكل مصمم.',
+            text: 'تعاملت مع السُريع في عدة مشاريع وكانت النتائج دائماً مبهرة. الجودة والاحترافية والالتزام بالمواعيد يجعلهم الخيار الأول.',
             image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop',
         },
         {
@@ -29,7 +27,7 @@ export function Testimonials() {
             name: 'خالد المطيري',
             role: 'مالك فندق',
             rating: 5,
-            text: 'جهزنا فندقنا بالكامل من خلال السُريع . الأسعار معقولة والجودة ممتازة. فريق العمل محترف ومتعاون جداً.',
+            text: 'جهزنا فندقنا بالكامل من خلال السُريع. الأسعار معقولة والجودة ممتازة. فريق العمل محترف ومتعاون جداً.',
             image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop',
         },
         {
@@ -37,151 +35,161 @@ export function Testimonials() {
             name: 'نورة الدوسري',
             role: 'ربة منزل',
             rating: 5,
-            text: 'السجاد الفارسي الذي اشتريته يفوق توقعاتي. الألوان زاهية والخامة فاخرة. خدمة العملاء ممتازة وساعدوني في اختيار القطع المناسبة.',
+            text: 'السجاد الفارسي الذي اشتريته يفوق توقعاتي. الألوان زاهية والخامة فاخرة. خدمة العملاء ممتازة.',
             image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop',
         },
     ];
 
-    const nextTestimonial = () => {
-        setActiveIndex((prev) => (prev + 1) % testimonials.length);
-    };
-
-    const prevTestimonial = () => {
-        setActiveIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
-    };
+    const active = testimonials[activeIndex];
 
     return (
-        <section id="testimonials" className="py-20 bg-gradient-to-b from-white to-[#E8D7C3]/10">
-            <div className="container mx-auto px-4 lg:px-8">
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
-                    className="text-center mb-12"
-                >
-                    <span className="inline-block px-4 py-2 bg-[#0088FF]/10 text-[#0088FF] rounded-full mb-4">
-                        آراء العملاء
-                    </span>
-                    <h2 className="text-3xl md:text-4xl lg:text-5xl text-[#1A1A1A] mb-6">
-                        ماذا يقول عملاؤنا
-                    </h2>
-                    <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                        نفخر بثقة عملائنا ورضاهم التام عن خدماتنا ومنتجاتنا
-                    </p>
-                </motion.div>
-
-                {/* Main Testimonial Display */}
-                <div className="max-w-4xl mx-auto mb-12">
-                    <motion.div
-                        key={activeIndex}
-                        initial={{ opacity: 0, x: 100 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: -100 }}
-                        transition={{ duration: 0.5 }}
-                        className="bg-white rounded-2xl shadow-2xl p-8 md:p-12 relative"
-                    >
-                        {/* Quote Icon */}
-                        <div className="absolute top-8 left-8 text-[#0088FF]/20">
-                            <Quote size={64} />
-                        </div>
-
-                        <div className="relative z-10">
-                            {/* Rating */}
-                            <div className="flex items-center justify-center gap-1 mb-6">
-                                {[...Array(testimonials[activeIndex].rating)].map((_, i) => (
-                                    <Star key={i} size={24} fill="#0088FF" className="text-[#0088FF]" />
-                                ))}
-                            </div>
-
-                            {/* Testimonial Text */}
-                            <p className="text-xl md:text-2xl text-gray-700 mb-8 text-center leading-relaxed">
-                                "{testimonials[activeIndex].text}"
-                            </p>
-
-                            {/* Author Info */}
-                            <div className="flex items-center justify-center gap-4">
-                                <img
-                                    src={testimonials[activeIndex].image}
-                                    alt={testimonials[activeIndex].name}
-                                    className="w-16 h-16 rounded-full object-cover border-4 border-[#0088FF]"
-                                />
-                                <div>
-                                    <h4 className="text-xl text-[#1A1A1A]">
-                                        {testimonials[activeIndex].name}
-                                    </h4>
-                                    <p className="text-gray-600">{testimonials[activeIndex].role}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </motion.div>
-
-                    {/* Navigation Buttons */}
-                    <div className="flex items-center justify-center gap-4 mt-8">
-                        <button
-                            onClick={prevTestimonial}
-                            className="p-3 bg-white rounded-full shadow-lg hover:bg-[#0088FF] hover:text-white transition-colors"
-                        >
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                                <path d="M15 18l-6-6 6-6" />
-                            </svg>
-                        </button>
-
-                        {/* Dots */}
-                        <div className="flex items-center gap-2">
-                            {testimonials.map((_, index) => (
-                                <button
-                                    key={index}
-                                    onClick={() => setActiveIndex(index)}
-                                    className={`h-2 rounded-full transition-all ${index === activeIndex ? 'w-8 bg-[#0088FF]' : 'w-2 bg-gray-300'
-                                        }`}
-                                />
-                            ))}
-                        </div>
-
-                        <button
-                            onClick={nextTestimonial}
-                            className="p-3 bg-white rounded-full shadow-lg hover:bg-[#0088FF] hover:text-white transition-colors"
-                        >
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                                <path d="M9 18l6-6-6-6" />
-                            </svg>
-                        </button>
+        <section id="testimonials" style={{ backgroundColor: '#d4d0c8', padding: '8px', fontFamily: 'Tahoma, sans-serif' }}>
+            <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
+                <div className="win-window">
+                    <div className="win-titlebar">
+                        <svg width="14" height="14" viewBox="0 0 14 14" style={{ imageRendering: 'pixelated', flexShrink: 0 }}>
+                            <rect x="1" y="1" width="12" height="12" fill="#c0c0c0" stroke="#808080" />
+                            <text x="7" y="10" textAnchor="middle" fontSize="8" fill="#000080">★</text>
+                        </svg>
+                        <span style={{ marginRight: '6px' }}>آراء العملاء - تقييمات موكيت ومفروشات السريع</span>
                     </div>
-                </div>
 
-                {/* All Testimonials Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    {testimonials.map((testimonial, index) => (
-                        <motion.div
-                            key={testimonial.id}
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.5, delay: index * 0.1 }}
-                            whileHover={{ y: -10 }}
-                            onClick={() => setActiveIndex(index)}
-                            className={`cursor-pointer bg-white rounded-xl shadow-lg p-6 transition-all ${activeIndex === index ? 'ring-2 ring-[#0088FF]' : ''
-                                }`}
-                        >
-                            <div className="flex items-center gap-3 mb-4">
-                                <img
-                                    src={testimonial.image}
-                                    alt={testimonial.name}
-                                    className="w-12 h-12 rounded-full object-cover"
-                                />
-                                <div>
-                                    <h4 className="text-[#1A1A1A]">{testimonial.name}</h4>
-                                    <div className="flex items-center gap-1">
-                                        {[...Array(testimonial.rating)].map((_, i) => (
-                                            <Star key={i} size={12} fill="#0088FF" className="text-[#0088FF]" />
-                                        ))}
+                    <div style={{ padding: '12px' }}>
+                        {/* Header */}
+                        <div style={{
+                            backgroundColor: '#000080',
+                            color: 'white',
+                            padding: '4px 12px',
+                            fontSize: '13px',
+                            fontWeight: 'bold',
+                            marginBottom: '12px',
+                            borderTop: '2px solid #0000cc',
+                            borderLeft: '2px solid #0000cc',
+                            borderBottom: '2px solid #000040',
+                            borderRight: '2px solid #000040',
+                        }}>
+                            ماذا يقول عملاؤنا
+                        </div>
+
+                        {/* Active testimonial - Win2000 dialog style */}
+                        <div className="win-raised" style={{ padding: '12px', marginBottom: '12px' }}>
+                            <div style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
+                                {/* Avatar */}
+                                <div style={{
+                                    width: '48px',
+                                    height: '48px',
+                                    flexShrink: 0,
+                                    border: '2px solid #808080',
+                                    overflow: 'hidden',
+                                }}>
+                                    <img
+                                        src={active.image}
+                                        alt={active.name}
+                                        style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                                    />
+                                </div>
+
+                                {/* Content */}
+                                <div style={{ flex: 1 }}>
+                                    <div style={{
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'space-between',
+                                        borderBottom: '1px solid #808080',
+                                        paddingBottom: '4px',
+                                        marginBottom: '6px',
+                                    }}>
+                                        <div>
+                                            <strong style={{ fontSize: '13px', color: '#000080' }}>{active.name}</strong>
+                                            <span style={{ fontSize: '11px', color: '#666', marginRight: '8px' }}>({active.role})</span>
+                                        </div>
+                                        <div style={{ color: '#FFD700', fontSize: '14px', letterSpacing: '2px' }}>
+                                            {'★'.repeat(active.rating)}
+                                        </div>
+                                    </div>
+                                    <div className="win-sunken" style={{
+                                        padding: '8px',
+                                        backgroundColor: 'white',
+                                        fontSize: '12px',
+                                        lineHeight: 1.6,
+                                        color: '#000000',
+                                    }}>
+                                        &ldquo;{active.text}&rdquo;
                                     </div>
                                 </div>
                             </div>
-                            <p className="text-gray-600 line-clamp-3">{testimonial.text}</p>
-                        </motion.div>
-                    ))}
+
+                            {/* Navigation buttons */}
+                            <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '4px', marginTop: '8px' }}>
+                                <button
+                                    onClick={() => setActiveIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length)}
+                                    style={{
+                                        padding: '3px 12px',
+                                        fontSize: '11px',
+                                        fontFamily: 'Tahoma, sans-serif',
+                                        cursor: 'pointer',
+                                        backgroundColor: '#d4d0c8',
+                                        borderTop: '2px solid white',
+                                        borderLeft: '2px solid white',
+                                        borderBottom: '2px solid #808080',
+                                        borderRight: '2px solid #808080',
+                                    }}
+                                >
+                                    &lt; السابق
+                                </button>
+                                <button
+                                    onClick={() => setActiveIndex((prev) => (prev + 1) % testimonials.length)}
+                                    style={{
+                                        padding: '3px 12px',
+                                        fontSize: '11px',
+                                        fontFamily: 'Tahoma, sans-serif',
+                                        cursor: 'pointer',
+                                        backgroundColor: '#d4d0c8',
+                                        borderTop: '2px solid white',
+                                        borderLeft: '2px solid white',
+                                        borderBottom: '2px solid #808080',
+                                        borderRight: '2px solid #808080',
+                                    }}
+                                >
+                                    التالي &gt;
+                                </button>
+                            </div>
+                        </div>
+
+                        {/* All testimonials list */}
+                        <table className="win-table">
+                            <thead>
+                                <tr>
+                                    <th>اسم العميل</th>
+                                    <th>الدور</th>
+                                    <th>التقييم</th>
+                                    <th>الرأي</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {testimonials.map((t, index) => (
+                                    <tr
+                                        key={t.id}
+                                        onClick={() => setActiveIndex(index)}
+                                        style={{
+                                            cursor: 'pointer',
+                                            backgroundColor: activeIndex === index ? '#000080' : undefined,
+                                            color: activeIndex === index ? 'white' : undefined,
+                                        }}
+                                    >
+                                        <td style={{ color: activeIndex === index ? 'white' : '#000080', fontWeight: 'bold' }}>{t.name}</td>
+                                        <td style={{ color: activeIndex === index ? 'white' : undefined }}>{t.role}</td>
+                                        <td style={{ color: '#FFD700', fontSize: '11px' }}>{'★'.repeat(t.rating)}</td>
+                                        <td style={{ color: activeIndex === index ? '#ccc' : '#666' }}>{t.text.substring(0, 50)}...</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div className="win-statusbar">
+                        <span>{testimonials.length} تقييمات | متوسط: 5 نجوم</span>
+                    </div>
                 </div>
             </div>
         </section>
