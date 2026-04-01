@@ -5,14 +5,17 @@ import { ArrowRight, Heart, Share2, Check, Phone, MessageCircle } from 'lucide-r
 import { getProductById } from '@/lib/products';
 import { useState } from 'react';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import { Breadcrumb } from './Breadcrumb';
 
 interface ProductDetailProps {
     productId: string;
-    onBack: () => void;
+    onBack?: () => void;
 }
 
 export function ProductDetail({ productId, onBack }: ProductDetailProps) {
+    const router = useRouter();
+    const handleBack = () => onBack ? onBack() : router.back();
     const product = getProductById(productId);
     const [selectedImage, setSelectedImage] = useState(0);
     const [selectedColor, setSelectedColor] = useState(0);
@@ -180,11 +183,7 @@ export function ProductDetail({ productId, onBack }: ProductDetailProps) {
             />
 
             {/* Breadcrumb */}
-            <Breadcrumb items={breadcrumbItems} onNavigate={(href) => {
-                if (href === '/' || href === '/#products') {
-                    onBack();
-                }
-            }} />
+            <Breadcrumb items={breadcrumbItems} />
 
             <div className="pt-8 pb-20">
                 <div className="container mx-auto px-4 lg:px-8">
@@ -192,7 +191,7 @@ export function ProductDetail({ productId, onBack }: ProductDetailProps) {
                     <motion.button
                         initial={{ opacity: 0, x: 20 }}
                         animate={{ opacity: 1, x: 0 }}
-                        onClick={onBack}
+                        onClick={handleBack}
                         className="flex items-center gap-2 text-[#0088FF] hover:text-[#005CB8] transition-colors mb-8"
                     >
                         <span>العودة إلى تشكيلة الموكيت والسجاد</span>
@@ -285,7 +284,7 @@ export function ProductDetail({ productId, onBack }: ProductDetailProps) {
                                     اكتشف المزيد من{' '}
                                     <a
                                         href="#products"
-                                        onClick={(e) => { e.preventDefault(); onBack(); }}
+                                        onClick={(e) => { e.preventDefault(); handleBack(); }}
                                         className="text-[#0088FF] hover:underline font-medium"
                                     >
                                         موكيت وسجاد السريع في الرياض
@@ -405,7 +404,7 @@ export function ProductDetail({ productId, onBack }: ProductDetailProps) {
                                     تصفح المزيد من{' '}
                                     <a
                                         href="#products"
-                                        onClick={(e) => { e.preventDefault(); onBack(); }}
+                                        onClick={(e) => { e.preventDefault(); handleBack(); }}
                                         className="text-[#0088FF] hover:underline"
                                     >
                                         منتجات الموكيت والسجاد والمفروشات
@@ -413,7 +412,7 @@ export function ProductDetail({ productId, onBack }: ProductDetailProps) {
                                     {' '}من السريع في الرياض، أو{' '}
                                     <a
                                         href="#contact"
-                                        onClick={(e) => { e.preventDefault(); onBack(); }}
+                                        onClick={(e) => { e.preventDefault(); handleBack(); }}
                                         className="text-[#0088FF] hover:underline"
                                     >
                                         تواصل معنا

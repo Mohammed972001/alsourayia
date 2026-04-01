@@ -1,4 +1,3 @@
-import dynamic from 'next/dynamic';
 import { Navigation } from '@/components/Navigation';
 import { Hero } from '@/components/Hero';
 import { About } from '@/components/About';
@@ -11,12 +10,7 @@ import { Footer } from '@/components/Footer';
 import { FloatingButtons } from '@/components/FloatingButtons';
 import { Breadcrumb } from '@/components/Breadcrumb';
 import { SEOContent } from '@/components/SEOContent';
-
-// Deferred — shows after 2s, no benefit to blocking initial render
-const WelcomePopup = dynamic(
-    () => import('@/components/WelcomePopup').then((m) => m.WelcomePopup),
-    { ssr: false }
-);
+import { WelcomePopupClient } from '@/components/WelcomePopupClient';
 
 export default function Home() {
     const homeBreadcrumb = [{ label: 'الرئيسية' }];
@@ -37,7 +31,7 @@ export default function Home() {
             <FAQ />
             <Contact />
             <Footer />
-            <WelcomePopup />
+            <WelcomePopupClient />
             <FloatingButtons />
         </div>
     );
