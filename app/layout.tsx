@@ -181,7 +181,7 @@ export default function RootLayout({
         "url": baseUrl,
         "address": {
             "@type": "PostalAddress",
-            "streetAddress": "طريق الملك عبدالعزيز",
+            "streetAddress": "مخرج ٢٢ حراج بن قاسم القديم سوق العرب الدولي",
             "addressLocality": "الرياض",
             "addressRegion": "منطقة الرياض",
             "postalCode": "12345",
@@ -360,7 +360,7 @@ export default function RootLayout({
                 <link
                     rel="preload"
                     as="image"
-                    href="/home/hero-moket-alsurye-riyadh.jpg"
+                    href="/heroBG.jpeg"
                     type="image/jpeg"
                 />
 
@@ -387,8 +387,8 @@ export default function RootLayout({
                 />
 
                 {/* Additional SEO Meta Tags */}
-                <meta name="theme-color" content="#0088FF" />
-                <meta name="msapplication-TileColor" content="#0088FF" />
+                <meta name="theme-color" content="#1B2B4A" />
+                <meta name="msapplication-TileColor" content="#1B2B4A" />
                 <meta name="format-detection" content="telephone=yes" />
                 <meta name="mobile-web-app-capable" content="yes" />
                 <meta name="apple-mobile-web-app-capable" content="yes" />

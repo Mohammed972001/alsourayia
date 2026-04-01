@@ -33,15 +33,15 @@ export function About() {
                     transition={{ duration: 0.6 }}
                     className="text-center mb-16"
                 >
-                    <span className="inline-block px-4 py-2 bg-[#0088FF]/10 text-[#0088FF] rounded-full mb-4">
+                    <span className="inline-block px-4 py-2 bg-[#1B2B4A]/10 text-[#C49A3C] rounded-full mb-4">
                         من نحن
                     </span>
                     <h2 className="text-3xl md:text-4xl lg:text-5xl text-[#1A1A1A] mb-6">
-                        رواد التميز في عالم <span className="text-[#0088FF]">السجاد والمفروشات</span>
+                        رواد التميز في عالم <span className="text-[#C49A3C]">السجاد والمفروشات</span>
                     </h2>
                     <p className="text-lg text-gray-600 max-w-3xl mx-auto">
                         <strong>موكيت ومفروشات السريع</strong> هي وجهتك المثالية للحصول على أرقى أنواع{' '}
-                        <Link href="#products" className="text-[#0088FF] hover:underline">السجاد والموكيت والمفروشات</Link>
+                        <Link href="#products" className="text-[#C49A3C] hover:underline">السجاد والموكيت والمفروشات</Link>
                         {' '}في <strong>الرياض</strong> والمملكة العربية السعودية.
                         نجمع بين الحرفية التقليدية والتصميمات العصرية لنقدم لك تجربة فريدة من نوعها.
                     </p>
@@ -58,7 +58,7 @@ export function About() {
                             whileHover={{ y: -10 }}
                             className="text-center group"
                         >
-                            <div className="mb-6 inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-[#0088FF] to-[#005CB8] text-white shadow-lg group-hover:shadow-xl transition-all">
+                            <div className="mb-6 inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-[#1B2B4A] to-[#0F1A2E] text-white shadow-lg group-hover:shadow-xl transition-all">
                                 <feature.icon size={36} />
                             </div>
                             <h3 className="text-xl md:text-2xl text-[#1A1A1A] mb-4">
@@ -93,7 +93,7 @@ export function About() {
                             transition={{ duration: 0.6, delay: index * 0.1 }}
                             className="text-center p-6 rounded-lg bg-white shadow-lg hover:shadow-xl transition-shadow"
                         >
-                            <div className="text-3xl md:text-4xl text-[#0088FF] mb-2">
+                            <div className="text-3xl md:text-4xl text-[#C49A3C] mb-2">
                                 {stat.number}
                             </div>
                             <div className="text-gray-600">{stat.label}</div>
@@ -111,11 +111,11 @@ export function About() {
                 >
                     <p className="text-lg text-gray-600 mb-6">
                         تعرف على المزيد عن{' '}
-                        <Link href="#products" className="text-[#0088FF] hover:underline font-medium">
+                        <Link href="#products" className="text-[#C49A3C] hover:underline font-medium">
                             منتجات موكيت وسجاد ومفروشات السريع
                         </Link>
                         {' '}أو{' '}
-                        <Link href="#contact" className="text-[#0088FF] hover:underline font-medium">
+                        <Link href="#contact" className="text-[#C49A3C] hover:underline font-medium">
                             تواصل معنا
                         </Link>
                         {' '}للحصول على استشارة مجانية.
@@ -123,13 +123,13 @@ export function About() {
                     <div className="flex flex-wrap justify-center gap-4">
                         <Link
                             href="#products"
-                            className="px-8 py-4 bg-[#0088FF] text-white rounded-xl hover:bg-[#005CB8] transition-colors shadow-lg hover:shadow-xl"
+                            className="px-8 py-4 bg-[#1B2B4A] text-white rounded-xl hover:bg-[#0F1A2E] transition-colors shadow-lg hover:shadow-xl"
                         >
                             تصفح تشكيلة الموكيت والسجاد
                         </Link>
                         <Link
                             href="#contact"
-                            className="px-8 py-4 bg-white border-2 border-[#0088FF] text-[#0088FF] rounded-xl hover:bg-[#0088FF]/5 transition-colors"
+                            className="px-8 py-4 bg-white border-2 border-[#1B2B4A] text-[#C49A3C] rounded-xl hover:bg-[#1B2B4A]/5 transition-colors"
                         >
                             احصل على استشارة مجانية
                         </Link>

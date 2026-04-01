@@ -43,15 +43,17 @@
     --sidebar-border: oklch(0.922 0 0);
     --sidebar-ring: oklch(0.708 0 0);
 
-    /* Custom Brand Colors - موكيت ومفروشات السريع */
-    --primary-blue: #0088FF;
-    --primary-cyan: #00D4FF;
-    --dark-blue: #005CB8;
-    --light-blue: #E6F5FF;
-    --accent-color: #0088FF;
-    /* Changed from red/yellow to blue */
-    --gradient-start: #00C6FB;
-    --gradient-end: #005BEA;
+    /* Custom Brand Colors - موكيت ومفروشات السريع (Luxury Saudi Corporate Theme) */
+    --primary-blue: #1B2B4A;
+    --primary-cyan: #2A4A7F;
+    --dark-blue: #0F1A2E;
+    --light-blue: #FFF8E7;
+    --accent-color: #C49A3C;
+    --accent-gold: #C49A3C;
+    --accent-gold-dark: #A07D2A;
+    --cream-bg: #F9F5EF;
+    --gradient-start: #1B2B4A;
+    --gradient-end: #0F1A2E;
 }
 
 .dark {
@@ -207,9 +209,10 @@ html {
     font-size: var(--font-size);
 }
 
-/* Smooth Scrolling */
+/* Smooth Scrolling with offset for fixed nav */
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: 80px;
 }
 
 /* Custom Scrollbar */
@@ -222,10 +225,63 @@ html {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: var(--primary-blue);
+    background: var(--accent-gold);
     border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--dark-blue);
+    background: var(--accent-gold-dark);
+}
+
+/* ─── Luxury Saudi Corporate Theme Enhancements ─── */
+
+/* Section headings get gold underline accent */
+.section-title-accent {
+    position: relative;
+    display: inline-block;
+}
+.section-title-accent::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    right: 0;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent-gold), transparent);
+    border-radius: 2px;
+}
+
+/* Gold badge pill used across sections */
+.gold-badge {
+    background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-gold-dark) 100%);
+    color: #fff;
+    padding: 4px 16px;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    display: inline-block;
+}
+
+/* Card hover elevation */
+.luxury-card {
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.luxury-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(27, 43, 74, 0.12);
+}
+
+/* Warm cream section background */
+.bg-cream {
+    background-color: var(--cream-bg);
+}
+
+/* Gold text utility */
+.text-gold {
+    color: var(--accent-gold);
+}
+
+/* Navy text utility */
+.text-navy {
+    color: var(--primary-blue);
 }

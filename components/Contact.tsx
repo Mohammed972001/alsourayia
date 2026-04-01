@@ -8,12 +8,14 @@ export function Contact() {
         {
             icon: MapPin,
             title: 'العنوان',
-            content: 'الرياض، حي الملقا، طريق الملك فهد',
+            content: 'مخرج ٢٢ حراج بن قاسم القديم سوق العرب الدولي، الرياض',
+            isAddress: true,
         },
         {
             icon: Phone,
             title: 'الهاتف',
-            content: '0540079507',
+            content: '+966541540047',
+            isPhone: true,
         },
         {
             icon: Clock,
@@ -32,7 +34,7 @@ export function Contact() {
                     transition={{ duration: 0.6 }}
                     className="text-center mb-12"
                 >
-                    <span className="inline-block px-4 py-2 bg-[#0088FF]/10 text-[#0088FF] rounded-full mb-4">
+                    <span className="inline-block px-4 py-2 bg-[#C49A3C]/10 text-[#C49A3C] rounded-full mb-4">
                         تواصل معنا
                     </span>
                     <h2 className="text-3xl md:text-4xl lg:text-5xl text-[#1A1A1A] mb-6">
@@ -85,14 +87,28 @@ export function Contact() {
                                 whileHover={{ scale: 1.02 }}
                                 className="bg-white rounded-xl shadow-lg p-6 flex items-start gap-4 hover:shadow-xl transition-all"
                             >
-                                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#0088FF] to-[#005CB8] flex items-center justify-center text-white flex-shrink-0">
+                                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#1B2B4A] to-[#0F1A2E] flex items-center justify-center text-white flex-shrink-0">
                                     <info.icon size={24} />
                                 </div>
                                 <div>
                                     <h4 className="text-lg text-[#1A1A1A] mb-2">
                                         {info.title}
                                     </h4>
-                                    <p className="text-gray-600">{info.content}</p>
+                                    {(info as { isPhone?: boolean }).isPhone ? (
+                                        <a
+                                            href="tel:+966541540047"
+                                            className="text-[#1B2B4A] hover:text-[#C49A3C] transition-colors font-medium"
+                                            dir="ltr"
+                                        >
+                                            {info.content}
+                                        </a>
+                                    ) : (info as { isAddress?: boolean }).isAddress ? (
+                                        <address className="not-italic text-gray-600">
+                                            {info.content}
+                                        </address>
+                                    ) : (
+                                        <p className="text-gray-600">{info.content}</p>
+                                    )}
                                 </div>
                             </motion.div>
                         ))}

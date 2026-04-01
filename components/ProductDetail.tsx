@@ -192,7 +192,7 @@ export function ProductDetail({ productId, onBack }: ProductDetailProps) {
                         initial={{ opacity: 0, x: 20 }}
                         animate={{ opacity: 1, x: 0 }}
                         onClick={handleBack}
-                        className="flex items-center gap-2 text-[#0088FF] hover:text-[#005CB8] transition-colors mb-8"
+                        className="flex items-center gap-2 text-[#C49A3C] hover:text-[#005CB8] transition-colors mb-8"
                     >
                         <span>العودة إلى تشكيلة الموكيت والسجاد</span>
                         <ArrowRight size={20} />
@@ -227,7 +227,7 @@ export function ProductDetail({ productId, onBack }: ProductDetailProps) {
                                         className="p-3 bg-white rounded-full shadow-lg hover:bg-gray-100 transition-colors"
                                         aria-label="مشاركة المنتج"
                                     >
-                                        <Share2 size={20} className="text-[#0088FF]" />
+                                        <Share2 size={20} className="text-[#C49A3C]" />
                                     </button>
                                 </div>
                             </motion.div>
@@ -240,7 +240,7 @@ export function ProductDetail({ productId, onBack }: ProductDetailProps) {
                                             key={index}
                                             whileHover={{ scale: 1.05 }}
                                             onClick={() => setSelectedImage(index)}
-                                            className={`relative overflow-hidden rounded-lg h-24 ${selectedImage === index ? 'ring-2 ring-[#0088FF]' : ''
+                                            className={`relative overflow-hidden rounded-lg h-24 ${selectedImage === index ? 'ring-2 ring-[#C49A3C]' : ''
                                                 }`}
                                             aria-label={`عرض ${getImageAlt(index)}`}
                                         >
@@ -265,7 +265,7 @@ export function ProductDetail({ productId, onBack }: ProductDetailProps) {
                                 transition={{ delay: 0.2 }}
                             >
                                 {/* Category Badge */}
-                                <span className="inline-block px-4 py-2 bg-[#0088FF]/10 text-[#0088FF] rounded-full mb-4">
+                                <span className="inline-block px-4 py-2 bg-[#1B2B4A]/10 text-[#C49A3C] rounded-full mb-4">
                                     {product.category}
                                 </span>
 
@@ -285,7 +285,7 @@ export function ProductDetail({ productId, onBack }: ProductDetailProps) {
                                     <a
                                         href="#products"
                                         onClick={(e) => { e.preventDefault(); handleBack(); }}
-                                        className="text-[#0088FF] hover:underline font-medium"
+                                        className="text-[#C49A3C] hover:underline font-medium"
                                     >
                                         موكيت وسجاد السريع في الرياض
                                     </a>
@@ -300,15 +300,15 @@ export function ProductDetail({ productId, onBack }: ProductDetailProps) {
                                                 key={color.name}
                                                 onClick={() => setSelectedColor(index)}
                                                 className={`flex items-center gap-2 px-4 py-2 rounded-lg border-2 transition-all ${selectedColor === index
-                                                    ? 'border-[#0088FF] bg-[#0088FF]/10'
-                                                    : 'border-gray-300 hover:border-[#0088FF]'
+                                                    ? 'border-[#1B2B4A] bg-[#1B2B4A]/10'
+                                                    : 'border-gray-300 hover:border-[#1B2B4A]'
                                                     }`}
                                             >
                                                 <span
                                                     className="w-5 h-5 rounded-full border border-gray-300"
                                                     style={{ backgroundColor: color.value }}
                                                 />
-                                                <span className={selectedColor === index ? 'text-[#0088FF]' : ''}>{color.name}</span>
+                                                <span className={selectedColor === index ? 'text-[#C49A3C]' : ''}>{color.name}</span>
                                             </button>
                                         ))}
                                     </div>
@@ -322,7 +322,7 @@ export function ProductDetail({ productId, onBack }: ProductDetailProps) {
                                         rel="noopener noreferrer"
                                         whileHover={{ scale: 1.02 }}
                                         whileTap={{ scale: 0.98 }}
-                                        className="flex-1 px-8 py-4 bg-[#0088FF] text-white rounded-lg hover:bg-[#005CB8] transition-colors shadow-lg text-center"
+                                        className="flex-1 px-8 py-4 bg-[#1B2B4A] text-white rounded-lg hover:bg-[#0F1A2E] transition-colors shadow-lg text-center"
                                     >
                                         طلب عرض سعر
                                     </motion.a>
@@ -332,7 +332,7 @@ export function ProductDetail({ productId, onBack }: ProductDetailProps) {
                                         rel="noopener noreferrer"
                                         whileHover={{ scale: 1.02 }}
                                         whileTap={{ scale: 0.98 }}
-                                        className="flex-1 px-8 py-4 bg-white border-2 border-[#0088FF] text-[#0088FF] rounded-lg hover:bg-[#0088FF]/5 transition-colors text-center"
+                                        className="flex-1 px-8 py-4 bg-white border-2 border-[#1B2B4A] text-[#C49A3C] rounded-lg hover:bg-[#1B2B4A]/5 transition-colors text-center"
                                     >
                                         طلب عينة مجانية
                                     </motion.a>
@@ -372,8 +372,8 @@ export function ProductDetail({ productId, onBack }: ProductDetailProps) {
                                                 transition={{ delay: 0.1 * index }}
                                                 className="flex items-start gap-3"
                                             >
-                                                <div className="w-6 h-6 rounded-full bg-[#0088FF]/20 flex items-center justify-center flex-shrink-0 mt-1">
-                                                    <Check size={16} className="text-[#0088FF]" />
+                                                <div className="w-6 h-6 rounded-full bg-[#1B2B4A]/20 flex items-center justify-center flex-shrink-0 mt-1">
+                                                    <Check size={16} className="text-[#C49A3C]" />
                                                 </div>
                                                 <span className="text-gray-700">{feature}</span>
                                             </motion.div>
@@ -405,7 +405,7 @@ export function ProductDetail({ productId, onBack }: ProductDetailProps) {
                                     <a
                                         href="#products"
                                         onClick={(e) => { e.preventDefault(); handleBack(); }}
-                                        className="text-[#0088FF] hover:underline"
+                                        className="text-[#C49A3C] hover:underline"
                                     >
                                         منتجات الموكيت والسجاد والمفروشات
                                     </a>
@@ -413,7 +413,7 @@ export function ProductDetail({ productId, onBack }: ProductDetailProps) {
                                     <a
                                         href="#contact"
                                         onClick={(e) => { e.preventDefault(); handleBack(); }}
-                                        className="text-[#0088FF] hover:underline"
+                                        className="text-[#C49A3C] hover:underline"
                                     >
                                         تواصل معنا
                                     </a>

@@ -73,12 +73,12 @@ export function FAQ() {
                     transition={{ duration: 0.6 }}
                     className="text-center mb-12"
                 >
-                    <span className="inline-flex items-center gap-2 px-4 py-2 bg-[#0088FF]/10 text-[#0088FF] rounded-full mb-4">
+                    <span className="inline-flex items-center gap-2 px-4 py-2 bg-[#1B2B4A]/10 text-[#C49A3C] rounded-full mb-4">
                         <HelpCircle size={18} />
                         الأسئلة الشائعة
                     </span>
                     <h2 className="text-3xl md:text-4xl lg:text-5xl text-[#1A1A1A] mb-6">
-                        كل ما تريد معرفته عن <span className="text-[#0088FF]">موكيت ومفروشات السريع</span>
+                        كل ما تريد معرفته عن <span className="text-[#C49A3C]">موكيت ومفروشات السريع</span>
                     </h2>
                     <p className="text-lg text-gray-600 max-w-2xl mx-auto">
                         إجابات على أكثر الأسئلة شيوعاً حول خدماتنا ومنتجاتنا من الموكيت والسجاد والمفروشات في الرياض
@@ -98,7 +98,7 @@ export function FAQ() {
                             <button
                                 onClick={() => toggleFAQ(index)}
                                 className={`w-full flex items-center justify-between p-5 rounded-xl transition-all ${openIndex === index
-                                    ? 'bg-[#0088FF] text-white shadow-lg'
+                                    ? 'bg-[#1B2B4A] text-white shadow-lg'
                                     : 'bg-white text-[#1A1A1A] shadow-md hover:shadow-lg'
                                     }`}
                                 aria-expanded={openIndex === index}

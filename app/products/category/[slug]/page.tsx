@@ -91,12 +91,12 @@ export default async function CategoryPage({ params }: Props) {
                     <Breadcrumb items={breadcrumb} />
 
                     <div className="mt-8 mb-12 text-center">
-                        <span className="inline-block px-4 py-2 bg-[#0088FF]/10 text-[#0088FF] rounded-full mb-4">
+                        <span className="inline-block px-4 py-2 bg-[#1B2B4A]/10 text-[#C49A3C] rounded-full mb-4">
                             {categoryName}
                         </span>
                         <h1 className="text-3xl md:text-4xl lg:text-5xl text-[#1A1A1A] mb-4">
                             {categoryName} من{' '}
-                            <span className="text-[#0088FF]">مفروشات السريع</span>
+                            <span className="text-[#C49A3C]">مفروشات السريع</span>
                         </h1>
                         <p className="text-lg text-gray-600 max-w-2xl mx-auto">
                             تصفح مجموعتنا من <strong>{categoryName}</strong> في الرياض.
@@ -126,13 +126,13 @@ export default async function CategoryPage({ params }: Props) {
                                         />
                                     </Link>
                                     <div className="p-6">
-                                        <span className="inline-block px-3 py-1 bg-[#0088FF]/10 text-[#0088FF] rounded-full text-sm mb-2">
+                                        <span className="inline-block px-3 py-1 bg-[#1B2B4A]/10 text-[#C49A3C] rounded-full text-sm mb-2">
                                             {categoryName}
                                         </span>
                                         <h2 className="text-xl text-[#1A1A1A] mb-2">
                                             <Link
                                                 href={`/products/${product.id}`}
-                                                className="hover:text-[#0088FF] transition-colors"
+                                                className="hover:text-[#C49A3C] transition-colors"
                                             >
                                                 {product.name}
                                             </Link>
@@ -160,7 +160,7 @@ export default async function CategoryPage({ params }: Props) {
                                             )}
                                             <Link
                                                 href={`/products/${product.id}`}
-                                                className="px-6 py-2 bg-[#0088FF] text-white rounded-lg hover:bg-[#005CB8] transition-colors mr-auto"
+                                                className="px-6 py-2 bg-[#1B2B4A] text-white rounded-lg hover:bg-[#0F1A2E] transition-colors mr-auto"
                                             >
                                                 عرض التفاصيل
                                             </Link>
@@ -176,7 +176,7 @@ export default async function CategoryPage({ params }: Props) {
                             </p>
                             <Link
                                 href="/products"
-                                className="inline-block px-6 py-3 bg-[#0088FF] text-white rounded-lg hover:bg-[#005CB8] transition-colors"
+                                className="inline-block px-6 py-3 bg-[#1B2B4A] text-white rounded-lg hover:bg-[#0F1A2E] transition-colors"
                             >
                                 عرض جميع المنتجات
                             </Link>
@@ -195,7 +195,7 @@ export default async function CategoryPage({ params }: Props) {
                                     <Link
                                         key={s}
                                         href={`/products/category/${s}`}
-                                        className="px-4 py-2 rounded-lg bg-gray-100 text-gray-700 hover:bg-[#0088FF] hover:text-white transition-all"
+                                        className="px-4 py-2 rounded-lg bg-gray-100 text-gray-700 hover:bg-[#1B2B4A] hover:text-white transition-all"
                                     >
                                         {name}
                                     </Link>

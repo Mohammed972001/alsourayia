@@ -22,14 +22,14 @@ export function SEOContent() {
                 >
                     {/* Main SEO Heading */}
                     <h2 className="text-2xl md:text-3xl text-[#1A1A1A] mb-6 text-center">
-                        لماذا <span className="text-[#0088FF]">موكيت ومفروشات السريع</span> الخيار الأول في الرياض؟
+                        لماذا <span className="text-[#C49A3C]">موكيت ومفروشات السريع</span> الخيار الأول في الرياض؟
                     </h2>
 
                     {/* Rich Text Content - Important for SEO */}
                     <div className="prose prose-lg max-w-none text-gray-700 space-y-6">
                         <p>
                             تُعد <strong>موكيت ومفروشات السريع</strong> من الشركات الرائدة في مجال توفير{' '}
-                            <Link href="#products" className="text-[#0088FF] hover:underline">الموكيت والسجاد والمفروشات</Link>{' '}
+                            <Link href="#products" className="text-[#C49A3C] hover:underline">الموكيت والسجاد والمفروشات</Link>{' '}
                             في <strong>الرياض</strong> والمملكة العربية السعودية. نقدم تشكيلة واسعة ومتنوعة من{' '}
                             <strong>الأرضيات</strong> عالية الجودة تشمل <strong>موكيت المساجد</strong>،{' '}
                             <strong>الأرضيات المكتبية</strong>، <strong>الباركيه</strong>، و<strong>العشب الصناعي</strong>.
@@ -38,7 +38,7 @@ export function SEOContent() {
                         <p>
                             نحن في <strong>السريع للمفروشات</strong> نؤمن بأن الأرضيات هي أساس جمال أي مساحة.
                             لذلك نحرص على توفير أجود الخامات من أفضل المصانع العالمية والتركية.
-                            سواء كنت تبحث عن <Link href="#products" className="text-[#0088FF] hover:underline">موكيت فاخر</Link> لمنزلك،
+                            سواء كنت تبحث عن <Link href="#products" className="text-[#C49A3C] hover:underline">موكيت فاخر</Link> لمنزلك،
                             أو <strong>أرضيات احترافية</strong> لمكتبك، أو <strong>موكيت مساجد</strong> بتصاميم إسلامية راقية،
                             ستجد لدينا ما يلبي احتياجاتك.
                         </p>
@@ -51,7 +51,7 @@ export function SEOContent() {
                                     موكيت مساجد عالي الجودة بتصاميم إسلامية فاخرة، مقاوم للحريق ومعالج ضد البكتيريا.
                                     توصيل وتركيب مجاني لجميع مناطق الرياض.
                                 </p>
-                                <Link href="#products" className="text-[#0088FF] text-sm hover:underline">
+                                <Link href="#products" className="text-[#C49A3C] text-sm hover:underline">
                                     اكتشف موكيت المساجد ←
                                 </Link>
                             </div>
@@ -62,7 +62,7 @@ export function SEOContent() {
                                     أرضيات مكتبية احترافية تناسب بيئات العمل الحديثة. سهلة التنظيف ومقاومة للخدوش
                                     مع تشكيلة واسعة من الألوان والتصاميم.
                                 </p>
-                                <Link href="#products" className="text-[#0088FF] text-sm hover:underline">
+                                <Link href="#products" className="text-[#C49A3C] text-sm hover:underline">
                                     تصفح الأرضيات المكتبية ←
                                 </Link>
                             </div>
@@ -73,7 +73,7 @@ export function SEOContent() {
                                     باركيه ضد الماء بجودة ألمانية. مناسب للمنازل والفلل والشقق الفاخرة.
                                     ضمان يصل إلى 25 سنة على المنتج.
                                 </p>
-                                <Link href="#products" className="text-[#0088FF] text-sm hover:underline">
+                                <Link href="#products" className="text-[#C49A3C] text-sm hover:underline">
                                     شاهد تشكيلة الباركيه ←
                                 </Link>
                             </div>
@@ -84,7 +84,7 @@ export function SEOContent() {
                                     عشب صناعي عالي الكثافة للحدائق والملاعب والمساحات الخارجية.
                                     مقاوم للأشعة فوق البنفسجية ولا يحتاج صيانة.
                                 </p>
-                                <Link href="#products" className="text-[#0088FF] text-sm hover:underline">
+                                <Link href="#products" className="text-[#C49A3C] text-sm hover:underline">
                                     استكشف العشب الصناعي ←
                                 </Link>
                             </div>
@@ -101,7 +101,7 @@ export function SEOContent() {
                             نخدم جميع أحياء <strong>الرياض</strong> ومناطق المملكة الرئيسية:{' '}
                             <strong>جدة</strong>، <strong>الدمام</strong>، <strong>مكة المكرمة</strong>،{' '}
                             <strong>المدينة المنورة</strong>، وغيرها. تواصل معنا الآن عبر{' '}
-                            <Link href="#contact" className="text-[#0088FF] hover:underline">الواتساب أو الهاتف</Link>{' '}
+                            <Link href="#contact" className="text-[#C49A3C] hover:underline">الواتساب أو الهاتف</Link>{' '}
                             للحصول على عرض سعر مجاني.
                         </p>
                     </div>
@@ -116,7 +116,7 @@ export function SEOContent() {
                     >
                         <Link
                             href="#products"
-                            className="px-8 py-4 bg-[#0088FF] text-white rounded-xl hover:bg-[#005CB8] transition-colors shadow-lg"
+                            className="px-8 py-4 bg-[#1B2B4A] text-white rounded-xl hover:bg-[#0F1A2E] transition-colors shadow-lg"
                         >
                             تصفح جميع المنتجات
                         </Link>

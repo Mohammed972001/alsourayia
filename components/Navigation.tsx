@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { Menu, X, Phone } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 
 export function Navigation() {
@@ -22,12 +23,12 @@ export function Navigation() {
     }, []);
 
     const menuItems = [
-        { label: 'الرئيسية', href: '/', sectionId: 'home' },
-        { label: 'من نحن', href: '/about', sectionId: 'about' },
-        { label: 'المنتجات', href: '/products', sectionId: 'products' },
-        { label: 'مناطق الخدمة', href: '/service-areas', sectionId: 'service-areas' },
+        { label: 'الرئيسية', href: '/#home', sectionId: 'home' },
+        { label: 'من نحن', href: '/#about', sectionId: 'about' },
+        { label: 'المنتجات', href: '/#products', sectionId: 'products' },
+        { label: 'مناطق الخدمة', href: '/#service-areas', sectionId: 'service-areas' },
         { label: 'آراء العملاء', href: '/#testimonials', sectionId: 'testimonials' },
-        { label: 'تواصل معنا', href: '/contact', sectionId: 'contact' },
+        { label: 'تواصل معنا', href: '/#contact', sectionId: 'contact' },
     ];
 
     const scrollToSection = (sectionId: string) => {
@@ -70,22 +71,26 @@ export function Navigation() {
             <div className="container mx-auto px-4 lg:px-8">
                 <div className="flex items-center justify-between h-20">
                     {/* Logo */}
-                    <Link href="/">
+                    <Link href="/" aria-label="موكيت ومفروشات السريع - الصفحة الرئيسية">
                         <motion.div
                             whileHover={{ scale: 1.05 }}
-                            className="flex items-center space-x-2 space-x-reverse cursor-pointer"
+                            className="flex items-center gap-3 cursor-pointer"
                         >
-                            <div className={`transition-colors ${isSolid ? 'text-[#0088FF]' : 'text-white'}`}>
-                                <svg width="40" height="40" viewBox="0 0 40 40" fill="currentColor">
-                                    <path d="M20 2L35 12L35 28L20 38L5 28L5 12L20 2Z" />
-                                    <path d="M20 10L28 15L28 25L20 30L12 25L12 15L20 10Z" fill="white" opacity="0.3" />
-                                </svg>
+                            <div className="relative w-12 h-12 rounded-lg overflow-hidden shadow-md flex-shrink-0">
+                                <Image
+                                    src="/heroBG.jpeg"
+                                    alt="شعار موكيت ومفروشات السريع"
+                                    fill
+                                    sizes="48px"
+                                    className="object-cover"
+                                    priority
+                                />
                             </div>
                             <div className="flex flex-col">
-                                <span className={`font-bold text-xl transition-colors ${isSolid ? 'text-[#0088FF]' : 'text-white'}`}>
+                                <span className={`font-bold text-lg leading-tight transition-colors ${isSolid ? 'text-[#1B2B4A]' : 'text-white'}`}>
                                     موكيت ومفروشات السريع
                                 </span>
-                                <span className={`text-xs transition-colors ${isSolid ? 'text-[#005CB8]' : 'text-white/80'}`}>
+                                <span className={`text-xs transition-colors ${isSolid ? 'text-[#C49A3C]' : 'text-white/80'}`}>
                                     Al-Sari Carpets & Furnishings
                                 </span>
                             </div>
@@ -99,7 +104,7 @@ export function Navigation() {
                                 key={item.label}
                                 href={item.href}
                                 onClick={(e) => handleNavClick(e, item.href, item.sectionId)}
-                                className={`transition-colors hover:text-[#0088FF] ${isSolid ? 'text-[#1A1A1A]' : 'text-white'
+                                className={`transition-colors hover:text-[#C49A3C] ${isSolid ? 'text-[#1A1A1A]' : 'text-white'
                                     }`}
                             >{item.label}
                             </Link>
@@ -111,7 +116,7 @@ export function Navigation() {
                         <a
                             href="tel:+966541540047"
                             className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all ${isSolid
-                                    ? 'bg-[#0088FF] text-white hover:bg-[#005CB8]'
+                                    ? 'bg-[#1B2B4A] text-white hover:bg-[#0F1A2E]'
                                     : 'bg-white/20 text-white hover:bg-white/30'
                                 }`}
                         >
@@ -145,7 +150,7 @@ export function Navigation() {
                                     key={item.label}
                                     href={item.href}
                                     onClick={(e) => handleNavClick(e, item.href, item.sectionId)}
-                                    className="block py-2 text-[#1A1A1A] hover:text-[#0088FF] transition-colors"
+                                    className="block py-2 text-[#1A1A1A] hover:text-[#C49A3C] transition-colors"
                                 >
                                     {item.label}
                                 </Link>
@@ -153,7 +158,7 @@ export function Navigation() {
                             <div className="pt-4 border-t">
                                 <a
                                     href="tel:+966541540047"
-                                    className="flex items-center justify-center gap-2 w-full px-4 py-3 bg-[#0088FF] text-white rounded-lg hover:bg-[#005CB8] transition-colors"
+                                    className="flex items-center justify-center gap-2 w-full px-4 py-3 bg-[#1B2B4A] text-white rounded-lg hover:bg-[#0F1A2E] transition-colors"
                                 >
                                     <Phone size={18} />
                                     <span>اتصل الآن: 966541540047+</span>

@@ -23,7 +23,7 @@ export function ServiceAreas() {
                     transition={{ duration: 0.6 }}
                     className="text-center mb-12"
                 >
-                    <span className="inline-block px-4 py-2 bg-[#0088FF]/10 text-[#0088FF] rounded-full mb-4">
+                    <span className="inline-block px-4 py-2 bg-[#1B2B4A]/10 text-[#C49A3C] rounded-full mb-4">
                         مناطق الخدمة
                     </span>
                     <h2 className="text-3xl md:text-4xl lg:text-5xl text-[#1A1A1A] mb-6">
@@ -53,11 +53,11 @@ export function ServiceAreas() {
                             viewport={{ once: true }}
                             transition={{ duration: 0.5, delay: index * 0.1 }}
                             whileHover={{ scale: 1.02 }}
-                            className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all cursor-pointer border-r-4 border-[#0088FF]"
+                            className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all cursor-pointer border-r-4 border-[#C49A3C]"
                         >
                             <div className="flex items-center justify-between">
                                 <div className="flex items-center gap-4">
-                                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#0088FF] to-[#005CB8] flex items-center justify-center text-white">
+                                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#1B2B4A] to-[#0F1A2E] flex items-center justify-center text-white">
                                         <MapPin size={24} />
                                     </div>
                                     <div>
@@ -69,7 +69,7 @@ export function ServiceAreas() {
                                         </p>
                                     </div>
                                 </div>
-                                <button className="px-6 py-2 bg-[#0088FF]/10 text-[#0088FF] rounded-lg hover:bg-[#0088FF] hover:text-white transition-colors">
+                                <button className="px-6 py-2 bg-[#1B2B4A]/10 text-[#C49A3C] rounded-lg hover:bg-[#1B2B4A] hover:text-white transition-colors">
                                     اطلب الآن
                                 </button>
                             </div>

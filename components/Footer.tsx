@@ -6,17 +6,23 @@ import { Phone, Mail, MapPin, MessageCircle } from 'lucide-react';
 export function Footer() {
     const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
         e.preventDefault();
+        if (sectionId === 'home') {
+            if (window.location.pathname === '/') {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+                window.location.href = '/';
+            }
+            return;
+        }
         const element = document.getElementById(sectionId);
         if (element) {
             const navHeight = 80;
             const elementPosition = element.getBoundingClientRect().top;
             const offsetPosition = elementPosition + window.pageYOffset - navHeight;
-            window.scrollTo({
-                top: offsetPosition,
-                behavior: 'smooth'
-            });
-        } else if (sectionId === 'home') {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+        } else {
+            // Navigate to home page with anchor when section not on current page
+            window.location.href = `/#${sectionId}`;
         }
     };
 
@@ -44,8 +50,8 @@ export function Footer() {
         services: {
             title: 'خدماتنا',
             links: [
-                { name: 'تنسيق حدائق', href: 'products' },
-                { name: 'شلالات ونوافير', href: 'products' },
+                { name: 'أرضيات رياضية', href: 'products' },
+                { name: 'أرضيات مطاط', href: 'products' },
                 { name: 'أرضيات طبية', href: 'products' },
                 { name: 'فينيل مساجد', href: 'products' },
                 { name: 'تركيب احترافي', href: 'contact' },
@@ -67,14 +73,14 @@ export function Footer() {
                             transition={{ duration: 0.6 }}
                         >
                             <div className="flex items-center gap-2 mb-4">
-                                <div className="text-[#0088FF]">
+                                <div className="text-[#C49A3C]">
                                     <svg width="40" height="40" viewBox="0 0 40 40" fill="currentColor">
                                         <path d="M20 2L35 12L35 28L20 38L5 28L5 12L20 2Z" />
                                     </svg>
                                 </div>
                                 <div>
                                     <h3 className="text-xl">موكيت ومفروشات السريع</h3>
-                                    <p className="text-[#0088FF]">Al-Sari Carpets & Furnishings</p>
+                                    <p className="text-[#C49A3C]">Al-Sari Carpets & Furnishings</p>
                                 </div>
                             </div>
                             <p className="text-gray-400 mb-6">
@@ -84,7 +90,7 @@ export function Footer() {
 
                             {/* Contact Info */}
                             <div className="space-y-3 mb-6">
-                                <a href="tel:+966541540047" className="flex items-center gap-3 text-gray-400 hover:text-[#0088FF] transition-colors">
+                                <a href="tel:+966541540047" className="flex items-center gap-3 text-gray-400 hover:text-[#C49A3C] transition-colors">
                                     <Phone size={18} />
                                     <span dir="ltr">+966 541 540 047</span>
                                 </a>
@@ -92,10 +98,10 @@ export function Footer() {
                                     <MessageCircle size={18} />
                                     <span>واتساب</span>
                                 </a>
-                                <div className="flex items-center gap-3 text-gray-400">
-                                    <MapPin size={18} />
-                                    <span>الرياض، المملكة العربية السعودية</span>
-                                </div>
+                                <address className="not-italic flex items-start gap-3 text-gray-400">
+                                    <MapPin size={18} className="mt-1 flex-shrink-0" />
+                                    <span>مخرج ٢٢ حراج بن قاسم القديم سوق العرب الدولي، الرياض، المملكة العربية السعودية</span>
+                                </address>
                             </div>
 
                             {/* Social Media */}
@@ -112,7 +118,7 @@ export function Footer() {
                                         rel={social.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                                         whileHover={{ scale: 1.1, y: -5 }}
                                         whileTap={{ scale: 0.95 }}
-                                        className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-[#0088FF] transition-colors"
+                                        className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-[#C49A3C] transition-colors"
                                     >
                                         <span className="text-lg">{social.icon}</span>
                                     </motion.a>
@@ -130,7 +136,7 @@ export function Footer() {
                             viewport={{ once: true }}
                             transition={{ duration: 0.6, delay: index * 0.1 }}
                         >
-                            <h4 className="text-lg mb-4 text-[#0088FF]">
+                            <h4 className="text-lg mb-4 text-[#C49A3C]">
                                 {section.title}
                             </h4>
                             <ul className="space-y-2">
@@ -139,7 +145,7 @@ export function Footer() {
                                         <a
                                             href={`#${link.href}`}
                                             onClick={(e) => scrollToSection(e, link.href)}
-                                            className="text-gray-400 hover:text-[#0088FF] transition-colors inline-block hover:translate-x-1"
+                                            className="text-gray-400 hover:text-[#C49A3C] transition-colors inline-block hover:translate-x-1"
                                         >
                                             {link.name}
                                         </a>
@@ -157,13 +163,13 @@ export function Footer() {
                             © 2025 موكيت ومفروشات السريع. جميع الحقوق محفوظة.
                         </p>
                         <div className="flex items-center gap-6">
-                            <a href="#about" onClick={(e) => scrollToSection(e, 'about')} className="text-gray-400 hover:text-[#0088FF] transition-colors">
+                            <a href="#about" onClick={(e) => scrollToSection(e, 'about')} className="text-gray-400 hover:text-[#C49A3C] transition-colors">
                                 من نحن
                             </a>
-                            <a href="#contact" onClick={(e) => scrollToSection(e, 'contact')} className="text-gray-400 hover:text-[#0088FF] transition-colors">
+                            <a href="#contact" onClick={(e) => scrollToSection(e, 'contact')} className="text-gray-400 hover:text-[#C49A3C] transition-colors">
                                 تواصل معنا
                             </a>
-                            <a href="#products" onClick={(e) => scrollToSection(e, 'products')} className="text-gray-400 hover:text-[#0088FF] transition-colors">
+                            <a href="#products" onClick={(e) => scrollToSection(e, 'products')} className="text-gray-400 hover:text-[#C49A3C] transition-colors">
                                 المنتجات
                             </a>
                         </div>

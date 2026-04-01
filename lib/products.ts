@@ -22,9 +22,10 @@ export const categorySlugMap: Record<string, string> = {
   'carpet': 'موكيت',
   'hospital-flooring': 'أرضيات طبية',
   'mosque-vinyl': 'فينيل مساجد',
-  'garden-design': 'تنسيق حدائق',
-  'fountains': 'شلالات ونوافير',
-  'plants': 'نباتات',
+  'rabal-gem': 'أرضيات رياضية',
+  'non-slip-rubber': 'أرضيات مطاط',
+  'horse-rubber': 'أرضيات خيول',
+  'office-carpet': 'موكيت مكاتب',
   'turkish-carpet': 'موكيت تركي',
 };
 
@@ -58,9 +59,10 @@ function getCategoryFromId(id: string): string {
     'mokite': 'موكيت',
     'hospital-flooring': 'أرضيات طبية',
     'vinyl-mosque': 'فينيل مساجد',
-    'garden-flooring': 'تنسيق حدائق',
-    'shlal': 'شلالات ونوافير',
-    'planets': 'نباتات',
+    'rabal-gem': 'أرضيات رياضية',
+    'non-slip-rubber': 'أرضيات مطاط',
+    'horse-rubber': 'أرضيات خيول',
+    'office-carpet': 'موكيت مكاتب',
     'turky-mshager': 'موكيت تركي',
   };
   return categoryMap[id] || 'أخرى';

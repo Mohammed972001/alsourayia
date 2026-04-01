@@ -32,11 +32,11 @@ export function ProductGallery() {
                     transition={{ duration: 0.6 }}
                     className="text-center mb-12"
                 >
-                    <span className="inline-block px-4 py-2 bg-[#0088FF]/10 text-[#0088FF] rounded-full mb-4">
+                    <span className="inline-block px-4 py-2 bg-[#C49A3C]/10 text-[#C49A3C] rounded-full mb-4">
                         منتجاتنا
                     </span>
                     <h2 className="text-3xl md:text-4xl lg:text-5xl text-[#1A1A1A] mb-6">
-                        تشكيلة فريدة من <span className="text-[#0088FF]">السجاد والموكيت</span>
+                        تشكيلة فريدة من <span className="text-[#C49A3C]">السجاد والموكيت</span>
                     </h2>
                     <p className="text-lg text-gray-600 max-w-2xl mx-auto">
                         اكتشف مجموعتنا الواسعة من{' '}
@@ -58,7 +58,7 @@ export function ProductGallery() {
                                     role="tab"
                                     aria-selected={selectedCategory === category}
                                     className={`px-4 py-2 rounded-lg transition-all ${selectedCategory === category
-                                        ? 'bg-[#0088FF] text-white'
+                                        ? 'bg-[#1B2B4A] text-white'
                                         : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                                         }`}
                                 >
@@ -73,7 +73,7 @@ export function ProductGallery() {
                                 onClick={() => setViewMode('grid')}
                                 aria-label="عرض شبكي"
                                 className={`p-2 rounded-lg transition-all ${viewMode === 'grid'
-                                    ? 'bg-[#0088FF] text-white'
+                                    ? 'bg-[#1B2B4A] text-white'
                                     : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                                     }`}
                             >
@@ -83,7 +83,7 @@ export function ProductGallery() {
                                 onClick={() => setViewMode('list')}
                                 aria-label="عرض قائمة"
                                 className={`p-2 rounded-lg transition-all ${viewMode === 'list'
-                                    ? 'bg-[#0088FF] text-white'
+                                    ? 'bg-[#1B2B4A] text-white'
                                     : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                                     }`}
                             >
@@ -146,12 +146,12 @@ export function ProductGallery() {
                                 {/* Content */}
                                 <div className={`p-6 ${viewMode === 'list' ? 'flex-1' : ''}`}>
                                     <div className="mb-2">
-                                        <span className="inline-block px-3 py-1 bg-[#0088FF]/10 text-[#0088FF] rounded-full text-sm">
+                                        <span className="inline-block px-3 py-1 bg-[#C49A3C]/10 text-[#C49A3C] rounded-full text-sm">
                                             {product.category}
                                         </span>
                                     </div>
                                     <h3 className="text-xl text-[#1A1A1A] mb-2">
-                                        <Link href={`/products/${product.id}`} className="hover:text-[#0088FF] transition-colors">
+                                        <Link href={`/products/${product.id}`} className="hover:text-[#C49A3C] transition-colors">
                                             {product.name}
                                         </Link>
                                     </h3>
@@ -175,7 +175,7 @@ export function ProductGallery() {
                                     <div className="flex items-center justify-end">
                                         <Link
                                             href={`/products/${product.id}`}
-                                            className="px-6 py-2 bg-[#0088FF] text-white rounded-lg hover:bg-[#005CB8] transition-colors"
+                                            className="px-6 py-2 bg-[#1B2B4A] text-white rounded-lg hover:bg-[#0F1A2E] transition-colors"
                                         >
                                             عرض التفاصيل
                                         </Link>
@@ -196,7 +196,7 @@ export function ProductGallery() {
                 >
                     <p className="text-gray-600 mb-4">
                         لم تجد ما تبحث عنه؟ تصفح جميع أنواع{' '}
-                        <Link href="/#about" className="text-[#0088FF] hover:underline">
+                        <Link href="/#about" className="text-[#C49A3C] hover:underline">
                             الموكيت والسجاد من السريع
                         </Link>
                         {' '}أو تواصل معنا مباشرة.

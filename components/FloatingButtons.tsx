@@ -58,12 +58,12 @@ export function FloatingButtons() {
                     href="tel:+966541540047"
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
-                    className="flex items-center justify-center w-16 h-16 bg-[#0088FF] text-white rounded-full shadow-2xl hover:shadow-3xl transition-all relative group"
+                    className="flex items-center justify-center w-16 h-16 bg-[#1B2B4A] text-white rounded-full shadow-2xl hover:shadow-3xl transition-all relative group"
                 >
                     <Phone size={28} />
 
                     {/* Pulse Animation */}
-                    <span className="absolute inset-0 rounded-full bg-[#0088FF] animate-ping opacity-30"></span>
+                    <span className="absolute inset-0 rounded-full bg-[#1B2B4A] animate-ping opacity-30"></span>
 
                     {/* Tooltip */}
                     {showTooltip.call && (
@@ -87,7 +87,7 @@ export function FloatingButtons() {
                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
-                className="fixed left-1/2 -translate-x-1/2 bottom-6 z-40 flex items-center justify-center w-12 h-12 bg-white text-[#0088FF] rounded-full shadow-xl hover:shadow-2xl transition-all border-2 border-[#0088FF]"
+                className="fixed left-1/2 -translate-x-1/2 bottom-6 z-40 flex items-center justify-center w-12 h-12 bg-white text-[#C49A3C] rounded-full shadow-xl hover:shadow-2xl transition-all border-2 border-[#1B2B4A]"
             >
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M18 15l-6-6-6 6" />

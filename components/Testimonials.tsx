@@ -60,7 +60,7 @@ export function Testimonials() {
                     transition={{ duration: 0.6 }}
                     className="text-center mb-12"
                 >
-                    <span className="inline-block px-4 py-2 bg-[#0088FF]/10 text-[#0088FF] rounded-full mb-4">
+                    <span className="inline-block px-4 py-2 bg-[#1B2B4A]/10 text-[#C49A3C] rounded-full mb-4">
                         آراء العملاء
                     </span>
                     <h2 className="text-3xl md:text-4xl lg:text-5xl text-[#1A1A1A] mb-6">
@@ -82,7 +82,7 @@ export function Testimonials() {
                         className="bg-white rounded-2xl shadow-2xl p-8 md:p-12 relative"
                     >
                         {/* Quote Icon */}
-                        <div className="absolute top-8 left-8 text-[#0088FF]/20">
+                        <div className="absolute top-8 left-8 text-[#C49A3C]/20">
                             <Quote size={64} />
                         </div>
 
@@ -90,7 +90,7 @@ export function Testimonials() {
                             {/* Rating */}
                             <div className="flex items-center justify-center gap-1 mb-6">
                                 {[...Array(testimonials[activeIndex].rating)].map((_, i) => (
-                                    <Star key={i} size={24} fill="#0088FF" className="text-[#0088FF]" />
+                                    <Star key={i} size={24} fill="#C49A3C" className="text-[#C49A3C]" />
                                 ))}
                             </div>
 
@@ -104,7 +104,7 @@ export function Testimonials() {
                                 <img
                                     src={testimonials[activeIndex].image}
                                     alt={testimonials[activeIndex].name}
-                                    className="w-16 h-16 rounded-full object-cover border-4 border-[#0088FF]"
+                                    className="w-16 h-16 rounded-full object-cover border-4 border-[#C49A3C]"
                                 />
                                 <div>
                                     <h4 className="text-xl text-[#1A1A1A]">
@@ -120,7 +120,7 @@ export function Testimonials() {
                     <div className="flex items-center justify-center gap-4 mt-8">
                         <button
                             onClick={prevTestimonial}
-                            className="p-3 bg-white rounded-full shadow-lg hover:bg-[#0088FF] hover:text-white transition-colors"
+                            className="p-3 bg-white rounded-full shadow-lg hover:bg-[#1B2B4A] hover:text-white transition-colors"
                         >
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                                 <path d="M15 18l-6-6 6-6" />
@@ -133,7 +133,7 @@ export function Testimonials() {
                                 <button
                                     key={index}
                                     onClick={() => setActiveIndex(index)}
-                                    className={`h-2 rounded-full transition-all ${index === activeIndex ? 'w-8 bg-[#0088FF]' : 'w-2 bg-gray-300'
+                                    className={`h-2 rounded-full transition-all ${index === activeIndex ? 'w-8 bg-[#1B2B4A]' : 'w-2 bg-gray-300'
                                         }`}
                                 />
                             ))}
@@ -141,7 +141,7 @@ export function Testimonials() {
 
                         <button
                             onClick={nextTestimonial}
-                            className="p-3 bg-white rounded-full shadow-lg hover:bg-[#0088FF] hover:text-white transition-colors"
+                            className="p-3 bg-white rounded-full shadow-lg hover:bg-[#1B2B4A] hover:text-white transition-colors"
                         >
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                                 <path d="M9 18l6-6-6-6" />
@@ -161,7 +161,7 @@ export function Testimonials() {
                             transition={{ duration: 0.5, delay: index * 0.1 }}
                             whileHover={{ y: -10 }}
                             onClick={() => setActiveIndex(index)}
-                            className={`cursor-pointer bg-white rounded-xl shadow-lg p-6 transition-all ${activeIndex === index ? 'ring-2 ring-[#0088FF]' : ''
+                            className={`cursor-pointer bg-white rounded-xl shadow-lg p-6 transition-all ${activeIndex === index ? 'ring-2 ring-[#C49A3C]' : ''
                                 }`}
                         >
                             <div className="flex items-center gap-3 mb-4">
@@ -174,7 +174,7 @@ export function Testimonials() {
                                     <h4 className="text-[#1A1A1A]">{testimonial.name}</h4>
                                     <div className="flex items-center gap-1">
                                         {[...Array(testimonial.rating)].map((_, i) => (
-                                            <Star key={i} size={12} fill="#0088FF" className="text-[#0088FF]" />
+                                            <Star key={i} size={12} fill="#C49A3C" className="text-[#C49A3C]" />
                                         ))}
                                     </div>
                                 </div>

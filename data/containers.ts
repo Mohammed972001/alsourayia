@@ -32,7 +32,7 @@ export const containerSections: ContainerSection[] = [
       {
         id: "vinyl-roll",
         name: "ارضيات فينيل رول",
-        image: "/images/catg/vinyl-roll.jpg",
+        image: "/vinyl roll/WhatsApp Image 2026-04-02 at 12.27.56 AM.jpeg",
         href: "/products/vinyl-roll",
       },
       {
@@ -69,28 +69,33 @@ export const containerSections: ContainerSection[] = [
     
   },
   {
-    id: "garden-services",
-    title: "حول حديقتك الي واحة جميلة",
+    id: "rubber-flooring",
+    title: "أرضيات مطاط متخصصة",
     items: [
       {
-        id: "garden-flooring",
-        name: "تنسيق حدائق بتركيب احترافي",
-        image: "/images/catg/garden.png",
-        href: "/products/garden-flooring",
+        id: "rabal-gem",
+        name: "ربل جيم - أرضيات الصالات الرياضية",
+        image: "/Rabal-GEM/WhatsApp Image 2026-04-01 at 11.54.48 PM.jpeg",
+        href: "/products/rabal-gem",
       },
       {
-        id: "shlal",
-        name: "شلالات ونوافير تنبض بالحياة",
-        image: "/images/catg/shlal.png",
-        href: "/products/shlal",
+        id: "non-slip-rubber",
+        name: "مطاط مضاد للانزلاق للحمامات",
+        image: "/Non-slip rubber flooring and toilets/WhatsApp Image 2026-04-02 at 12.22.19 AM.jpeg",
+        href: "/products/non-slip-rubber",
       },
       {
-        id: "planets",
-        name: "زرع منسق وجاهز للتزيين",
-        image: "/images/catg/planets.png",
-        href: "/products/planets",
+        id: "horse-rubber",
+        name: "أرضيات مطاط الخيول المتخصصة",
+        image: "/Non-slip, moisture-proof, and fire-resistant horse flooring rubber/WhatsApp Image 2026-04-02 at 12.23.04 AM.jpeg",
+        href: "/products/horse-rubber",
       },
-      
+      {
+        id: "office-carpet",
+        name: "موكيت المكاتب الاحترافي",
+        image: "/mokeet makteb/WhatsApp Image 2026-04-02 at 12.24.30 AM.jpeg",
+        href: "/products/office-carpet",
+      },
     ]
   },
  
