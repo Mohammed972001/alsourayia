@@ -1,135 +1,127 @@
 'use client';
 
-import { motion } from 'motion/react';
 import Link from 'next/link';
 
-/**
- * SEO Content Section
- * 
- * This component provides rich, keyword-optimized content for better SEO.
- * Google values pages with substantial text content, internal links, and clear structure.
- */
 export function SEOContent() {
     return (
-        <section className="py-16 bg-gradient-to-b from-white to-[#F8FAFC]">
-            <div className="container mx-auto px-4 lg:px-8">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
-                    className="max-w-4xl mx-auto"
-                >
-                    {/* Main SEO Heading */}
-                    <h2 className="text-2xl md:text-3xl text-[#1A1A1A] mb-6 text-center">
-                        لماذا <span className="text-[#0088FF]">موكيت ومفروشات السريع</span> الخيار الأول في الرياض؟
-                    </h2>
-
-                    {/* Rich Text Content - Important for SEO */}
-                    <div className="prose prose-lg max-w-none text-gray-700 space-y-6">
-                        <p>
-                            تُعد <strong>موكيت ومفروشات السريع</strong> من الشركات الرائدة في مجال توفير{' '}
-                            <Link href="#products" className="text-[#0088FF] hover:underline">الموكيت والسجاد والمفروشات</Link>{' '}
-                            في <strong>الرياض</strong> والمملكة العربية السعودية. نقدم تشكيلة واسعة ومتنوعة من{' '}
-                            <strong>الأرضيات</strong> عالية الجودة تشمل <strong>موكيت المساجد</strong>،{' '}
-                            <strong>الأرضيات المكتبية</strong>، <strong>الباركيه</strong>، و<strong>العشب الصناعي</strong>.
-                        </p>
-
-                        <p>
-                            نحن في <strong>السريع للمفروشات</strong> نؤمن بأن الأرضيات هي أساس جمال أي مساحة.
-                            لذلك نحرص على توفير أجود الخامات من أفضل المصانع العالمية والتركية.
-                            سواء كنت تبحث عن <Link href="#products" className="text-[#0088FF] hover:underline">موكيت فاخر</Link> لمنزلك،
-                            أو <strong>أرضيات احترافية</strong> لمكتبك، أو <strong>موكيت مساجد</strong> بتصاميم إسلامية راقية،
-                            ستجد لدينا ما يلبي احتياجاتك.
-                        </p>
-
-                        {/* Internal Links Grid - Important for SEO */}
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-8 not-prose">
-                            <div className="bg-white p-6 rounded-xl shadow-md border border-gray-100">
-                                <h3 className="text-lg font-semibold text-[#1A1A1A] mb-3">🕌 موكيت مساجد</h3>
-                                <p className="text-gray-600 text-sm mb-3">
-                                    موكيت مساجد عالي الجودة بتصاميم إسلامية فاخرة، مقاوم للحريق ومعالج ضد البكتيريا.
-                                    توصيل وتركيب مجاني لجميع مناطق الرياض.
-                                </p>
-                                <Link href="#products" className="text-[#0088FF] text-sm hover:underline">
-                                    اكتشف موكيت المساجد ←
-                                </Link>
-                            </div>
-
-                            <div className="bg-white p-6 rounded-xl shadow-md border border-gray-100">
-                                <h3 className="text-lg font-semibold text-[#1A1A1A] mb-3">🏢 أرضيات مكتبية</h3>
-                                <p className="text-gray-600 text-sm mb-3">
-                                    أرضيات مكتبية احترافية تناسب بيئات العمل الحديثة. سهلة التنظيف ومقاومة للخدوش
-                                    مع تشكيلة واسعة من الألوان والتصاميم.
-                                </p>
-                                <Link href="#products" className="text-[#0088FF] text-sm hover:underline">
-                                    تصفح الأرضيات المكتبية ←
-                                </Link>
-                            </div>
-
-                            <div className="bg-white p-6 rounded-xl shadow-md border border-gray-100">
-                                <h3 className="text-lg font-semibold text-[#1A1A1A] mb-3">🪵 باركيه فاخر</h3>
-                                <p className="text-gray-600 text-sm mb-3">
-                                    باركيه ضد الماء بجودة ألمانية. مناسب للمنازل والفلل والشقق الفاخرة.
-                                    ضمان يصل إلى 25 سنة على المنتج.
-                                </p>
-                                <Link href="#products" className="text-[#0088FF] text-sm hover:underline">
-                                    شاهد تشكيلة الباركيه ←
-                                </Link>
-                            </div>
-
-                            <div className="bg-white p-6 rounded-xl shadow-md border border-gray-100">
-                                <h3 className="text-lg font-semibold text-[#1A1A1A] mb-3">🌿 عشب صناعي</h3>
-                                <p className="text-gray-600 text-sm mb-3">
-                                    عشب صناعي عالي الكثافة للحدائق والملاعب والمساحات الخارجية.
-                                    مقاوم للأشعة فوق البنفسجية ولا يحتاج صيانة.
-                                </p>
-                                <Link href="#products" className="text-[#0088FF] text-sm hover:underline">
-                                    استكشف العشب الصناعي ←
-                                </Link>
-                            </div>
-                        </div>
-
-                        <p>
-                            نتميز في <strong>موكيت السريع</strong> بتقديم خدمات متكاملة تشمل:{' '}
-                            <strong>الاستشارة المجانية</strong>، <strong>المعاينة والقياس</strong>،{' '}
-                            <strong>التوصيل المجاني داخل الرياض</strong>، و<strong>التركيب الاحترافي</strong>{' '}
-                            بواسطة فريق متخصص. كما نوفر <strong>ضمان شامل</strong> على جميع منتجاتنا.
-                        </p>
-
-                        <p>
-                            نخدم جميع أحياء <strong>الرياض</strong> ومناطق المملكة الرئيسية:{' '}
-                            <strong>جدة</strong>، <strong>الدمام</strong>، <strong>مكة المكرمة</strong>،{' '}
-                            <strong>المدينة المنورة</strong>، وغيرها. تواصل معنا الآن عبر{' '}
-                            <Link href="#contact" className="text-[#0088FF] hover:underline">الواتساب أو الهاتف</Link>{' '}
-                            للحصول على عرض سعر مجاني.
-                        </p>
+        <section style={{ backgroundColor: '#d4d0c8', padding: '8px', fontFamily: 'Tahoma, sans-serif' }}>
+            <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
+                <div className="win-window">
+                    <div className="win-titlebar">
+                        <svg width="14" height="14" viewBox="0 0 14 14" style={{ imageRendering: 'pixelated', flexShrink: 0 }}>
+                            <rect x="2" y="1" width="10" height="12" fill="white" stroke="#808080" />
+                            <rect x="4" y="3" width="6" height="1" fill="#000080" />
+                            <rect x="4" y="5" width="6" height="1" fill="#000080" />
+                            <rect x="4" y="7" width="4" height="1" fill="#000080" />
+                        </svg>
+                        <span style={{ marginRight: '6px' }}>لماذا موكيت ومفروشات السريع؟</span>
                     </div>
 
-                    {/* CTA Section */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6, delay: 0.2 }}
-                        className="flex flex-wrap justify-center gap-4 mt-10"
-                    >
-                        <Link
-                            href="#products"
-                            className="px-8 py-4 bg-[#0088FF] text-white rounded-xl hover:bg-[#005CB8] transition-colors shadow-lg"
-                        >
-                            تصفح جميع المنتجات
-                        </Link>
-                        <a
-                            href="https://wa.me/966541540047?text=السلام عليكم، أريد الاستفسار عن منتجاتكم"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="px-8 py-4 bg-[#25D366] text-white rounded-xl hover:bg-[#128C7E] transition-colors shadow-lg"
-                        >
-                            تواصل عبر واتساب
-                        </a>
-                    </motion.div>
-                </motion.div>
+                    <div style={{ padding: '12px' }}>
+                        {/* Header */}
+                        <div style={{
+                            backgroundColor: '#000080',
+                            color: 'white',
+                            padding: '4px 12px',
+                            fontSize: '13px',
+                            fontWeight: 'bold',
+                            marginBottom: '12px',
+                            borderTop: '2px solid #0000cc',
+                            borderLeft: '2px solid #0000cc',
+                            borderBottom: '2px solid #000040',
+                            borderRight: '2px solid #000040',
+                        }}>
+                            لماذا موكيت ومفروشات السريع الخيار الأول في الرياض؟
+                        </div>
+
+                        <div className="win-sunken" style={{ backgroundColor: 'white', padding: '10px', marginBottom: '10px' }}>
+                            <p style={{ fontSize: '12px', lineHeight: 1.7, color: '#000000', marginBottom: '8px' }}>
+                                تُعد <strong>موكيت ومفروشات السريع</strong> من الشركات الرائدة في مجال توفير{' '}
+                                <Link href="#products" style={{ color: '#000080' }}>الموكيت والسجاد والمفروشات</Link>{' '}
+                                في <strong>الرياض</strong> والمملكة العربية السعودية.
+                            </p>
+                            <p style={{ fontSize: '12px', lineHeight: 1.7, color: '#000000' }}>
+                                نتميز بتقديم خدمات متكاملة: <strong>الاستشارة المجانية</strong>، <strong>المعاينة والقياس</strong>،{' '}
+                                <strong>التوصيل المجاني داخل الرياض</strong>، و<strong>التركيب الاحترافي</strong>.
+                            </p>
+                        </div>
+
+                        {/* Product Cards - Explorer icon view */}
+                        <div style={{
+                            display: 'grid',
+                            gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))',
+                            gap: '6px',
+                            marginBottom: '10px',
+                        }}>
+                            {[
+                                { icon: '🕌', title: 'موكيت مساجد', desc: 'موكيت مساجد بتصاميم إسلامية فاخرة مقاوم للحريق', href: '#products' },
+                                { icon: '🏢', title: 'أرضيات مكتبية', desc: 'أرضيات احترافية للبيئات المكتبية سهلة التنظيف', href: '#products' },
+                                { icon: '🪵', title: 'باركيه فاخر', desc: 'باركيه ضد الماء بضمان يصل إلى 25 سنة', href: '#products' },
+                                { icon: '🌿', title: 'عشب صناعي', desc: 'عشب صناعي للحدائق مقاوم للأشعة فوق البنفسجية', href: '#products' },
+                            ].map((item) => (
+                                <div key={item.title} className="win-raised" style={{ padding: '8px', textAlign: 'center' }}>
+                                    <div style={{ fontSize: '24px', marginBottom: '4px' }}>{item.icon}</div>
+                                    <div style={{ fontSize: '12px', fontWeight: 'bold', color: '#000080', marginBottom: '4px', borderBottom: '1px solid #808080', paddingBottom: '3px' }}>
+                                        {item.title}
+                                    </div>
+                                    <p style={{ fontSize: '11px', color: '#444', lineHeight: 1.4, marginBottom: '4px' }}>
+                                        {item.desc}
+                                    </p>
+                                    <Link href={item.href} style={{ fontSize: '11px', color: '#000080', textDecoration: 'underline' }}>
+                                        اكتشف المزيد
+                                    </Link>
+                                </div>
+                            ))}
+                        </div>
+
+                        {/* CTA */}
+                        <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
+                            <Link
+                                href="#products"
+                                onClick={(e) => { e.preventDefault(); document.getElementById('products')?.scrollIntoView(); }}
+                                style={{
+                                    textDecoration: 'none',
+                                    display: 'inline-block',
+                                    padding: '4px 12px',
+                                    backgroundColor: '#000080',
+                                    color: 'white',
+                                    borderTop: '2px solid #0000cc',
+                                    borderLeft: '2px solid #0000cc',
+                                    borderBottom: '2px solid #000040',
+                                    borderRight: '2px solid #000040',
+                                    fontSize: '12px',
+                                    fontFamily: 'Tahoma, sans-serif',
+                                }}
+                            >
+                                تصفح جميع المنتجات
+                            </Link>
+                            <a
+                                href="https://wa.me/966541540047"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                style={{
+                                    textDecoration: 'none',
+                                    display: 'inline-block',
+                                    padding: '4px 12px',
+                                    backgroundColor: '#008000',
+                                    color: 'white',
+                                    borderTop: '2px solid #00cc00',
+                                    borderLeft: '2px solid #00cc00',
+                                    borderBottom: '2px solid #004000',
+                                    borderRight: '2px solid #004000',
+                                    fontSize: '12px',
+                                    fontFamily: 'Tahoma, sans-serif',
+                                }}
+                            >
+                                تواصل عبر واتساب
+                            </a>
+                        </div>
+                    </div>
+
+                    <div className="win-statusbar">
+                        <span>خبرة تجاوز 15 عاماً | أكثر من 10,000 مشروع مكتمل</span>
+                    </div>
+                </div>
             </div>
         </section>
     );

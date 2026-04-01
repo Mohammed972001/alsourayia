@@ -16,7 +16,7 @@ export default function Home() {
     const homeBreadcrumb = [{ label: 'الرئيسية' }];
 
     return (
-        <div className="min-h-screen bg-white" dir="rtl">
+        <div className="min-h-screen" dir="rtl" style={{ backgroundColor: '#008080', backgroundImage: 'none' }}>
             <Navigation />
             {/* Breadcrumb for Home - Hidden visually but good for SEO */}
             <div className="sr-only">

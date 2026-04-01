@@ -1,129 +1,200 @@
 'use client';
 
-import { motion } from 'motion/react';
-import { ChevronDown } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
 export function Hero() {
     return (
-        <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden">
-            {/* Background Image with Overlay - Using next/image with priority for LCP */}
-            <div className="absolute inset-0">
-                <Image
-                    src="/home/hero-moket-alsurye-riyadh.jpg"
-                    alt="موكيت ومفروشات السريع - أفضل موكيت وسجاد ومفروشات في الرياض - صالة عرض فاخرة"
-                    fill
-                    priority
-                    quality={85}
-                    sizes="100vw"
-                    className="object-cover"
-                    placeholder="blur"
-                    blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAMCAgMCAgMDAwMEAwMEBQgFBQQEBQoHBwYIDAoMCwsKCwsNDhIQDQ4RDgsLEBYQERMUFRUVDA8XGBYUGBIUFRT/2wBDAQMEBAUEBQkFBQkUDQsNFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBT/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBEQCEQwBPwAB//9k="
-                />
-                <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60"></div>
-            </div>
+        <section id="home" style={{ backgroundColor: '#d4d0c8', padding: '8px', fontFamily: 'Tahoma, sans-serif' }}>
+            <div style={{ maxWidth: '1100px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '8px' }}>
 
-            {/* Content */}
-            <div className="relative z-10 container mx-auto px-4 text-center">
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8 }}
-                    className="space-y-6"
-                >
-                    <motion.span
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.8, delay: 0.2 }}
-                        className="inline-block px-6 py-2 bg-[#0088FF]/20 border border-[#0088FF] text-white rounded-full backdrop-blur-sm"
-                    >
-                        الرفاهية تبدأ من تحت قدميك
-                    </motion.span>
+                {/* Main Hero Window */}
+                <div className="win-window" style={{ overflow: 'hidden' }}>
+                    {/* Title Bar */}
+                    <div className="win-titlebar">
+                        <svg width="14" height="14" viewBox="0 0 14 14" style={{ imageRendering: 'pixelated', flexShrink: 0 }}>
+                            <rect x="0" y="0" width="6" height="6" fill="#FF0000" />
+                            <rect x="8" y="0" width="6" height="6" fill="#00FF00" />
+                            <rect x="0" y="8" width="6" height="6" fill="#0000FF" />
+                            <rect x="8" y="8" width="6" height="6" fill="#FFFF00" />
+                        </svg>
+                        <span style={{ marginRight: '6px', fontSize: '12px' }}>موكيت ومفروشات السريع - الصفحة الرئيسية</span>
+                    </div>
 
-                    <motion.h1
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.4 }}
-                        className="text-4xl md:text-6xl lg:text-7xl text-white mb-6"
-                    >
-                        موكيت ومفروشات السُريع
-                    </motion.h1>
+                    {/* Hero Image Area */}
+                    <div style={{ position: 'relative', height: '380px', overflow: 'hidden' }}>
+                        <Image
+                            src="/home/hero-moket-alsurye-riyadh.jpg"
+                            alt="موكيت ومفروشات السريع - أفضل موكيت وسجاد ومفروشات في الرياض"
+                            fill
+                            priority
+                            quality={85}
+                            sizes="100vw"
+                            style={{ objectFit: 'cover', imageRendering: 'auto' }}
+                            placeholder="blur"
+                            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAMCAgMCAgMDAwMEAwMEBQgFBQQEBQoHBwYIDAoMCwsKCwsNDhIQDQ4RDgsLEBYQERMUFRUVDA8XGBYUGBIUFRT/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBEQCEQwBPwAB//9k="
+                        />
+                        {/* Dark overlay */}
+                        <div style={{
+                            position: 'absolute', inset: 0,
+                            background: 'linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.7) 100%)'
+                        }} />
 
-                    <motion.p
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.6 }}
-                        className="text-xl md:text-2xl text-[#E6F5FF] max-w-3xl mx-auto"
-                    >
-                        نحول مساحاتك إلى تحف فنية بأرقى{' '}
-                        <Link href="#products" className="text-[#0088FF] hover:underline">السجاد والموكيت</Link>
-                        {' '}في الرياض
-                    </motion.p>
+                        {/* Overlay Content */}
+                        <div style={{
+                            position: 'absolute',
+                            inset: 0,
+                            display: 'flex',
+                            flexDirection: 'column',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            textAlign: 'center',
+                            padding: '16px',
+                            color: 'white',
+                        }}>
+                            {/* Pixel "NEW!" gif-style badge */}
+                            <div style={{
+                                background: '#FF0000',
+                                color: '#FFFF00',
+                                fontWeight: 'bold',
+                                fontSize: '11px',
+                                padding: '2px 8px',
+                                border: '2px solid #FFFF00',
+                                marginBottom: '8px',
+                                animation: 'blink 1s step-end infinite',
+                                fontFamily: 'Tahoma, sans-serif',
+                            }}>
+                                ★ الرفاهية تبدأ من تحت قدميك ★
+                            </div>
 
-                    {/* CTA Buttons with Internal Linking */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.8 }}
-                        className="flex flex-wrap justify-center gap-4 mt-8"
-                    >
-                        <Link
-                            href="#products"
-                            className="px-8 py-4 bg-[#0088FF] text-white rounded-xl hover:bg-[#005CB8] transition-colors shadow-lg hover:shadow-xl"
-                        >
-                            تصفح منتجاتنا من الموكيت والسجاد
-                        </Link>
-                        <Link
-                            href="#about"
-                            className="px-8 py-4 bg-white/10 backdrop-blur-sm text-white border border-white/30 rounded-xl hover:bg-white/20 transition-colors"
-                        >
-                            تعرف على مفروشات السريع
-                        </Link>
-                    </motion.div>
-                </motion.div>
+                            <h1 style={{
+                                fontSize: '28px',
+                                fontWeight: 'bold',
+                                marginBottom: '8px',
+                                textShadow: '2px 2px 0px #000000',
+                                fontFamily: 'Tahoma, sans-serif',
+                            }}>
+                                موكيت ومفروشات السُريع
+                            </h1>
 
-                {/* Scroll Indicator */}
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1, y: [0, 10, 0] }}
-                    transition={{ opacity: { delay: 1.2 }, y: { repeat: Infinity, duration: 1.5 } }}
-                    className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
-                >
-                    <ChevronDown size={32} className="text-white" />
-                </motion.div>
-            </div>
+                            <p style={{
+                                fontSize: '14px',
+                                marginBottom: '16px',
+                                maxWidth: '500px',
+                                textShadow: '1px 1px 0px #000000',
+                                fontFamily: 'Tahoma, sans-serif',
+                            }}>
+                                نحول مساحاتك إلى تحف فنية بأرقى السجاد والموكيت في الرياض
+                            </p>
 
-            {/* Trust Badges */}
-            <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 1 }}
-                className="absolute bottom-0 left-0 right-0 bg-white/95 backdrop-blur-sm py-4"
-            >
-                <div className="container mx-auto px-4">
-                    <div className="flex flex-wrap justify-center items-center gap-8 text-center">
-                        <div className="flex items-center gap-2">
-                            <svg className="w-6 h-6 text-[#0088FF]" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                            </svg>
-                            <span className="text-[#1A1A1A]">شحن مجاني للرياض</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                            <svg className="w-6 h-6 text-[#0088FF]" fill="currentColor" viewBox="0 0 20 20">
-                                <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                            </svg>
-                            <span className="text-[#1A1A1A]">ضمان الجودة</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                            <svg className="w-6 h-6 text-[#0088FF]" fill="currentColor" viewBox="0 0 20 20">
-                                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
-                            </svg>
-                            <span className="text-[#1A1A1A]">خدمة 24/7</span>
+                            {/* CTA Buttons - Win2000 style */}
+                            <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', justifyContent: 'center' }}>
+                                <Link
+                                    href="#products"
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        document.getElementById('products')?.scrollIntoView();
+                                    }}
+                                    style={{
+                                        textDecoration: 'none',
+                                        display: 'inline-block',
+                                        padding: '5px 16px',
+                                        backgroundColor: '#d4d0c8',
+                                        color: '#000000',
+                                        borderTop: '2px solid white',
+                                        borderLeft: '2px solid white',
+                                        borderBottom: '2px solid #808080',
+                                        borderRight: '2px solid #808080',
+                                        fontSize: '13px',
+                                        fontWeight: 'bold',
+                                        fontFamily: 'Tahoma, sans-serif',
+                                    }}
+                                >
+                                    تصفح المنتجات
+                                </Link>
+                                <Link
+                                    href="#about"
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        document.getElementById('about')?.scrollIntoView();
+                                    }}
+                                    style={{
+                                        textDecoration: 'none',
+                                        display: 'inline-block',
+                                        padding: '5px 16px',
+                                        backgroundColor: '#000080',
+                                        color: 'white',
+                                        borderTop: '2px solid #0000cc',
+                                        borderLeft: '2px solid #0000cc',
+                                        borderBottom: '2px solid #000040',
+                                        borderRight: '2px solid #000040',
+                                        fontSize: '13px',
+                                        fontWeight: 'bold',
+                                        fontFamily: 'Tahoma, sans-serif',
+                                    }}
+                                >
+                                    تعرف علينا
+                                </Link>
+                            </div>
                         </div>
                     </div>
+
+                    {/* Status Bar */}
+                    <div className="win-statusbar" style={{ justifyContent: 'space-between' }}>
+                        <div style={{ display: 'flex', gap: '8px' }}>
+                            <span style={{ fontSize: '11px' }}>✓ شحن مجاني للرياض</span>
+                            <span style={{ borderLeft: '1px solid #808080', borderRight: '1px solid white', width: '2px' }} />
+                            <span style={{ fontSize: '11px' }}>✓ ضمان الجودة</span>
+                            <span style={{ borderLeft: '1px solid #808080', borderRight: '1px solid white', width: '2px' }} />
+                            <span style={{ fontSize: '11px' }}>✓ خدمة 24/7</span>
+                        </div>
+                        <span style={{ fontSize: '11px', color: '#000080' }}>
+                            www.alsourayia.com
+                        </span>
+                    </div>
                 </div>
-            </motion.div>
+
+                {/* Quick Links Row - Win2000 Explorer Toolbar style */}
+                <div className="win-raised" style={{ padding: '6px 8px', display: 'flex', gap: '4px', flexWrap: 'wrap', alignItems: 'center' }}>
+                    <span style={{ fontSize: '11px', fontWeight: 'bold', marginLeft: '8px', color: '#000000' }}>روابط سريعة:</span>
+                    {[
+                        { label: 'موكيت مساجد', href: '#products' },
+                        { label: 'باركيه', href: '#products' },
+                        { label: 'عشب صناعي', href: '#products' },
+                        { label: 'أرضيات مكتبية', href: '#products' },
+                        { label: 'سجاد فاخر', href: '#products' },
+                    ].map((link) => (
+                        <Link
+                            key={link.label}
+                            href={link.href}
+                            style={{
+                                textDecoration: 'none',
+                                color: '#000080',
+                                fontSize: '11px',
+                                padding: '1px 6px',
+                                border: '1px solid transparent',
+                            }}
+                            onMouseEnter={(e) => {
+                                (e.currentTarget as HTMLAnchorElement).style.borderColor = '#000080';
+                                (e.currentTarget as HTMLAnchorElement).style.backgroundColor = '#e0e0f0';
+                            }}
+                            onMouseLeave={(e) => {
+                                (e.currentTarget as HTMLAnchorElement).style.borderColor = 'transparent';
+                                (e.currentTarget as HTMLAnchorElement).style.backgroundColor = 'transparent';
+                            }}
+                        >
+                            📁 {link.label}
+                        </Link>
+                    ))}
+                </div>
+            </div>
+
+            <style>{`
+                @keyframes blink {
+                    0%, 100% { opacity: 1; }
+                    50% { opacity: 0.3; }
+                }
+            `}</style>
         </section>
     );
 }
