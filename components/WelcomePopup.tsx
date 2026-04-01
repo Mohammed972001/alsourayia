@@ -1,13 +1,24 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { X, Gift } from 'lucide-react';
 
-interface WelcomePopupProps {
-    onClose: () => void;
-}
+export function WelcomePopup() {
+    const [isVisible, setIsVisible] = useState(false);
 
-export function WelcomePopup({ onClose }: WelcomePopupProps) {
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setIsVisible(true);
+        }, 2000);
+
+        return () => clearTimeout(timer);
+    }, []);
+
+    if (!isVisible) return null;
+
+    const handleClose = () => setIsVisible(false);
+
     return (
         <AnimatePresence>
             <motion.div
@@ -15,7 +26,7 @@ export function WelcomePopup({ onClose }: WelcomePopupProps) {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
-                onClick={onClose}
+                onClick={handleClose}
             >
                 <motion.div
                     initial={{ opacity: 0, scale: 0.9, y: 20 }}
@@ -27,7 +38,7 @@ export function WelcomePopup({ onClose }: WelcomePopupProps) {
                 >
                     {/* Close Button */}
                     <button
-                        onClick={onClose}
+                        onClick={handleClose}
                         className="absolute top-4 left-4 z-10 p-2 bg-white/80 backdrop-blur-sm rounded-full hover:bg-white transition-colors"
                     >
                         <X size={20} className="text-gray-700" />
@@ -94,13 +105,13 @@ export function WelcomePopup({ onClose }: WelcomePopupProps) {
                             <motion.button
                                 whileHover={{ scale: 1.02 }}
                                 whileTap={{ scale: 0.98 }}
-                                onClick={onClose}
+                                onClick={handleClose}
                                 className="w-full px-6 py-3 bg-[#0088FF] text-white rounded-lg hover:bg-[#005CB8] transition-colors shadow-lg"
                             >
                                 احصل على الخصم الآن
                             </motion.button>
                             <button
-                                onClick={onClose}
+                                onClick={handleClose}
                                 className="w-full px-6 py-3 text-gray-600 hover:text-gray-800 transition-colors"
                             >
                                 ربما لاحقاً

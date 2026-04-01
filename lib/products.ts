@@ -12,6 +12,27 @@ export interface Product {
   gallery: string[];
 }
 
+// Maps URL slug → Arabic category name
+export const categorySlugMap: Record<string, string> = {
+  'mosque-carpets': 'موكيت مساجد',
+  'office-flooring': 'أرضيات مكتبية',
+  'parquet': 'باركيه',
+  'artificial-grass': 'عشب صناعي',
+  'vinyl': 'فينيل',
+  'carpet': 'موكيت',
+  'hospital-flooring': 'أرضيات طبية',
+  'mosque-vinyl': 'فينيل مساجد',
+  'garden-design': 'تنسيق حدائق',
+  'fountains': 'شلالات ونوافير',
+  'plants': 'نباتات',
+  'turkish-carpet': 'موكيت تركي',
+};
+
+// Maps Arabic category name → URL slug
+export const categoryToSlug: Record<string, string> = Object.fromEntries(
+  Object.entries(categorySlugMap).map(([slug, name]) => [name, slug])
+);
+
 // Transform productsDetails to products format for backward compatibility
 export const products: Product[] = productsDetails.map((product) => ({
   id: product.id,
@@ -53,4 +74,14 @@ export function getProductById(id: string): Product | undefined {
 export function getCategories(): string[] {
   const categories = products.map(p => p.category);
   return ['الكل', ...Array.from(new Set(categories))];
+}
+
+// Get products filtered by Arabic category name
+export function getProductsByCategory(categoryName: string): Product[] {
+  return products.filter(p => p.category === categoryName);
+}
+
+// Generate static params for category pages
+export function generateCategoryStaticParams() {
+  return Object.keys(categorySlugMap).map(slug => ({ slug }));
 }

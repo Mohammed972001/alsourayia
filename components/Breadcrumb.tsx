@@ -1,6 +1,7 @@
 'use client';
 
 import { ChevronLeft, Home } from 'lucide-react';
+import Link from 'next/link';
 
 interface BreadcrumbItem {
     label: string;
@@ -9,10 +10,9 @@ interface BreadcrumbItem {
 
 interface BreadcrumbProps {
     items: BreadcrumbItem[];
-    onNavigate?: (href: string) => void;
 }
 
-export function Breadcrumb({ items, onNavigate }: BreadcrumbProps) {
+export function Breadcrumb({ items }: BreadcrumbProps) {
     // Breadcrumb Schema for SEO
     const breadcrumbSchema = {
         "@context": "https://schema.org",
@@ -23,13 +23,6 @@ export function Breadcrumb({ items, onNavigate }: BreadcrumbProps) {
             "name": item.label,
             "item": item.href ? `${process.env.NEXT_PUBLIC_SITE_URL || 'https://www.mokeet-elsuarye.com'}${item.href}` : undefined
         }))
-    };
-
-    const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, href?: string) => {
-        if (href && onNavigate) {
-            e.preventDefault();
-            onNavigate(href);
-        }
     };
 
     return (
@@ -54,15 +47,14 @@ export function Breadcrumb({ items, onNavigate }: BreadcrumbProps) {
                                 <ChevronLeft size={16} className="mx-2 text-gray-400" />
                             )}
                             {item.href ? (
-                                <a
+                                <Link
                                     href={item.href}
-                                    onClick={(e) => handleClick(e, item.href)}
                                     className="flex items-center gap-1 text-[#0088FF] hover:text-[#005CB8] transition-colors"
                                     itemProp="item"
                                 >
                                     {index === 0 && <Home size={16} />}
                                     <span itemProp="name">{item.label}</span>
-                                </a>
+                                </Link>
                             ) : (
                                 <span className="text-gray-600" itemProp="name">{item.label}</span>
                             )}

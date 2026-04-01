@@ -7,11 +7,7 @@ import { products, getCategories } from '@/lib/products';
 import Image from 'next/image';
 import Link from 'next/link';
 
-interface ProductGalleryProps {
-    onProductClick: (productId: string) => void;
-}
-
-export function ProductGallery({ onProductClick }: ProductGalleryProps) {
+export function ProductGallery() {
     const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
     const [selectedCategory, setSelectedCategory] = useState('الكل');
 
@@ -117,12 +113,11 @@ export function ProductGallery({ onProductClick }: ProductGalleryProps) {
                                 initial={{ opacity: 0, y: 30 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                                className={`group relative bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all cursor-pointer ${viewMode === 'list' ? 'flex gap-6' : ''
+                                className={`group relative bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all ${viewMode === 'list' ? 'flex gap-6' : ''
                                     }`}
-                                onClick={() => onProductClick(product.id)}
                             >
-                                {/* Image with SEO Alt */}
-                                <div className={`relative overflow-hidden ${viewMode === 'list' ? 'w-1/3' : 'h-64'}`}>
+                                {/* Image with SEO-friendly Link */}
+                                <Link href={`/products/${product.id}`} className={`relative overflow-hidden block ${viewMode === 'list' ? 'w-1/3' : 'h-64'}`}>
                                     <Image
                                         src={product.image}
                                         alt={getProductImageAlt(product)}
@@ -132,27 +127,21 @@ export function ProductGallery({ onProductClick }: ProductGalleryProps) {
                                         loading={index < 6 ? 'eager' : 'lazy'}
                                     />
                                     <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4">
-                                        <button
-                                            onClick={(e) => {
-                                                e.stopPropagation();
-                                            }}
-                                            className="p-3 bg-white rounded-full hover:bg-[#0088FF] hover:text-white transition-colors"
+                                        <span
+                                            onClick={(e) => { e.preventDefault(); e.stopPropagation(); }}
+                                            className="p-3 bg-white rounded-full hover:bg-[#0088FF] hover:text-white transition-colors cursor-pointer"
                                             aria-label="إضافة إلى المفضلة"
                                         >
                                             <Heart size={20} />
-                                        </button>
-                                        <button
-                                            onClick={(e) => {
-                                                e.stopPropagation();
-                                                onProductClick(product.id);
-                                            }}
+                                        </span>
+                                        <span
                                             className="p-3 bg-white rounded-full hover:bg-[#0088FF] hover:text-white transition-colors"
                                             aria-label="عرض التفاصيل"
                                         >
                                             <Eye size={20} />
-                                        </button>
+                                        </span>
                                     </div>
-                                </div>
+                                </Link>
 
                                 {/* Content */}
                                 <div className={`p-6 ${viewMode === 'list' ? 'flex-1' : ''}`}>
@@ -162,7 +151,9 @@ export function ProductGallery({ onProductClick }: ProductGalleryProps) {
                                         </span>
                                     </div>
                                     <h3 className="text-xl text-[#1A1A1A] mb-2">
-                                        {product.name}
+                                        <Link href={`/products/${product.id}`} className="hover:text-[#0088FF] transition-colors">
+                                            {product.name}
+                                        </Link>
                                     </h3>
                                     <p className="text-gray-600 mb-4 line-clamp-2">{product.description}</p>
                                     <div className="flex items-center gap-2 mb-4">
@@ -182,15 +173,12 @@ export function ProductGallery({ onProductClick }: ProductGalleryProps) {
                                         </div>
                                     </div>
                                     <div className="flex items-center justify-end">
-                                        <button
-                                            onClick={(e) => {
-                                                e.stopPropagation();
-                                                onProductClick(product.id);
-                                            }}
+                                        <Link
+                                            href={`/products/${product.id}`}
                                             className="px-6 py-2 bg-[#0088FF] text-white rounded-lg hover:bg-[#005CB8] transition-colors"
                                         >
                                             عرض التفاصيل
-                                        </button>
+                                        </Link>
                                     </div>
                                 </div>
                             </motion.article>
@@ -208,7 +196,7 @@ export function ProductGallery({ onProductClick }: ProductGalleryProps) {
                 >
                     <p className="text-gray-600 mb-4">
                         لم تجد ما تبحث عنه؟ تصفح جميع أنواع{' '}
-                        <Link href="#about" className="text-[#0088FF] hover:underline">
+                        <Link href="/#about" className="text-[#0088FF] hover:underline">
                             الموكيت والسجاد من السريع
                         </Link>
                         {' '}أو تواصل معنا مباشرة.

@@ -1,5 +1,15 @@
 import type { Metadata } from 'next';
+import { Tajawal } from 'next/font/google';
 import './globals.css';
+
+// Self-hosted via Next.js — eliminates render-blocking Google Fonts request
+const tajawal = Tajawal({
+    subsets: ['arabic'],
+    weight: ['300', '400', '500', '700', '800'],
+    variable: '--font-tajawal',
+    display: 'swap',
+    preload: true,
+});
 
 // Get the site URL from environment variable with fallback
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.mokeet-elsuarye.com';
@@ -343,17 +353,8 @@ export default function RootLayout({
     };
 
     return (
-        <html lang="ar" dir="rtl">
+        <html lang="ar" dir="rtl" className={tajawal.variable}>
             <head>
-                {/* Preconnect to external resources */}
-                <link rel="preconnect" href="https://fonts.googleapis.com" />
-                <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-
-                {/* Google Fonts - Optimized */}
-                <link
-                    href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap"
-                    rel="stylesheet"
-                />
 
                 {/* Preload Hero Image for LCP */}
                 <link
