@@ -34,10 +34,10 @@ export const categoryToSlug: Record<string, string> = Object.fromEntries(
   Object.entries(categorySlugMap).map(([slug, name]) => [name, slug])
 );
 
-// Transform productsDetails to products format for backward compatibility
+// Transform productsDetails to products format (uses hardcoded images from data)
 export const products: Product[] = productsDetails.map((product) => ({
   id: product.id,
-  name: product.title.split(' - ')[0], // Get short name from title
+  name: product.title.split(' - ')[0],
   category: getCategoryFromId(product.id),
   image: product.images[0] || '/images/placeholder.jpg',
   colors: product.availableColors,
@@ -47,7 +47,6 @@ export const products: Product[] = productsDetails.map((product) => ({
   gallery: product.images,
 }));
 
-// Helper function to get category name from product id
 function getCategoryFromId(id: string): string {
   const categoryMap: Record<string, string> = {
     'mosque-carpets': 'موكيت مساجد',
@@ -72,18 +71,15 @@ export function getProductById(id: string): Product | undefined {
   return products.find(product => product.id === id);
 }
 
-// Get unique categories
 export function getCategories(): string[] {
   const categories = products.map(p => p.category);
   return ['الكل', ...Array.from(new Set(categories))];
 }
 
-// Get products filtered by Arabic category name
 export function getProductsByCategory(categoryName: string): Product[] {
   return products.filter(p => p.category === categoryName);
 }
 
-// Generate static params for category pages
 export function generateCategoryStaticParams() {
   return Object.keys(categorySlugMap).map(slug => ({ slug }));
 }

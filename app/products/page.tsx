@@ -47,7 +47,7 @@ export default function ProductsPage() {
                                 <Link
                                     key={slug}
                                     href={`/products/category/${slug}`}
-                                    className="px-4 py-2 rounded-lg bg-gray-100 text-gray-700 hover:bg-[#0088FF] hover:text-white transition-all text-sm"
+                                    className="px-4 py-2 rounded-lg bg-gray-100 text-[#4A4A4A] hover:bg-[#1A1A1A] hover:text-white transition-colors text-sm"
                                 >
                                     {name}
                                 </Link>

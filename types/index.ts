@@ -5,6 +5,7 @@ export interface ProductDetails {
   detailedDescription: string;
   metaDescription: string;
   keywords: string[];
+  imageDir?: string;
   images: string[];
   availableColors: { name: string; value: string }[];
   price: number;

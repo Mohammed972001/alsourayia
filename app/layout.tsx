@@ -387,8 +387,8 @@ export default function RootLayout({
                 />
 
                 {/* Additional SEO Meta Tags */}
-                <meta name="theme-color" content="#1B2B4A" />
-                <meta name="msapplication-TileColor" content="#1B2B4A" />
+                <meta name="theme-color" content="#ffffff" />
+                <meta name="msapplication-TileColor" content="#ffffff" />
                 <meta name="format-detection" content="telephone=yes" />
                 <meta name="mobile-web-app-capable" content="yes" />
                 <meta name="apple-mobile-web-app-capable" content="yes" />

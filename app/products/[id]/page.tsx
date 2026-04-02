@@ -1,11 +1,11 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { productsDetails } from '@/data/products';
-import { getProductById } from '@/lib/products';
 import { Navigation } from '@/components/Navigation';
 import { ProductDetail } from '@/components/ProductDetail';
 import { Footer } from '@/components/Footer';
 import { FloatingButtons } from '@/components/FloatingButtons';
+import { getProductWithDynamicImages } from '@/lib/products.server';
 
 const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://www.mokeet-elsuarye.com').replace(/\/$/, '');
 
@@ -13,14 +13,12 @@ type Props = {
     params: Promise<{ id: string }>;
 };
 
-// Pre-render all product pages at build time
 export function generateStaticParams() {
     return productsDetails.map((product) => ({
         id: product.id,
     }));
 }
 
-// Dynamic SEO metadata per product
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const { id } = await params;
     const product = productsDetails.find((p) => p.id === id);
@@ -57,7 +55,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ProductPage({ params }: Props) {
     const { id } = await params;
-    const product = getProductById(id);
+    const product = getProductWithDynamicImages(id);
 
     if (!product) {
         notFound();
@@ -66,7 +64,7 @@ export default async function ProductPage({ params }: Props) {
     return (
         <div className="min-h-screen bg-white" dir="rtl">
             <Navigation />
-            <ProductDetail productId={product.id} />
+            <ProductDetail productId={product.id} dynamicGallery={product.gallery} />
             <Footer />
             <FloatingButtons />
         </div>

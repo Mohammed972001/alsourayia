@@ -1,8 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
-import { ChevronDown, HelpCircle } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
 
 interface FAQItem {
     question: string;
@@ -43,7 +42,6 @@ export function FAQ() {
         setOpenIndex(openIndex === index ? null : index);
     };
 
-    // FAQ Schema for SEO
     const faqSchema = {
         "@context": "https://schema.org",
         "@type": "FAQPage",
@@ -58,98 +56,64 @@ export function FAQ() {
     };
 
     return (
-        <section id="faq" className="py-20 bg-gradient-to-b from-white to-[#E6F5FF]/30">
-            {/* FAQ Schema */}
+        <section id="faq" className="py-24 bg-[#F9FAFB]">
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
             />
 
             <div className="container mx-auto px-4 lg:px-8">
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
-                    className="text-center mb-12"
-                >
-                    <span className="inline-flex items-center gap-2 px-4 py-2 bg-[#1B2B4A]/10 text-[#C49A3C] rounded-full mb-4">
-                        <HelpCircle size={18} />
+                <div className="text-center mb-12">
+                    <h2 className="text-3xl md:text-4xl text-[#1A1A1A] mb-4">
                         الأسئلة الشائعة
-                    </span>
-                    <h2 className="text-3xl md:text-4xl lg:text-5xl text-[#1A1A1A] mb-6">
-                        كل ما تريد معرفته عن <span className="text-[#C49A3C]">موكيت ومفروشات السريع</span>
                     </h2>
-                    <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                        إجابات على أكثر الأسئلة شيوعاً حول خدماتنا ومنتجاتنا من الموكيت والسجاد والمفروشات في الرياض
+                    <p className="text-[#6B7280] max-w-2xl mx-auto">
+                        إجابات على أكثر الأسئلة شيوعاً حول خدماتنا ومنتجاتنا
                     </p>
-                </motion.div>
+                </div>
 
-                <div className="max-w-3xl mx-auto">
+                <div className="max-w-3xl mx-auto space-y-3">
                     {faqData.map((faq, index) => (
-                        <motion.div
-                            key={index}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.5, delay: index * 0.1 }}
-                            className="mb-4"
-                        >
+                        <div key={index} className="bg-white rounded-lg border border-gray-100 overflow-hidden">
                             <button
                                 onClick={() => toggleFAQ(index)}
-                                className={`w-full flex items-center justify-between p-5 rounded-xl transition-all ${openIndex === index
-                                    ? 'bg-[#1B2B4A] text-white shadow-lg'
-                                    : 'bg-white text-[#1A1A1A] shadow-md hover:shadow-lg'
-                                    }`}
+                                className="w-full flex items-center justify-between p-5 text-right hover:bg-gray-50 transition-colors"
                                 aria-expanded={openIndex === index}
                                 aria-controls={`faq-answer-${index}`}
                             >
-                                <span className="text-lg font-medium text-right">{faq.question}</span>
-                                <motion.div
-                                    animate={{ rotate: openIndex === index ? 180 : 0 }}
-                                    transition={{ duration: 0.3 }}
-                                >
-                                    <ChevronDown size={24} />
-                                </motion.div>
+                                <span className="text-[#1A1A1A]">{faq.question}</span>
+                                <ChevronDown
+                                    size={20}
+                                    className={`text-[#6B7280] flex-shrink-0 transition-transform duration-200 ${
+                                        openIndex === index ? 'rotate-180' : ''
+                                    }`}
+                                />
                             </button>
-                            <AnimatePresence>
-                                {openIndex === index && (
-                                    <motion.div
-                                        id={`faq-answer-${index}`}
-                                        initial={{ height: 0, opacity: 0 }}
-                                        animate={{ height: 'auto', opacity: 1 }}
-                                        exit={{ height: 0, opacity: 0 }}
-                                        transition={{ duration: 0.3 }}
-                                        className="overflow-hidden"
-                                    >
-                                        <div className="p-5 bg-white rounded-b-xl shadow-inner border-t border-gray-100">
-                                            <p className="text-gray-600 leading-relaxed">{faq.answer}</p>
-                                        </div>
-                                    </motion.div>
-                                )}
-                            </AnimatePresence>
-                        </motion.div>
+                            <div
+                                id={`faq-answer-${index}`}
+                                className={`overflow-hidden transition-all duration-300 ${
+                                    openIndex === index ? 'max-h-96' : 'max-h-0'
+                                }`}
+                            >
+                                <div className="px-5 pb-5 text-[#4A4A4A] leading-relaxed border-t border-gray-50">
+                                    <p className="pt-4">{faq.answer}</p>
+                                </div>
+                            </div>
+                        </div>
                     ))}
                 </div>
 
-                {/* CTA */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: 0.3 }}
-                    className="text-center mt-12"
-                >
-                    <p className="text-gray-600 mb-4">لم تجد إجابة سؤالك؟</p>
+                <div className="text-center mt-12">
+                    <p className="text-[#6B7280] mb-4">لم تجد إجابة سؤالك؟</p>
                     <a
                         href="https://wa.me/966541540047?text=السلام عليكم، لدي استفسار..."
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-8 py-4 bg-[#25D366] text-white rounded-xl hover:bg-[#128C7E] transition-colors shadow-lg hover:shadow-xl"
+                        className="inline-block px-8 py-3 bg-[#1A1A1A] text-white rounded-lg text-sm hover:bg-[#333] transition-colors"
                     >
-                        تواصل معنا عبر واتساب
+                        تواصل معنا
                     </a>
-                </motion.div>
+                </div>
             </div>
         </section>
     );

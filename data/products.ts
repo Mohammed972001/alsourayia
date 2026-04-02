@@ -3,6 +3,7 @@ import { ProductDetails } from "@/types";
 export const productsDetails: ProductDetails[] = [
   {
     id: "mosque-carpets",
+    imageDir: "msaged",
     title: "موكيت مساجد - جودة عالية وتصميم إسلامي أصيل",
     description: "موكيت مساجد عالي الجودة مقاوم للاهتراء ومناسب للاستخدام المكثف. يتميز بتصميمات إسلامية جميلة وألوان هادئة تناسب بيئة المسجد.",
     detailedDescription: `موكيت للمساجد – الاختيار الأمثل لمساجدكم من العمودي للمفروشات
@@ -74,6 +75,7 @@ export const productsDetails: ProductDetails[] = [
   },
   {
     id: "office-flooring",
+    imageDir: "makteb",
     title: "أرضيات مكتبية - حلول أنيقة للبيئة المهنية",
     description: "أرضيات مكتبية عالية الجودة تجمع بين الأناقة والمتانة. مصممة خصيصاً لبيئة العمل لتوفر راحة ومظهر مهني احترافي.",
     detailedDescription: `أرضيات مكتبية – الاختيار الأمثل لمكتبكم من العمودي للمفروشات
@@ -127,6 +129,7 @@ export const productsDetails: ProductDetails[] = [
   },
   {
     id: "water-resistant-carpet",
+    imageDir: "braqiee",
     title: "باركيه ضد الماء - مقاوم للرطوبة والماء",
     description: "باركيه عالي الجودة مقاوم للماء والرطوبة، مثالي للحمامات والمطابخ والمناطق المعرضة للماء. يجمع بين جمال الخشب ومقاومة الماء.",
     detailedDescription: `باركيه ضد الماء – الاختيار الأمثل للمناطق الرطبة من العمودي للمفروشات
@@ -178,6 +181,7 @@ export const productsDetails: ProductDetails[] = [
   },
   {
     id: "artificial-grass",
+    imageDir: "3shb",
     title: "العشب الصناعي - حديقة خضراء طوال السنة",
     description: "عشب صناعي عالي الجودة يوفر منظر طبيعي خلاب طوال السنة. مقاوم للعوامل الجوية ولا يحتاج صيانة أو ري.",
     detailedDescription: `العشب الصناعي – الاختيار الأمثل لحديقتكم من العمودي للمفروشات
@@ -234,6 +238,7 @@ export const productsDetails: ProductDetails[] = [
   },
   {
     id: "vinyl-roll",
+    imageDir: "vinyl roll",
     title: "أرضيات فينيل رول - مرونة وجمال في التصميم",
     description: "أرضيات فينيل رول عالية الجودة توفر مرونة في التصميم وسهولة في التركيب. مناسبة للمساحات الكبيرة والتجارية.",
     detailedDescription: `أرضيات فينيل رول – الاختيار الأمثل للمساحات الكبيرة من العمودي للمفروشات
@@ -300,6 +305,7 @@ export const productsDetails: ProductDetails[] = [
   },
   {
     id: "parket",
+    imageDir: "braqiee",
     title: "أرضيات باركيه - فخامة الخشب الطبيعي",
     description: "أرضيات باركيه عالية الجودة تضفي لمسة من الفخامة والدفء على منزلك. مصنوعة من أجود أنواع الخشب الطبيعي.",
     detailedDescription: `أرضيات باركيه – الاختيار الأمثل للفخامة والأناقة من العمودي للمفروشات
@@ -351,6 +357,7 @@ export const productsDetails: ProductDetails[] = [
   },
   {
     id: "mokite",
+    imageDir: "turky mshager",
     title: "موكيت فاخر - راحة ودفء لمنزلك (يشمل التركي المشجر)",
     description: "موكيت عالي الجودة يوفر الراحة والدفء لمنزلك. تصميمات متنوعة وألوان جذابة تناسب جميع الأذواق والديكورات، بما في ذلك الموكيت التركي المشجر الفاخر.",
     detailedDescription: `موكيت منزلي – الاختيار الأمثل لمنزلكم من العمودي للمفروشات
@@ -412,6 +419,7 @@ export const productsDetails: ProductDetails[] = [
   },
   {
     id: "hospital-flooring",
+    imageDir: "",
     title: "أرضيات مستشفيات - معايير طبية عالية",
     description: "أرضيات طبية متخصصة للمستشفيات والعيادات. تلبي أعلى معايير النظافة والسلامة الطبية مع سهولة التطهير والتعقيم.",
     detailedDescription: `أرضيات مستشفيات – الاختيار الأمثل للمؤسسات الطبية من العمودي للمفروشات
@@ -463,6 +471,7 @@ export const productsDetails: ProductDetails[] = [
   },
   {
     id: "vinyl-mosque",
+    imageDir: "",
     title: "فينيل مساجد - أناقة وطهارة للمساجد",
     description: "فينيل مخصص للمساجد يجمع بين الجمال والوظائف العملية. سهل التنظيف والطهارة مع تصميمات تناسب القدسية والجمال الإسلامي.",
     detailedDescription: `فينيل مساجد – الاختيار الأمثل لمساجدكم من العمودي للمفروشات
@@ -514,6 +523,7 @@ export const productsDetails: ProductDetails[] = [
   },
   {
     id: "rabal-gem",
+    imageDir: "Rabal-GEM",
     title: "ربل جيم - أرضيات مطاط الصالات الرياضية",
     description: "أرضيات مطاط عالية الجودة مخصصة للصالات الرياضية وأندية اللياقة البدنية. توفر حماية فائقة من الصدمات وسطحاً آمناً مضاداً للانزلاق.",
     detailedDescription: `ربل جيم – أرضيات مطاط الصالات الرياضية الاحترافية
@@ -567,6 +577,7 @@ export const productsDetails: ProductDetails[] = [
   },
   {
     id: "non-slip-rubber",
+    imageDir: "Non-slip rubber flooring and toilets",
     title: "مطاط مضاد للانزلاق للحمامات والمراحيض",
     description: "أرضيات مطاط مخصصة للحمامات والمراحيض مضادة للانزلاق تماماً. توفر أماناً استثنائياً في البيئات الرطبة مع سهولة التنظيف والتطهير.",
     detailedDescription: `أرضيات مطاط مضادة للانزلاق للحمامات والمراحيض
@@ -624,6 +635,7 @@ export const productsDetails: ProductDetails[] = [
   },
   {
     id: "horse-rubber",
+    imageDir: "Non-slip, moisture-proof, and fire-resistant horse flooring rubber",
     title: "أرضيات مطاط الخيول - مضادة للانزلاق ومقاومة للرطوبة والحريق",
     description: "أرضيات مطاط متخصصة لإسطبلات الخيول، مضادة للانزلاق ومقاومة للرطوبة والحريق. توفر راحة وأماناً قصوى للخيول.",
     detailedDescription: `أرضيات مطاط الخيول المتخصصة
@@ -677,6 +689,7 @@ export const productsDetails: ProductDetails[] = [
   },
   {
     id: "office-carpet",
+    imageDir: "mokeet makteb",
     title: "موكيت المكاتب - أناقة مهنية لبيئة العمل",
     description: "موكيت مكاتب عالي الجودة مصمم لبيئة العمل المهنية. يجمع بين الأناقة والمتانة مع عزل ممتاز للصوت لبيئة عمل هادئة ومريحة.",
     detailedDescription: `موكيت المكاتب الاحترافي من موكيت ومفروشات السريع
@@ -735,6 +748,7 @@ export const productsDetails: ProductDetails[] = [
   },
   {
     id: "turky-mshager",
+    imageDir: "turky mshager",
     title: "تركي مشجر - فخامة التصميم التركي الأصيل",
     description: "موكيت تركي مشجر فاخر بتصميمات أصيلة وأنماط جميلة. يجمع بين الفخامة التركية والراحة الاستثنائية للمنزل العصري.",
     detailedDescription: `موكيت تركي مشجر – الاختيار الأمثل للفخامة الأصيلة من العمودي للمفروشات

@@ -3,7 +3,10 @@
     "allow": [
       "Bash(find:*)",
       "Bash(npm run:*)",
-      "WebFetch(domain:www.alsourayi-intl.com)"
+      "WebFetch(domain:www.alsourayi-intl.com)",
+      "Bash(ls:*)",
+      "Bash(npx next:*)",
+      "Bash(node -e ':*)"
     ]
   }
 }
