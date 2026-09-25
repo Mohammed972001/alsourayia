@@ -8,18 +8,18 @@ const features = [
     { icon: Headset, title: 'خدمة عملاء متميزة', desc: 'فريقنا متاح دائماً لمساعدتك في اختيار الموكيت والأرضيات المناسبة' },
 ];
 
-export function About() {
+export function About({ headingAs = 'h2' }: { headingAs?: 'h1' | 'h2' }) {
     return (
         <section id="about" className="pt-20 pb-16 md:py-28 bg-white">
             <div className="container mx-auto px-4 lg:px-8">
-                <SectionHeading eyebrow="من نحن" title="رواد التميز في عالم السجاد والمفروشات" />
+                <SectionHeading as={headingAs} eyebrow="من نحن" title="رواد التميز في عالم السجاد والمفروشات" />
 
                 <p
                     className="max-w-3xl mx-auto text-center text-ink-soft leading-loose text-[0.95rem] md:text-lg -mt-4 mb-12 md:mb-16"
                     data-reveal
                 >
                     <strong className="text-ink">موكيت ومفروشات السريع</strong> هي وجهتك المثالية للحصول على أرقى أنواع{' '}
-                    <Link href="#products" className="text-ink underline decoration-brass underline-offset-4 hover:no-underline">
+                    <Link href="/products" className="text-ink underline decoration-brass underline-offset-4 hover:no-underline">
                         السجاد والموكيت والمفروشات
                     </Link>{' '}
                     في الرياض والمملكة العربية السعودية.

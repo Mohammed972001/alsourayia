@@ -2,19 +2,20 @@ import { MapPin } from 'lucide-react';
 import { SectionHeading } from '@/components/SectionHeading';
 
 const areas = [
-    { name: 'الرياض', count: 50 },
-    { name: 'جدة', count: 30 },
-    { name: 'الدمام', count: 25 },
-    { name: 'الخبر', count: 20 },
-    { name: 'مكة المكرمة', count: 18 },
-    { name: 'المدينة المنورة', count: 15 },
+    { name: 'الرياض' },
+    { name: 'جدة' },
+    { name: 'الدمام' },
+    { name: 'الخبر' },
+    { name: 'مكة المكرمة' },
+    { name: 'المدينة المنورة' },
 ];
 
-export function ServiceAreas() {
+export function ServiceAreas({ headingAs = 'h2' }: { headingAs?: 'h1' | 'h2' }) {
     return (
         <section id="service-areas" className="relative overflow-hidden grain py-16 md:py-28 bg-ink">
             <div className="relative container mx-auto px-4 lg:px-8">
                 <SectionHeading
+                    as={headingAs}
                     tone="dark"
                     eyebrow="مناطق الخدمة"
                     title="نخدم جميع مناطق المملكة"
@@ -37,10 +38,7 @@ export function ServiceAreas() {
                             }`}
                         >
                             <MapPin size={18} className="text-brass mb-4" strokeWidth={1.7} />
-                            <h3 className="font-display text-lg md:text-xl font-semibold text-white mb-1">{area.name}</h3>
-                            <p className="text-xs text-white/55">
-                                <span className="text-brass font-bold tabular-nums">{area.count}+</span> مشروع
-                            </p>
+                            <h3 className="font-display text-lg md:text-xl font-semibold text-white">{area.name}</h3>
                             {i === 0 && (
                                 <span className="absolute top-4 left-4 rounded-full bg-brass text-ink text-[10px] font-bold px-2.5 py-1">
                                     المقر الرئيسي

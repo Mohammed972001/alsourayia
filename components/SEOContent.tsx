@@ -6,10 +6,10 @@ import { ArrowLeft, ChevronDown } from 'lucide-react';
 import { SectionHeading } from '@/components/SectionHeading';
 
 const cards = [
-    { title: 'موكيت مساجد', desc: 'موكيت مساجد عالي الجودة بتصاميم إسلامية فاخرة، مقاوم للحريق ومعالج ضد البكتيريا. مع التركيب في جميع أحياء الرياض.' },
-    { title: 'أرضيات مكتبية', desc: 'أرضيات مكتبية احترافية تناسب بيئات العمل الحديثة. سهلة التنظيف ومقاومة للخدوش مع تشكيلة واسعة من الألوان.' },
-    { title: 'باركيه فاخر', desc: 'باركيه ضد الماء للمطابخ والحمامات، وباركيه بمظهر الخشب الطبيعي للصالات وغرف النوم في المنازل والفلل والشقق.' },
-    { title: 'عشب صناعي', desc: 'عشب صناعي عالي الكثافة للحدائق والملاعب والمساحات الخارجية. مقاوم للأشعة فوق البنفسجية.' },
+    { title: 'موكيت مساجد', href: '/products/category/mosque-carpets', desc: 'موكيت مساجد عالي الجودة بتصاميم إسلامية فاخرة، مقاوم للحريق ومعالج ضد البكتيريا. مع التركيب في جميع أحياء الرياض.' },
+    { title: 'أرضيات مكتبية', href: '/products/category/office-flooring', desc: 'أرضيات مكتبية احترافية تناسب بيئات العمل الحديثة. سهلة التنظيف ومقاومة للخدوش مع تشكيلة واسعة من الألوان.' },
+    { title: 'باركيه فاخر', href: '/products/category/parquet', desc: 'باركيه ضد الماء للمطابخ والحمامات، وباركيه بمظهر الخشب الطبيعي للصالات وغرف النوم في المنازل والفلل والشقق.' },
+    { title: 'عشب صناعي', href: '/products/category/artificial-grass', desc: 'عشب صناعي عالي الكثافة للحدائق والملاعب والمساحات الخارجية. مقاوم للأشعة فوق البنفسجية.' },
 ];
 
 export function SEOContent() {
@@ -35,10 +35,10 @@ export function SEOContent() {
                                 <h3 className="font-display text-lg font-semibold text-ink mb-2">{card.title}</h3>
                                 <p className="text-ink-muted text-sm leading-relaxed flex-1">{card.desc}</p>
                                 <Link
-                                    href="#products"
+                                    href={card.href}
                                     className="mt-4 inline-flex items-center gap-1.5 text-ink text-sm font-medium hover:gap-2.5 transition-all"
                                 >
-                                    عرض المنتجات
+                                    عرض {card.title}
                                     <ArrowLeft size={15} className="text-brass" />
                                 </Link>
                             </div>
@@ -53,7 +53,7 @@ export function SEOContent() {
                         >
                             <p>
                                 تُعد <strong className="text-ink">موكيت ومفروشات السريع</strong> من الشركات الرائدة في مجال توفير{' '}
-                                <Link href="#products" className="text-ink underline decoration-brass underline-offset-4">الموكيت والسجاد والمفروشات</Link>{' '}
+                                <Link href="/products" className="text-ink underline decoration-brass underline-offset-4">الموكيت والسجاد والمفروشات</Link>{' '}
                                 في <strong className="text-ink">الرياض</strong> والمملكة العربية السعودية. نقدم تشكيلة واسعة ومتنوعة من{' '}
                                 <strong className="text-ink">الأرضيات</strong> عالية الجودة تشمل <strong className="text-ink">موكيت المساجد</strong>،{' '}
                                 <strong className="text-ink">الأرضيات المكتبية</strong>، <strong className="text-ink">الباركيه</strong>، و<strong className="text-ink">العشب الصناعي</strong>.
@@ -62,7 +62,7 @@ export function SEOContent() {
                             <p>
                                 نحن في <strong className="text-ink">السريع للمفروشات</strong> نؤمن بأن الأرضيات هي أساس جمال أي مساحة.
                                 لذلك نحرص على توفير أجود الخامات من أفضل المصانع العالمية والتركية.
-                                سواء كنت تبحث عن <Link href="#products" className="text-ink underline decoration-brass underline-offset-4">موكيت فاخر</Link> لمنزلك،
+                                سواء كنت تبحث عن <Link href="/products/mokite" className="text-ink underline decoration-brass underline-offset-4">موكيت فاخر</Link> لمنزلك،
                                 أو <strong className="text-ink">أرضيات احترافية</strong> لمكتبك، أو <strong className="text-ink">موكيت مساجد</strong> بتصاميم إسلامية راقية،
                                 ستجد لدينا ما يلبي احتياجاتك.
                             </p>
@@ -78,7 +78,7 @@ export function SEOContent() {
                                 نخدم جميع أحياء <strong className="text-ink">الرياض</strong> ومناطق المملكة الرئيسية:{' '}
                                 <strong className="text-ink">جدة</strong>، <strong className="text-ink">الدمام</strong>، <strong className="text-ink">مكة المكرمة</strong>،{' '}
                                 <strong className="text-ink">المدينة المنورة</strong>، وغيرها. تواصل معنا الآن عبر{' '}
-                                <Link href="#contact" className="text-ink underline decoration-brass underline-offset-4">الواتساب أو الهاتف</Link>{' '}
+                                <Link href="/contact" className="text-ink underline decoration-brass underline-offset-4">الواتساب أو الهاتف</Link>{' '}
                                 للحصول على عرض سعر مجاني.
                             </p>
                         </div>

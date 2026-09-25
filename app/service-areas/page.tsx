@@ -8,7 +8,7 @@ import { Breadcrumb } from '@/components/Breadcrumb';
 const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://www.mokeet-elsuarye.com').replace(/\/$/, '');
 
 export const metadata: Metadata = {
-    title: 'مناطق الخدمة | موكيت ومفروشات السريع الرياض',
+    title: 'مناطق الخدمة',
     description: 'موكيت ومفروشات السريع يخدم جميع أحياء ومناطق الرياض: النرجس، حطين، العليا، الملقا، الغدير، الروضة وجميع أنحاء المملكة العربية السعودية. خدمة توصيل وتركيب موكيت في الرياض.',
     keywords: 'مناطق خدمة موكيت الرياض, تركيب موكيت الرياض, توصيل موكيت الرياض, موكيت حطين, موكيت النرجس, موكيت العليا',
     alternates: {
@@ -36,7 +36,7 @@ export default function ServiceAreasPage() {
                 <div className="container mx-auto px-4 lg:px-8 py-4">
                     <Breadcrumb items={breadcrumb} />
                 </div>
-                <ServiceAreas />
+                <ServiceAreas headingAs="h1" />
             </div>
             <Footer />
             <FloatingButtons />

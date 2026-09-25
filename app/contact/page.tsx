@@ -8,7 +8,7 @@ import { Breadcrumb } from '@/components/Breadcrumb';
 const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://www.mokeet-elsuarye.com').replace(/\/$/, '');
 
 export const metadata: Metadata = {
-    title: 'تواصل معنا | موكيت ومفروشات السريع',
+    title: 'تواصل معنا',
     description: 'تواصل مع موكيت ومفروشات السريع في الرياض. اتصل بنا على 0550101867 أو راسلنا عبر واتساب للاستفسار عن الموكيت والسجاد والمفروشات وطلب الزيارة المنزلية.',
     keywords: 'تواصل موكيت السريع, رقم موكيت الرياض, واتساب موكيت السريع, اتصل موكيت مفروشات',
     alternates: {
@@ -36,7 +36,7 @@ export default function ContactPage() {
                 <div className="container mx-auto px-4 lg:px-8 py-4">
                     <Breadcrumb items={breadcrumb} />
                 </div>
-                <Contact />
+                <Contact headingAs="h1" />
             </div>
             <Footer />
             <FloatingButtons />

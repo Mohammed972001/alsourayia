@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const productCount = products.length;
 
     return {
-        title: `${categoryName} في الرياض | موكيت ومفروشات السريع`,
+        title: `${categoryName} في الرياض`,
         description: `تصفح ${productCount} منتج من ${categoryName} من موكيت ومفروشات السريع في الرياض. جودة عالية، أسعار تنافسية، توصيل وتركيب احترافي.`,
         keywords: `${categoryName}, ${categoryName} الرياض, ${categoryName} السريع`,
         alternates: {

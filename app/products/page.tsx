@@ -10,7 +10,7 @@ import Link from 'next/link';
 const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://www.mokeet-elsuarye.com').replace(/\/$/, '');
 
 export const metadata: Metadata = {
-    title: 'جميع منتجات الموكيت والمفروشات | موكيت ومفروشات السريع',
+    title: 'جميع منتجات الموكيت والمفروشات والأرضيات',
     description: 'تصفح جميع منتجات موكيت ومفروشات السريع في الرياض: موكيت مساجد، أرضيات مكتبية، باركيه ضد الماء، عشب صناعي، فينيل، موكيت تركي، تنسيق حدائق. جودة عالية وأسعار تنافسية.',
     keywords: 'منتجات موكيت السريع, موكيت مساجد الرياض, أرضيات مكتبية, باركيه ضد الماء, عشب صناعي الرياض, فينيل, موكيت تركي',
     alternates: {
@@ -56,7 +56,7 @@ export default function ProductsPage() {
                     </nav>
                 </div>
 
-                <ProductGallery />
+                <ProductGallery headingAs="h1" />
             </div>
             <Footer />
             <FloatingButtons />

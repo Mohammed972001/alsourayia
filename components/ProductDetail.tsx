@@ -52,7 +52,7 @@ export function ProductDetail({ productId, dynamicGallery, onBack }: ProductDeta
 
     const breadcrumbItems = [
         { label: 'الرئيسية', href: '/' },
-        { label: 'المنتجات', href: '/#products' },
+        { label: 'المنتجات', href: '/products' },
         { label: product.name }
     ];
 

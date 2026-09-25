@@ -9,7 +9,7 @@ import { WhatsAppIcon } from '@/components/WhatsAppIcon';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export function ProductGallery() {
+export function ProductGallery({ headingAs = 'h2' }: { headingAs?: 'h1' | 'h2' }) {
     const [selectedCategory, setSelectedCategory] = useState('الكل');
     const categories = getCategories();
     const gridTopRef = useRef<HTMLParagraphElement>(null);
@@ -31,6 +31,7 @@ export function ProductGallery() {
         <section id="products" className="py-16 md:py-28 bg-white">
             <div className="container mx-auto px-4 lg:px-8">
                 <SectionHeading
+                    as={headingAs}
                     eyebrow="منتجاتنا"
                     title="تشكيلة السجاد والموكيت"
                     description="اكتشف مجموعتنا الواسعة من الموكيت والسجاد والمفروشات والأرضيات في الرياض"

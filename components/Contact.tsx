@@ -9,11 +9,12 @@ const quickActions = [
     { label: 'الاتجاهات', href: MAPS_URL, icon: NavIcon, external: true, tone: 'bg-white text-ink ring-1 ring-line' },
 ];
 
-export function Contact() {
+export function Contact({ headingAs = 'h2' }: { headingAs?: 'h1' | 'h2' }) {
     return (
         <section id="contact" className="py-16 md:py-28 bg-white">
             <div className="container mx-auto px-4 lg:px-8">
                 <SectionHeading
+                    as={headingAs}
                     eyebrow="نحن بانتظارك"
                     title="تواصل معنا"
                     description="فريقنا المتخصص جاهز للإجابة على استفساراتك ومساعدتك في اختيار المنتج المثالي"

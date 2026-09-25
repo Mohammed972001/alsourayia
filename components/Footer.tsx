@@ -1,46 +1,29 @@
-'use client';
-
+import Link from 'next/link';
 import { Phone, MapPin } from 'lucide-react';
 import { ADDRESS, PHONE_DISPLAY, PHONE_TEL, whatsappLink } from '@/lib/contact';
 import { WhatsAppIcon } from '@/components/WhatsAppIcon';
 
+// Real URLs rather than #section anchors: the footer is on every page, so
+// these links are how crawlers reach the inner pages.
 const quickLinks = [
-    { name: 'الرئيسية', href: 'home' },
-    { name: 'من نحن', href: 'about' },
-    { name: 'المنتجات', href: 'products' },
-    { name: 'مناطق الخدمة', href: 'service-areas' },
-    { name: 'تواصل معنا', href: 'contact' },
+    { name: 'الرئيسية', href: '/' },
+    { name: 'من نحن', href: '/about' },
+    { name: 'المنتجات', href: '/products' },
+    { name: 'مناطق الخدمة', href: '/service-areas' },
+    { name: 'تواصل معنا', href: '/contact' },
 ];
 
 const productLinks = [
-    { name: 'موكيت مساجد', href: 'products' },
-    { name: 'أرضيات مكتبية', href: 'products' },
-    { name: 'باركيه', href: 'products' },
-    { name: 'عشب صناعي', href: 'products' },
-    { name: 'أرضيات مطاط', href: 'products' },
+    { name: 'موكيت مساجد', href: '/products/category/mosque-carpets' },
+    { name: 'أرضيات مكتبية', href: '/products/category/office-flooring' },
+    { name: 'باركيه', href: '/products/category/parquet' },
+    { name: 'عشب صناعي', href: '/products/category/artificial-grass' },
+    { name: 'ربل جيم', href: '/products/rabal-gem' },
+    { name: 'مطاط دورات المياه', href: '/products/non-slip-rubber' },
+    { name: 'مطاط إسطبلات الخيل', href: '/products/horse-rubber' },
 ];
 
 export function Footer() {
-    const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
-        e.preventDefault();
-        if (sectionId === 'home') {
-            if (window.location.pathname === '/') {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            } else {
-                window.location.href = '/';
-            }
-            return;
-        }
-        const element = document.getElementById(sectionId);
-        if (element) {
-            const navHeight = 72;
-            const offsetPosition = element.getBoundingClientRect().top + window.pageYOffset - navHeight;
-            window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-        } else {
-            window.location.href = `/#${sectionId}`;
-        }
-    };
-
     return (
         // Extra bottom padding on phones clears the fixed action bar
         <footer className="relative overflow-hidden grain bg-ink text-white pb-28 lg:pb-8">
@@ -80,13 +63,9 @@ export function Footer() {
                         <ul className="space-y-2.5">
                             {quickLinks.map((link) => (
                                 <li key={link.name}>
-                                    <a
-                                        href={`#${link.href}`}
-                                        onClick={(e) => scrollToSection(e, link.href)}
-                                        className="text-white/60 hover:text-white text-sm transition-colors"
-                                    >
+                                    <Link href={link.href} className="text-white/60 hover:text-white text-sm transition-colors">
                                         {link.name}
-                                    </a>
+                                    </Link>
                                 </li>
                             ))}
                         </ul>
@@ -98,13 +77,9 @@ export function Footer() {
                         <ul className="space-y-2.5">
                             {productLinks.map((link) => (
                                 <li key={link.name}>
-                                    <a
-                                        href={`#${link.href}`}
-                                        onClick={(e) => scrollToSection(e, link.href)}
-                                        className="text-white/60 hover:text-white text-sm transition-colors"
-                                    >
+                                    <Link href={link.href} className="text-white/60 hover:text-white text-sm transition-colors">
                                         {link.name}
-                                    </a>
+                                    </Link>
                                 </li>
                             ))}
                         </ul>

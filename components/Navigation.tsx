@@ -9,11 +9,11 @@ import { PHONE_DISPLAY, PHONE_TEL, ADDRESS, whatsappLink } from '@/lib/contact';
 import { WhatsAppIcon } from '@/components/WhatsAppIcon';
 
 const menuItems = [
-    { label: 'الرئيسية', href: '/#home', sectionId: 'home' },
-    { label: 'من نحن', href: '/#about', sectionId: 'about' },
-    { label: 'المنتجات', href: '/#products', sectionId: 'products' },
-    { label: 'مناطق الخدمة', href: '/#service-areas', sectionId: 'service-areas' },
-    { label: 'تواصل معنا', href: '/#contact', sectionId: 'contact' },
+    { label: 'الرئيسية', href: '/', sectionId: 'home' },
+    { label: 'من نحن', href: '/about', sectionId: 'about' },
+    { label: 'المنتجات', href: '/products', sectionId: 'products' },
+    { label: 'مناطق الخدمة', href: '/service-areas', sectionId: 'service-areas' },
+    { label: 'تواصل معنا', href: '/contact', sectionId: 'contact' },
 ];
 
 export function Navigation() {

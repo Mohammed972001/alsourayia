@@ -8,7 +8,7 @@ import { Breadcrumb } from '@/components/Breadcrumb';
 const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://www.mokeet-elsuarye.com').replace(/\/$/, '');
 
 export const metadata: Metadata = {
-    title: 'من نحن | موكيت ومفروشات السريع',
+    title: 'من نحن',
     description: 'تعرف على موكيت ومفروشات السريع في الرياض: موكيت وسجاد وأرضيات فينيل وباركيه وعشب صناعي وأرضيات مطاط، مع المعاينة والقياس والتركيب.',
     keywords: 'من نحن السريع, موكيت ومفروشات السريع, شركة موكيت الرياض, مفروشات السريع الرياض',
     alternates: {
@@ -36,7 +36,7 @@ export default function AboutPage() {
                 <div className="container mx-auto px-4 lg:px-8 py-4">
                     <Breadcrumb items={breadcrumb} />
                 </div>
-                <About />
+                <About headingAs="h1" />
             </div>
             <Footer />
             <FloatingButtons />
