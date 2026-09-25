@@ -10,6 +10,9 @@ export interface ProductDetails {
   availableColors: { name: string; value: string }[];
   price: number;
   features: string[];
+  faqs?: { question: string; answer: string }[];
+  /** Ids of products to cross-link from this product page. */
+  related?: string[];
 }
 
 export interface ContainerItem {

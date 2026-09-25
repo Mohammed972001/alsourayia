@@ -18,6 +18,16 @@ const nextConfig: NextConfig = {
     ],
   },
 
+  // The three rubber categories each held a single product and duplicated its
+  // page; they are merged into one hub that explains which rubber fits where.
+  async redirects() {
+    return ['rabal-gem', 'non-slip-rubber', 'horse-rubber'].map((slug) => ({
+      source: `/products/category/${slug}`,
+      destination: '/products/category/rubber-flooring',
+      permanent: true,
+    }));
+  },
+
   // Strip unused exports from server components to reduce bundle size
   experimental: {
     optimizePackageImports: ['lucide-react', 'motion/react'],

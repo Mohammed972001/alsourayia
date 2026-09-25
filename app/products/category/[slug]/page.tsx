@@ -5,6 +5,7 @@ import { Footer } from '@/components/Footer';
 import { FloatingButtons } from '@/components/FloatingButtons';
 import { Breadcrumb } from '@/components/Breadcrumb';
 import {
+    categoryContent,
     categorySlugMap,
     getProductsByCategory,
     generateCategoryStaticParams,
@@ -27,10 +28,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
     const products = getProductsByCategory(categoryName);
     const productCount = products.length;
+    const content = categoryContent[slug];
 
     return {
-        title: `${categoryName} في الرياض`,
-        description: `تصفح ${productCount} منتج من ${categoryName} من موكيت ومفروشات السريع في الرياض. جودة عالية، أسعار تنافسية، توصيل وتركيب احترافي.`,
+        title: content?.title ?? `${categoryName} في الرياض`,
+        description:
+            content?.description ??
+            `تصفح ${productCount} منتج من ${categoryName} من موكيت ومفروشات السريع في الرياض. جودة عالية، أسعار تنافسية، توصيل وتركيب احترافي.`,
         keywords: `${categoryName}, ${categoryName} الرياض, ${categoryName} السريع`,
         alternates: {
             canonical: `${baseUrl}/products/category/${slug}`,
@@ -54,6 +58,7 @@ export default async function CategoryPage({ params }: Props) {
     if (!categoryName) notFound();
 
     const categoryProducts = getProductsByCategory(categoryName);
+    const content = categoryContent[slug];
 
     const breadcrumb = [
         { label: 'الرئيسية', href: '/' },
@@ -89,15 +94,36 @@ export default async function CategoryPage({ params }: Props) {
                 <div className="container mx-auto px-4 lg:px-8">
                     <Breadcrumb items={breadcrumb} />
 
-                    <div className="mt-8 mb-12 text-center">
-                        <h1 className="text-3xl md:text-4xl text-[#1A1A1A] mb-4">
-                            {categoryName} من مفروشات السريع
-                        </h1>
-                        <p className="text-[#6B7280] max-w-2xl mx-auto">
-                            تصفح مجموعتنا من <strong>{categoryName}</strong> في الرياض.
-                            جودة عالية وتصميمات متنوعة مع خدمة التوصيل والتركيب.
-                        </p>
-                    </div>
+                    {content ? (
+                        <div className="mt-8 mb-12 max-w-3xl mx-auto">
+                            <h1 className="text-3xl md:text-4xl text-[#1A1A1A] mb-4 text-center">{content.heading}</h1>
+                            <p className="text-[#4A4A4A] leading-relaxed mb-6">{content.intro}</p>
+                            <ul className="space-y-3 mb-6">
+                                {content.items.map((item) => (
+                                    <li key={item.productId} className="text-[#4A4A4A] leading-relaxed">
+                                        <Link
+                                            href={`/products/${item.productId}`}
+                                            className="font-semibold text-[#1A1A1A] underline underline-offset-4"
+                                        >
+                                            {item.label}
+                                        </Link>
+                                        : {item.text}
+                                    </li>
+                                ))}
+                            </ul>
+                            <p className="text-[#6B7280] leading-relaxed">{content.outro}</p>
+                        </div>
+                    ) : (
+                        <div className="mt-8 mb-12 text-center">
+                            <h1 className="text-3xl md:text-4xl text-[#1A1A1A] mb-4">
+                                {categoryName} من مفروشات السريع
+                            </h1>
+                            <p className="text-[#6B7280] max-w-2xl mx-auto">
+                                تصفح مجموعتنا من <strong>{categoryName}</strong> في الرياض.
+                                جودة عالية وتصميمات متنوعة مع خدمة التوصيل والتركيب.
+                            </p>
+                        </div>
+                    )}
 
                     {categoryProducts.length > 0 ? (
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

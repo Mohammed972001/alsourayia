@@ -1,9 +1,10 @@
 'use client';
 
 import { ArrowRight, Check, Phone, MessageCircle } from 'lucide-react';
-import { getProductById } from '@/lib/products';
+import { categoryToSlug, getProductById, type Product } from '@/lib/products';
 import { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { Breadcrumb } from './Breadcrumb';
 
@@ -11,6 +12,47 @@ interface ProductDetailProps {
     productId: string;
     dynamicGallery?: string[];
     onBack?: () => void;
+}
+
+// detailedDescription is plain text with light markup: a line wrapped in **…**
+// is a subheading, a block of "- " lines is a list, and **x** inside a line is
+// bold. It used to be printed raw, which showed the asterisks to visitors.
+function inline(text: string) {
+    return text.split(/\*\*(.+?)\*\*/g).map((part, i) => (i % 2 ? <strong key={i}>{part}</strong> : part));
+}
+
+function RichText({ text }: { text: string }) {
+    return (
+        <>
+            {text.trim().split(/\n\s*\n/).map((block, i) => {
+                const lines = block.split('\n').map((l) => l.trim()).filter(Boolean);
+                const heading = lines[0]?.match(/^\*\*(.+)\*\*$/);
+                const body = heading ? lines.slice(1) : lines;
+                const isList = body.length > 0 && body.every((l) => l.startsWith('- '));
+                return (
+                    <div key={i} className="mb-6">
+                        {heading && <h3 className="text-lg font-semibold text-[#1A1A1A] mb-2">{heading[1]}</h3>}
+                        {isList ? (
+                            <ul className="list-disc pr-5 space-y-1">
+                                {body.map((l, j) => <li key={j}>{inline(l.slice(2))}</li>)}
+                            </ul>
+                        ) : (
+                            body.length > 0 && (
+                                <p>
+                                    {body.map((l, j) => (
+                                        <span key={j}>
+                                            {j > 0 && <br />}
+                                            {inline(l)}
+                                        </span>
+                                    ))}
+                                </p>
+                            )
+                        )}
+                    </div>
+                );
+            })}
+        </>
+    );
 }
 
 export function ProductDetail({ productId, dynamicGallery, onBack }: ProductDetailProps) {
@@ -50,11 +92,29 @@ export function ProductDetail({ productId, dynamicGallery, onBack }: ProductDeta
         }
     };
 
+    const categorySlug = categoryToSlug[product.category];
     const breadcrumbItems = [
         { label: 'الرئيسية', href: '/' },
         { label: 'المنتجات', href: '/products' },
+        ...(categorySlug ? [{ label: product.category, href: `/products/category/${categorySlug}` }] : []),
         { label: product.name }
     ];
+
+    const relatedProducts = (product.related ?? [])
+        .map((id) => getProductById(id))
+        .filter((p): p is Product => Boolean(p));
+
+    const faqSchema = product.faqs?.length
+        ? {
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "mainEntity": product.faqs.map((faq) => ({
+                  "@type": "Question",
+                  "name": faq.question,
+                  "acceptedAnswer": { "@type": "Answer", "text": faq.answer }
+              }))
+          }
+        : null;
 
     const getImageAlt = (index: number) => {
         const baseAlt = `${product.name} - ${product.category}`;
@@ -68,6 +128,12 @@ export function ProductDetail({ productId, dynamicGallery, onBack }: ProductDeta
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
             />
+            {faqSchema && (
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+                />
+            )}
 
             <Breadcrumb items={breadcrumbItems} />
 
@@ -209,10 +275,43 @@ export function ProductDetail({ productId, dynamicGallery, onBack }: ProductDeta
                     {/* Detailed Description */}
                     {product.detailedDescription && (
                         <div className="mt-16 max-w-4xl">
-                            <h2 className="text-xl text-[#1A1A1A] mb-6">تفاصيل المنتج</h2>
-                            <div className="prose prose-lg max-w-none text-[#4A4A4A] whitespace-pre-line leading-relaxed">
-                                {product.detailedDescription}
+                            <h2 className="text-xl text-[#1A1A1A] mb-6">تفاصيل {product.name}</h2>
+                            <div className="text-[#4A4A4A] leading-relaxed">
+                                <RichText text={product.detailedDescription} />
                             </div>
+                        </div>
+                    )}
+
+                    {product.faqs && product.faqs.length > 0 && (
+                        <div className="mt-12 max-w-4xl">
+                            <h2 className="text-xl text-[#1A1A1A] mb-6">أسئلة شائعة عن {product.name}</h2>
+                            <div className="space-y-3">
+                                {product.faqs.map((faq) => (
+                                    <details key={faq.question} className="rounded-lg border border-gray-200 p-4">
+                                        <summary className="cursor-pointer font-semibold text-[#1A1A1A]">{faq.question}</summary>
+                                        <p className="mt-3 text-[#4A4A4A] leading-relaxed">{faq.answer}</p>
+                                    </details>
+                                ))}
+                            </div>
+                        </div>
+                    )}
+
+                    {relatedProducts.length > 0 && (
+                        <div className="mt-12 max-w-4xl">
+                            <h2 className="text-xl text-[#1A1A1A] mb-6">منتجات قريبة قد تناسبك</h2>
+                            <ul className="grid sm:grid-cols-2 gap-3">
+                                {relatedProducts.map((p) => (
+                                    <li key={p.id}>
+                                        <Link
+                                            href={`/products/${p.id}`}
+                                            className="block h-full rounded-lg border border-gray-200 p-4 hover:border-gray-400 transition-colors"
+                                        >
+                                            <span className="block font-semibold text-[#1A1A1A] mb-1">{p.name}</span>
+                                            <span className="block text-sm text-[#6B7280] leading-relaxed">{p.description}</span>
+                                        </Link>
+                                    </li>
+                                ))}
+                            </ul>
                         </div>
                     )}
                 </div>

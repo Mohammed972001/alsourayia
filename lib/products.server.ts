@@ -1,26 +1,6 @@
 import { productsDetails } from '@/data/products';
 import { getImagesFromDir } from './getProductImages';
-import type { Product } from './products';
-
-function getCategoryFromId(id: string): string {
-  const categoryMap: Record<string, string> = {
-    'mosque-carpets': 'موكيت مساجد',
-    'office-flooring': 'أرضيات مكتبية',
-    'water-resistant-carpet': 'باركيه',
-    'artificial-grass': 'عشب صناعي',
-    'vinyl-roll': 'فينيل',
-    'parket': 'باركيه',
-    'mokite': 'موكيت',
-    'hospital-flooring': 'أرضيات طبية',
-    'vinyl-mosque': 'فينيل مساجد',
-    'rabal-gem': 'أرضيات رياضية',
-    'non-slip-rubber': 'أرضيات مطاط',
-    'horse-rubber': 'أرضيات خيول',
-    'office-carpet': 'موكيت مكاتب',
-    'turky-mshager': 'موكيت تركي',
-  };
-  return categoryMap[id] || 'أخرى';
-}
+import { getCategoryFromId, type Product } from './products';
 
 /**
  * Server-only: resolves product images dynamically from filesystem.
@@ -47,5 +27,7 @@ export function getProductWithDynamicImages(id: string): Product | undefined {
     detailedDescription: productData.detailedDescription,
     features: productData.features,
     gallery: images,
+    faqs: productData.faqs,
+    related: productData.related,
   };
 }

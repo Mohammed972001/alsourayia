@@ -10,6 +10,8 @@ export interface Product {
   detailedDescription: string;
   features: string[];
   gallery: string[];
+  faqs?: { question: string; answer: string }[];
+  related?: string[];
 }
 
 // Maps URL slug → Arabic category name
@@ -22,9 +24,7 @@ export const categorySlugMap: Record<string, string> = {
   'carpet': 'موكيت',
   'hospital-flooring': 'أرضيات طبية',
   'mosque-vinyl': 'فينيل مساجد',
-  'rabal-gem': 'أرضيات رياضية',
-  'non-slip-rubber': 'أرضيات مطاط',
-  'horse-rubber': 'أرضيات خيول',
+  'rubber-flooring': 'أرضيات مطاط',
   'office-carpet': 'موكيت مكاتب',
   'turkish-carpet': 'موكيت تركي',
 };
@@ -45,9 +45,11 @@ export const products: Product[] = productsDetails.map((product) => ({
   detailedDescription: product.detailedDescription,
   features: product.features,
   gallery: product.images,
+  faqs: product.faqs,
+  related: product.related,
 }));
 
-function getCategoryFromId(id: string): string {
+export function getCategoryFromId(id: string): string {
   const categoryMap: Record<string, string> = {
     'mosque-carpets': 'موكيت مساجد',
     'office-flooring': 'أرضيات مكتبية',
@@ -58,9 +60,9 @@ function getCategoryFromId(id: string): string {
     'mokite': 'موكيت',
     'hospital-flooring': 'أرضيات طبية',
     'vinyl-mosque': 'فينيل مساجد',
-    'rabal-gem': 'أرضيات رياضية',
+    'rabal-gem': 'أرضيات مطاط',
     'non-slip-rubber': 'أرضيات مطاط',
-    'horse-rubber': 'أرضيات خيول',
+    'horse-rubber': 'أرضيات مطاط',
     'office-carpet': 'موكيت مكاتب',
     'turky-mshager': 'موكيت تركي',
   };
@@ -83,3 +85,31 @@ export function getProductsByCategory(categoryName: string): Product[] {
 export function generateCategoryStaticParams() {
   return Object.keys(categorySlugMap).map(slug => ({ slug }));
 }
+
+export interface CategoryContent {
+  title: string;
+  description: string;
+  heading: string;
+  intro: string;
+  /** One line per product in the category: what it is for, linked to its page. */
+  items: { productId: string; label: string; text: string }[];
+  outro: string;
+}
+
+// Hand-written copy for categories that group several distinct products,
+// so the category page answers "which one do I need?" instead of repeating
+// the product pages.
+export const categoryContent: Record<string, CategoryContent> = {
+  'rubber-flooring': {
+    title: 'أرضيات مطاط (ربل) في الرياض: ربل جيم ومطاط دورات المياه ومطاط الخيل',
+    description: 'أرضيات المطاط في الرياض من موكيت ومفروشات السريع: ربل جيم للصالات الرياضية، ومطاط دورات المياه ضد الانزلاق، ومطاط إسطبلات الخيل. اعرف أي نوع يناسب مكانك.',
+    heading: 'أرضيات المطاط (الربل): أي نوع تحتاج؟',
+    intro: 'كلمة «ربل» تُطلق في السوق على أرضيات المطاط عمومًا، لكن مكان الاستخدام هو الذي يحدد النوع المناسب. نوفر ثلاثة أنواع، لكل منها استخدامه:',
+    items: [
+      { productId: 'rabal-gem', label: 'ربل جيم', text: 'للنوادي والصالات الرياضية والجيم المنزلي. يمتص صدمة الأوزان ويحمي الأرضية ويقلل الضوضاء.' },
+      { productId: 'non-slip-rubber', label: 'مطاط دورات المياه', text: 'للحمامات وأماكن الوضوء والمناطق المبللة. سطحه منقوش ضد الانزلاق ولا يمتص الماء ويتحمل المطهرات.' },
+      { productId: 'horse-rubber', label: 'مطاط الخيل', text: 'لإسطبلات الخيول وممراتها وأماكن غسيلها. يتحمل وزن الخيل والبول والغسيل، ومقاوم للحريق.' },
+    ],
+    outro: 'إذا لم تكن متأكدًا من النوع المناسب، أرسل لنا صورة المكان عبر واتساب ونساعدك في الاختيار قبل المعاينة والقياس.',
+  },
+};
