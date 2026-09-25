@@ -135,6 +135,121 @@ html {
     font-size: var(--font-size);
 }
 
+/* ── Brand layer: ink + brass on warm white ─────────────────────────────────
+   Keeps the monochrome identity, borrows the gold accent and display/body
+   font split used by the sister storefronts. Brass is decorative (rules,
+   dots, icons); text that must be read uses --color-brass-deep for contrast. */
+@theme {
+    --color-ink: #141414;
+    --color-ink-soft: #4A4A4A;
+    --color-ink-muted: #6B7280;
+    --color-brass: #B8924F;
+    --color-brass-deep: #7A5C2A;
+    --color-brass-soft: #F4ECDD;
+    --color-cream: #F8F6F1;
+    --color-line: #ECE8E0;
+    --color-whatsapp: #25D366;
+
+    --font-display: var(--font-messiri), var(--font-tajawal), serif;
+
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+
+    --animate-rise: rise 0.9s var(--ease-out-expo) both;
+    --animate-hero-zoom: hero-zoom 22s ease-out both;
+    --animate-pulse-ring: pulse-ring 2.4s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+    --animate-slide-up: slide-up 0.5s var(--ease-out-expo) both;
+    --animate-scroll-cue: scroll-cue 1.8s ease-in-out infinite;
+
+    @keyframes rise {
+        from { opacity: 0; transform: translate3d(0, 28px, 0); }
+        to { opacity: 1; transform: none; }
+    }
+    @keyframes hero-zoom {
+        from { transform: scale(1.14); }
+        to { transform: scale(1); }
+    }
+    @keyframes pulse-ring {
+        0% { transform: scale(1); opacity: 0.55; }
+        100% { transform: scale(1.7); opacity: 0; }
+    }
+    @keyframes slide-up {
+        from { transform: translate3d(0, 110%, 0); }
+        to { transform: none; }
+    }
+    @keyframes scroll-cue {
+        0%, 100% { transform: translateY(0); opacity: 0.4; }
+        50% { transform: translateY(8px); opacity: 1; }
+    }
+}
+
+h1, h2, h3,
+.font-display {
+    font-family: var(--font-messiri), var(--font-tajawal), serif;
+    letter-spacing: 0;
+}
+
+/* Scroll reveal. Elements only start hidden once RevealObserver has marked the
+   document ready, so no-JS visitors and crawlers always see the content. */
+.reveal-ready [data-reveal] {
+    opacity: 0;
+    transform: translate3d(0, 26px, 0);
+    transition:
+        opacity 0.8s var(--ease-out-expo),
+        transform 0.8s var(--ease-out-expo);
+    transition-delay: var(--d, 0ms);
+}
+.reveal-ready [data-reveal='fade'] { transform: none; }
+.reveal-ready [data-reveal='scale'] { transform: scale(0.94); }
+.reveal-ready [data-reveal='start'] { transform: translate3d(28px, 0, 0); }
+.reveal-ready [data-reveal].is-visible {
+    opacity: 1;
+    transform: none;
+}
+
+/* Horizontal rails (category chips, mobile carousels) */
+.no-scrollbar { scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+
+/* Brass hairline under section titles */
+.rule-brass {
+    display: block;
+    width: 3rem;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--color-brass), transparent);
+}
+
+/* Subtle paper grain for dark surfaces */
+.grain::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.06;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Touch feedback: cards give a small press instead of a hover lift */
+@media (hover: none) {
+    .press {
+        transition: transform 0.18s ease-out;
+        -webkit-tap-highlight-color: transparent;
+    }
+    .press:active { transform: scale(0.97); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    .reveal-ready [data-reveal] {
+        opacity: 1;
+        transform: none;
+    }
+}
+
 /* Smooth Scrolling with offset for fixed nav */
 html {
     scroll-behavior: smooth;

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
-import { Tajawal } from 'next/font/google';
+import { Tajawal, El_Messiri } from 'next/font/google';
+import { RevealObserver } from '@/components/RevealObserver';
 import './globals.css';
 
 // Self-hosted via Next.js — eliminates render-blocking Google Fonts request
@@ -9,6 +10,14 @@ const tajawal = Tajawal({
     variable: '--font-tajawal',
     display: 'swap',
     preload: true,
+});
+
+// Display face for headings only
+const messiri = El_Messiri({
+    subsets: ['arabic'],
+    weight: ['500', '600', '700'],
+    variable: '--font-messiri',
+    display: 'swap',
 });
 
 // Get the site URL from environment variable with fallback
@@ -24,7 +33,7 @@ export const metadata: Metadata = {
         default: 'موكيت ومفروشات السريع | أفضل موكيت ومفروشات الرياض',
         template: '%s | موكيت ومفروشات السريع'
     },
-    description: 'موكيت ومفروشات السريع - الرائدون في توفير أجود أنواع الموكيت والسجاد والمفروشات في الرياض والمملكة العربية السعودية. موكيت مساجد، أرضيات مكتبية، باركيه، عشب صناعي، تنسيق حدائق. خدمة تركيب احترافية وضمان شامل. اتصل الآن 966541540047+',
+    description: 'موكيت ومفروشات السريع - الرائدون في توفير أجود أنواع الموكيت والسجاد والمفروشات في الرياض والمملكة العربية السعودية. موكيت مساجد، أرضيات مكتبية، باركيه، عشب صناعي، تنسيق حدائق. خدمة تركيب احترافية وضمان شامل. اتصل الآن 0550101867',
 
     // Keywords for SEO
     keywords: [
@@ -153,7 +162,7 @@ export const metadata: Metadata = {
         'geo.placename': 'Riyadh',
         'geo.position': '24.5959;46.7306',
         'ICBM': '24.5959, 46.7306',
-        'contact': '+966541540047',
+        'contact': '+966550101867',
         'reply-to': 'info@mokeet-elsuarye.com',
     },
 };
@@ -176,7 +185,7 @@ export default function RootLayout({
             `${baseUrl}/home/hero-moket-alsurye-riyadh.jpg`
         ],
         "logo": `${baseUrl}/images/logo.png`,
-        "telephone": "+966541540047",
+        "telephone": "+966550101867",
         "email": "info@mokeet-elsuarye.com",
         "url": baseUrl,
         "address": {
@@ -238,7 +247,7 @@ export default function RootLayout({
             "worstRating": "1"
         },
         "sameAs": [
-            "https://wa.me/966541540047"
+            "https://wa.me/966550101867"
         ],
         "hasOfferCatalog": {
             "@type": "OfferCatalog",
@@ -331,7 +340,7 @@ export default function RootLayout({
         },
         "contactPoint": {
             "@type": "ContactPoint",
-            "telephone": "+966541540047",
+            "telephone": "+966550101867",
             "contactType": "customer service",
             "areaServed": "SA",
             "availableLanguage": ["Arabic", "English"]
@@ -353,7 +362,7 @@ export default function RootLayout({
     };
 
     return (
-        <html lang="ar" dir="rtl" className={tajawal.variable}>
+        <html lang="ar" dir="rtl" className={`${tajawal.variable} ${messiri.variable}`}>
             <head>
 
                 {/* Preload Hero Image for LCP */}
@@ -413,6 +422,7 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
             </head>
             <body className="font-tajawal antialiased">
                 {children}
+                <RevealObserver />
             </body>
         </html>
     );

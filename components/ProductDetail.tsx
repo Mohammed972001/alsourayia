@@ -65,7 +65,7 @@ export function ProductDetail({ productId, dynamicGallery, onBack }: ProductDeta
                 "@type": "Organization",
                 "name": "موكيت ومفروشات السريع",
                 "url": baseUrl,
-                "telephone": "+966541540047"
+                "telephone": "+966550101867"
             }
         },
         "aggregateRating": {
@@ -181,7 +181,7 @@ export function ProductDetail({ productId, dynamicGallery, onBack }: ProductDeta
                             {/* CTAs */}
                             <div className="flex flex-col sm:flex-row gap-3 mb-8">
                                 <a
-                                    href={`https://wa.me/966541540047?text=أريد الاستفسار عن ${product.name} من موكيت ومفروشات السريع`}
+                                    href={`https://wa.me/966550101867?text=أريد الاستفسار عن ${product.name} من موكيت ومفروشات السريع`}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="flex-1 px-6 py-3.5 bg-[#1A1A1A] text-white rounded-lg hover:bg-[#333] transition-colors text-center text-sm"
@@ -189,7 +189,7 @@ export function ProductDetail({ productId, dynamicGallery, onBack }: ProductDeta
                                     طلب عرض سعر
                                 </a>
                                 <a
-                                    href={`https://wa.me/966541540047?text=أريد طلب عينة مجانية من ${product.name}`}
+                                    href={`https://wa.me/966550101867?text=أريد طلب عينة مجانية من ${product.name}`}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="flex-1 px-6 py-3.5 border border-gray-200 text-[#4A4A4A] rounded-lg hover:border-gray-400 transition-colors text-center text-sm"
@@ -201,14 +201,14 @@ export function ProductDetail({ productId, dynamicGallery, onBack }: ProductDeta
                             {/* Contact */}
                             <div className="grid grid-cols-2 gap-3 mb-8">
                                 <a
-                                    href="tel:+966541540047"
+                                    href="tel:+966550101867"
                                     className="flex items-center justify-center gap-2 px-4 py-3 bg-[#F9FAFB] text-[#4A4A4A] rounded-lg hover:bg-gray-100 transition-colors text-sm"
                                 >
                                     <Phone size={16} />
                                     <span>اتصل الآن</span>
                                 </a>
                                 <a
-                                    href="https://wa.me/966541540047"
+                                    href="https://wa.me/966550101867"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="flex items-center justify-center gap-2 px-4 py-3 bg-[#F9FAFB] text-[#4A4A4A] rounded-lg hover:bg-gray-100 transition-colors text-sm"

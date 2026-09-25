@@ -1,36 +1,45 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Menu, X, Phone } from 'lucide-react';
+import { Phone, MapPin, ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
+import { PHONE_DISPLAY, PHONE_TEL, ADDRESS, whatsappLink } from '@/lib/contact';
+import { WhatsAppIcon } from '@/components/WhatsAppIcon';
+
+const menuItems = [
+    { label: 'الرئيسية', href: '/#home', sectionId: 'home' },
+    { label: 'من نحن', href: '/#about', sectionId: 'about' },
+    { label: 'المنتجات', href: '/#products', sectionId: 'products' },
+    { label: 'مناطق الخدمة', href: '/#service-areas', sectionId: 'service-areas' },
+    { label: 'تواصل معنا', href: '/#contact', sectionId: 'contact' },
+];
 
 export function Navigation() {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const pathname = usePathname();
     const isHome = pathname === '/';
+    const solid = isScrolled || !isHome;
 
     useEffect(() => {
-        const handleScroll = () => setIsScrolled(window.scrollY > 50);
-        window.addEventListener('scroll', handleScroll);
+        const handleScroll = () => setIsScrolled(window.scrollY > 40);
+        handleScroll();
+        window.addEventListener('scroll', handleScroll, { passive: true });
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    // Lock body scroll when mobile menu is open
+    // Lock body scroll + close on Escape while the mobile menu is open
     useEffect(() => {
         document.body.style.overflow = isMobileMenuOpen ? 'hidden' : '';
-        return () => { document.body.style.overflow = ''; };
+        const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setIsMobileMenuOpen(false);
+        if (isMobileMenuOpen) window.addEventListener('keydown', onKey);
+        return () => {
+            document.body.style.overflow = '';
+            window.removeEventListener('keydown', onKey);
+        };
     }, [isMobileMenuOpen]);
-
-    const menuItems = [
-        { label: 'الرئيسية', href: '/#home', sectionId: 'home' },
-        { label: 'من نحن', href: '/#about', sectionId: 'about' },
-        { label: 'المنتجات', href: '/#products', sectionId: 'products' },
-        { label: 'مناطق الخدمة', href: '/#service-areas', sectionId: 'service-areas' },
-        { label: 'تواصل معنا', href: '/#contact', sectionId: 'contact' },
-    ];
 
     const scrollToSection = (sectionId: string) => {
         if (sectionId === 'home') {
@@ -39,45 +48,48 @@ export function Navigation() {
         }
         const element = document.getElementById(sectionId);
         if (element) {
-            const navHeight = 80;
-            const elementPosition = element.getBoundingClientRect().top;
-            const offsetPosition = elementPosition + window.pageYOffset - navHeight;
+            const navHeight = 72;
+            const offsetPosition = element.getBoundingClientRect().top + window.pageYOffset - navHeight;
             window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
         }
     };
 
-    const handleNavClick = (
-        e: React.MouseEvent<HTMLAnchorElement>,
-        href: string,
-        sectionId?: string
-    ) => {
+    const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, sectionId?: string) => {
+        const wasOpen = isMobileMenuOpen;
+        setIsMobileMenuOpen(false);
         if (isHome && sectionId) {
             e.preventDefault();
-            setIsMobileMenuOpen(false);
-            // Delay scroll to allow mobile menu close transition to complete
-            setTimeout(() => {
-                scrollToSection(sectionId);
-            }, 350);
-        } else {
-            // Non-home: let the Link navigate to /#sectionId
-            setIsMobileMenuOpen(false);
+            // Let the menu close (and unlock scroll) before scrolling
+            setTimeout(() => scrollToSection(sectionId), wasOpen ? 350 : 0);
         }
     };
 
+    // The bar sits over the dark hero until scrolled; the open menu is always light
+    const onDark = !solid && !isMobileMenuOpen;
+
     return (
-        <nav
-            className={`fixed top-0 right-0 left-0 z-50 transition-all duration-300 ${
-                isScrolled || !isHome
-                    ? 'bg-white shadow-sm'
-                    : 'bg-transparent'
-            }`}
-        >
-            <div className="container mx-auto px-4 lg:px-8">
-                <div className="flex items-center justify-between h-20">
-                    {/* Logo */}
-                    <Link href="/" aria-label="موكيت ومفروشات السريع - الصفحة الرئيسية">
-                        <div className="flex items-center gap-3">
-                            <div className="relative w-11 h-11 rounded-lg overflow-hidden flex-shrink-0">
+        <>
+            <nav
+                className={`fixed top-0 right-0 left-0 z-50 transition-all duration-500 ${
+                    solid && !isMobileMenuOpen
+                        ? 'bg-white/85 backdrop-blur-xl shadow-[0_1px_0_0_var(--color-line)]'
+                        : 'bg-transparent'
+                }`}
+            >
+                <div className="container mx-auto px-4 lg:px-8">
+                    <div
+                        className={`flex items-center justify-between transition-[height] duration-500 ${
+                            solid ? 'h-16' : 'h-20'
+                        }`}
+                    >
+                        {/* Logo */}
+                        <Link
+                            href="/"
+                            aria-label="موكيت ومفروشات السريع - الصفحة الرئيسية"
+                            onClick={() => setIsMobileMenuOpen(false)}
+                            className="flex items-center gap-3"
+                        >
+                            <span className="relative w-10 h-10 md:w-11 md:h-11 rounded-xl overflow-hidden flex-shrink-0 ring-1 ring-brass/40">
                                 <Image
                                     src="/heroBG.jpeg"
                                     alt="شعار موكيت ومفروشات السريع"
@@ -86,96 +98,168 @@ export function Navigation() {
                                     className="object-cover"
                                     priority
                                 />
-                            </div>
-                            <div className="flex flex-col">
-                                <span className={`font-bold text-lg leading-tight transition-colors ${
-                                    isScrolled || !isHome ? 'text-[#1A1A1A]' : 'text-white'
-                                }`}>
+                            </span>
+                            <span className="flex flex-col">
+                                <span
+                                    className={`font-display font-bold text-base md:text-lg leading-tight transition-colors ${
+                                        onDark ? 'text-white' : 'text-ink'
+                                    }`}
+                                >
                                     موكيت ومفروشات السريع
                                 </span>
-                                <span className={`text-xs transition-colors ${
-                                    isScrolled || !isHome ? 'text-gray-500' : 'text-white/70'
-                                }`}>
+                                <span
+                                    className={`text-[11px] md:text-xs transition-colors ${
+                                        onDark ? 'text-white/65' : 'text-ink-muted'
+                                    }`}
+                                >
                                     Al-Sari Carpets & Furnishings
                                 </span>
-                            </div>
-                        </div>
-                    </Link>
+                            </span>
+                        </Link>
 
-                    {/* Desktop Menu */}
-                    <div className="hidden lg:flex items-center gap-8">
-                        {menuItems.map((item) => (
-                            <Link
-                                key={item.label}
-                                href={item.href}
-                                onClick={(e) => handleNavClick(e, item.href, item.sectionId)}
-                                className={`text-sm transition-colors ${
-                                    isScrolled || !isHome
-                                        ? 'text-[#4A4A4A] hover:text-[#1A1A1A]'
-                                        : 'text-white/90 hover:text-white'
+                        {/* Desktop Menu */}
+                        <div className="hidden lg:flex items-center gap-8">
+                            {menuItems.map((item) => (
+                                <Link
+                                    key={item.label}
+                                    href={item.href}
+                                    onClick={(e) => handleNavClick(e, item.sectionId)}
+                                    className={`relative py-1 text-sm transition-colors group ${
+                                        onDark ? 'text-white/85 hover:text-white' : 'text-ink-soft hover:text-ink'
+                                    }`}
+                                >
+                                    {item.label}
+                                    <span className="absolute -bottom-0.5 right-0 h-px w-0 bg-brass transition-all duration-300 group-hover:w-full" />
+                                </Link>
+                            ))}
+                        </div>
+
+                        {/* Desktop CTA */}
+                        <div className="hidden lg:block">
+                            <a
+                                href={PHONE_TEL}
+                                className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium transition-colors ${
+                                    onDark ? 'bg-white text-ink hover:bg-brass-soft' : 'bg-ink text-white hover:bg-ink-soft'
                                 }`}
                             >
-                                {item.label}
-                            </Link>
-                        ))}
-                    </div>
+                                <Phone size={16} />
+                                <span>اتصل الآن</span>
+                            </a>
+                        </div>
 
-                    {/* CTA */}
-                    <div className="hidden lg:block">
-                        <a
-                            href="tel:+966541540047"
-                            className={`flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm transition-colors ${
-                                isScrolled || !isHome
-                                    ? 'bg-[#1A1A1A] text-white hover:bg-[#333]'
-                                    : 'bg-white text-[#1A1A1A] hover:bg-white/90'
-                            }`}
-                        >
-                            <Phone size={16} />
-                            <span>اتصل الآن</span>
-                        </a>
+                        {/* Mobile: quick call + animated burger */}
+                        <div className="flex items-center gap-1 lg:hidden">
+                            <a
+                                href={PHONE_TEL}
+                                aria-label="اتصل الآن"
+                                className={`w-10 h-10 grid place-items-center rounded-full transition-colors ${
+                                    onDark ? 'text-white bg-white/10' : 'text-ink bg-cream'
+                                }`}
+                            >
+                                <Phone size={18} />
+                            </a>
+                            <button
+                                onClick={() => setIsMobileMenuOpen((open) => !open)}
+                                className={`relative w-10 h-10 grid place-items-center rounded-full transition-colors ${
+                                    onDark ? 'text-white' : 'text-ink'
+                                }`}
+                                aria-label={isMobileMenuOpen ? 'إغلاق القائمة' : 'فتح القائمة'}
+                                aria-expanded={isMobileMenuOpen}
+                                aria-controls="mobile-menu"
+                            >
+                                <span className="relative block w-5 h-3.5">
+                                    <span
+                                        className={`absolute right-0 h-[1.5px] bg-current rounded-full transition-all duration-300 ${
+                                            isMobileMenuOpen ? 'top-1.5 w-5 rotate-45' : 'top-0 w-5'
+                                        }`}
+                                    />
+                                    <span
+                                        className={`absolute right-0 top-1.5 h-[1.5px] bg-current rounded-full transition-all duration-300 ${
+                                            isMobileMenuOpen ? 'opacity-0 w-0' : 'w-3.5'
+                                        }`}
+                                    />
+                                    <span
+                                        className={`absolute right-0 h-[1.5px] bg-current rounded-full transition-all duration-300 ${
+                                            isMobileMenuOpen ? 'top-1.5 w-5 -rotate-45' : 'top-3 w-5'
+                                        }`}
+                                    />
+                                </span>
+                            </button>
+                        </div>
                     </div>
-
-                    {/* Mobile Menu Button */}
-                    <button
-                        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                        className={`lg:hidden p-2 ${
-                            isScrolled || !isHome ? 'text-[#1A1A1A]' : 'text-white'
-                        }`}
-                        aria-label={isMobileMenuOpen ? 'إغلاق القائمة' : 'فتح القائمة'}
-                    >
-                        {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-                    </button>
                 </div>
-            </div>
+            </nav>
 
-            {/* Mobile Menu */}
+            {/* Mobile Menu — full-screen sheet with staggered links */}
             <div
-                className={`lg:hidden bg-white border-t border-gray-100 transition-all duration-300 overflow-hidden ${
-                    isMobileMenuOpen ? 'max-h-[400px] opacity-100' : 'max-h-0 opacity-0'
+                id="mobile-menu"
+                className={`lg:hidden fixed inset-0 z-[45] bg-white transition-[clip-path] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                    isMobileMenuOpen ? '[clip-path:circle(150%_at_2.25rem_2.5rem)]' : '[clip-path:circle(0%_at_2.25rem_2.5rem)] pointer-events-none'
                 }`}
+                aria-hidden={!isMobileMenuOpen}
             >
-                <div className="container mx-auto px-4 py-4 space-y-1">
-                    {menuItems.map((item) => (
-                        <Link
-                            key={item.label}
-                            href={item.href}
-                            onClick={(e) => handleNavClick(e, item.href, item.sectionId)}
-                            className="block py-3 text-[#4A4A4A] hover:text-[#1A1A1A] transition-colors border-b border-gray-50 last:border-0"
-                        >
-                            {item.label}
-                        </Link>
-                    ))}
-                    <div className="pt-3">
-                        <a
-                            href="tel:+966541540047"
-                            className="flex items-center justify-center gap-2 w-full px-4 py-3 bg-[#1A1A1A] text-white rounded-lg text-sm"
-                        >
-                            <Phone size={16} />
-                            <span dir="ltr">+966 541 540 047</span>
-                        </a>
+                <div className="h-full flex flex-col px-6 pt-24 pb-8 overflow-y-auto">
+                    <ul className="flex-1">
+                        {menuItems.map((item, i) => (
+                            <li
+                                key={item.label}
+                                className={`border-b border-line transition-all duration-500 ${
+                                    isMobileMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+                                }`}
+                                style={{ transitionDelay: isMobileMenuOpen ? `${120 + i * 60}ms` : '0ms' }}
+                            >
+                                <Link
+                                    href={item.href}
+                                    onClick={(e) => handleNavClick(e, item.sectionId)}
+                                    tabIndex={isMobileMenuOpen ? 0 : -1}
+                                    className="group flex items-center justify-between py-4"
+                                >
+                                    <span className="flex items-baseline gap-4">
+                                        <span className="text-xs text-brass-deep tabular-nums">0{i + 1}</span>
+                                        <span className="font-display text-2xl font-semibold text-ink">{item.label}</span>
+                                    </span>
+                                    <ArrowLeft
+                                        size={18}
+                                        className="text-ink-muted transition-transform group-active:-translate-x-1"
+                                    />
+                                </Link>
+                            </li>
+                        ))}
+                    </ul>
+
+                    <div
+                        className={`mt-8 space-y-3 transition-all duration-500 ${
+                            isMobileMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+                        }`}
+                        style={{ transitionDelay: isMobileMenuOpen ? '450ms' : '0ms' }}
+                    >
+                        <div className="grid grid-cols-2 gap-3">
+                            <a
+                                href={PHONE_TEL}
+                                tabIndex={isMobileMenuOpen ? 0 : -1}
+                                className="press flex items-center justify-center gap-2 py-3.5 rounded-full bg-ink text-white text-sm font-bold"
+                            >
+                                <Phone size={16} />
+                                <span dir="ltr">{PHONE_DISPLAY}</span>
+                            </a>
+                            <a
+                                href={whatsappLink()}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                tabIndex={isMobileMenuOpen ? 0 : -1}
+                                className="press flex items-center justify-center gap-2 py-3.5 rounded-full bg-whatsapp text-white text-sm font-bold"
+                            >
+                                <WhatsAppIcon className="w-4 h-4" />
+                                واتساب
+                            </a>
+                        </div>
+                        <p className="flex items-start gap-2 text-xs text-ink-muted leading-relaxed">
+                            <MapPin size={14} className="mt-0.5 shrink-0 text-brass" />
+                            {ADDRESS}
+                        </p>
                     </div>
                 </div>
             </div>
-        </nav>
+        </>
     );
 }
