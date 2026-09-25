@@ -1,14 +1,13 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowLeft, ShieldCheck, Truck, Wrench } from 'lucide-react';
+import { ArrowLeft, Ruler, Wrench } from 'lucide-react';
 import { products } from '@/lib/products';
 import { whatsappLink } from '@/lib/contact';
 import { WhatsAppIcon } from '@/components/WhatsAppIcon';
 
 const TRUST = [
-    { icon: Truck, label: 'توصيل مجاني بالرياض' },
+    { icon: Ruler, label: 'معاينة وقياس مجاناً' },
     { icon: Wrench, label: 'تركيب احترافي' },
-    { icon: ShieldCheck, label: 'ضمان شامل' },
 ];
 
 /** Server component: this is the LCP block, so it ships no JS. */

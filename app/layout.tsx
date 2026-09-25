@@ -33,7 +33,7 @@ export const metadata: Metadata = {
         default: 'موكيت ومفروشات السريع | أفضل موكيت ومفروشات الرياض',
         template: '%s | موكيت ومفروشات السريع'
     },
-    description: 'موكيت ومفروشات السريع - الرائدون في توفير أجود أنواع الموكيت والسجاد والمفروشات في الرياض والمملكة العربية السعودية. موكيت مساجد، أرضيات مكتبية، باركيه، عشب صناعي، تنسيق حدائق. خدمة تركيب احترافية وضمان شامل. اتصل الآن 0550101867',
+    description: 'موكيت ومفروشات السريع - الرائدون في توفير أجود أنواع الموكيت والسجاد والمفروشات في الرياض والمملكة العربية السعودية. موكيت مساجد، أرضيات مكتبية، باركيه، عشب صناعي، أرضيات مطاط. معاينة وقياس وتركيب احترافي. اتصل الآن 0550101867',
 
     // Keywords for SEO
     keywords: [
@@ -184,7 +184,7 @@ export default function RootLayout({
             `${baseUrl}/images/og-image.jpg`,
             `${baseUrl}/home/hero-moket-alsurye-riyadh.jpg`
         ],
-        "logo": `${baseUrl}/images/logo.png`,
+        "logo": `${baseUrl}/heroBG.jpeg`,
         "telephone": "+966550101867",
         "email": "info@mokeet-elsuarye.com",
         "url": baseUrl,
@@ -239,13 +239,6 @@ export default function RootLayout({
                 "closes": "22:00"
             }
         ],
-        "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.8",
-            "reviewCount": "150",
-            "bestRating": "5",
-            "worstRating": "1"
-        },
         "sameAs": [
             "https://wa.me/966550101867"
         ],
@@ -331,7 +324,7 @@ export default function RootLayout({
         "name": "موكيت ومفروشات السريع",
         "alternateName": "Al-Sari Carpets & Furnishings",
         "url": baseUrl,
-        "logo": `${baseUrl}/images/logo.png`,
+        "logo": `${baseUrl}/heroBG.jpeg`,
         "description": "شركة رائدة في مجال الموكيت والسجاد والمفروشات والأرضيات في الرياض",
         "foundingDate": "2010",
         "founder": {

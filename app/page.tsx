@@ -9,7 +9,6 @@ import { FloatingButtons } from '@/components/FloatingButtons';
 import { Breadcrumb } from '@/components/Breadcrumb';
 
 const ServiceAreas = dynamic(() => import('@/components/ServiceAreas').then(m => ({ default: m.ServiceAreas })));
-const Testimonials = dynamic(() => import('@/components/Testimonials').then(m => ({ default: m.Testimonials })));
 const FAQ = dynamic(() => import('@/components/FAQ').then(m => ({ default: m.FAQ })));
 const Contact = dynamic(() => import('@/components/Contact').then(m => ({ default: m.Contact })));
 
@@ -28,7 +27,6 @@ export default function Home() {
                 <SEOContent />
                 <ProductGallery />
                 <ServiceAreas />
-                <Testimonials />
                 <FAQ />
                 <Contact />
             </main>

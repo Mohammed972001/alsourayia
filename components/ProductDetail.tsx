@@ -29,51 +29,24 @@ export function ProductDetail({ productId, dynamicGallery, onBack }: ProductDeta
         : product.gallery.length > 0 ? product.gallery : [product.image];
     const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.mokeet-elsuarye.com';
 
+    // Priced per project after measuring, so this is a Service: a Product
+    // would need a real price or genuine reviews, and the site has neither.
     const productSchema = {
         "@context": "https://schema.org",
-        "@type": "Product",
+        "@type": "Service",
         "@id": `${baseUrl}/products/${product.id}`,
         "url": `${baseUrl}/products/${product.id}`,
         "name": product.name,
         "description": product.description,
-        "image": allImages.map((img, index) => ({
-            "@type": "ImageObject",
-            "url": `${baseUrl}${img}`,
-            "name": `${product.name} - صورة ${index + 1}`,
-            "description": `${product.name} من موكيت ومفروشات السريع في الرياض`,
-            "contentUrl": `${baseUrl}${img}`,
-            "thumbnailUrl": `${baseUrl}${img}`
-        })),
-        "brand": {
-            "@type": "Brand",
+        "serviceType": product.category,
+        "image": allImages.map((img) => `${baseUrl}${img}`),
+        "areaServed": { "@type": "City", "name": "الرياض" },
+        "provider": {
+            "@type": "LocalBusiness",
+            "@id": `${baseUrl}/#localbusiness`,
             "name": "موكيت ومفروشات السريع",
-            "logo": `${baseUrl}/images/logo.png`
-        },
-        "category": product.category,
-        "sku": `SURYE-${product.id.toUpperCase()}`,
-        "mpn": `MFS-${product.id.toUpperCase()}-2025`,
-        "color": product.colors.map(c => c.name).join(', '),
-        "offers": {
-            "@type": "Offer",
-            "url": `${baseUrl}/products/${product.id}`,
-            "availability": "https://schema.org/InStock",
-            "itemCondition": "https://schema.org/NewCondition",
-            "priceCurrency": "SAR",
-            "price": "0",
-            "priceValidUntil": "2026-12-31",
-            "seller": {
-                "@type": "Organization",
-                "name": "موكيت ومفروشات السريع",
-                "url": baseUrl,
-                "telephone": "+966550101867"
-            }
-        },
-        "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.8",
-            "reviewCount": "50",
-            "bestRating": "5",
-            "worstRating": "1"
+            "url": baseUrl,
+            "telephone": "+966550101867"
         }
     };
 

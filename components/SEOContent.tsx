@@ -6,9 +6,9 @@ import { ArrowLeft, ChevronDown } from 'lucide-react';
 import { SectionHeading } from '@/components/SectionHeading';
 
 const cards = [
-    { title: 'موكيت مساجد', desc: 'موكيت مساجد عالي الجودة بتصاميم إسلامية فاخرة، مقاوم للحريق ومعالج ضد البكتيريا. توصيل وتركيب مجاني لجميع مناطق الرياض.' },
+    { title: 'موكيت مساجد', desc: 'موكيت مساجد عالي الجودة بتصاميم إسلامية فاخرة، مقاوم للحريق ومعالج ضد البكتيريا. مع التركيب في جميع أحياء الرياض.' },
     { title: 'أرضيات مكتبية', desc: 'أرضيات مكتبية احترافية تناسب بيئات العمل الحديثة. سهلة التنظيف ومقاومة للخدوش مع تشكيلة واسعة من الألوان.' },
-    { title: 'باركيه فاخر', desc: 'باركيه ضد الماء بجودة ألمانية. مناسب للمنازل والفلل والشقق الفاخرة. ضمان يصل إلى 25 سنة.' },
+    { title: 'باركيه فاخر', desc: 'باركيه ضد الماء للمطابخ والحمامات، وباركيه بمظهر الخشب الطبيعي للصالات وغرف النوم في المنازل والفلل والشقق.' },
     { title: 'عشب صناعي', desc: 'عشب صناعي عالي الكثافة للحدائق والملاعب والمساحات الخارجية. مقاوم للأشعة فوق البنفسجية.' },
 ];
 
@@ -20,7 +20,7 @@ export function SEOContent() {
         <section className="py-16 md:py-24 bg-cream">
             <div className="container mx-auto px-4 lg:px-8">
                 <div className="max-w-4xl mx-auto">
-                    <SectionHeading eyebrow="لماذا السريع" title="لماذا موكيت ومفروشات السريع الخيار الأول في الرياض؟" />
+                    <SectionHeading eyebrow="لماذا السريع" title="لماذا تختار موكيت ومفروشات السريع في الرياض؟" />
 
                     {/* Category cards — swipe rail on phones, grid on desktop */}
                     <div className="flex md:grid md:grid-cols-2 gap-3 md:gap-5 overflow-x-auto no-scrollbar snap-x snap-mandatory -mx-4 px-4 md:mx-0 md:px-0 pb-2 mb-10">
@@ -70,8 +70,8 @@ export function SEOContent() {
                             <p>
                                 نتميز في <strong className="text-ink">موكيت السريع</strong> بتقديم خدمات متكاملة تشمل:{' '}
                                 <strong className="text-ink">الاستشارة المجانية</strong>، <strong className="text-ink">المعاينة والقياس</strong>،{' '}
-                                <strong className="text-ink">التوصيل المجاني داخل الرياض</strong>، و<strong className="text-ink">التركيب الاحترافي</strong>{' '}
-                                بواسطة فريق متخصص. كما نوفر <strong className="text-ink">ضمان شامل</strong> على جميع منتجاتنا.
+                                و<strong className="text-ink">التركيب الاحترافي</strong>{' '}
+                                بواسطة فريق متخصص.
                             </p>
 
                             <p>

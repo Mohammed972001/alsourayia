@@ -1,14 +1,6 @@
 import Link from 'next/link';
 import { Gem, Palette, Headset } from 'lucide-react';
 import { SectionHeading } from '@/components/SectionHeading';
-import { CountUp } from '@/components/CountUp';
-
-const stats = [
-    { number: '15+', label: 'سنة من الخبرة' },
-    { number: '5000+', label: 'عميل راضٍ' },
-    { number: '10000+', label: 'مشروع مكتمل' },
-    { number: '100%', label: 'ضمان الجودة' },
-];
 
 const features = [
     { icon: Gem, title: 'جودة استثنائية', desc: 'نستخدم أفضل المواد والخامات لضمان موكيت وسجاد يدوم طويلاً' },
@@ -35,7 +27,7 @@ export function About() {
                 </p>
 
                 {/* Features */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-6 mb-12 md:mb-20">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-6">
                     {features.map((feature, i) => (
                         <div
                             key={feature.title}
@@ -52,25 +44,6 @@ export function About() {
                             </div>
                         </div>
                     ))}
-                </div>
-
-                {/* Stats */}
-                <div className="relative overflow-hidden grain rounded-3xl bg-ink text-white" data-reveal="scale">
-                    <div className="relative grid grid-cols-2 md:grid-cols-4">
-                        {stats.map((stat, i) => (
-                            <div
-                                key={stat.label}
-                                className={`text-center px-4 py-8 md:py-12 border-white/10 ${i % 2 === 0 ? 'border-l' : ''} ${
-                                    i < 2 ? 'border-b md:border-b-0' : ''
-                                } md:border-l md:last:border-l-0`}
-                            >
-                                <div className="font-display text-3xl md:text-5xl font-bold text-brass mb-2" dir="ltr">
-                                    <CountUp value={stat.number} />
-                                </div>
-                                <div className="text-white/65 text-xs md:text-sm">{stat.label}</div>
-                            </div>
-                        ))}
-                    </div>
                 </div>
             </div>
         </section>
