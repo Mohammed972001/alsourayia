@@ -1,13 +1,13 @@
 'use client';
 
-import { ArrowRight, Check, Phone, MessageCircle } from 'lucide-react';
+import { ArrowRight, Check, Phone, MessageCircle, MapPin } from 'lucide-react';
 import { categoryToSlug, getProductById, type Product } from '@/lib/products';
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { Breadcrumb } from './Breadcrumb';
-import { PHONE_TEL, whatsappLink } from '@/lib/contact';
+import { ADDRESS, MAPS_URL, PHONE_TEL, whatsappLink } from '@/lib/contact';
 
 interface ProductDetailProps {
     productId: string;
@@ -181,7 +181,7 @@ export function ProductDetail({ productId, dynamicGallery, onBack }: ProductDeta
                             </div>
 
                             {/* Contact */}
-                            <div className="grid grid-cols-2 gap-3 mb-6 lg:mb-8">
+                            <div className="grid grid-cols-2 gap-3 mb-4">
                                 <a
                                     href={PHONE_TEL}
                                     className="flex items-center justify-center gap-2 px-4 py-3 bg-[#F9FAFB] text-[#4A4A4A] rounded-lg hover:bg-gray-100 transition-colors text-sm"
@@ -197,6 +197,28 @@ export function ProductDetail({ productId, dynamicGallery, onBack }: ProductDeta
                                 >
                                     <MessageCircle size={16} />
                                     <span>واتساب</span>
+                                </a>
+                            </div>
+
+                            {/* What the visitor gets, and where the shop is: the page had
+                                no trust signal above the long description. */}
+                            <div className="rounded-lg border border-green-200 bg-green-50 px-4 py-3 mb-6 lg:mb-8 text-sm text-[#1A1A1A]">
+                                <div className="flex flex-wrap gap-x-4 gap-y-1.5 mb-2">
+                                    {['معاينة وقياس مجاناً', 'عينة مجانية', 'عرض سعر على الواتساب'].map((item) => (
+                                        <span key={item} className="flex items-center gap-1.5">
+                                            <Check size={14} className="text-green-700" />
+                                            {item}
+                                        </span>
+                                    ))}
+                                </div>
+                                <a
+                                    href={MAPS_URL}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-start gap-1.5 text-[#4A4A4A] hover:text-[#1A1A1A]"
+                                >
+                                    <MapPin size={14} className="mt-0.5 shrink-0" />
+                                    <span>معرضنا: {ADDRESS} — الموقع على الخريطة</span>
                                 </a>
                             </div>
 

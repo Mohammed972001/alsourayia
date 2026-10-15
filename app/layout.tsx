@@ -151,11 +151,6 @@ export const metadata: Metadata = {
         },
     },
 
-    // Verification (add your verification codes)
-    verification: {
-        google: 'your-google-verification-code',
-    },
-
     // Category
     category: 'business',
 
