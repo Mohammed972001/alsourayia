@@ -6,6 +6,8 @@ export interface ProductDetails {
   metaDescription: string;
   keywords: string[];
   imageDir?: string;
+  /** Show the folder's newest photos first (WhatsApp file names sort by date). */
+  newestFirst?: boolean;
   images: string[];
   availableColors: { name: string; value: string }[];
   price: number;

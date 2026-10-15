@@ -10,8 +10,10 @@ import { WhatsAppIcon } from '@/components/WhatsAppIcon';
  * Mobile: a thumb-reach action bar. On the home page it slides up once the
  * visitor leaves the hero (whose own CTAs cover the first screen).
  * Desktop: round floating buttons, WhatsApp with a soft pulse ring.
+ * `message` prefills WhatsApp; product pages pass the product name so the
+ * shop knows what the visitor is asking about.
  */
-export function FloatingButtons() {
+export function FloatingButtons({ message }: { message?: string } = {}) {
     const [showBar, setShowBar] = useState(false);
     const isHome = usePathname() === '/';
 
@@ -39,7 +41,7 @@ export function FloatingButtons() {
                         اتصل الآن
                     </a>
                     <a
-                        href={whatsappLink()}
+                        href={whatsappLink(message)}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="press flex items-center justify-center gap-2 h-12 rounded-full bg-whatsapp text-white text-sm font-bold"
@@ -52,7 +54,7 @@ export function FloatingButtons() {
 
             {/* Desktop floating buttons */}
             <a
-                href={whatsappLink()}
+                href={whatsappLink(message)}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="تواصل عبر واتساب"

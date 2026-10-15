@@ -66,7 +66,7 @@ export default async function ProductPage({ params }: Props) {
             <Navigation />
             <ProductDetail productId={product.id} dynamicGallery={product.gallery} />
             <Footer />
-            <FloatingButtons />
+            <FloatingButtons message={`أريد الاستفسار عن ${product.name} من موكيت ومفروشات السريع`} />
         </div>
     );
 }

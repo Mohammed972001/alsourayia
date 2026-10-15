@@ -1,6 +1,9 @@
 import type { Metadata } from 'next';
 import { Tajawal, El_Messiri } from 'next/font/google';
+import Script from 'next/script';
 import { RevealObserver } from '@/components/RevealObserver';
+import ConversionTracker from '@/components/analytics/ConversionTracker';
+import { ADS_ID, GA4_ID } from '@/lib/analytics';
 import './globals.css';
 
 // Self-hosted via Next.js — eliminates render-blocking Google Fonts request
@@ -357,14 +360,8 @@ export default function RootLayout({
     return (
         <html lang="ar" dir="rtl" className={`${tajawal.variable} ${messiri.variable}`}>
             <head>
-
-                {/* Preload Hero Image for LCP */}
-                <link
-                    rel="preload"
-                    as="image"
-                    href="/heroBG.jpeg"
-                    type="image/jpeg"
-                />
+                {/* No global hero preload: the home Hero's <Image priority> already
+                    preloads it, and every other page downloaded a photo it never shows. */}
 
                 {/* Favicon */}
                 <link rel="icon" href="/favicon.ico" />
@@ -397,8 +394,43 @@ export default function RootLayout({
                 <meta name="apple-mobile-web-app-status-bar-style" content="default" />
                 <meta name="apple-mobile-web-app-title" content="موكيت السريع" />
 
-                {/* TikTok Pixel Code */}
-                <script
+            </head>
+            <body className="font-tajawal antialiased">
+                <ConversionTracker />
+                {children}
+                <RevealObserver />
+
+                {/* Google tag: Ads and GA4 share one gtag.js. IDs come from env, so
+                    nothing loads until they are set on this site's Vercel project.
+                    afterInteractive, not lazyOnload: on a slow phone the load event
+                    comes seconds after the WhatsApp bar is already tappable. */}
+                {(ADS_ID || GA4_ID) && (
+                    <>
+                        <Script
+                            src={`https://www.googletagmanager.com/gtag/js?id=${ADS_ID || GA4_ID}`}
+                            strategy="afterInteractive"
+                        />
+                        <Script
+                            id="gtag-init"
+                            strategy="afterInteractive"
+                            dangerouslySetInnerHTML={{
+                                __html: [
+                                    'window.dataLayer = window.dataLayer || [];',
+                                    'function gtag(){dataLayer.push(arguments);}',
+                                    "gtag('js', new Date());",
+                                    ADS_ID && `gtag('config', '${ADS_ID}');`,
+                                    GA4_ID && `gtag('config', '${GA4_ID}');`,
+                                ].filter(Boolean).join('\n'),
+                            }}
+                        />
+                    </>
+                )}
+
+                {/* TikTok pixel, after load: its events.js was the heaviest script
+                    blocking the main thread on phones. */}
+                <Script
+                    id="tiktok-pixel"
+                    strategy="lazyOnload"
                     dangerouslySetInnerHTML={{
                         __html: `
 !function (w, d, t) {
@@ -412,10 +444,6 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
                         `
                     }}
                 />
-            </head>
-            <body className="font-tajawal antialiased">
-                {children}
-                <RevealObserver />
             </body>
         </html>
     );

@@ -7,6 +7,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { Breadcrumb } from './Breadcrumb';
+import { PHONE_TEL, whatsappLink } from '@/lib/contact';
 
 interface ProductDetailProps {
     productId: string;
@@ -137,64 +138,70 @@ export function ProductDetail({ productId, dynamicGallery, onBack }: ProductDeta
 
             <Breadcrumb items={breadcrumbItems} />
 
-            <div className="pt-8 pb-20">
+            <div className="pt-4 lg:pt-8 pb-20">
                 <div className="container mx-auto px-4 lg:px-8">
                     {/* Back */}
                     <button
                         onClick={handleBack}
-                        className="flex items-center gap-2 text-[#4A4A4A] hover:text-[#1A1A1A] transition-colors mb-8 text-sm"
+                        className="flex items-center gap-2 text-[#4A4A4A] hover:text-[#1A1A1A] transition-colors mb-4 lg:mb-8 text-sm"
                     >
                         <span>العودة إلى المنتجات</span>
                         <ArrowRight size={16} />
                     </button>
 
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                        {/* Images */}
-                        <div>
-                            <div className="relative overflow-hidden rounded-lg bg-gray-100 mb-4 aspect-[4/3]">
-                                <Image
-                                    src={allImages[selectedImage]}
-                                    alt={getImageAlt(selectedImage)}
-                                    fill
-                                    priority={selectedImage === 0}
-                                    quality={85}
-                                    sizes="(max-width: 768px) 100vw, 50vw"
-                                    className="object-cover"
-                                />
+                    {/* Three blocks placed explicitly. On a phone they stack in source
+                        order, so a visitor from an ad sees the headline and the contact
+                        buttons on the first screen instead of after the photo and two
+                        rows of thumbnails. On desktop the gallery keeps its column. */}
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 lg:items-start">
+                        {/* Summary + contact */}
+                        <div className="lg:col-start-2 lg:row-start-1">
+                            <span className="text-xs text-[#6B7280] mb-2 block">{product.category}</span>
+                            <h1 className="text-2xl md:text-3xl text-[#1A1A1A] mb-3 lg:mb-4">{product.name}</h1>
+                            <p className="text-[#4A4A4A] mb-5 lg:mb-8 leading-relaxed">{product.description}</p>
+
+                            {/* CTAs */}
+                            <div className="flex flex-col sm:flex-row gap-3 mb-3">
+                                <a
+                                    href={whatsappLink(`أريد الاستفسار عن ${product.name} من موكيت ومفروشات السريع`)}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex-1 px-6 py-3.5 bg-[#1A1A1A] text-white rounded-lg hover:bg-[#333] transition-colors text-center text-sm"
+                                >
+                                    طلب عرض سعر
+                                </a>
+                                <a
+                                    href={whatsappLink(`أريد طلب عينة مجانية من ${product.name}`)}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex-1 px-6 py-3.5 border border-gray-200 text-[#4A4A4A] rounded-lg hover:border-gray-400 transition-colors text-center text-sm"
+                                >
+                                    طلب عينة مجانية
+                                </a>
                             </div>
 
-                            {allImages.length > 1 && (
-                                <div className="grid grid-cols-6 gap-2">
-                                    {allImages.slice(0, 12).map((image, index) => (
-                                        <button
-                                            key={index}
-                                            onClick={() => setSelectedImage(index)}
-                                            className={`relative overflow-hidden rounded-md aspect-square ${
-                                                selectedImage === index ? 'ring-2 ring-[#1A1A1A]' : 'opacity-60 hover:opacity-100'
-                                            } transition-all`}
-                                            aria-label={`عرض ${getImageAlt(index)}`}
-                                        >
-                                            <Image
-                                                src={image}
-                                                alt={getImageAlt(index)}
-                                                fill
-                                                sizes="80px"
-                                                className="object-cover"
-                                            />
-                                        </button>
-                                    ))}
-                                </div>
-                            )}
-                        </div>
-
-                        {/* Product Info */}
-                        <div>
-                            <span className="text-xs text-[#6B7280] mb-2 block">{product.category}</span>
-                            <h1 className="text-2xl md:text-3xl text-[#1A1A1A] mb-4">{product.name}</h1>
-                            <p className="text-[#4A4A4A] mb-8 leading-relaxed">{product.description}</p>
+                            {/* Contact */}
+                            <div className="grid grid-cols-2 gap-3 mb-6 lg:mb-8">
+                                <a
+                                    href={PHONE_TEL}
+                                    className="flex items-center justify-center gap-2 px-4 py-3 bg-[#F9FAFB] text-[#4A4A4A] rounded-lg hover:bg-gray-100 transition-colors text-sm"
+                                >
+                                    <Phone size={16} />
+                                    <span>اتصل الآن</span>
+                                </a>
+                                <a
+                                    href={whatsappLink(`أريد الاستفسار عن ${product.name} من موكيت ومفروشات السريع`)}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-center justify-center gap-2 px-4 py-3 bg-[#F9FAFB] text-[#4A4A4A] rounded-lg hover:bg-gray-100 transition-colors text-sm"
+                                >
+                                    <MessageCircle size={16} />
+                                    <span>واتساب</span>
+                                </a>
+                            </div>
 
                             {/* Colors */}
-                            <div className="mb-8">
+                            <div>
                                 <p className="text-sm text-[#6B7280] mb-3">الألوان المتوفرة</p>
                                 <div className="flex flex-wrap gap-2">
                                     {product.colors.map((color, index) => (
@@ -216,58 +223,58 @@ export function ProductDetail({ productId, dynamicGallery, onBack }: ProductDeta
                                     ))}
                                 </div>
                             </div>
+                        </div>
 
-                            {/* CTAs */}
-                            <div className="flex flex-col sm:flex-row gap-3 mb-8">
-                                <a
-                                    href={`https://wa.me/966550101867?text=أريد الاستفسار عن ${product.name} من موكيت ومفروشات السريع`}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="flex-1 px-6 py-3.5 bg-[#1A1A1A] text-white rounded-lg hover:bg-[#333] transition-colors text-center text-sm"
-                                >
-                                    طلب عرض سعر
-                                </a>
-                                <a
-                                    href={`https://wa.me/966550101867?text=أريد طلب عينة مجانية من ${product.name}`}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="flex-1 px-6 py-3.5 border border-gray-200 text-[#4A4A4A] rounded-lg hover:border-gray-400 transition-colors text-center text-sm"
-                                >
-                                    طلب عينة مجانية
-                                </a>
+                        {/* Images */}
+                        <div className="lg:col-start-1 lg:row-start-1 lg:row-span-2">
+                            <div className="relative overflow-hidden rounded-lg bg-gray-100 mb-3 aspect-[4/3]">
+                                <Image
+                                    src={allImages[selectedImage]}
+                                    alt={getImageAlt(selectedImage)}
+                                    fill
+                                    priority={selectedImage === 0}
+                                    quality={85}
+                                    sizes="(max-width: 1024px) 100vw, 50vw"
+                                    className="object-cover"
+                                />
                             </div>
 
-                            {/* Contact */}
-                            <div className="grid grid-cols-2 gap-3 mb-8">
-                                <a
-                                    href="tel:+966550101867"
-                                    className="flex items-center justify-center gap-2 px-4 py-3 bg-[#F9FAFB] text-[#4A4A4A] rounded-lg hover:bg-gray-100 transition-colors text-sm"
-                                >
-                                    <Phone size={16} />
-                                    <span>اتصل الآن</span>
-                                </a>
-                                <a
-                                    href="https://wa.me/966550101867"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="flex items-center justify-center gap-2 px-4 py-3 bg-[#F9FAFB] text-[#4A4A4A] rounded-lg hover:bg-gray-100 transition-colors text-sm"
-                                >
-                                    <MessageCircle size={16} />
-                                    <span>واتساب</span>
-                                </a>
-                            </div>
-
-                            {/* Features */}
-                            <div className="p-6 bg-[#F9FAFB] rounded-lg">
-                                <h2 className="text-lg text-[#1A1A1A] mb-4">مميزات المنتج</h2>
-                                <div className="space-y-3">
-                                    {product.features.map((feature) => (
-                                        <div key={feature} className="flex items-start gap-3">
-                                            <Check size={16} className="text-[#4A4A4A] flex-shrink-0 mt-0.5" />
-                                            <span className="text-[#4A4A4A] text-sm">{feature}</span>
-                                        </div>
+                            {/* Thumbnails: one horizontal strip instead of a 6-column grid
+                                that stacked two rows above everything on a phone. */}
+                            {allImages.length > 1 && (
+                                <div className="flex gap-2 overflow-x-auto pb-1">
+                                    {allImages.slice(0, 12).map((image, index) => (
+                                        <button
+                                            key={index}
+                                            onClick={() => setSelectedImage(index)}
+                                            className={`relative shrink-0 w-16 h-16 lg:w-20 lg:h-20 overflow-hidden rounded-md ${
+                                                selectedImage === index ? 'ring-2 ring-[#1A1A1A]' : 'opacity-60 hover:opacity-100'
+                                            } transition-all`}
+                                            aria-label={`عرض ${getImageAlt(index)}`}
+                                        >
+                                            <Image
+                                                src={image}
+                                                alt={getImageAlt(index)}
+                                                fill
+                                                sizes="80px"
+                                                className="object-cover"
+                                            />
+                                        </button>
                                     ))}
                                 </div>
+                            )}
+                        </div>
+
+                        {/* Features */}
+                        <div className="lg:col-start-2 lg:row-start-2 p-6 bg-[#F9FAFB] rounded-lg">
+                            <h2 className="text-lg text-[#1A1A1A] mb-4">مميزات المنتج</h2>
+                            <div className="space-y-3">
+                                {product.features.map((feature) => (
+                                    <div key={feature} className="flex items-start gap-3">
+                                        <Check size={16} className="text-[#4A4A4A] flex-shrink-0 mt-0.5" />
+                                        <span className="text-[#4A4A4A] text-sm">{feature}</span>
+                                    </div>
+                                ))}
                             </div>
                         </div>
                     </div>

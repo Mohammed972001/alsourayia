@@ -14,7 +14,7 @@ export function getProductWithDynamicImages(id: string): Product | undefined {
   let images = productData.images;
   if (productData.imageDir) {
     const dirImages = getImagesFromDir(productData.imageDir);
-    if (dirImages.length > 0) images = dirImages;
+    if (dirImages.length > 0) images = productData.newestFirst ? [...dirImages].reverse() : dirImages;
   }
 
   return {
