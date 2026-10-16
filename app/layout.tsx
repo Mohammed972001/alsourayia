@@ -177,13 +177,13 @@ export default function RootLayout({
         "@id": `${baseUrl}/#localbusiness`,
         "name": "موكيت ومفروشات السريع",
         "alternateName": ["Al-Sari Carpets & Furnishings", "موكيت السريع", "مفروشات السريع"],
-        "description": "متخصصون في توفير أجود أنواع الموكيت والسجاد والمفروشات والأرضيات في الرياض والمملكة العربية السعودية. موكيت مساجد، باركيه، عشب صناعي، تنسيق حدائق.",
+        "description": "موكيت ومفروشات وأرضيات في الرياض: موكيت مكاتب وبلاط موكيت، أرضيات مطاط (ربل) للجيم والإسطبلات، موكيت مساجد، فينيل، باركيه وعشب صناعي.",
         "image": [
             `${baseUrl}/images/og-image.jpg`,
             `${baseUrl}/home/hero-moket-alsurye-riyadh.jpg`
         ],
         "logo": `${baseUrl}/heroBG.jpeg`,
-        "telephone": "+966550101867",
+        "telephone": ["+966550101867", "+966541540047"],
         "email": "info@mokeet-elsuarye.com",
         "url": baseUrl,
         "address": {
@@ -191,13 +191,12 @@ export default function RootLayout({
             "streetAddress": "مخرج ٢٢ حراج بن قاسم القديم سوق العرب الدولي",
             "addressLocality": "الرياض",
             "addressRegion": "منطقة الرياض",
-            "postalCode": "12345",
             "addressCountry": "SA"
         },
         "geo": {
             "@type": "GeoCoordinates",
-            "latitude": 24.5959,
-            "longitude": 46.7306
+            "latitude": 24.596556,
+            "longitude": 46.730583
         },
         "areaServed": [
             {
@@ -206,29 +205,12 @@ export default function RootLayout({
                 "@id": "https://www.wikidata.org/wiki/Q3692"
             },
             {
-                "@type": "City",
-                "name": "جدة"
-            },
-            {
-                "@type": "City",
-                "name": "الدمام"
-            },
-            {
-                "@type": "City",
-                "name": "مكة المكرمة"
-            },
-            {
-                "@type": "City",
-                "name": "المدينة المنورة"
-            },
-            {
                 "@type": "Country",
                 "name": "المملكة العربية السعودية"
             }
         ],
         "priceRange": "$$",
         "currenciesAccepted": "SAR",
-        "paymentAccepted": "Cash, Credit Card, Mada, Bank Transfer",
         "openingHoursSpecification": [
             {
                 "@type": "OpeningHoursSpecification",
@@ -237,8 +219,9 @@ export default function RootLayout({
                 "closes": "22:00"
             }
         ],
+        "hasMap": "https://www.google.com/maps?q=24.596556,46.730583",
         "sameAs": [
-            "https://wa.me/966550101867"
+            "https://www.tiktok.com/@httpswww.mokeetelsuarye1"
         ],
         "hasOfferCatalog": {
             "@type": "OfferCatalog",
@@ -296,14 +279,6 @@ export default function RootLayout({
                             "@type": "Offer",
                             "itemOffered": {
                                 "@type": "Service",
-                                "name": "تنسيق حدائق",
-                                "description": "خدمات تنسيق حدائق احترافية"
-                            }
-                        },
-                        {
-                            "@type": "Offer",
-                            "itemOffered": {
-                                "@type": "Service",
                                 "name": "تركيب موكيت",
                                 "description": "خدمة تركيب موكيت احترافية"
                             }
@@ -323,19 +298,24 @@ export default function RootLayout({
         "alternateName": "Al-Sari Carpets & Furnishings",
         "url": baseUrl,
         "logo": `${baseUrl}/heroBG.jpeg`,
-        "description": "شركة رائدة في مجال الموكيت والسجاد والمفروشات والأرضيات في الرياض",
-        "foundingDate": "2010",
-        "founder": {
-            "@type": "Person",
-            "name": "السريع"
-        },
-        "contactPoint": {
-            "@type": "ContactPoint",
-            "telephone": "+966550101867",
-            "contactType": "customer service",
-            "areaServed": "SA",
-            "availableLanguage": ["Arabic", "English"]
-        }
+        "description": "موكيت ومفروشات وأرضيات في الرياض",
+        "sameAs": ["https://www.tiktok.com/@httpswww.mokeetelsuarye1"],
+        "contactPoint": [
+            {
+                "@type": "ContactPoint",
+                "telephone": "+966550101867",
+                "contactType": "sales",
+                "areaServed": "SA",
+                "availableLanguage": "Arabic"
+            },
+            {
+                "@type": "ContactPoint",
+                "telephone": "+966541540047",
+                "contactType": "sales",
+                "areaServed": "SA",
+                "availableLanguage": "Arabic"
+            }
+        ]
     };
 
     // WebSite Schema for Sitelinks

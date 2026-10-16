@@ -1,7 +1,7 @@
 import { MapPin, Phone, Clock, Navigation as NavIcon } from 'lucide-react';
 import { SectionHeading } from '@/components/SectionHeading';
 import { WhatsAppIcon } from '@/components/WhatsAppIcon';
-import { ADDRESS, MAPS_URL, PHONE_DISPLAY, PHONE_TEL, whatsappLink } from '@/lib/contact';
+import { ADDRESS, MAPS_URL, PHONE_DISPLAY, PHONE_TEL, PHONE2_DISPLAY, PHONE2_TEL, whatsappLink } from '@/lib/contact';
 
 const quickActions = [
     { label: 'اتصل بنا', href: PHONE_TEL, icon: Phone, external: false, tone: 'bg-ink text-white' },
@@ -53,9 +53,14 @@ export function Contact({ headingAs = 'h2' }: { headingAs?: 'h1' | 'h2' }) {
                                 </span>
                                 <div>
                                     <h3 className="text-sm font-bold text-ink mb-1">الهاتف</h3>
-                                    <a href={PHONE_TEL} className="text-ink-soft hover:text-ink transition-colors" dir="ltr">
-                                        {PHONE_DISPLAY}
-                                    </a>
+                                    <div className="flex flex-wrap gap-x-4 gap-y-1">
+                                        <a href={PHONE_TEL} className="text-ink-soft hover:text-ink transition-colors" dir="ltr">
+                                            {PHONE_DISPLAY}
+                                        </a>
+                                        <a href={PHONE2_TEL} className="text-ink-soft hover:text-ink transition-colors" dir="ltr">
+                                            {PHONE2_DISPLAY}
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                             <div className="flex items-start gap-4 p-5">

@@ -1,6 +1,9 @@
 export const PHONE_DISPLAY = '0550101867';
 export const PHONE_TEL = 'tel:+966550101867';
 export const WHATSAPP_NUMBER = '966550101867';
+// Second line for calls only (no WhatsApp on it as far as we know).
+export const PHONE2_DISPLAY = '0541540047';
+export const PHONE2_TEL = 'tel:+966541540047';
 export const ADDRESS = 'مخرج ٢٢ حراج بن قاسم القديم سوق العرب الدولي، الرياض';
 export const MAPS_URL = 'https://www.google.com/maps?q=24.596556,46.730583';
 

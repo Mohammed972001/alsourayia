@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { Phone, MapPin } from 'lucide-react';
-import { ADDRESS, PHONE_DISPLAY, PHONE_TEL, whatsappLink } from '@/lib/contact';
+import { ADDRESS, PHONE_DISPLAY, PHONE_TEL, PHONE2_DISPLAY, PHONE2_TEL, whatsappLink } from '@/lib/contact';
 import { WhatsAppIcon } from '@/components/WhatsAppIcon';
 
 // Real URLs rather than #section anchors: the footer is on every page, so
@@ -92,6 +92,10 @@ export function Footer() {
                             <a href={PHONE_TEL} className="flex items-center gap-2 text-white/60 hover:text-white text-sm transition-colors">
                                 <Phone size={14} />
                                 <span dir="ltr">{PHONE_DISPLAY}</span>
+                            </a>
+                            <a href={PHONE2_TEL} className="flex items-center gap-2 text-white/60 hover:text-white text-sm transition-colors">
+                                <Phone size={14} />
+                                <span dir="ltr">{PHONE2_DISPLAY}</span>
                             </a>
                             <address className="not-italic flex items-start gap-2 text-white/60 text-sm">
                                 <MapPin size={14} className="mt-0.5 flex-shrink-0" />
