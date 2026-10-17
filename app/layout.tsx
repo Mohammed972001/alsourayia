@@ -182,7 +182,7 @@ export default function RootLayout({
             `${baseUrl}/images/og-image.jpg`,
             `${baseUrl}/home/hero-moket-alsurye-riyadh.jpg`
         ],
-        "logo": `${baseUrl}/heroBG.jpeg`,
+        "logo": `${baseUrl}/logo.png`,
         "telephone": ["+966550101867", "+966541540047"],
         "email": "info@mokeet-elsuarye.com",
         "url": baseUrl,
@@ -297,7 +297,7 @@ export default function RootLayout({
         "name": "موكيت ومفروشات السريع",
         "alternateName": "Al-Sari Carpets & Furnishings",
         "url": baseUrl,
-        "logo": `${baseUrl}/heroBG.jpeg`,
+        "logo": `${baseUrl}/logo.png`,
         "description": "موكيت ومفروشات وأرضيات في الرياض",
         "sameAs": ["https://www.tiktok.com/@httpswww.mokeetelsuarye1"],
         "contactPoint": [
