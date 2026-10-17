@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import { Phone } from 'lucide-react';
 import { PHONE_TEL, whatsappLink } from '@/lib/contact';
 import { WhatsAppIcon } from '@/components/WhatsAppIcon';
+import ChatWidget from '@/components/ChatWidget';
 
 /**
  * Mobile: a thumb-reach action bar. On the home page it slides up once the
@@ -51,6 +52,15 @@ export function FloatingButtons({ message }: { message?: string } = {}) {
                     </a>
                 </div>
             </div>
+
+            {/* Chat assistant: above the mobile bar, above WhatsApp on desktop */}
+
+            <div className="fixed left-4 bottom-20 z-40 lg:left-6 lg:bottom-24">
+
+                <ChatWidget panelPosition="bottom-36 left-4 lg:bottom-40 lg:left-6" />
+
+            </div>
+
 
             {/* Desktop floating buttons */}
             <a
