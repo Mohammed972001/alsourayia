@@ -1,3 +1,4 @@
+import { initOpenNextCloudflareForDev } from "@opennextjs/cloudflare";
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
@@ -21,11 +22,21 @@ const nextConfig: NextConfig = {
   // The three rubber categories each held a single product and duplicated its
   // page; they are merged into one hub that explains which rubber fits where.
   async redirects() {
-    return ['rabal-gem', 'non-slip-rubber', 'horse-rubber'].map((slug) => ({
-      source: `/products/category/${slug}`,
-      destination: '/products/category/rubber-flooring',
-      permanent: true,
-    }));
+    return [
+      // One canonical host: the apex answers with a permanent redirect to www.
+      // On Vercel this was a (temporary 307) domain setting; on Cloudflare the app owns it.
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'mokeet-elsuarye.com' }],
+        destination: 'https://www.mokeet-elsuarye.com/:path*',
+        permanent: true,
+      },
+      ...['rabal-gem', 'non-slip-rubber', 'horse-rubber'].map((slug) => ({
+        source: `/products/category/${slug}`,
+        destination: '/products/category/rubber-flooring',
+        permanent: true,
+      })),
+    ];
   },
 
   // Strip unused exports from server components to reduce bundle size
@@ -35,3 +46,6 @@ const nextConfig: NextConfig = {
 };
 
 export default nextConfig;
+
+// Lets `next dev` reach the Cloudflare bindings declared in wrangler.jsonc.
+initOpenNextCloudflareForDev();
