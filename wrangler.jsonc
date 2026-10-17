@@ -12,5 +12,9 @@
   // next/image resizing through Cloudflare Images (replaces Vercel image optimization).
   "images": { "binding": "IMAGES" },
   "observability": { "enabled": true },
-  "workers_dev": true
+  "routes": [
+    { "pattern": "www.mokeet-elsuarye.com", "custom_domain": true },
+    { "pattern": "mokeet-elsuarye.com", "custom_domain": true }
+  ],
+  "workers_dev": false
 }
