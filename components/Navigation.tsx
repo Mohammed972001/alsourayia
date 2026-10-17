@@ -91,7 +91,7 @@ export function Navigation() {
                         >
                             <span className="relative w-10 h-10 md:w-11 md:h-11 rounded-xl overflow-hidden flex-shrink-0 ring-1 ring-brass/40">
                                 <Image
-                                    src="/heroBG.jpeg"
+                                    src="/brand/mark.png"
                                     alt="شعار موكيت ومفروشات السريع"
                                     fill
                                     sizes="44px"

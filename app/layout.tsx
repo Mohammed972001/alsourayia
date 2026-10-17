@@ -339,7 +339,8 @@ export default function RootLayout({
                     preloads it, and every other page downloaded a photo it never shows. */}
 
                 {/* Favicon */}
-                <link rel="icon" href="/favicon.ico" />
+                <link rel="icon" href="/favicon.ico" sizes="48x48" />
+                <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png" />
                 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 
                 {/* Structured Data - Local Business */}
