@@ -7,6 +7,9 @@ const nextConfig: NextConfig = {
 
   // Serve optimized images in modern formats (AVIF ~50% smaller, WebP ~30% smaller than JPEG)
   images: {
+    // Every quality used by <Image>: 85 for the hero and product detail, 75 elsewhere.
+    // Anything not listed answers 400 and the picture breaks.
+    qualities: [75, 85],
     formats: ['image/avif', 'image/webp'],
     // Limit image sizes to reduce bandwidth on mobile
     deviceSizes: [640, 750, 828, 1080, 1200, 1920],
