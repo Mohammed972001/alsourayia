@@ -70,6 +70,7 @@ export function Contact({ headingAs = 'h2' }: { headingAs?: 'h1' | 'h2' }) {
                                 <div>
                                     <h3 className="text-sm font-bold text-ink mb-1">أوقات العمل</h3>
                                     <p className="text-ink-soft text-sm">السبت - الخميس: 9:00 صباحاً - 10:00 مساءً</p>
+                                    <p className="text-ink-soft text-sm">الجمعة: الرد على الواتساب</p>
                                 </div>
                             </div>
                         </div>
