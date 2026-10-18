@@ -5,6 +5,7 @@ import { Footer } from '@/components/Footer';
 import { FloatingButtons } from '@/components/FloatingButtons';
 import { Breadcrumb } from '@/components/Breadcrumb';
 import {
+    categoryHref,
     categoryContent,
     categorySlugMap,
     getProductsByCategory,
@@ -174,7 +175,7 @@ export default async function CategoryPage({ params }: Props) {
                                 .map(([s, name]) => (
                                     <Link
                                         key={s}
-                                        href={`/products/category/${s}`}
+                                        href={categoryHref(s)}
                                         className="px-4 py-2 rounded-lg bg-gray-100 text-[#4A4A4A] hover:bg-[#1A1A1A] hover:text-white transition-colors text-sm"
                                     >
                                         {name}

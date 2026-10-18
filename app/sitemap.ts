@@ -1,6 +1,6 @@
 import { MetadataRoute } from 'next';
 import { productsDetails } from '@/data/products';
-import { categorySlugMap } from '@/lib/products';
+import { hubCategorySlugs } from '@/lib/products';
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.mokeet-elsuarye.com';
 const baseUrl = siteUrl.replace(/\/$/, '');
@@ -45,7 +45,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ];
 
     // Category pages - one crawlable URL per product category
-    const categoryPages: MetadataRoute.Sitemap = Object.keys(categorySlugMap).map((slug) => ({
+    const categoryPages: MetadataRoute.Sitemap = hubCategorySlugs.map((slug) => ({
         url: `${baseUrl}/products/category/${slug}`,
         lastModified: currentDate,
         changeFrequency: 'weekly' as const,

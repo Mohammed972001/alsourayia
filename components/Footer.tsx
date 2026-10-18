@@ -14,10 +14,10 @@ const quickLinks = [
 ];
 
 const productLinks = [
-    { name: 'موكيت مساجد', href: '/products/category/mosque-carpets' },
-    { name: 'أرضيات مكتبية', href: '/products/category/office-flooring' },
+    { name: 'موكيت مساجد', href: '/products/mosque-carpets' },
+    { name: 'أرضيات مكتبية', href: '/products/office-flooring' },
     { name: 'باركيه', href: '/products/category/parquet' },
-    { name: 'عشب صناعي', href: '/products/category/artificial-grass' },
+    { name: 'عشب صناعي', href: '/products/artificial-grass' },
     { name: 'ربل جيم', href: '/products/rabal-gem' },
     { name: 'مطاط دورات المياه', href: '/products/non-slip-rubber' },
     { name: 'مطاط إسطبلات الخيل', href: '/products/horse-rubber' },

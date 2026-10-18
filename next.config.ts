@@ -1,5 +1,6 @@
 import { initOpenNextCloudflareForDev } from "@opennextjs/cloudflare";
 import type { NextConfig } from 'next';
+import { mergedCategories } from './lib/merged-categories';
 
 const nextConfig: NextConfig = {
   // Enable gzip/brotli compression for all responses
@@ -22,10 +23,16 @@ const nextConfig: NextConfig = {
     ],
   },
 
-  // The three rubber categories each held a single product and duplicated its
-  // page; they are merged into one hub that explains which rubber fits where.
   async redirects() {
     return [
+      // Plain http answered 200 on Cloudflare (no "Always Use HTTPS"): send it to
+      // the one https host. Cloudflare passes the visitor's scheme in x-forwarded-proto.
+      {
+        source: '/:path*',
+        has: [{ type: 'header', key: 'x-forwarded-proto', value: '^http$' }],
+        destination: 'https://www.mokeet-elsuarye.com/:path*',
+        permanent: true,
+      },
       // One canonical host: the apex answers with a permanent redirect to www.
       // On Vercel this was a (temporary 307) domain setting; on Cloudflare the app owns it.
       {
@@ -34,9 +41,17 @@ const nextConfig: NextConfig = {
         destination: 'https://www.mokeet-elsuarye.com/:path*',
         permanent: true,
       },
+      // The three rubber categories each held a single product and duplicated
+      // its page; they are merged into one hub that explains which rubber fits where.
       ...['rabal-gem', 'non-slip-rubber', 'horse-rubber'].map((slug) => ({
         source: `/products/category/${slug}`,
         destination: '/products/category/rubber-flooring',
+        permanent: true,
+      })),
+      // Every other single-product category merged into its product page.
+      ...Object.entries(mergedCategories).map(([slug, id]) => ({
+        source: `/products/category/${slug}`,
+        destination: `/products/${id}`,
         permanent: true,
       })),
     ];

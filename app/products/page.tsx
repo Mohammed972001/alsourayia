@@ -4,7 +4,7 @@ import { ProductGallery } from '@/components/ProductGallery';
 import { Footer } from '@/components/Footer';
 import { FloatingButtons } from '@/components/FloatingButtons';
 import { Breadcrumb } from '@/components/Breadcrumb';
-import { categorySlugMap } from '@/lib/products';
+import { categoryHref, categorySlugMap } from '@/lib/products';
 import Link from 'next/link';
 
 const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://www.mokeet-elsuarye.com').replace(/\/$/, '');
@@ -46,7 +46,7 @@ export default function ProductsPage() {
                             {Object.entries(categorySlugMap).map(([slug, name]) => (
                                 <Link
                                     key={slug}
-                                    href={`/products/category/${slug}`}
+                                    href={categoryHref(slug)}
                                     className="px-4 py-2 rounded-lg bg-gray-100 text-[#4A4A4A] hover:bg-[#1A1A1A] hover:text-white transition-colors text-sm"
                                 >
                                     {name}

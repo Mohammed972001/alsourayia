@@ -1,7 +1,7 @@
 'use client';
 
 import { ArrowRight, Check, Phone, MessageCircle, MapPin } from 'lucide-react';
-import { categoryToSlug, getProductById, type Product } from '@/lib/products';
+import { categoryToSlug, getProductById, mergedCategories, type Product } from '@/lib/products';
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -103,7 +103,8 @@ export function ProductDetail({ productId, dynamicGallery, onBack }: ProductDeta
     const breadcrumbItems = [
         { label: 'الرئيسية', href: '/' },
         { label: 'المنتجات', href: '/products' },
-        ...(categorySlug ? [{ label: product.category, href: `/products/category/${categorySlug}` }] : []),
+        // A merged category redirects to this very page, so leave it out.
+        ...(categorySlug && !mergedCategories[categorySlug] ? [{ label: product.category, href: `/products/category/${categorySlug}` }] : []),
         { label: product.name }
     ];
 

@@ -1,4 +1,5 @@
 import { productsDetails } from '@/data/products';
+import { mergedCategories } from './merged-categories';
 
 export interface Product {
   id: string;
@@ -28,6 +29,20 @@ export const categorySlugMap: Record<string, string> = {
   'office-carpet': 'موكيت مكاتب',
   'turkish-carpet': 'موكيت تركي',
 };
+
+// Categories that held a single product duplicated that product's page, and
+// Google indexed the thin category instead of the product. They now redirect
+// (308, next.config.ts) to the product; only real hubs keep a category page.
+export { mergedCategories };
+
+/** The page a category link should open: its hub, or its only product. */
+export function categoryHref(slug: string): string {
+  const productId = mergedCategories[slug];
+  return productId ? `/products/${productId}` : `/products/category/${slug}`;
+}
+
+/** Category slugs that still have their own page. */
+export const hubCategorySlugs = Object.keys(categorySlugMap).filter((slug) => !mergedCategories[slug]);
 
 // Maps Arabic category name → URL slug
 export const categoryToSlug: Record<string, string> = Object.fromEntries(
@@ -83,7 +98,7 @@ export function getProductsByCategory(categoryName: string): Product[] {
 }
 
 export function generateCategoryStaticParams() {
-  return Object.keys(categorySlugMap).map(slug => ({ slug }));
+  return hubCategorySlugs.map(slug => ({ slug }));
 }
 
 export interface CategoryContent {

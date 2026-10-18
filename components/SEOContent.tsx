@@ -6,10 +6,10 @@ import { ArrowLeft, ChevronDown } from 'lucide-react';
 import { SectionHeading } from '@/components/SectionHeading';
 
 const cards = [
-    { title: 'موكيت مساجد', href: '/products/category/mosque-carpets', desc: 'موكيت مساجد عالي الجودة بتصاميم إسلامية فاخرة، مقاوم للحريق ومعالج ضد البكتيريا. مع التركيب في جميع أحياء الرياض.' },
-    { title: 'أرضيات مكتبية', href: '/products/category/office-flooring', desc: 'أرضيات مكتبية احترافية تناسب بيئات العمل الحديثة. سهلة التنظيف ومقاومة للخدوش مع تشكيلة واسعة من الألوان.' },
+    { title: 'موكيت مساجد', href: '/products/mosque-carpets', desc: 'موكيت مساجد عالي الجودة بتصاميم إسلامية فاخرة، مقاوم للحريق ومعالج ضد البكتيريا. مع التركيب في جميع أحياء الرياض.' },
+    { title: 'أرضيات مكتبية', href: '/products/office-flooring', desc: 'أرضيات مكتبية احترافية تناسب بيئات العمل الحديثة. سهلة التنظيف ومقاومة للخدوش مع تشكيلة واسعة من الألوان.' },
     { title: 'باركيه فاخر', href: '/products/category/parquet', desc: 'باركيه ضد الماء للمطابخ والحمامات، وباركيه بمظهر الخشب الطبيعي للصالات وغرف النوم في المنازل والفلل والشقق.' },
-    { title: 'عشب صناعي', href: '/products/category/artificial-grass', desc: 'عشب صناعي عالي الكثافة للحدائق والملاعب والمساحات الخارجية. مقاوم للأشعة فوق البنفسجية.' },
+    { title: 'عشب صناعي', href: '/products/artificial-grass', desc: 'عشب صناعي عالي الكثافة للحدائق والملاعب والمساحات الخارجية. مقاوم للأشعة فوق البنفسجية.' },
 ];
 
 export function SEOContent() {
