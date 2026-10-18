@@ -3,16 +3,16 @@ import { Gem, Palette, Headset } from 'lucide-react';
 import { SectionHeading } from '@/components/SectionHeading';
 
 const features = [
-    { icon: Gem, title: 'جودة استثنائية', desc: 'نستخدم أفضل المواد والخامات لضمان موكيت وسجاد يدوم طويلاً' },
+    { icon: Gem, title: 'معاينة قبل الطلب', desc: 'نقيس المكان ونعرض عليك العينات قبل عرض السعر، لتختار بعد أن ترى الخامة بنفسك' },
     { icon: Palette, title: 'تصاميم مبتكرة', desc: 'تشكيلة واسعة من تصاميم الموكيت والمفروشات العصرية والكلاسيكية' },
-    { icon: Headset, title: 'خدمة عملاء متميزة', desc: 'فريقنا متاح دائماً لمساعدتك في اختيار الموكيت والأرضيات المناسبة' },
+    { icon: Headset, title: 'تواصل مباشر', desc: 'اتصل أو راسلنا على الواتساب من السبت إلى الخميس، ويوم الجمعة على الواتساب' },
 ];
 
 export function About({ headingAs = 'h2' }: { headingAs?: 'h1' | 'h2' }) {
     return (
         <section id="about" className="pt-20 pb-16 md:py-28 bg-white">
             <div className="container mx-auto px-4 lg:px-8">
-                <SectionHeading as={headingAs} eyebrow="من نحن" title="رواد التميز في عالم السجاد والمفروشات" />
+                <SectionHeading as={headingAs} eyebrow="من نحن" title="موكيت ومفروشات وأرضيات في الرياض" />
 
                 <p
                     className="max-w-3xl mx-auto text-center text-ink-soft leading-loose text-[0.95rem] md:text-lg -mt-4 mb-12 md:mb-16"

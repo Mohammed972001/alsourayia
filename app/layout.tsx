@@ -11,8 +11,10 @@ const tajawal = Tajawal({
     subsets: ['arabic'],
     weight: ['300', '400', '500', '700', '800'],
     variable: '--font-tajawal',
-    display: 'swap',
-    preload: true,
+    // "optional", not "swap": on a slow phone the Arabic woff2 files arrive
+    // after first paint and swapping them re-wraps every line (CLS 0.22 on
+    // another client's site), which Google Ads scores as a poor landing page.
+    display: 'optional',
 });
 
 // Display face for headings only
@@ -20,7 +22,7 @@ const messiri = El_Messiri({
     subsets: ['arabic'],
     weight: ['500', '600', '700'],
     variable: '--font-messiri',
-    display: 'swap',
+    display: 'optional',
 });
 
 // Get the site URL from environment variable with fallback
@@ -33,10 +35,10 @@ export const metadata: Metadata = {
 
     // Basic Meta Tags
     title: {
-        default: 'موكيت ومفروشات السريع | أفضل موكيت ومفروشات الرياض',
+        default: 'موكيت مكاتب وأرضيات ربل في الرياض | موكيت ومفروشات السريع',
         template: '%s | موكيت ومفروشات السريع'
     },
-    description: 'موكيت ومفروشات السريع - الرائدون في توفير أجود أنواع الموكيت والسجاد والمفروشات في الرياض والمملكة العربية السعودية. موكيت مساجد، أرضيات مكتبية، باركيه، عشب صناعي، أرضيات مطاط. معاينة وقياس وتركيب احترافي. اتصل الآن 0550101867',
+    description: 'موكيت ومفروشات السريع في الرياض: موكيت مكاتب وبلاط موكيت، أرضيات ربل للجيم والإسطبلات ودورات المياه، موكيت مساجد، فينيل، باركيه وعشب صناعي. معاينة وقياس وتركيب. اتصل 0550101867 أو 0541540047.',
 
     // Keywords for SEO
     keywords: [
@@ -69,8 +71,6 @@ export const metadata: Metadata = {
         'سجاد عصري',
 
         // Services
-        'تنسيق حدائق',
-        'تنسيق حدائق الرياض',
         'شلالات',
         'نوافير',
         'تركيب موكيت',
@@ -79,10 +79,6 @@ export const metadata: Metadata = {
         // Location Keywords
         'موكيت السعودية',
         'مفروشات السعودية',
-        'موكيت جدة',
-        'موكيت الدمام',
-        'موكيت مكة',
-        'مفروشات جدة',
         'أرضيات الرياض',
 
         // Brand Combinations
@@ -107,11 +103,7 @@ export const metadata: Metadata = {
 
     // Robots Configuration
     robots: {
-        index: true,
-        follow: true,
         googleBot: {
-            index: true,
-            follow: true,
             'max-video-preview': -1,
             'max-image-preview': 'large',
             'max-snippet': -1,
@@ -120,8 +112,8 @@ export const metadata: Metadata = {
 
     // Open Graph for Social Media
     openGraph: {
-        title: 'موكيت ومفروشات السريع | أفضل موكيت ومفروشات الرياض',
-        description: 'الرائدون في توفير أجود أنواع الموكيت والسجاد والمفروشات في الرياض والمملكة. موكيت مساجد، أرضيات، باركيه، عشب صناعي. اتصل الآن!',
+        title: 'موكيت مكاتب وأرضيات ربل في الرياض | موكيت ومفروشات السريع',
+        description: 'موكيت مكاتب وأرضيات ربل وموكيت مساجد وفينيل في الرياض. معاينة وقياس وتركيب، وعرض السعر على الواتساب.',
         siteName: 'موكيت ومفروشات السريع',
         locale: 'ar_SA',
         type: 'website',
@@ -130,7 +122,7 @@ export const metadata: Metadata = {
                 url: '/images/og-image.jpg',
                 width: 1200,
                 height: 630,
-                alt: 'موكيت ومفروشات السريع - أفضل موكيت ومفروشات الرياض',
+                alt: 'موكيت ومفروشات السريع في الرياض',
             }
         ],
     },
@@ -138,18 +130,11 @@ export const metadata: Metadata = {
     // Twitter Card
     twitter: {
         card: 'summary_large_image',
-        title: 'موكيت ومفروشات السريع | أفضل موكيت ومفروشات الرياض',
-        description: 'أجود أنواع الموكيت والسجاد والمفروشات في الرياض والمملكة العربية السعودية',
+        title: 'موكيت مكاتب وأرضيات ربل في الرياض | موكيت ومفروشات السريع',
+        description: 'موكيت مكاتب وأرضيات ربل وموكيت مساجد وفينيل في الرياض. معاينة وقياس وتركيب، وعرض السعر على الواتساب.',
         images: ['/images/og-image.jpg'],
     },
 
-    // Alternate Languages
-    alternates: {
-        canonical: baseUrl,
-        languages: {
-            'ar-SA': baseUrl,
-        },
-    },
 
     // Category
     category: 'business',
@@ -222,71 +207,7 @@ export default function RootLayout({
         "hasMap": "https://www.google.com/maps?q=24.596556,46.730583",
         "sameAs": [
             "https://www.tiktok.com/@httpswww.mokeetelsuarye1"
-        ],
-        "hasOfferCatalog": {
-            "@type": "OfferCatalog",
-            "name": "منتجات موكيت ومفروشات السريع",
-            "itemListElement": [
-                {
-                    "@type": "OfferCatalog",
-                    "name": "موكيت",
-                    "itemListElement": [
-                        {
-                            "@type": "Offer",
-                            "itemOffered": {
-                                "@type": "Product",
-                                "name": "موكيت مساجد",
-                                "description": "موكيت مساجد عالي الجودة بتصميمات إسلامية"
-                            }
-                        },
-                        {
-                            "@type": "Offer",
-                            "itemOffered": {
-                                "@type": "Product",
-                                "name": "موكيت تركي مشجر",
-                                "description": "موكيت تركي فاخر بتصميمات أصيلة"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "@type": "OfferCatalog",
-                    "name": "أرضيات",
-                    "itemListElement": [
-                        {
-                            "@type": "Offer",
-                            "itemOffered": {
-                                "@type": "Product",
-                                "name": "باركيه ضد الماء",
-                                "description": "باركيه مقاوم للماء بجودة عالية"
-                            }
-                        },
-                        {
-                            "@type": "Offer",
-                            "itemOffered": {
-                                "@type": "Product",
-                                "name": "أرضيات مكتبية",
-                                "description": "أرضيات مكتبية احترافية"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "@type": "OfferCatalog",
-                    "name": "خدمات",
-                    "itemListElement": [
-                        {
-                            "@type": "Offer",
-                            "itemOffered": {
-                                "@type": "Service",
-                                "name": "تركيب موكيت",
-                                "description": "خدمة تركيب موكيت احترافية"
-                            }
-                        }
-                    ]
-                }
-            ]
-        }
+        ]
     };
 
     // Organization Schema
@@ -325,7 +246,7 @@ export default function RootLayout({
         "@id": `${baseUrl}/#website`,
         "url": baseUrl,
         "name": "موكيت ومفروشات السريع",
-        "description": "أفضل موكيت ومفروشات في الرياض",
+        "description": "موكيت ومفروشات وأرضيات في الرياض",
         "publisher": {
             "@id": `${baseUrl}/#organization`
         },

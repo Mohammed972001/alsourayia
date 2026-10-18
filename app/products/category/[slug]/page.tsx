@@ -34,7 +34,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         title: content?.title ?? `${categoryName} في الرياض`,
         description:
             content?.description ??
-            `تصفح ${productCount} منتج من ${categoryName} من موكيت ومفروشات السريع في الرياض. جودة عالية، أسعار تنافسية، توصيل وتركيب احترافي.`,
+            `تصفح ${productCount} منتج من ${categoryName} من موكيت ومفروشات السريع في الرياض: معاينة وقياس وتركيب، وعرض السعر على الواتساب.`,
         keywords: `${categoryName}, ${categoryName} الرياض, ${categoryName} السريع`,
         alternates: {
             canonical: `${baseUrl}/products/category/${slug}`,
@@ -74,10 +74,10 @@ export default async function CategoryPage({ params }: Props) {
         url: `${baseUrl}/products/category/${slug}`,
         numberOfItems: categoryProducts.length,
         hasPart: categoryProducts.map(p => ({
-            '@type': 'Product',
+            '@type': 'WebPage',
             name: p.name,
             url: `${baseUrl}/products/${p.id}`,
-            image: p.image,
+            ...(p.image ? { image: encodeURI(`${baseUrl}${p.image}`) } : {}),
         })),
     };
 
@@ -116,7 +116,7 @@ export default async function CategoryPage({ params }: Props) {
                     ) : (
                         <div className="mt-8 mb-12 text-center">
                             <h1 className="text-3xl md:text-4xl text-[#1A1A1A] mb-4">
-                                {categoryName} من مفروشات السريع
+                                {categoryName} من موكيت ومفروشات السريع
                             </h1>
                             <p className="text-[#6B7280] max-w-2xl mx-auto">
                                 تصفح مجموعتنا من <strong>{categoryName}</strong> في الرياض.

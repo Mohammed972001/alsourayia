@@ -58,7 +58,12 @@ function RichText({ text }: { text: string }) {
 
 export function ProductDetail({ productId, dynamicGallery, onBack }: ProductDetailProps) {
     const router = useRouter();
-    const handleBack = () => onBack ? onBack() : router.back();
+    const handleBack = () => {
+        if (onBack) return onBack();
+        const fromThisSite = typeof document !== 'undefined' && document.referrer.startsWith(window.location.origin);
+        if (fromThisSite && window.history.length > 1) router.back();
+        else router.push('/products');
+    };
     const product = getProductById(productId);
     const [selectedImage, setSelectedImage] = useState(0);
     const [selectedColor, setSelectedColor] = useState(0);
@@ -82,7 +87,8 @@ export function ProductDetail({ productId, dynamicGallery, onBack }: ProductDeta
         "name": product.name,
         "description": product.description,
         "serviceType": product.category,
-        "image": allImages.map((img) => `${baseUrl}${img}`),
+        // Folder and file names hold spaces; JSON-LD needs valid URLs.
+        "image": allImages.map((img) => encodeURI(`${baseUrl}${img}`)),
         "areaServed": { "@type": "City", "name": "الرياض" },
         "provider": {
             "@type": "LocalBusiness",

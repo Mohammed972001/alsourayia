@@ -22,7 +22,7 @@ export function Hero() {
                 <div className="absolute inset-0 animate-hero-zoom">
                     <Image
                         src="/heroBG.jpeg"
-                        alt="موكيت ومفروشات السريع - أفضل موكيت وسجاد ومفروشات فاخرة في الرياض والمملكة العربية السعودية"
+                        alt="موكيت ومفروشات السريع في الرياض"
                         fill
                         priority
                         quality={85}
@@ -37,14 +37,14 @@ export function Hero() {
                 <div className="relative z-10 container mx-auto px-5 lg:px-8 pt-28 pb-28 md:pb-36">
                     <div className="max-w-2xl">
                         <span
-                            className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 backdrop-blur px-4 py-1.5 text-xs md:text-sm text-white/90 animate-rise"
+                            className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 backdrop-blur px-4 py-1.5 text-xs md:text-sm text-white/90"
                         >
                             <span className="w-1.5 h-1.5 rounded-full bg-brass" />
                             موكيت · سجاد · أرضيات — الرياض
                         </span>
 
                         <h1
-                            className="font-display font-bold text-white mt-5 text-[2.6rem] leading-[1.2] md:text-6xl lg:text-7xl animate-rise"
+                            className="font-display font-bold text-white mt-5 text-[2.6rem] leading-[1.2] md:text-6xl lg:text-7xl"
                             style={{ animationDelay: '120ms' }}
                         >
                             موكيت ومفروشات
@@ -52,14 +52,14 @@ export function Hero() {
                         </h1>
 
                         <p
-                            className="mt-5 text-base md:text-xl text-white/80 leading-relaxed max-w-xl animate-rise"
+                            className="mt-5 text-base md:text-xl text-white/80 leading-relaxed max-w-xl"
                             style={{ animationDelay: '240ms' }}
                         >
                             نحول مساحاتك إلى تحف فنية بأرقى السجاد والموكيت والأرضيات في الرياض
                         </p>
 
                         <div
-                            className="mt-8 grid grid-cols-2 gap-3 sm:flex sm:flex-wrap animate-rise"
+                            className="mt-8 grid grid-cols-2 gap-3 sm:flex sm:flex-wrap"
                             style={{ animationDelay: '360ms' }}
                         >
                             <Link
@@ -81,7 +81,7 @@ export function Hero() {
                         </div>
 
                         <ul
-                            className="mt-8 flex items-center gap-4 md:gap-6 border-t border-white/15 pt-5 animate-rise"
+                            className="mt-8 flex items-center gap-4 md:gap-6 border-t border-white/15 pt-5"
                             style={{ animationDelay: '480ms' }}
                         >
                             {TRUST.map(({ icon: Icon, label }) => (

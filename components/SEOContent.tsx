@@ -52,7 +52,7 @@ export function SEOContent() {
                             }`}
                         >
                             <p>
-                                تُعد <strong className="text-ink">موكيت ومفروشات السريع</strong> من الشركات الرائدة في مجال توفير{' '}
+                                تُعد <strong className="text-ink">موكيت ومفروشات السريع</strong> متخصصة في توفير{' '}
                                 <Link href="/products" className="text-ink underline decoration-brass underline-offset-4">الموكيت والسجاد والمفروشات</Link>{' '}
                                 في <strong className="text-ink">الرياض</strong> والمملكة العربية السعودية. نقدم تشكيلة واسعة ومتنوعة من{' '}
                                 <strong className="text-ink">الأرضيات</strong> عالية الجودة تشمل <strong className="text-ink">موكيت المساجد</strong>،{' '}
@@ -60,8 +60,8 @@ export function SEOContent() {
                             </p>
 
                             <p>
-                                نحن في <strong className="text-ink">السريع للمفروشات</strong> نؤمن بأن الأرضيات هي أساس جمال أي مساحة.
-                                لذلك نحرص على توفير أجود الخامات من أفضل المصانع العالمية والتركية.
+                                نحن في <strong className="text-ink">موكيت ومفروشات السريع</strong> نؤمن بأن الأرضيات هي أساس جمال أي مساحة.
+                                لذلك نساعدك تختار الخامة المناسبة للمكان قبل الطلب.
                                 سواء كنت تبحث عن <Link href="/products/mokite" className="text-ink underline decoration-brass underline-offset-4">موكيت فاخر</Link> لمنزلك،
                                 أو <strong className="text-ink">أرضيات احترافية</strong> لمكتبك، أو <strong className="text-ink">موكيت مساجد</strong> بتصاميم إسلامية راقية،
                                 ستجد لدينا ما يلبي احتياجاتك.

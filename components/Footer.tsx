@@ -53,7 +53,7 @@ export function Footer() {
                         <h3 className="font-display text-xl font-semibold mb-1">موكيت ومفروشات السريع</h3>
                         <p className="text-white/40 text-xs mb-4">Al-Sari Carpets & Furnishings</p>
                         <p className="text-white/60 text-sm leading-relaxed">
-                            متخصصون في توفير أجود أنواع الموكيت والسجاد والمفروشات في الرياض والمملكة العربية السعودية.
+                            موكيت مكاتب وأرضيات ربل وموكيت مساجد ومفروشات في الرياض.
                         </p>
                     </div>
 

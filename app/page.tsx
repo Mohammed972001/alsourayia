@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import dynamic from 'next/dynamic';
 import { Navigation } from '@/components/Navigation';
 import { Hero } from '@/components/Hero';
@@ -7,6 +8,12 @@ import { ProductGallery } from '@/components/ProductGallery';
 import { Footer } from '@/components/Footer';
 import { FloatingButtons } from '@/components/FloatingButtons';
 import { Breadcrumb } from '@/components/Breadcrumb';
+
+const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://www.mokeet-elsuarye.com').replace(/\/$/, '');
+
+export const metadata: Metadata = {
+    alternates: { canonical: baseUrl, languages: { 'ar-SA': baseUrl } },
+};
 
 const ServiceAreas = dynamic(() => import('@/components/ServiceAreas').then(m => ({ default: m.ServiceAreas })));
 const FAQ = dynamic(() => import('@/components/FAQ').then(m => ({ default: m.FAQ })));
