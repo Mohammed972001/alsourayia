@@ -27,8 +27,12 @@ function markWhatsAppLink(link: HTMLAnchorElement, marker: string) {
         const url = new URL(link.href);
         const text = url.searchParams.get('text') ?? '';
         if (text.includes(marker)) return;
-        url.searchParams.set('text', text ? `${text} ${marker}` : marker);
-        link.href = url.toString();
+        url.searchParams.delete('text');
+        // encodeURIComponent, not searchParams.set: WhatsApp shows a "+" from
+        // form encoding as a literal plus instead of a space.
+        const rest = url.searchParams.toString();
+        const message = encodeURIComponent(text ? `${text} ${marker}` : marker);
+        link.href = `${url.origin}${url.pathname}?${rest ? `${rest}&` : ''}text=${message}`;
     } catch {
         // Leave the link as it is.
     }
