@@ -5,7 +5,7 @@ import { SectionHeading } from '@/components/SectionHeading';
 const features = [
     { icon: Gem, title: 'معاينة قبل الطلب', desc: 'نقيس المكان ونعرض عليك العينات قبل عرض السعر، لتختار بعد أن ترى الخامة بنفسك' },
     { icon: Palette, title: 'تصاميم مبتكرة', desc: 'تشكيلة واسعة من تصاميم الموكيت والمفروشات العصرية والكلاسيكية' },
-    { icon: Headset, title: 'تواصل مباشر', desc: 'اتصل أو راسلنا على الواتساب من السبت إلى الخميس، ويوم الجمعة على الواتساب' },
+    { icon: Headset, title: 'تواصل مباشر', desc: 'اتصل أو راسلنا على الواتساب يومياً من 9 صباحاً حتى 10 مساءً' },
 ];
 
 export function About({ headingAs = 'h2' }: { headingAs?: 'h1' | 'h2' }) {
