@@ -38,7 +38,7 @@ export const metadata: Metadata = {
         default: 'موكيت مكاتب وأرضيات ربل في الرياض | موكيت ومفروشات السريع',
         template: '%s | موكيت ومفروشات السريع'
     },
-    description: 'موكيت ومفروشات السريع في الرياض: موكيت مكاتب وبلاط موكيت، أرضيات ربل للجيم والإسطبلات ودورات المياه، موكيت مساجد، فينيل، باركيه وعشب صناعي. معاينة وقياس وتركيب. اتصل 0550101867 أو 0541540047.',
+    description: 'موكيت ومفروشات السريع في الرياض: موكيت مكاتب وبلاط موكيت، أرضيات ربل للجيم والإسطبلات ودورات المياه، موكيت مساجد، فينيل، باركيه وعشب صناعي. معاينة وقياس وتركيب. اتصل 0550101867 أو 0559686290.',
 
     // Keywords for SEO
     keywords: [
@@ -168,7 +168,7 @@ export default function RootLayout({
             `${baseUrl}/home/hero-moket-alsurye-riyadh.jpg`
         ],
         "logo": `${baseUrl}/logo.png`,
-        "telephone": ["+966550101867", "+966541540047"],
+        "telephone": ["+966550101867", "+966559686290"],
         "email": "info@mokeet-elsuarye.com",
         "url": baseUrl,
         "address": {
@@ -231,7 +231,7 @@ export default function RootLayout({
             },
             {
                 "@type": "ContactPoint",
-                "telephone": "+966541540047",
+                "telephone": "+966559686290",
                 "contactType": "sales",
                 "areaServed": "SA",
                 "availableLanguage": "Arabic"

@@ -95,7 +95,7 @@ export function ProductDetail({ productId, dynamicGallery, onBack }: ProductDeta
             "@id": `${baseUrl}/#localbusiness`,
             "name": "موكيت ومفروشات السريع",
             "url": baseUrl,
-            "telephone": ["+966550101867", "+966541540047"]
+            "telephone": ["+966550101867", "+966559686290"]
         }
     };
 
