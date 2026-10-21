@@ -253,8 +253,10 @@ export default function RootLayout({
         "inLanguage": "ar-SA"
     };
 
+    // data-scroll-behavior: globals.css makes in-page anchor jumps smooth; since Next.js 16
+    // this attribute is what keeps page-to-page navigation jumping straight to the top.
     return (
-        <html lang="ar" dir="rtl" className={`${tajawal.variable} ${messiri.variable}`}>
+        <html lang="ar" dir="rtl" data-scroll-behavior="smooth" className={`${tajawal.variable} ${messiri.variable}`}>
             <head>
                 {/* No global hero preload: the home Hero's <Image priority> already
                     preloads it, and every other page downloaded a photo it never shows. */}
