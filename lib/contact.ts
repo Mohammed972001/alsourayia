@@ -1,9 +1,25 @@
 export const PHONE_DISPLAY = '0550101867';
 export const PHONE_TEL = 'tel:+966550101867';
 export const WHATSAPP_NUMBER = '966550101867';
-// Second line for calls only (no WhatsApp on it as far as we know).
+// Second line: calls, and WhatsApp on the pages below.
 export const PHONE2_DISPLAY = '0559686290';
 export const PHONE2_TEL = 'tel:+966559686290';
+export const WHATSAPP2_NUMBER = '966559686290';
+
+/**
+ * Rubber, parquet and medical-vinyl pages. Their ads carry the second number,
+ * so WhatsApp there goes to it too and the shop can tell those leads apart
+ * (owner's request, 2026-10-22).
+ */
+const SECOND_LINE_PAGES = new Set([
+    '/products/category/rubber-flooring', '/products/rabal-gem', '/products/non-slip-rubber', '/products/horse-rubber',
+    '/products/category/parquet', '/products/parket', '/products/water-resistant-carpet',
+    '/products/hospital-flooring',
+]);
+
+export function whatsappNumberFor(pathname: string): string {
+    return SECOND_LINE_PAGES.has(pathname.replace(/\/+$/, '')) ? WHATSAPP2_NUMBER : WHATSAPP_NUMBER;
+}
 export const ADDRESS = 'مخرج ٢٢ حراج بن قاسم القديم سوق العرب الدولي، الرياض';
 export const MAPS_URL = 'https://www.google.com/maps?q=24.596556,46.730583';
 

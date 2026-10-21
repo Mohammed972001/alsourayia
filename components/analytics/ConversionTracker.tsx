@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react';
 import { trackConversion, type ConversionKind } from '@/lib/analytics';
+import { whatsappNumberFor } from '@/lib/contact';
 
 const AD_SOURCE_KEY = 'ad_source';
 
@@ -39,9 +40,11 @@ function whatsappMessage(original: string, source: string | null): string {
     return `السلام عليكم، شاهدت ${where} وأريد ${wantsSample ? 'طلب عينة مجانية' : 'الاستفسار عن منتجاتكم'}.`;
 }
 
-function rewriteWhatsAppLink(link: HTMLAnchorElement, source: string | null) {
+/** Rewrites the message (and, on second-line pages, the number); returns the chat URL without the text. */
+function rewriteWhatsAppLink(link: HTMLAnchorElement, source: string | null): string {
     try {
         const url = new URL(link.href);
+        if (url.hostname === 'wa.me') url.pathname = `/${whatsappNumberFor(window.location.pathname)}`;
         const original = url.searchParams.get('text') ?? '';
         url.searchParams.delete('text');
         // encodeURIComponent, not searchParams.set: WhatsApp shows a "+" from
@@ -49,8 +52,10 @@ function rewriteWhatsAppLink(link: HTMLAnchorElement, source: string | null) {
         const rest = url.searchParams.toString();
         const message = encodeURIComponent(whatsappMessage(original, source));
         link.href = `${url.origin}${url.pathname}?${rest ? `${rest}&` : ''}text=${message}`;
+        return `${url.origin}${url.pathname}`;
     } catch {
         // Leave the link as it is.
+        return link.href;
     }
 }
 
@@ -74,10 +79,12 @@ export default function ConversionTracker() {
             else if (href.includes('wa.me/') || href.includes('api.whatsapp.com')) kind = 'whatsapp';
             if (!kind) return;
 
-            if (kind === 'whatsapp') rewriteWhatsAppLink(link, source);
+            // GA4 keeps only 100 characters of link_url, so WhatsApp reports the
+            // chat number without the message.
+            const linkUrl = kind === 'whatsapp' ? rewriteWhatsAppLink(link, source) : href;
 
             trackConversion(kind, {
-                link_url: href,
+                link_url: linkUrl,
                 page_path: window.location.pathname,
                 ...(source ? { ad_source: source } : {}),
             });
