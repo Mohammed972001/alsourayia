@@ -3,7 +3,7 @@ import { Navigation } from '@/components/Navigation';
 import { Footer } from '@/components/Footer';
 import { FloatingButtons } from '@/components/FloatingButtons';
 import { Breadcrumb } from '@/components/Breadcrumb';
-import { ADDRESS, BRAND_NAME, LEGAL_NAME, PHONE_DISPLAY, PHONE2_DISPLAY, UNIFIED_NUMBER } from '@/lib/contact';
+import { ADDRESS, BRAND_NAME, LEGAL_NAME, NATIONAL_ADDRESS, PHONE_DISPLAY, PHONE2_DISPLAY, UNIFIED_NUMBER, VAT_NUMBER } from '@/lib/contact';
 
 const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://www.mokeet-elsuarye.com').replace(/\/$/, '');
 
@@ -21,8 +21,8 @@ const sections: { title: string; body: string[] }[] = [
     {
         title: 'من نحن',
         body: [
-            `هذا الموقع (www.mokeet-elsuarye.com) خاص بـ${BRAND_NAME}، معرض موكيت وأرضيات في الرياض، التابع لـ${LEGAL_NAME} (الرقم الوطني الموحد ${UNIFIED_NUMBER}).`,
-            `العنوان: ${ADDRESS}. الهاتف: ${PHONE_DISPLAY} و${PHONE2_DISPLAY}.`,
+            `هذا الموقع (www.mokeet-elsuarye.com) خاص بـ${BRAND_NAME}، معرض موكيت وأرضيات في الرياض، التابع لـ${LEGAL_NAME} (الرقم الوطني الموحد ${UNIFIED_NUMBER}، الرقم الضريبي ${VAT_NUMBER}).`,
+            `العنوان: ${ADDRESS} (العنوان الوطني ${NATIONAL_ADDRESS}). الهاتف: ${PHONE_DISPLAY} و${PHONE2_DISPLAY}.`,
         ],
     },
     {

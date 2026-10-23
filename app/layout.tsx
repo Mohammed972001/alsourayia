@@ -4,7 +4,7 @@ import Script from 'next/script';
 import { RevealObserver } from '@/components/RevealObserver';
 import ConversionTracker from '@/components/analytics/ConversionTracker';
 import { ADS_ID, GA4_ID } from '@/lib/analytics';
-import { LEGAL_NAME, UNIFIED_NUMBER } from '@/lib/contact';
+import { LEGAL_NAME, UNIFIED_NUMBER, VAT_NUMBER } from '@/lib/contact';
 import './globals.css';
 
 // Self-hosted via Next.js — eliminates render-blocking Google Fonts request
@@ -165,6 +165,7 @@ export default function RootLayout({
         // «مفروشات السريع» is another shop's name; it is not ours to claim.
         "alternateName": ["Al-Sari Carpets & Furnishings", "موكيت السريع"],
         "legalName": LEGAL_NAME,
+        "vatID": VAT_NUMBER,
         "description": "موكيت ومفروشات وأرضيات في الرياض: موكيت مكاتب وبلاط موكيت، أرضيات مطاط (ربل) للجيم والإسطبلات، موكيت مساجد، فينيل، باركيه وعشب صناعي.",
         "image": [
             `${baseUrl}/images/og-image.jpg`
@@ -220,6 +221,7 @@ export default function RootLayout({
         "name": "موكيت ومفروشات السريع",
         "alternateName": "Al-Sari Carpets & Furnishings",
         "legalName": LEGAL_NAME,
+        "vatID": VAT_NUMBER,
         "identifier": {
             "@type": "PropertyValue",
             "propertyID": "الرقم الوطني الموحد",

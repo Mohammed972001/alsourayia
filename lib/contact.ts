@@ -5,10 +5,14 @@ export const BRAND_NAME = 'موكيت ومفروشات السريع';
 // identifiable, and the name must match the payments profile letter for letter.
 export const LEGAL_NAME = 'مؤسسة فنون العاديات لديكورات والارضيات العالميه';
 export const UNIFIED_NUMBER = '7054751560';
+// ZATCA VAT registration certificate.
+export const VAT_NUMBER = '314892165400003';
+// Saudi National Address of the showroom (building 3189, Mazroah St, Manfuhah, 12685).
+export const NATIONAL_ADDRESS = 'RCNA3189';
 
-/** «موكيت ومفروشات السريع تابع لـ<establishment> (الرقم الوطني الموحد …)». */
+/** «موكيت ومفروشات السريع تابع لـ<establishment> (الرقم الوطني الموحد … - الرقم الضريبي …)». */
 export function legalLine(): string {
-    return `${BRAND_NAME} تابع لـ${LEGAL_NAME} (الرقم الوطني الموحد ${UNIFIED_NUMBER})`;
+    return `${BRAND_NAME} تابع لـ${LEGAL_NAME} (الرقم الوطني الموحد ${UNIFIED_NUMBER} - الرقم الضريبي ${VAT_NUMBER})`;
 }
 
 export const PHONE_DISPLAY = '0550101867';
