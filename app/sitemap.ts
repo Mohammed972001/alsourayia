@@ -42,6 +42,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
             changeFrequency: 'monthly',
             priority: 0.7,
         },
+        {
+            url: `${baseUrl}/privacy`,
+            lastModified: new Date('2026-10-23'),
+            changeFrequency: 'yearly',
+            priority: 0.3,
+        },
     ];
 
     // Category pages - one crawlable URL per product category

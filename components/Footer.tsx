@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { Phone, MapPin } from 'lucide-react';
-import { ADDRESS, PHONE_DISPLAY, PHONE_TEL, PHONE2_DISPLAY, PHONE2_TEL, whatsappLink } from '@/lib/contact';
+import { ADDRESS, PHONE_DISPLAY, PHONE_TEL, PHONE2_DISPLAY, PHONE2_TEL, legalLine, whatsappLink } from '@/lib/contact';
 import { WhatsAppIcon } from '@/components/WhatsAppIcon';
 
 // Real URLs rather than #section anchors: the footer is on every page, so
@@ -11,6 +11,7 @@ const quickLinks = [
     { name: 'المنتجات', href: '/products' },
     { name: 'مناطق الخدمة', href: '/service-areas' },
     { name: 'تواصل معنا', href: '/contact' },
+    { name: 'سياسة الخصوصية', href: '/privacy' },
 ];
 
 const productLinks = [
@@ -106,7 +107,8 @@ export function Footer() {
                 </div>
 
                 {/* Bottom Bar */}
-                <div className="border-t border-white/10 pt-6">
+                <div className="border-t border-white/10 pt-6 space-y-2">
+                    <p className="text-white/50 text-xs md:text-sm text-center">{legalLine()}</p>
                     <p className="text-white/40 text-xs md:text-sm text-center">
                         &copy; {new Date().getFullYear()} موكيت ومفروشات السريع. جميع الحقوق محفوظة.
                     </p>

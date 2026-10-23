@@ -1,3 +1,16 @@
+export const BRAND_NAME = 'موكيت ومفروشات السريع';
+// The registered establishment behind the brand, spelled exactly as on its
+// commercial registration certificate (Ministry of Commerce), and its unified
+// national number. Google Ads needs the advertiser behind the site to be
+// identifiable, and the name must match the payments profile letter for letter.
+export const LEGAL_NAME = 'مؤسسة فنون العاديات لديكورات والارضيات العالميه';
+export const UNIFIED_NUMBER = '7054751560';
+
+/** «موكيت ومفروشات السريع تابع لـ<establishment> (الرقم الوطني الموحد …)». */
+export function legalLine(): string {
+    return `${BRAND_NAME} تابع لـ${LEGAL_NAME} (الرقم الوطني الموحد ${UNIFIED_NUMBER})`;
+}
+
 export const PHONE_DISPLAY = '0550101867';
 export const PHONE_TEL = 'tel:+966550101867';
 export const WHATSAPP_NUMBER = '966550101867';

@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Gem, Palette, Headset } from 'lucide-react';
 import { SectionHeading } from '@/components/SectionHeading';
+import { ADDRESS, legalLine } from '@/lib/contact';
 
 const features = [
     { icon: Gem, title: 'معاينة قبل الطلب', desc: 'نقيس المكان ونعرض عليك العينات قبل عرض السعر، لتختار بعد أن ترى الخامة بنفسك' },
@@ -24,6 +25,9 @@ export function About({ headingAs = 'h2' }: { headingAs?: 'h1' | 'h2' }) {
                     </Link>{' '}
                     في الرياض والمملكة العربية السعودية.
                     نجمع بين الحرفية التقليدية والتصميمات العصرية لنقدم لك تجربة فريدة.
+                </p>
+                <p className="max-w-3xl mx-auto text-center text-ink-muted text-sm leading-relaxed -mt-8 mb-12 md:mb-16">
+                    {legalLine()}، ومعرضنا في {ADDRESS}.
                 </p>
 
                 {/* Features */}
