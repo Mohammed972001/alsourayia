@@ -8,25 +8,25 @@ export const containerSections: ContainerSection[] = [
       {
         id: "Mosque carpets",
         name: "موكيت مساجد",
-        image: "/images/catg/msaged.jpg",
+        image: "/msaged/WhatsApp Image 2026-04-02 at 12.44.15 AM (1).jpeg",
         href: "/products/mosque-carpets",
       },
       {
         id: "office-flooring",
         name: "ارضيات مكتبية",
-        image: "/images/catg/mactbia.webp",
+        image: "/stock/office-flooring/grey-office-hallway.webp",
         href: "/products/office-flooring",
       },
       {
         id: "water-resistant-carpet",
         name: "باركيه ضد الماء",
-        image: "/images/catg/spc.jpg",
+        image: "/stock/water-resistant-carpet/wood-look-kitchen-nook.webp",
         href: "/products/water-resistant-carpet",
       },
       {
         id: "artificial-grass",
         name: "العشب الصناعي",
-        image: "/images/catg/grass.webp",
+        image: "/stock/artificial-grass/balcony-turf.webp",
         href: "/products/artificial-grass",
       },
       {
@@ -38,31 +38,31 @@ export const containerSections: ContainerSection[] = [
       {
         id: "parket",
         name: "ارضيات  باركيه",
-        image: "/images/catg/barqya.webp",
+        image: "/stock/parket/light-oak-bedroom.webp",
         href: "/products/parket",
       },
       {
         id: "mokite",
         name: "موكيت",
-        image: "/images/catg/mokite.jpg",
+        image: "/stock/mokite/carpeted-sitting-room.webp",
         href: "/products/mokite",
       },
       {
         id: "turky-mshager",
         name: "تركي مشجر",
-        image: "/turky mshager/WhatsApp Image 2025-08-02 at 6.36.14 PM (1).jpeg",
+        image: "/stock/turky-mshager/patterned-carpets-close-up.webp",
         href: "/products/turky-mshager",
       },
       {
         id: "hospital-flooring",
         name: "ارضيات مستيشفيات",
-        image: "/images/catg/hospital.jpg",
+        image: "/stock/hospital-flooring/exam-room-coved-vinyl.webp",
         href: "/products/hospital-flooring",
       },
       {
         id: "vinyl-mosque",
         name: "فينيل مساجد",
-        image: "/images/catg/vinylmsagd.webp",
+        image: "/vinyl roll/WhatsApp Image 2026-04-02 at 12.27.57 AM (1).jpeg",
         href: "/products/vinyl-mosque",
       },
     ]

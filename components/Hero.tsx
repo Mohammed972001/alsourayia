@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { ArrowLeft, Ruler, Wrench } from 'lucide-react';
 import { products } from '@/lib/products';
 import { whatsappLink } from '@/lib/contact';
+import { imageAlt } from '@/data/stock-images';
 import { WhatsAppIcon } from '@/components/WhatsAppIcon';
 
 const TRUST = [
@@ -132,7 +133,7 @@ function CategoryRail() {
                                     <span className="relative block aspect-square rounded-2xl overflow-hidden bg-cream ring-1 ring-line">
                                         <Image
                                             src={product.image}
-                                            alt={product.name}
+                                            alt={imageAlt(product.image, product.name)}
                                             fill
                                             sizes="150px"
                                             className="object-cover transition-transform duration-500 group-hover:scale-110"

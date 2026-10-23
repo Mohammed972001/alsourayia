@@ -167,8 +167,7 @@ export default function RootLayout({
         "legalName": LEGAL_NAME,
         "description": "موكيت ومفروشات وأرضيات في الرياض: موكيت مكاتب وبلاط موكيت، أرضيات مطاط (ربل) للجيم والإسطبلات، موكيت مساجد، فينيل، باركيه وعشب صناعي.",
         "image": [
-            `${baseUrl}/images/og-image.jpg`,
-            `${baseUrl}/home/hero-moket-alsurye-riyadh.jpg`
+            `${baseUrl}/images/og-image.jpg`
         ],
         "logo": `${baseUrl}/logo.png`,
         "telephone": ["+966550101867", "+966559686290"],

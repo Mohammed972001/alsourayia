@@ -8,6 +8,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { Breadcrumb } from './Breadcrumb';
 import { ADDRESS, MAPS_URL, PHONE_TEL, whatsappLink } from '@/lib/contact';
+import { imageAlt, isStockImage } from '@/data/stock-images';
 
 interface ProductDetailProps {
     productId: string;
@@ -126,8 +127,8 @@ export function ProductDetail({ productId, dynamicGallery, onBack }: ProductDeta
 
     const getImageAlt = (index: number) => {
         const baseAlt = `${product.name} - ${product.category}`;
-        if (index === 0) return `${baseAlt} - موكيت ومفروشات السريع الرياض`;
-        return `${baseAlt} - صورة ${index + 1}`;
+        const ownAlt = index === 0 ? `${baseAlt} - موكيت ومفروشات السريع الرياض` : `${baseAlt} - صورة ${index + 1}`;
+        return imageAlt(allImages[index], ownAlt);
     };
 
     return (
@@ -266,6 +267,11 @@ export function ProductDetail({ productId, dynamicGallery, onBack }: ProductDeta
                                     sizes="(max-width: 1024px) 100vw, 50vw"
                                     className="object-cover"
                                 />
+                                {isStockImage(allImages[selectedImage]) && (
+                                    <span className="absolute bottom-2 right-2 rounded bg-black/60 px-2 py-0.5 text-[11px] text-white">
+                                        صورة توضيحية
+                                    </span>
+                                )}
                             </div>
 
                             {/* Thumbnails: one horizontal strip instead of a 6-column grid

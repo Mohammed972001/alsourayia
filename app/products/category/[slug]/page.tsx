@@ -11,6 +11,7 @@ import {
     getProductsByCategory,
     generateCategoryStaticParams,
 } from '@/lib/products';
+import { imageAlt } from '@/data/stock-images';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -134,7 +135,7 @@ export default async function CategoryPage({ params }: Props) {
                                         <div className="relative aspect-[4/3] overflow-hidden rounded-lg bg-gray-100 mb-4">
                                             <Image
                                                 src={product.image}
-                                                alt={`${product.name} - ${categoryName} من موكيت ومفروشات السريع الرياض`}
+                                                alt={imageAlt(product.image, `${product.name} - ${categoryName} من موكيت ومفروشات السريع الرياض`)}
                                                 fill
                                                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                                                 className="object-cover group-hover:scale-105 transition-transform duration-500"

@@ -4,6 +4,7 @@ import { useRef, useState } from 'react';
 import { ArrowLeft } from 'lucide-react';
 import { products, getCategories } from '@/lib/products';
 import { whatsappLink } from '@/lib/contact';
+import { imageAlt } from '@/data/stock-images';
 import { SectionHeading } from '@/components/SectionHeading';
 import { WhatsAppIcon } from '@/components/WhatsAppIcon';
 import Image from 'next/image';
@@ -85,7 +86,7 @@ export function ProductGallery({ headingAs = 'h2' }: { headingAs?: 'h1' | 'h2' }
                                 <div className="relative aspect-square md:aspect-[4/3] overflow-hidden bg-cream">
                                     <Image
                                         src={product.image}
-                                        alt={`${product.name} - ${product.category} من موكيت ومفروشات السريع الرياض`}
+                                        alt={imageAlt(product.image, `${product.name} - ${product.category} من موكيت ومفروشات السريع الرياض`)}
                                         fill
                                         sizes="(max-width: 1024px) 50vw, 33vw"
                                         className="object-cover transition-transform duration-700 group-hover:scale-110"
