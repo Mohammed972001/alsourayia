@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import type { CSSProperties } from 'react';
 import Link from 'next/link';
 import { Phone, MapPin } from 'lucide-react';
@@ -56,6 +57,13 @@ export function Footer() {
                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10 py-12">
                     {/* Company Info */}
                     <div className="col-span-2 lg:col-span-1" data-reveal style={{ '--i': 0 } as CSSProperties}>
+                        <Image
+                            src="/brand/badge-white.webp"
+                            alt="شعار السريع للأرضيات والمفروشات"
+                            width={120}
+                            height={120}
+                            className="mb-4 opacity-90"
+                        />
                         <h3 className="font-display text-xl font-semibold mb-1">موكيت ومفروشات السريع</h3>
                         <p className="text-white/40 text-xs mb-4">Al-Sari Carpets & Furnishings</p>
                         <p className="text-white/60 text-sm leading-relaxed">
