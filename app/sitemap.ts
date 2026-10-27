@@ -8,7 +8,9 @@ const baseUrl = siteUrl.replace(/\/$/, '');
 export default function sitemap(): MetadataRoute.Sitemap {
     // Date of the last real content change. A lastmod that moves on every
     // build teaches Google to ignore it, so bump this when pages change.
-    const currentDate = new Date('2026-10-16');
+    // 2026-10-27: Google Ads landing-page pass (titles, H1s, hub copy, FAQs,
+    // page wrappers) touched every page in this list; see docs/seo-2026-10-27.md.
+    const currentDate = new Date('2026-10-27');
 
     // Core pages - each a real, crawlable URL
     const staticPages: MetadataRoute.Sitemap = [
@@ -44,7 +46,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         },
         {
             url: `${baseUrl}/privacy`,
-            lastModified: new Date('2026-10-23'),
+            lastModified: currentDate,
             changeFrequency: 'yearly',
             priority: 0.3,
         },

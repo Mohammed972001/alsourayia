@@ -3,7 +3,9 @@ import { Navigation } from '@/components/Navigation';
 import { Footer } from '@/components/Footer';
 import { FloatingButtons } from '@/components/FloatingButtons';
 import { Breadcrumb } from '@/components/Breadcrumb';
+import { PageView } from '@/components/motion/PageView';
 import { ADDRESS, BRAND_NAME, LEGAL_NAME, NATIONAL_ADDRESS, PHONE_DISPLAY, PHONE2_DISPLAY, UNIFIED_NUMBER, VAT_NUMBER } from '@/lib/contact';
+import type { CSSProperties } from 'react';
 
 const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://www.mokeet-elsuarye.com').replace(/\/$/, '');
 
@@ -64,23 +66,25 @@ export default function PrivacyPage() {
     return (
         <div className="min-h-screen bg-white" dir="rtl">
             <Navigation />
-            <div className="pt-20">
-                <div className="container mx-auto px-4 lg:px-8 py-4">
-                    <Breadcrumb items={breadcrumb} />
+            <PageView>
+                <div className="pt-20">
+                    <div className="container mx-auto px-4 lg:px-8 py-4">
+                        <Breadcrumb items={breadcrumb} />
+                    </div>
+                    <main className="container mx-auto px-4 lg:px-8 pb-16 max-w-3xl">
+                        <h1 className="font-display text-3xl md:text-4xl font-semibold text-ink mb-3">سياسة الخصوصية</h1>
+                        <p className="text-ink-soft text-sm mb-10">آخر تحديث: 23 أكتوبر 2026</p>
+                        {sections.map((s, i) => (
+                            <section key={s.title} className="mb-8" data-reveal="fade" style={{ '--i': i } as CSSProperties}>
+                                <h2 className="font-display text-xl font-semibold text-ink mb-3">{s.title}</h2>
+                                {s.body.map((p) => (
+                                    <p key={p} className="text-ink-soft leading-loose mb-2">{p}</p>
+                                ))}
+                            </section>
+                        ))}
+                    </main>
                 </div>
-                <main className="container mx-auto px-4 lg:px-8 pb-16 max-w-3xl">
-                    <h1 className="font-display text-3xl md:text-4xl font-semibold text-ink mb-3">سياسة الخصوصية</h1>
-                    <p className="text-ink-soft text-sm mb-10">آخر تحديث: 23 أكتوبر 2026</p>
-                    {sections.map((s) => (
-                        <section key={s.title} className="mb-8">
-                            <h2 className="font-display text-xl font-semibold text-ink mb-3">{s.title}</h2>
-                            {s.body.map((p) => (
-                                <p key={p} className="text-ink-soft leading-loose mb-2">{p}</p>
-                            ))}
-                        </section>
-                    ))}
-                </main>
-            </div>
+            </PageView>
             <Footer />
             <FloatingButtons />
         </div>

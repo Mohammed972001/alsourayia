@@ -7,10 +7,13 @@ import { ADS_ID, GA4_ID } from '@/lib/analytics';
 import { LEGAL_NAME, UNIFIED_NUMBER, VAT_NUMBER } from '@/lib/contact';
 import './globals.css';
 
-// Self-hosted via Next.js — eliminates render-blocking Google Fonts request
+// Self-hosted via Next.js — eliminates render-blocking Google Fonts request.
+// Only the weights the site uses: 400 body, 500 headings/buttons, 700 bold
+// (font-semibold has no 600 face in Tajawal and resolves to 700). 300 and 800
+// were never referenced and cost two woff2 files per visit.
 const tajawal = Tajawal({
     subsets: ['arabic'],
-    weight: ['300', '400', '500', '700', '800'],
+    weight: ['400', '500', '700'],
     variable: '--font-tajawal',
     // "optional", not "swap": on a slow phone the Arabic woff2 files arrive
     // after first paint and swapping them re-wraps every line (CLS 0.22 on
@@ -39,7 +42,7 @@ export const metadata: Metadata = {
         default: 'موكيت مكاتب وأرضيات ربل في الرياض | موكيت ومفروشات السريع',
         template: '%s | موكيت ومفروشات السريع'
     },
-    description: 'موكيت ومفروشات السريع في الرياض: موكيت مكاتب وبلاط موكيت، أرضيات ربل للجيم والإسطبلات ودورات المياه، موكيت مساجد، فينيل، باركيه وعشب صناعي. معاينة وقياس وتركيب. اتصل 0550101867 أو 0559686290.',
+    description: 'موكيت وباركيه وأرضيات مطاط (ربل جيم) وفينيل طبي وموكيت مساجد في الرياض. معاينة وقياس مجاناً وعينة قبل الطلب. اتصل 0550101867.',
 
     // Keywords for SEO
     keywords: [
@@ -166,7 +169,7 @@ export default function RootLayout({
         "alternateName": ["Al-Sari Carpets & Furnishings", "موكيت السريع"],
         "legalName": LEGAL_NAME,
         "vatID": VAT_NUMBER,
-        "description": "موكيت ومفروشات وأرضيات في الرياض: موكيت مكاتب وبلاط موكيت، أرضيات مطاط (ربل) للجيم والإسطبلات، موكيت مساجد، فينيل، باركيه وعشب صناعي.",
+        "description": "موكيت ومفروشات وأرضيات في الرياض: موكيت مكاتب وبلاط موكيت، أرضيات مطاط (ربل) للجيم ودورات المياه، موكيت مساجد، فينيل، باركيه وعشب صناعي.",
         "image": [
             `${baseUrl}/images/og-image.jpg`
         ],
@@ -268,6 +271,13 @@ export default function RootLayout({
     return (
         <html lang="ar" dir="rtl" data-scroll-behavior="smooth" className={`${tajawal.variable} ${messiri.variable}`}>
             <head>
+                {/* Motion boot: `js` lets app/motion.css hide revealable elements before they enter the screen; it is
+                    taken away again if RevealObserver has not started within 4 s, so content never stays hidden. */}
+                <script
+                    dangerouslySetInnerHTML={{
+                        __html: "(function(d){d.classList.add('js');setTimeout(function(){if(!d.dataset.revealReady)d.classList.remove('js')},4000)})(document.documentElement)",
+                    }}
+                />
                 {/* No global hero preload: the home Hero's <Image priority> already
                     preloads it, and every other page downloaded a photo it never shows. */}
 

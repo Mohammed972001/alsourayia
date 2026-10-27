@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useRef, useState, type CSSProperties } from 'react';
 import { ArrowLeft } from 'lucide-react';
 import { products, getCategories } from '@/lib/products';
 import { whatsappLink } from '@/lib/contact';
@@ -12,12 +12,15 @@ import Link from 'next/link';
 
 export function ProductGallery({ headingAs = 'h2' }: { headingAs?: 'h1' | 'h2' }) {
     const [selectedCategory, setSelectedCategory] = useState('الكل');
+    // Until the visitor filters, the grid tiles in with the page; after that, cards replay `.card-in`.
+    const [filtered, setFiltered] = useState(false);
     const categories = getCategories();
     const gridTopRef = useRef<HTMLParagraphElement>(null);
 
-    // With the sticky filter, a short result list can land above the viewport — bring it back
+    // With the sticky filter, a short result list can land above the viewport; bring it back
     const selectCategory = (category: string) => {
         setSelectedCategory(category);
+        setFiltered(true);
         const top = gridTopRef.current?.getBoundingClientRect().top ?? 0;
         if (top < 0) {
             window.scrollTo({ top: top + window.scrollY - 140, behavior: 'smooth' });
@@ -34,11 +37,11 @@ export function ProductGallery({ headingAs = 'h2' }: { headingAs?: 'h1' | 'h2' }
                 <SectionHeading
                     as={headingAs}
                     eyebrow="منتجاتنا"
-                    title="تشكيلة السجاد والموكيت"
-                    description="اكتشف مجموعتنا الواسعة من الموكيت والسجاد والمفروشات والأرضيات في الرياض"
+                    title="تشكيلة السجاد والموكيت والأرضيات"
+                    description="موكيت مساجد ومكاتب ومنازل، باركيه، فينيل، عشب صناعي وأرضيات مطاط في الرياض"
                 />
 
-                {/* Category filter — sticky swipe rail on phones, wraps on desktop */}
+                {/* Category filter: sticky swipe rail on phones, wraps on desktop */}
                 <div className="sticky top-16 z-30 -mx-4 px-4 py-3 mb-6 md:mb-10 bg-white/90 backdrop-blur-xl md:static md:bg-transparent md:backdrop-blur-none md:py-0">
                     <div
                         className="flex md:flex-wrap md:justify-center gap-2 overflow-x-auto no-scrollbar snap-x"
@@ -70,18 +73,22 @@ export function ProductGallery({ headingAs = 'h2' }: { headingAs?: 'h1' | 'h2' }
                     {filteredProducts.length} منتج
                 </p>
 
-                {/* Products grid — keyed by filter so cards re-enter on change */}
-                <div key={selectedCategory} className="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6">
+                {/* Products grid, keyed by filter so cards re-enter on change */}
+                <div
+                    key={selectedCategory}
+                    className={`grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6 ${filtered ? '' : 'tiles-in'}`}
+                    {...(filtered ? {} : { 'data-reveal': 'tiles' })}
+                >
                     {filteredProducts.map((product, index) => (
                         <article
                             key={product.id}
-                            data-reveal
-                            style={{ '--d': `${(index % 3) * 80}ms` } as React.CSSProperties}
-                            className="group"
+                            style={{ '--i': filtered ? index : index % 3 } as CSSProperties}
+                            className={`group ${filtered ? 'card-in' : ''}`}
                         >
                             <Link
                                 href={`/products/${product.id}`}
-                                className="press flex flex-col h-full rounded-2xl overflow-hidden bg-white border border-line hover:shadow-[0_18px_40px_-20px_rgba(20,20,20,0.35)] hover:-translate-y-1 transition-all duration-500"
+                                data-spotlight
+                                className="lift press relative flex flex-col h-full rounded-2xl overflow-hidden bg-white border border-line"
                             >
                                 <div className="relative aspect-square md:aspect-[4/3] overflow-hidden bg-cream">
                                     <Image
@@ -116,17 +123,17 @@ export function ProductGallery({ headingAs = 'h2' }: { headingAs?: 'h1' | 'h2' }
                 {/* CTA */}
                 <div
                     className="mt-12 md:mt-16 flex flex-col md:flex-row items-center justify-between gap-5 rounded-3xl bg-cream border border-line p-6 md:p-10 text-center md:text-right"
-                    data-reveal
+                    data-reveal="clip"
                 >
                     <div>
                         <h3 className="font-display text-xl md:text-2xl font-semibold text-ink mb-1">لم تجد ما تبحث عنه؟</h3>
-                        <p className="text-ink-muted text-sm md:text-base">أرسل لنا صورة المكان وسنقترح عليك الأنسب مع عرض سعر مجاني.</p>
+                        <p className="text-ink-muted text-sm md:text-base">أرسل لنا صورة المكان ومقاسه وسنقترح عليك الأنسب، مع معاينة وقياس مجاناً.</p>
                     </div>
                     <a
                         href={whatsappLink()}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="press shrink-0 inline-flex items-center gap-2 px-8 py-3.5 bg-ink text-white rounded-full text-sm font-bold hover:bg-ink-soft transition-colors"
+                        className="shine press shrink-0 inline-flex items-center gap-2 px-8 py-3.5 bg-ink text-white rounded-full text-sm font-bold hover:bg-ink-soft transition-colors"
                     >
                         <WhatsAppIcon className="w-4 h-4" />
                         تواصل عبر واتساب

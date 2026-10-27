@@ -1,6 +1,4 @@
-'use client';
-
-import { useState } from 'react';
+import type { CSSProperties } from 'react';
 import { Plus } from 'lucide-react';
 import { SectionHeading } from '@/components/SectionHeading';
 import { WhatsAppIcon } from '@/components/WhatsAppIcon';
@@ -11,59 +9,52 @@ interface FAQItem {
     answer: string;
 }
 
+/** Only owner-confirmed promises: free inspection and measurement, free sample, supply and installation, delivery to all cities, hours. */
 const faqData: FAQItem[] = [
     {
         question: 'هل توفرون خدمة التركيب؟',
-        answer: 'نعم، نوفر خدمة تركيب احترافية لجميع منتجاتنا من موكيت وسجاد وباركيه وأرضيات. فريقنا المتخصص يتولى القياس والتركيب في موقعك.'
+        answer: 'نعم، نورّد ونركّب جميع منتجاتنا من موكيت وسجاد وباركيه وفينيل وأرضيات مطاط. نقيس المكان أولاً ثم نركّب في موقعك.',
     },
     {
         question: 'ما الذي توفرونه للمكاتب والشركات؟',
-        answer: 'موكيت مكاتب رول وبلاط موكيت (مربعات) للمكاتب والشركات في الرياض، مع معاينة وقياس قبل عرض السعر. أرسل مساحة المكتب وصوره على الواتساب لنبدأ.'
+        answer: 'موكيت مكاتب رول وبلاط موكيت (مربعات) للمكاتب والشركات في الرياض، مع معاينة وقياس مجاناً قبل عرض السعر. أرسل مساحة المكتب وصوره على الواتساب لنبدأ.',
     },
     {
         question: 'هل عندكم أرضيات ربل (مطاط)؟',
-        answer: 'نعم: ربل جيم للصالات الرياضية، ومطاط دورات المياه، وربل إسطبلات الخيل. أخبرنا بالمكان والمساحة على الواتساب لنقترح النوع المناسب.'
+        answer: 'نعم: ربل جيم للصالات الرياضية، ومطاط دورات المياه ضد الانزلاق. أخبرنا بالمكان والمساحة على الواتساب لنقترح النوع المناسب.',
     },
     {
         question: 'كيف أحصل على عرض سعر؟',
-        answer: 'أرسل المقاسات وصور المكان على الواتساب، أو اطلب معاينة وقياس مجاناً. السعر يعتمد على النوع والمساحة وحالة الأرضية.'
+        answer: 'أرسل المقاسات وصور المكان على الواتساب، أو اطلب معاينة وقياس مجاناً. السعر يعتمد على النوع والمساحة وحالة الأرضية.',
     },
     {
         question: 'هل يمكنني معاينة العينات قبل الشراء؟',
-        answer: 'نعم، يمكنك زيارة معرضنا في الرياض ومعاينة العينات، أو طلب عينة عبر الواتساب لاختيار اللون والتصميم المناسب.'
+        answer: 'نعم، يمكنك زيارة معرضنا في حراج بن قاسم بالرياض، أو طلب عينة مجانية قبل الطلب عبر الواتساب لاختيار اللون والملمس في مكانك.',
     },
     {
         question: 'ما هي أوقات العمل؟',
-        answer: 'يومياً من 9 صباحاً حتى 10 مساءً، بالاتصال أو الواتساب.'
+        answer: 'يومياً من 9 صباحاً حتى 10 مساءً، بالاتصال أو الواتساب.',
     },
 ];
 
+const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqData.map((item) => ({
+        '@type': 'Question',
+        name: item.question,
+        acceptedAnswer: { '@type': 'Answer', text: item.answer },
+    })),
+};
+
+/**
+ * Server component: native <details> items that share a name, so opening one closes the others, and
+ * that open smoothly where the browser can animate to content height (app/motion.css `.faq-item`).
+ */
 export function FAQ() {
-    const [openIndex, setOpenIndex] = useState<number | null>(0);
-
-    const toggleFAQ = (index: number) => {
-        setOpenIndex(openIndex === index ? null : index);
-    };
-
-    const faqSchema = {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": faqData.map(item => ({
-            "@type": "Question",
-            "name": item.question,
-            "acceptedAnswer": {
-                "@type": "Answer",
-                "text": item.answer
-            }
-        }))
-    };
-
     return (
         <section id="faq" className="py-16 md:py-28 bg-cream">
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-            />
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
             <div className="container mx-auto px-4 lg:px-8">
                 <SectionHeading
@@ -73,50 +64,27 @@ export function FAQ() {
                 />
 
                 <div className="max-w-3xl mx-auto space-y-3">
-                    {faqData.map((faq, index) => {
-                        const open = openIndex === index;
-                        return (
-                            <div
-                                key={index}
-                                data-reveal
-                                style={{ '--d': `${Math.min(index, 3) * 60}ms` } as React.CSSProperties}
-                                className={`rounded-2xl border bg-white transition-all duration-300 ${
-                                    open ? 'border-ink/15 shadow-[0_14px_36px_-22px_rgba(20,20,20,0.4)]' : 'border-line'
-                                }`}
-                            >
-                                <button
-                                    onClick={() => toggleFAQ(index)}
-                                    className="w-full flex items-center justify-between gap-4 p-5 md:p-6 text-right"
-                                    aria-expanded={open}
-                                    aria-controls={`faq-answer-${index}`}
-                                >
-                                    <span className="flex items-baseline gap-3">
-                                        <span className="text-xs text-brass-deep tabular-nums">0{index + 1}</span>
-                                        <span className="font-display text-base md:text-lg font-semibold text-ink">{faq.question}</span>
-                                    </span>
-                                    <span
-                                        className={`w-8 h-8 shrink-0 grid place-items-center rounded-full transition-all duration-300 ${
-                                            open ? 'bg-ink text-white rotate-45' : 'bg-cream text-ink'
-                                        }`}
-                                    >
-                                        <Plus size={16} />
-                                    </span>
-                                </button>
-                                <div
-                                    id={`faq-answer-${index}`}
-                                    className={`grid transition-[grid-template-rows] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-                                        open ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
-                                    }`}
-                                >
-                                    <div className="overflow-hidden">
-                                        <p className="px-5 md:px-6 pb-6 text-ink-soft leading-loose text-[0.95rem] md:pr-14">
-                                            {faq.answer}
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        );
-                    })}
+                    {faqData.map((faq, index) => (
+                        <details
+                            key={faq.question}
+                            name="faq"
+                            open={index === 0}
+                            data-reveal
+                            style={{ '--i': Math.min(index, 3) } as CSSProperties}
+                            className="faq-item group rounded-2xl border border-line bg-white open:border-ink/15 open:shadow-[0_14px_36px_-22px_rgba(20,20,20,0.4)] transition-[border-color,box-shadow] duration-300"
+                        >
+                            <summary className="list-none [&::-webkit-details-marker]:hidden cursor-pointer w-full flex items-center justify-between gap-4 p-5 md:p-6 text-right rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brass">
+                                <span className="flex items-baseline gap-3">
+                                    <span className="text-xs text-brass-deep tabular-nums">0{index + 1}</span>
+                                    <span className="font-display text-base md:text-lg font-semibold text-ink">{faq.question}</span>
+                                </span>
+                                <span className="w-8 h-8 shrink-0 grid place-items-center rounded-full bg-cream text-ink transition-all duration-300 group-open:bg-ink group-open:text-white group-open:rotate-45">
+                                    <Plus size={16} />
+                                </span>
+                            </summary>
+                            <p className="px-5 md:px-6 pb-6 text-ink-soft leading-loose text-[0.95rem] md:pr-14">{faq.answer}</p>
+                        </details>
+                    ))}
                 </div>
 
                 <div className="text-center mt-10 md:mt-12" data-reveal>

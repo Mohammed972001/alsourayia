@@ -1,7 +1,9 @@
+import type { CSSProperties } from 'react';
 import Link from 'next/link';
 import { Phone, MapPin } from 'lucide-react';
 import { ADDRESS, PHONE_DISPLAY, PHONE_TEL, PHONE2_DISPLAY, PHONE2_TEL, legalLine, whatsappLink } from '@/lib/contact';
 import { WhatsAppIcon } from '@/components/WhatsAppIcon';
+import { HeadingWords } from '@/components/motion/HeadingWords';
 
 // Real URLs rather than #section anchors: the footer is on every page, so
 // these links are how crawlers reach the inner pages.
@@ -14,14 +16,15 @@ const quickLinks = [
     { name: 'سياسة الخصوصية', href: '/privacy' },
 ];
 
+// Horse rubber is not stocked now, so it is not listed here.
 const productLinks = [
     { name: 'موكيت مساجد', href: '/products/mosque-carpets' },
+    { name: 'موكيت مكاتب', href: '/products/office-carpet' },
     { name: 'أرضيات مكتبية', href: '/products/office-flooring' },
     { name: 'باركيه', href: '/products/category/parquet' },
     { name: 'عشب صناعي', href: '/products/artificial-grass' },
     { name: 'ربل جيم', href: '/products/rabal-gem' },
     { name: 'مطاط دورات المياه', href: '/products/non-slip-rubber' },
-    { name: 'مطاط إسطبلات الخيل', href: '/products/horse-rubber' },
 ];
 
 export function Footer() {
@@ -30,18 +33,20 @@ export function Footer() {
         <footer className="relative overflow-hidden grain bg-ink text-white pb-28 lg:pb-8">
             <div className="relative container mx-auto px-4 lg:px-8">
                 {/* Quote CTA */}
-                <div className="py-12 md:py-16 border-b border-white/10 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-right" data-reveal>
+                <div className="py-12 md:py-16 border-b border-white/10 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-right">
                     <div>
-                        <p className="text-brass text-sm mb-2">معاينة وقياس مجاناً</p>
-                        <h2 className="font-display text-2xl md:text-4xl font-semibold leading-snug">
-                            جاهز تجدد أرضياتك؟
+                        <p className="text-brass text-sm mb-2" data-reveal>معاينة وقياس مجاناً</p>
+                        <h2 className="font-display text-2xl md:text-4xl font-semibold leading-snug" data-reveal="words" style={{ '--i': 1 } as CSSProperties}>
+                            <HeadingWords lines={['جاهز تجدد أرضياتك؟']} />
                         </h2>
                     </div>
                     <a
                         href={whatsappLink('السلام عليكم، أريد عرض سعر')}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="press inline-flex items-center gap-2 px-8 py-4 rounded-full bg-brass text-ink font-bold text-sm hover:bg-white transition-colors"
+                        data-reveal="pop"
+                        style={{ '--i': 3 } as CSSProperties}
+                        className="shine press inline-flex items-center gap-2 px-8 py-4 rounded-full bg-brass text-ink font-bold text-sm hover:bg-white transition-colors"
                     >
                         <WhatsAppIcon className="w-5 h-5" />
                         اطلب عرض سعر الآن
@@ -50,7 +55,7 @@ export function Footer() {
 
                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10 py-12">
                     {/* Company Info */}
-                    <div className="col-span-2 lg:col-span-1">
+                    <div className="col-span-2 lg:col-span-1" data-reveal style={{ '--i': 0 } as CSSProperties}>
                         <h3 className="font-display text-xl font-semibold mb-1">موكيت ومفروشات السريع</h3>
                         <p className="text-white/40 text-xs mb-4">Al-Sari Carpets & Furnishings</p>
                         <p className="text-white/60 text-sm leading-relaxed">
@@ -59,7 +64,7 @@ export function Footer() {
                     </div>
 
                     {/* Quick Links */}
-                    <div>
+                    <div data-reveal style={{ '--i': 1 } as CSSProperties}>
                         <h4 className="text-sm mb-4 text-brass">روابط سريعة</h4>
                         <ul className="space-y-2.5">
                             {quickLinks.map((link) => (
@@ -73,7 +78,7 @@ export function Footer() {
                     </div>
 
                     {/* Products */}
-                    <div>
+                    <div data-reveal style={{ '--i': 2 } as CSSProperties}>
                         <h4 className="text-sm mb-4 text-brass">منتجاتنا</h4>
                         <ul className="space-y-2.5">
                             {productLinks.map((link) => (
@@ -87,7 +92,7 @@ export function Footer() {
                     </div>
 
                     {/* Contact */}
-                    <div className="col-span-2 lg:col-span-1">
+                    <div className="col-span-2 lg:col-span-1" data-reveal style={{ '--i': 3 } as CSSProperties}>
                         <h4 className="text-sm mb-4 text-brass">تواصل معنا</h4>
                         <div className="space-y-3">
                             <a href={PHONE_TEL} className="flex items-center gap-2 text-white/60 hover:text-white text-sm transition-colors">

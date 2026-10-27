@@ -70,7 +70,7 @@ export function Navigation() {
     return (
         <>
             <nav
-                className={`fixed top-0 right-0 left-0 z-50 transition-all duration-500 ${
+                className={`site-header fixed top-0 right-0 left-0 z-50 transition-all duration-500 ${
                     solid && !isMobileMenuOpen
                         ? 'bg-white/85 backdrop-blur-xl shadow-[0_1px_0_0_var(--color-line)]'
                         : 'bg-transparent'
@@ -96,7 +96,10 @@ export function Navigation() {
                                     fill
                                     sizes="44px"
                                     className="object-cover"
-                                    priority
+                                    // Eager but not `priority`: priority adds a high-priority
+                                    // preload for a 44px logo that competes with the hero / product
+                                    // picture for the first bytes on a slow phone.
+                                    loading="eager"
                                 />
                             </span>
                             <span className="flex flex-col">
@@ -124,12 +127,11 @@ export function Navigation() {
                                     key={item.label}
                                     href={item.href}
                                     onClick={(e) => handleNavClick(e, item.sectionId)}
-                                    className={`relative py-1 text-sm transition-colors group ${
+                                    className={`nav-link py-1 text-sm transition-colors ${
                                         onDark ? 'text-white/85 hover:text-white' : 'text-ink-soft hover:text-ink'
                                     }`}
                                 >
                                     {item.label}
-                                    <span className="absolute -bottom-0.5 right-0 h-px w-0 bg-brass transition-all duration-300 group-hover:w-full" />
                                 </Link>
                             ))}
                         </div>

@@ -38,7 +38,7 @@ lines.push("", "## صفحات أخرى", `- كل المنتجات: ${SITE_URL}/p
 
 export const CHAT_SITE: ChatSite = {
   name: NAME,
-  niche: "أرضيات متخصصة في الرياض، وأولها الربل: ربل جيم ومطاط دورات المياه ومطاط الخيل، مع الموكيت",
+  niche: "أرضيات متخصصة في الرياض، وأولها الربل: ربل جيم ومطاط دورات المياه (مطاط الخيل غير متوفر حالياً)، مع الموكيت والباركيه",
   phone: PHONE_DISPLAY,
   whatsappUrl: whatsappLink(),
   knowledge: lines.join("\n"),

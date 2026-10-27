@@ -16,9 +16,9 @@ export default function robots(): MetadataRoute.Robots {
             {
                 userAgent: '*',
                 allow: '/',
+                // /_next/ is not blocked: Google needs the CSS and JS there to render the pages.
                 disallow: [
                     '/api/',
-                    '/_next/',
                     '/admin/',
                     '/private/',
                 ],

@@ -1,19 +1,19 @@
-'use client';
-
+// Server component. The product page used to ship its whole text, FAQs,
+// related products and JSON-LD as client JS props; now only the gallery
+// (components/product/DetailGallery) and the colour chips
+// (components/product/ColorPicker) hydrate.
 import { ArrowRight, Check, Phone, MessageCircle, MapPin } from 'lucide-react';
 import { categoryToSlug, getProductById, mergedCategories, type Product } from '@/lib/products';
-import { useState } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import { Breadcrumb } from './Breadcrumb';
 import { ADDRESS, MAPS_URL, PHONE_TEL, whatsappLink } from '@/lib/contact';
 import { imageAlt, isStockImage } from '@/data/stock-images';
+import { DetailGallery, type GalleryImage } from './product/DetailGallery';
+import { ColorPicker } from './product/ColorPicker';
 
 interface ProductDetailProps {
     productId: string;
     dynamicGallery?: string[];
-    onBack?: () => void;
 }
 
 // detailedDescription is plain text with light markup: a line wrapped in **…**
@@ -57,17 +57,8 @@ function RichText({ text }: { text: string }) {
     );
 }
 
-export function ProductDetail({ productId, dynamicGallery, onBack }: ProductDetailProps) {
-    const router = useRouter();
-    const handleBack = () => {
-        if (onBack) return onBack();
-        const fromThisSite = typeof document !== 'undefined' && document.referrer.startsWith(window.location.origin);
-        if (fromThisSite && window.history.length > 1) router.back();
-        else router.push('/products');
-    };
+export function ProductDetail({ productId, dynamicGallery }: ProductDetailProps) {
     const product = getProductById(productId);
-    const [selectedImage, setSelectedImage] = useState(0);
-    const [selectedColor, setSelectedColor] = useState(0);
 
     if (!product) {
         return <div className="min-h-screen flex items-center justify-center text-[#4A4A4A]">المنتج غير موجود</div>;
@@ -125,11 +116,16 @@ export function ProductDetail({ productId, dynamicGallery, onBack }: ProductDeta
           }
         : null;
 
-    const getImageAlt = (index: number) => {
-        const baseAlt = `${product.name} - ${product.category}`;
-        const ownAlt = index === 0 ? `${baseAlt} - موكيت ومفروشات السريع الرياض` : `${baseAlt} - صورة ${index + 1}`;
-        return imageAlt(allImages[index], ownAlt);
-    };
+    // Alt text and the «stock photo» flag are resolved here so the gallery
+    // island does not carry the stock-image table.
+    const baseAlt = `${product.name} - ${product.category}`;
+    const galleryImages: GalleryImage[] = allImages.map((src, index) => ({
+        src,
+        alt: imageAlt(src, index === 0 ? `${baseAlt} - موكيت ومفروشات السريع الرياض` : `${baseAlt} - صورة ${index + 1}`),
+        stock: isStockImage(src),
+    }));
+
+    const askLink = whatsappLink(`أريد الاستفسار عن ${product.name} من موكيت ومفروشات السريع`);
 
     return (
         <>
@@ -148,14 +144,14 @@ export function ProductDetail({ productId, dynamicGallery, onBack }: ProductDeta
 
             <div className="pt-4 lg:pt-8 pb-20">
                 <div className="container mx-auto px-4 lg:px-8">
-                    {/* Back */}
-                    <button
-                        onClick={handleBack}
-                        className="flex items-center gap-2 text-[#4A4A4A] hover:text-[#1A1A1A] transition-colors mb-4 lg:mb-8 text-sm"
+                    {/* Back: a plain link, so it works before any script runs. */}
+                    <Link
+                        href="/products"
+                        className="inline-flex items-center gap-2 text-[#4A4A4A] hover:text-[#1A1A1A] transition-colors mb-4 lg:mb-8 text-sm"
                     >
                         <span>العودة إلى المنتجات</span>
                         <ArrowRight size={16} />
-                    </button>
+                    </Link>
 
                     {/* Three blocks placed explicitly. On a phone they stack in source
                         order, so a visitor from an ad sees the headline and the contact
@@ -171,7 +167,7 @@ export function ProductDetail({ productId, dynamicGallery, onBack }: ProductDeta
                             {/* CTAs */}
                             <div className="flex flex-col sm:flex-row gap-3 mb-3">
                                 <a
-                                    href={whatsappLink(`أريد الاستفسار عن ${product.name} من موكيت ومفروشات السريع`)}
+                                    href={askLink}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="flex-1 px-6 py-3.5 bg-[#1A1A1A] text-white rounded-lg hover:bg-[#333] transition-colors text-center text-sm"
@@ -198,7 +194,7 @@ export function ProductDetail({ productId, dynamicGallery, onBack }: ProductDeta
                                     <span>اتصل الآن</span>
                                 </a>
                                 <a
-                                    href={whatsappLink(`أريد الاستفسار عن ${product.name} من موكيت ومفروشات السريع`)}
+                                    href={askLink}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="flex items-center justify-center gap-2 px-4 py-3 bg-[#F9FAFB] text-[#4A4A4A] rounded-lg hover:bg-gray-100 transition-colors text-sm"
@@ -230,78 +226,16 @@ export function ProductDetail({ productId, dynamicGallery, onBack }: ProductDeta
                                 </a>
                             </div>
 
-                            {/* Colors */}
-                            <div>
-                                <p className="text-sm text-[#6B7280] mb-3">الألوان المتوفرة</p>
-                                <div className="flex flex-wrap gap-2">
-                                    {product.colors.map((color, index) => (
-                                        <button
-                                            key={color.name}
-                                            onClick={() => setSelectedColor(index)}
-                                            className={`flex items-center gap-2 px-4 py-2 rounded-lg border transition-colors text-sm ${
-                                                selectedColor === index
-                                                    ? 'border-[#1A1A1A] bg-[#F9FAFB]'
-                                                    : 'border-gray-200 hover:border-gray-400'
-                                            }`}
-                                        >
-                                            <span
-                                                className="w-4 h-4 rounded-full border border-gray-200"
-                                                style={{ backgroundColor: color.value }}
-                                            />
-                                            <span className="text-[#4A4A4A]">{color.name}</span>
-                                        </button>
-                                    ))}
-                                </div>
-                            </div>
+                            <ColorPicker colors={product.colors} />
                         </div>
 
                         {/* Images */}
                         <div className="lg:col-start-1 lg:row-start-1 lg:row-span-2">
-                            <div className="relative overflow-hidden rounded-lg bg-gray-100 mb-3 aspect-[4/3]">
-                                <Image
-                                    src={allImages[selectedImage]}
-                                    alt={getImageAlt(selectedImage)}
-                                    fill
-                                    priority={selectedImage === 0}
-                                    quality={85}
-                                    sizes="(max-width: 1024px) 100vw, 50vw"
-                                    className="object-cover"
-                                />
-                                {isStockImage(allImages[selectedImage]) && (
-                                    <span className="absolute bottom-2 right-2 rounded bg-black/60 px-2 py-0.5 text-[11px] text-white">
-                                        صورة توضيحية
-                                    </span>
-                                )}
-                            </div>
-
-                            {/* Thumbnails: one horizontal strip instead of a 6-column grid
-                                that stacked two rows above everything on a phone. */}
-                            {allImages.length > 1 && (
-                                <div className="flex gap-2 overflow-x-auto pb-1">
-                                    {allImages.slice(0, 12).map((image, index) => (
-                                        <button
-                                            key={index}
-                                            onClick={() => setSelectedImage(index)}
-                                            className={`relative shrink-0 w-16 h-16 lg:w-20 lg:h-20 overflow-hidden rounded-md ${
-                                                selectedImage === index ? 'ring-2 ring-[#1A1A1A]' : 'opacity-60 hover:opacity-100'
-                                            } transition-all`}
-                                            aria-label={`عرض ${getImageAlt(index)}`}
-                                        >
-                                            <Image
-                                                src={image}
-                                                alt={getImageAlt(index)}
-                                                fill
-                                                sizes="80px"
-                                                className="object-cover"
-                                            />
-                                        </button>
-                                    ))}
-                                </div>
-                            )}
+                            <DetailGallery images={galleryImages} />
                         </div>
 
                         {/* Features */}
-                        <div className="lg:col-start-2 lg:row-start-2 p-6 bg-[#F9FAFB] rounded-lg">
+                        <div className="lg:col-start-2 lg:row-start-2 p-6 bg-[#F9FAFB] rounded-lg" data-reveal>
                             <h2 className="text-lg text-[#1A1A1A] mb-4">مميزات المنتج</h2>
                             <div className="space-y-3">
                                 {product.features.map((feature) => (
@@ -316,7 +250,7 @@ export function ProductDetail({ productId, dynamicGallery, onBack }: ProductDeta
 
                     {/* Detailed Description */}
                     {product.detailedDescription && (
-                        <div className="mt-16 max-w-4xl">
+                        <div className="mt-16 max-w-4xl" data-reveal>
                             <h2 className="text-xl text-[#1A1A1A] mb-6">تفاصيل {product.name}</h2>
                             <div className="text-[#4A4A4A] leading-relaxed">
                                 <RichText text={product.detailedDescription} />
@@ -325,11 +259,11 @@ export function ProductDetail({ productId, dynamicGallery, onBack }: ProductDeta
                     )}
 
                     {product.faqs && product.faqs.length > 0 && (
-                        <div className="mt-12 max-w-4xl">
+                        <div className="mt-12 max-w-4xl" data-reveal>
                             <h2 className="text-xl text-[#1A1A1A] mb-6">أسئلة شائعة عن {product.name}</h2>
                             <div className="space-y-3">
                                 {product.faqs.map((faq) => (
-                                    <details key={faq.question} className="rounded-lg border border-gray-200 p-4">
+                                    <details key={faq.question} className="faq-item rounded-lg border border-gray-200 p-4">
                                         <summary className="cursor-pointer font-semibold text-[#1A1A1A]">{faq.question}</summary>
                                         <p className="mt-3 text-[#4A4A4A] leading-relaxed">{faq.answer}</p>
                                     </details>
@@ -339,14 +273,14 @@ export function ProductDetail({ productId, dynamicGallery, onBack }: ProductDeta
                     )}
 
                     {relatedProducts.length > 0 && (
-                        <div className="mt-12 max-w-4xl">
+                        <div className="mt-12 max-w-4xl" data-reveal>
                             <h2 className="text-xl text-[#1A1A1A] mb-6">منتجات قريبة قد تناسبك</h2>
                             <ul className="grid sm:grid-cols-2 gap-3">
                                 {relatedProducts.map((p) => (
                                     <li key={p.id}>
                                         <Link
                                             href={`/products/${p.id}`}
-                                            className="block h-full rounded-lg border border-gray-200 p-4 hover:border-gray-400 transition-colors"
+                                            className="lift block h-full rounded-lg border border-gray-200 p-4 hover:border-gray-400 transition-colors"
                                         >
                                             <span className="block font-semibold text-[#1A1A1A] mb-1">{p.name}</span>
                                             <span className="block text-sm text-[#6B7280] leading-relaxed">{p.description}</span>

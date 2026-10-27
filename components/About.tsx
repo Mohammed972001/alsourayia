@@ -1,13 +1,21 @@
+import type { CSSProperties } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
-import { Gem, Palette, Headset } from 'lucide-react';
+import { Ruler, SwatchBook, Headset } from 'lucide-react';
 import { SectionHeading } from '@/components/SectionHeading';
 import { ADDRESS, NATIONAL_ADDRESS, legalLine } from '@/lib/contact';
+import { getProductById } from '@/lib/products';
+import { imageAlt } from '@/data/stock-images';
 
+/** Only owner-confirmed promises. */
 const features = [
-    { icon: Gem, title: 'معاينة قبل الطلب', desc: 'نقيس المكان ونعرض عليك العينات قبل عرض السعر، لتختار بعد أن ترى الخامة بنفسك' },
-    { icon: Palette, title: 'تصاميم مبتكرة', desc: 'تشكيلة واسعة من تصاميم الموكيت والمفروشات العصرية والكلاسيكية' },
+    { icon: Ruler, title: 'معاينة وقياس مجاناً', desc: 'نقيس المكان ونرى الأرضية الحالية قبل عرض السعر، لتعرف الكمية والخامة المناسبة قبل أن تلتزم بشيء' },
+    { icon: SwatchBook, title: 'عينة مجانية قبل الطلب', desc: 'تختار اللون والملمس من عينة حقيقية تراها في مكانك، لا من صورة على الشاشة' },
     { icon: Headset, title: 'تواصل مباشر', desc: 'اتصل أو راسلنا على الواتساب يومياً من 9 صباحاً حتى 10 مساءً' },
 ];
+
+/** Two of the shop's own photos, opened as frames when they scroll in. */
+const pictures = [getProductById('mosque-carpets'), getProductById('office-carpet')].filter((p) => p !== undefined);
 
 export function About({ headingAs = 'h2' }: { headingAs?: 'h1' | 'h2' }) {
     return (
@@ -15,29 +23,53 @@ export function About({ headingAs = 'h2' }: { headingAs?: 'h1' | 'h2' }) {
             <div className="container mx-auto px-4 lg:px-8">
                 <SectionHeading as={headingAs} eyebrow="من نحن" title="موكيت ومفروشات وأرضيات في الرياض" />
 
-                <p
-                    className="max-w-3xl mx-auto text-center text-ink-soft leading-loose text-[0.95rem] md:text-lg -mt-4 mb-12 md:mb-16"
-                    data-reveal
-                >
-                    <strong className="text-ink">موكيت ومفروشات السريع</strong> هي وجهتك المثالية للحصول على أرقى أنواع{' '}
-                    <Link href="/products" className="text-ink underline decoration-brass underline-offset-4 hover:no-underline">
-                        السجاد والموكيت والمفروشات
-                    </Link>{' '}
-                    في الرياض والمملكة العربية السعودية.
-                    نجمع بين الحرفية التقليدية والتصميمات العصرية لنقدم لك تجربة فريدة.
-                </p>
-                <p className="max-w-3xl mx-auto text-center text-ink-muted text-sm leading-relaxed -mt-8 mb-12 md:mb-16">
-                    {legalLine()}، ومعرضنا في {ADDRESS} (العنوان الوطني <span dir="ltr">{NATIONAL_ADDRESS}</span>).
-                </p>
+                <div className="grid lg:grid-cols-2 gap-8 lg:gap-14 items-center mb-12 md:mb-16">
+                    <div className="text-center lg:text-start">
+                        <p
+                            className="text-ink-soft leading-loose text-[0.95rem] md:text-lg"
+                            data-reveal
+                        >
+                            <strong className="text-ink">موكيت ومفروشات السريع</strong> معرض في حراج بن قاسم بالرياض يوفّر{' '}
+                            <Link href="/products" className="text-ink underline decoration-brass underline-offset-4 hover:no-underline">
+                                الموكيت والسجاد والأرضيات
+                            </Link>{' '}
+                            للمساجد والمكاتب والمنازل والصالات الرياضية والعيادات. نعاين ونقيس مجاناً، ونعرض عينة قبل الطلب، ثم نورّد
+                            ونركّب في الرياض ونورّد لكل مدن المملكة.
+                        </p>
+                        <p className="mt-5 text-ink-muted text-sm leading-relaxed" data-reveal style={{ '--i': 1 } as CSSProperties}>
+                            {legalLine()}، ومعرضنا في {ADDRESS} (العنوان الوطني <span dir="ltr">{NATIONAL_ADDRESS}</span>).
+                        </p>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-3 md:gap-4">
+                        {pictures.map((product, i) => (
+                            <div
+                                key={product.id}
+                                data-reveal={i === 0 ? 'frame' : 'curtain'}
+                                style={{ '--i': i * 2 } as CSSProperties}
+                                className={`relative overflow-hidden rounded-3xl bg-cream ring-1 ring-line ${i === 0 ? 'aspect-[3/4]' : 'aspect-[3/4] mt-8'}`}
+                            >
+                                <Image
+                                    src={product.image}
+                                    alt={imageAlt(product.image, `${product.name} من موكيت ومفروشات السريع`)}
+                                    fill
+                                    sizes="(max-width: 1024px) 50vw, 25vw"
+                                    className="object-cover"
+                                />
+                            </div>
+                        ))}
+                    </div>
+                </div>
 
                 {/* Features */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-6">
                     {features.map((feature, i) => (
                         <div
                             key={feature.title}
-                            data-reveal
-                            style={{ '--d': `${i * 90}ms` } as React.CSSProperties}
-                            className="group flex md:flex-col items-start gap-4 p-5 md:p-8 rounded-2xl bg-cream border border-line hover:border-brass/50 transition-colors"
+                            data-reveal="zoom"
+                            data-spotlight
+                            style={{ '--i': i } as CSSProperties}
+                            className="lift group relative flex md:flex-col items-start gap-4 p-5 md:p-8 rounded-2xl bg-cream border border-line"
                         >
                             <span className="w-12 h-12 shrink-0 grid place-items-center rounded-xl bg-white text-brass-deep ring-1 ring-line group-hover:bg-ink group-hover:text-brass transition-colors duration-300">
                                 <feature.icon size={22} strokeWidth={1.6} />

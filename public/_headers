@@ -1,2 +1,18 @@
 /_next/static/*
   Cache-Control: public,max-age=31536000,immutable
+
+# Photos and brand files change rarely and get new names when they do.
+/stock/*
+  Cache-Control: public, max-age=2592000
+/brand/*
+  Cache-Control: public, max-age=2592000
+/*.jpeg
+  Cache-Control: public, max-age=2592000
+/*.jpg
+  Cache-Control: public, max-age=2592000
+/*.webp
+  Cache-Control: public, max-age=2592000
+/*.png
+  Cache-Control: public, max-age=2592000
+/*.svg
+  Cache-Control: public, max-age=2592000

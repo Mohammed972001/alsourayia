@@ -29,8 +29,11 @@ const WHERE: Record<string, string> = { google: 'إعلانكم على جوجل'
  * from an ad or the site, so the shop can tell its leads apart (owner's
  * request, 2026-10-20). Product and category pages name their H1.
  */
-function whatsappMessage(original: string, source: string | null): string {
+function whatsappMessage(original: string, source: string | null, keepText = false): string {
     const where = (source && WHERE[source]) || 'موقعكم';
+    // A link with `data-keep-text` (the lead form) already says who is asking and about what; only
+    // the source is added to it.
+    if (keepText && original) return `${original} — عبر ${where}`;
     const onProduct = window.location.pathname.startsWith('/products/');
     const product = onProduct ? document.querySelector('h1')?.textContent?.trim() : '';
     const wantsSample = original.includes('عينة');
@@ -50,7 +53,7 @@ function rewriteWhatsAppLink(link: HTMLAnchorElement, source: string | null): st
         // encodeURIComponent, not searchParams.set: WhatsApp shows a "+" from
         // form encoding as a literal plus instead of a space.
         const rest = url.searchParams.toString();
-        const message = encodeURIComponent(whatsappMessage(original, source));
+        const message = encodeURIComponent(whatsappMessage(original, source, link.hasAttribute('data-keep-text')));
         link.href = `${url.origin}${url.pathname}?${rest ? `${rest}&` : ''}text=${message}`;
         return `${url.origin}${url.pathname}`;
     } catch {

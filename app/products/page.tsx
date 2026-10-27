@@ -4,21 +4,24 @@ import { ProductGallery } from '@/components/ProductGallery';
 import { Footer } from '@/components/Footer';
 import { FloatingButtons } from '@/components/FloatingButtons';
 import { Breadcrumb } from '@/components/Breadcrumb';
+import { HelpBand } from '@/components/HelpBand';
+import { PageView } from '@/components/motion/PageView';
 import { categoryHref, categorySlugMap } from '@/lib/products';
 import Link from 'next/link';
+import type { CSSProperties } from 'react';
 
 const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://www.mokeet-elsuarye.com').replace(/\/$/, '');
 
 export const metadata: Metadata = {
-    title: 'جميع منتجات الموكيت والمفروشات والأرضيات',
-    description: 'تصفح جميع منتجات موكيت ومفروشات السريع في الرياض: موكيت مساجد، أرضيات مكتبية، باركيه ضد الماء، عشب صناعي، فينيل، موكيت تركي، تنسيق حدائق. جودة عالية وأسعار تنافسية.',
-    keywords: 'منتجات موكيت السريع, موكيت مساجد الرياض, أرضيات مكتبية, باركيه ضد الماء, عشب صناعي الرياض, فينيل, موكيت تركي',
+    title: 'موكيت وباركيه وارضيات مطاط في الرياض',
+    description: 'كل منتجات موكيت ومفروشات السريع في الرياض: موكيت مساجد ومكاتب وغرف، باركيه ارضيات، ارضيات مطاط وربل جيم، فينيل، عشب صناعي. توريد وتركيب مع معاينة وقياس مجاناً.',
+    keywords: 'منتجات موكيت السريع, موكيت مساجد الرياض, موكيت مكاتب, باركيه ارضيات, ارضيات مطاط, ربل جيم, عشب صناعي الرياض, فينيل, موكيت تركي',
     alternates: {
         canonical: `${baseUrl}/products`,
     },
     openGraph: {
-        title: 'جميع منتجات الموكيت والمفروشات | موكيت ومفروشات السريع',
-        description: 'تصفح جميع منتجات موكيت ومفروشات السريع: موكيت مساجد، أرضيات، باركيه، عشب صناعي، فينيل، موكيت تركي وأكثر.',
+        title: 'موكيت وباركيه وارضيات مطاط في الرياض | موكيت ومفروشات السريع',
+        description: 'كل منتجات موكيت ومفروشات السريع: موكيت مساجد ومكاتب وغرف، باركيه، ارضيات مطاط، فينيل، عشب صناعي. توريد وتركيب مع معاينة وقياس مجاناً.',
         locale: 'ar_SA',
         type: 'website',
         url: `${baseUrl}/products`,
@@ -34,30 +37,35 @@ export default function ProductsPage() {
     return (
         <div className="min-h-screen bg-white" dir="rtl">
             <Navigation />
-            <div className="pt-20">
-                <div className="container mx-auto px-4 lg:px-8 py-4">
-                    <Breadcrumb items={breadcrumb} />
-                </div>
+            <PageView>
+                <div className="pt-20">
+                    <div className="container mx-auto px-4 lg:px-8 py-4">
+                        <Breadcrumb items={breadcrumb} />
+                    </div>
 
-                {/* Category Navigation Links - crawlable by search engines */}
-                <div className="container mx-auto px-4 lg:px-8 py-4">
-                    <nav aria-label="فئات المنتجات">
-                        <div className="flex flex-wrap gap-2">
-                            {Object.entries(categorySlugMap).map(([slug, name]) => (
-                                <Link
-                                    key={slug}
-                                    href={categoryHref(slug)}
-                                    className="px-4 py-2 rounded-lg bg-gray-100 text-[#4A4A4A] hover:bg-[#1A1A1A] hover:text-white transition-colors text-sm"
-                                >
-                                    {name}
-                                </Link>
-                            ))}
-                        </div>
-                    </nav>
-                </div>
+                    {/* Category Navigation Links - crawlable by search engines */}
+                    <div className="container mx-auto px-4 lg:px-8 py-4">
+                        <nav aria-label="فئات المنتجات">
+                            <div className="flex flex-wrap gap-2">
+                                {Object.entries(categorySlugMap).map(([slug, name], i) => (
+                                    <Link
+                                        key={slug}
+                                        href={categoryHref(slug)}
+                                        data-reveal="fade"
+                                        style={{ '--i': i } as CSSProperties}
+                                        className="px-4 py-2 rounded-lg bg-gray-100 text-[#4A4A4A] hover:bg-[#1A1A1A] hover:text-white transition-colors text-sm"
+                                    >
+                                        {name}
+                                    </Link>
+                                ))}
+                            </div>
+                        </nav>
+                    </div>
 
-                <ProductGallery headingAs="h1" />
-            </div>
+                    <ProductGallery headingAs="h1" />
+                </div>
+                <HelpBand />
+            </PageView>
             <Footer />
             <FloatingButtons />
         </div>

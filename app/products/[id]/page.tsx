@@ -27,15 +27,24 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         return { title: 'المنتج غير موجود' };
     }
 
+    // The part before « - » is the display name and the page's H1 (lib/products.ts); it carries the
+    // searched spelling of the ad keyword, so the <title> becomes «<keyword> في الرياض | brand»
+    // (the brand comes once, from the title template in app/layout.tsx).
+    const name = product.title.split(' - ')[0];
+    // Google shows about 60 characters; «في الرياض» is dropped when the name plus the brand suffix
+    // would exceed that (the city stays in the description and the H1 block).
+    const withCity = `${name} في الرياض`;
+    const title = `${withCity} | موكيت ومفروشات السريع`.length <= 60 ? withCity : name;
+
     return {
-        title: product.title,
+        title,
         description: product.metaDescription,
         keywords: product.keywords.join(', '),
         openGraph: {
-            title: product.title,
+            title: `${title} | موكيت ومفروشات السريع`,
             description: product.metaDescription,
             images: product.images[0]
-                ? [{ url: product.images[0], width: 800, height: 600, alt: product.title }]
+                ? [{ url: product.images[0], width: 800, height: 600, alt: `${name} - موكيت ومفروشات السريع` }]
                 : [],
             type: 'website',
             locale: 'ar_SA',
@@ -43,7 +52,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         },
         twitter: {
             card: 'summary_large_image',
-            title: product.title,
+            title: `${title} | موكيت ومفروشات السريع`,
             description: product.metaDescription,
             images: product.images[0] ? [product.images[0]] : [],
         },

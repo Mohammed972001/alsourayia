@@ -56,8 +56,16 @@ function ChatIcon() {
   );
 }
 
-export default function ChatWidget({ panelPosition = "bottom-24 end-5" }: { panelPosition?: string }) {
-  const [open, setOpen] = useState(false);
+// `defaultOpen`: ChatLauncher mounts this module only after the first tap on
+// its stand-in button, so the panel has to start open to answer that tap.
+export default function ChatWidget({
+  panelPosition = "bottom-24 end-5",
+  defaultOpen = false,
+}: {
+  panelPosition?: string;
+  defaultOpen?: boolean;
+}) {
+  const [open, setOpen] = useState(defaultOpen);
   const [turns, setTurns] = useState<Turn[]>([]);
   const [input, setInput] = useState("");
   const [busy, setBusy] = useState(false);

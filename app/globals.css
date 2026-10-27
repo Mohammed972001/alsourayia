@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "./motion.css";
 /* Font is self-hosted via next/font/google in layout.tsx — no runtime CSS request needed */
 
 @custom-variant dark (&:is(.dark *));
@@ -188,24 +189,6 @@ h1, h2, h3,
     letter-spacing: 0;
 }
 
-/* Scroll reveal. Elements only start hidden once RevealObserver has marked the
-   document ready, so no-JS visitors and crawlers always see the content. */
-.reveal-ready [data-reveal] {
-    opacity: 0;
-    transform: translate3d(0, 26px, 0);
-    transition:
-        opacity 0.8s var(--ease-out-expo),
-        transform 0.8s var(--ease-out-expo);
-    transition-delay: var(--d, 0ms);
-}
-.reveal-ready [data-reveal='fade'] { transform: none; }
-.reveal-ready [data-reveal='scale'] { transform: scale(0.94); }
-.reveal-ready [data-reveal='start'] { transform: translate3d(28px, 0, 0); }
-.reveal-ready [data-reveal].is-visible {
-    opacity: 1;
-    transform: none;
-}
-
 /* Horizontal rails (category chips, mobile carousels) */
 .no-scrollbar { scrollbar-width: none; }
 .no-scrollbar::-webkit-scrollbar { display: none; }
@@ -244,10 +227,6 @@ h1, h2, h3,
         transition-duration: 0.01ms !important;
         scroll-behavior: auto !important;
     }
-    .reveal-ready [data-reveal] {
-        opacity: 1;
-        transform: none;
-    }
 }
 
 /* Smooth Scrolling with offset for fixed nav */
@@ -273,3 +252,16 @@ html {
 ::-webkit-scrollbar-thumb:hover {
     background: #9CA3AF;
 }
+
+/* Home sections */
+/* A row whose children tile in (`.tiles-in`, motion.css) needs `data-reveal` for the observer, but the row
+   itself stays visible. */
+.js [data-reveal='tiles'] { opacity: 1; translate: none; }
+
+/* «لماذا السريع»: the long copy is clamped on phones behind a checkbox-driven expander, no script needed. */
+.seo-more:checked ~ .seo-text { max-height: none; }
+.seo-more:checked ~ .seo-fade { opacity: 0; }
+.seo-more:checked ~ .seo-toggle .seo-read { display: none; }
+.seo-more:checked ~ .seo-toggle .seo-less { display: inline; }
+.seo-more:checked ~ .seo-toggle svg { rotate: 180deg; }
+.seo-more:focus-visible ~ .seo-toggle { outline: 2px solid var(--color-brass); outline-offset: 2px; }

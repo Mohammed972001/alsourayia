@@ -1,0 +1,303 @@
+/*
+ * Motion system, in the manner of the hamasat-beity site: everything is CSS; one small observer
+ * (components/RevealObserver.tsx) marks `[data-reveal]` elements with `data-revealed` the first time they
+ * enter the screen. Nothing hides content unless scripts run (`html.js`, set by an inline boot script in
+ * app/layout.tsx with a 4 s fallback) AND the visitor has not asked for reduced motion. Only opacity,
+ * translate, scale, rotate and clip-path move, so nothing shifts layout or repaints the page.
+ *
+ *   data-reveal            fades in while rising            data-reveal="words"  words rise one by one (HeadingWords)
+ *   data-reveal="fade"     fades in place                   data-reveal="mask"   heading rises out of a mask
+ *   data-reveal="zoom"     grows from 0.9 (old «scale»)     data-reveal="pop"    pops in with an overshoot
+ *   data-reveal="slide"    slides in sideways (old «start») data-reveal="frame"  picture frame opens, photo settles
+ *   data-reveal="curtain"  picture opens from its centre    data-reveal="clip"   card opens from the top
+ *   data-reveal="wipe"     picture wiped open               data-reveal="blur"   text comes into focus
+ *   data-reveal="grow"     a rule drawn sideways            data-reveal="bg"     background settles from a zoom
+ *   .tiles-in              children grow in one after another once the row is on screen
+ *
+ * Stagger siblings with style={{ '--i': n }} (steps of --motion-step) or an explicit '--d' delay.
+ */
+
+@theme {
+    --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+    --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+    --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+    --motion-fast: 180ms;
+    --motion-base: 420ms;
+    --motion-slow: 800ms;
+    --motion-step: 90ms;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    /* :where keeps the base below every variant, whatever the order. */
+    .js :where([data-reveal]) {
+        opacity: 0;
+        translate: 0 28px;
+        transition:
+            opacity var(--motion-slow) var(--ease-out),
+            translate var(--motion-slow) var(--ease-out),
+            scale var(--motion-slow) var(--ease-out),
+            clip-path var(--motion-slow) var(--ease-out);
+        transition-delay: var(--d, calc(var(--i, 0) * var(--motion-step)));
+    }
+    .js [data-reveal][data-revealed] { opacity: 1; translate: 0 0; }
+
+    /* After the entrance the clip is dropped so focus rings and overlays are not cut. */
+    .js [data-reveal][data-settled] {
+        clip-path: none;
+        transition:
+            scale var(--motion-fast) var(--ease-out),
+            translate var(--motion-fast) var(--ease-out);
+    }
+
+    .js [data-reveal='fade'] { translate: none; }
+
+    .js [data-reveal='zoom'], .js [data-reveal='scale'] { translate: none; scale: 0.9; }
+    .js [data-reveal='zoom'][data-revealed], .js [data-reveal='scale'][data-revealed] { scale: 1; }
+
+    .js [data-reveal='slide'], .js [data-reveal='start'] { translate: -48px 0; }
+
+    .js [data-reveal='mask'] { translate: 0 70%; clip-path: inset(0 0 85% 0); }
+    .js [data-reveal='mask'][data-revealed] { clip-path: inset(-25% 0 -25% 0); }
+
+    .js [data-reveal='words'] { opacity: 1; translate: none; }
+    .js [data-reveal='words'] .hw {
+        opacity: 0;
+        translate: 0 0.55em;
+        rotate: 2.5deg;
+        transition:
+            opacity 600ms var(--ease-out),
+            translate 700ms var(--ease-out),
+            rotate 700ms var(--ease-out);
+        transition-delay: calc(var(--i, 0) * var(--motion-step) + var(--w, 0) * 55ms);
+    }
+    .js [data-reveal='words'][data-revealed] .hw { opacity: 1; translate: 0 0; rotate: 0deg; }
+
+    .js [data-reveal='pop'] { translate: none; scale: 0.35; }
+    .js [data-reveal='pop'][data-revealed] { scale: 1; transition-timing-function: var(--ease-spring); }
+
+    .js [data-reveal='grow'] { translate: none; scale: 0.02 1; transform-origin: right center; }
+    .js [data-reveal='grow'][data-revealed] { scale: 1 1; transition-duration: 1200ms; }
+    .js [data-reveal='grow-down'] { translate: none; scale: 1 0.02; transform-origin: center top; }
+    .js [data-reveal='grow-down'][data-revealed] { scale: 1 1; transition-duration: 1600ms; }
+
+    .js [data-reveal='frame'] { translate: 0 40px; clip-path: inset(18% 12% 18% 12% round 24px); }
+    .js [data-reveal='frame'] img { scale: 1.25; transition: scale 1400ms var(--ease-out); transition-delay: var(--d, calc(var(--i, 0) * var(--motion-step))); }
+    .js [data-reveal='frame'][data-revealed] { clip-path: inset(0 0 0 0 round 24px); }
+    .js [data-reveal='frame'][data-revealed] img { scale: 1; }
+
+    .js [data-reveal='curtain'] { translate: none; clip-path: inset(0 44% 0 44% round 24px); }
+    .js [data-reveal='curtain'][data-revealed] { clip-path: inset(0 0 0 0 round 24px); transition-duration: 1100ms; }
+
+    .js [data-reveal='clip'] { translate: 0 42px; clip-path: inset(0 0 88% 0 round 24px); transition-duration: 1000ms; }
+    .js [data-reveal='clip'][data-revealed] { clip-path: inset(0 0 0 0 round 24px); }
+
+    .js [data-reveal='wipe'] { translate: none; clip-path: inset(0 0 0 90% round 24px); transition-duration: 1200ms; }
+    .js [data-reveal='wipe'][data-revealed] { clip-path: inset(0 0 0 0 round 24px); }
+
+    .js [data-reveal='blur'] {
+        translate: 0 16px;
+        filter: blur(10px);
+        transition:
+            opacity var(--motion-slow) var(--ease-out),
+            translate var(--motion-slow) var(--ease-out),
+            filter var(--motion-slow) var(--ease-out);
+        transition-delay: var(--d, calc(var(--i, 0) * var(--motion-step)));
+    }
+    .js [data-reveal='blur'][data-revealed] { filter: blur(0); }
+    .js [data-reveal='blur'][data-settled] { filter: none; }
+
+    .js [data-reveal='bg'] { opacity: 1; translate: none; }
+    .js [data-reveal='bg'] img { scale: 1.1; transition: scale 1800ms var(--ease-out); }
+    .js [data-reveal='bg'][data-revealed] img { scale: 1; }
+
+    .js .tiles-in > * {
+        transition:
+            opacity var(--motion-slow) var(--ease-out),
+            scale var(--motion-slow) var(--ease-out);
+        transition-delay: calc(var(--i, 0) * var(--motion-step));
+    }
+    .js .tiles-in:not([data-revealed]) > * { opacity: 0; scale: 0.9; }
+
+    /* On load, without waiting for scripts. */
+    .rise-in {
+        animation: rise-in var(--motion-slow) var(--ease-out) both;
+        animation-delay: calc(var(--i, 0) * 120ms + 100ms);
+    }
+    .settle { animation: settle 1400ms var(--ease-out) both; }
+    .photo-in { animation: photo-in var(--motion-slow) var(--ease-out) both; }
+    .logo-in { animation: logo-in 1100ms var(--ease-out) both; }
+    .card-in { animation: card-in var(--motion-base) var(--ease-out) both; animation-delay: calc(var(--i, 0) * 60ms); }
+
+    /* Small decorative pictures that hover in place. */
+    .float-loop { animation: float-loop 5s ease-in-out infinite; animation-delay: calc(var(--i, 0) * -1.3s); }
+
+    /* A light that crosses a main button now and then. */
+    .shine { position: relative; overflow: hidden; isolation: isolate; }
+    .shine::after {
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        background: linear-gradient(105deg, transparent 38%, rgb(255 255 255 / 0.4) 50%, transparent 62%);
+        content: '';
+        translate: 130% 0;
+        animation: shine 4.2s var(--ease-standard) infinite;
+    }
+
+    /* A sheen across the logo, masked to the logo's own shape (set --logo to its url). */
+    .logo-shine { position: relative; overflow: hidden; mask: var(--logo) center / contain no-repeat; }
+    .logo-shine::after {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(105deg, transparent 35%, var(--sheen, rgb(255 255 255 / 0.8)) 50%, transparent 65%);
+        content: '';
+        pointer-events: none;
+        translate: 130% 0;
+        animation: logo-shine 5.5s cubic-bezier(0.45, 0, 0.2, 1) 2s infinite;
+    }
+
+    .marquee-track { animation: marquee 22s linear infinite; }
+    .marquee:hover .marquee-track, .marquee:focus-within .marquee-track { animation-play-state: paused; }
+    .cards-marquee-track { animation: marquee-half 80s linear infinite; }
+    .cards-marquee-track[data-reverse] { animation-direction: reverse; }
+    .cards-marquee:hover .cards-marquee-track, .cards-marquee:focus-within .cards-marquee-track { animation-play-state: paused; }
+
+    /* Questions open and close smoothly where the browser can animate to the content's own height. */
+    @supports (interpolate-size: allow-keywords) {
+        .faq-item { interpolate-size: allow-keywords; }
+        .faq-item::details-content {
+            overflow: clip;
+            block-size: 0;
+            opacity: 0;
+            transition:
+                block-size var(--motion-base) var(--ease-out),
+                opacity var(--motion-base) var(--ease-out),
+                content-visibility var(--motion-base) allow-discrete;
+        }
+        .faq-item[open]::details-content { block-size: auto; opacity: 1; }
+    }
+}
+
+.hw { display: inline-block; }
+
+/* Menu links: an underline that grows from the start side on hover. */
+.nav-link { position: relative; }
+.nav-link::after {
+    position: absolute;
+    inset-block-end: -4px;
+    inset-inline: 0;
+    height: 2px;
+    background: currentColor;
+    content: '';
+    scale: 0 1;
+    transform-origin: right center;
+    transition: scale var(--motion-base) var(--ease-out);
+}
+.nav-link:hover::after, .nav-link:focus-visible::after { scale: 1 1; }
+
+/* A strip of short phrases that moves sideways without end: four copies of the list, moved by one copy. */
+.marquee { overflow: hidden; }
+.marquee-track { display: flex; width: max-content; }
+.cards-marquee { overflow: hidden; padding-block: 10px; }
+.cards-marquee-track { display: flex; width: max-content; }
+
+@media (prefers-reduced-motion: reduce) {
+    .marquee-track { width: auto; }
+    .marquee-track > ul { flex: 1 1 100%; flex-wrap: wrap; justify-content: center; row-gap: 8px; }
+    .marquee-track > ul[aria-hidden], .cards-marquee-track > ul[aria-hidden] { display: none; }
+    .cards-marquee { overflow-x: auto; }
+}
+
+/* Lifted cards and the light under the pointer, only where there is a pointer. */
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    .lift {
+        transition:
+            translate var(--motion-base) var(--ease-out),
+            box-shadow var(--motion-base) var(--ease-out),
+            border-color var(--motion-base) var(--ease-out);
+    }
+    .lift:hover {
+        translate: 0 -6px;
+        border-color: rgb(184 146 79 / 0.45);
+        box-shadow: 0 24px 48px -24px rgb(20 20 20 / 0.35), 0 8px 20px -12px rgb(184 146 79 / 0.25);
+    }
+    [data-spotlight] { isolation: isolate; }
+    [data-spotlight]::before {
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        background: radial-gradient(circle 240px at var(--mx, 50%) var(--my, 0%), rgb(184 146 79 / 0.16), transparent 70%);
+        content: '';
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity var(--motion-base) var(--ease-out);
+    }
+    [data-spotlight]:hover::before { opacity: 1; }
+}
+
+/* Reading progress along the top edge, drawn by the scroll position itself. */
+.scroll-progress { display: none; }
+@supports (animation-timeline: scroll()) {
+    @media (prefers-reduced-motion: no-preference) {
+        .scroll-progress {
+            position: fixed;
+            inset-block-start: 0;
+            inset-inline: 0;
+            z-index: 60;
+            display: block;
+            height: 3px;
+            background: var(--color-brass);
+            scale: 0 1;
+            transform-origin: right center;
+            animation: grow-x linear both;
+            animation-timeline: scroll(root block);
+        }
+        /* Words of a paragraph light up one after another as it crosses the screen (ScrollWords). */
+        .scroll-words { view-timeline: --words block; }
+        .scroll-words .word {
+            animation: word-lit linear both;
+            animation-timeline: --words;
+            animation-range: cover calc(6% + var(--w) / var(--n) * 26%) cover calc(16% + var(--w) / var(--n) * 26%);
+        }
+    }
+}
+
+/*
+ * Page transitions (components/motion/PageView.tsx): the old page leaves quickly, the new one rises in a moment
+ * later. The header and the floating buttons keep their own names so they stay still.
+ */
+.site-header { view-transition-name: site-header; }
+[data-contact-fab] { view-transition-name: contact-fab; }
+@media (prefers-reduced-motion: no-preference) {
+    ::view-transition-old(.page-out) { animation: 160ms var(--ease-out) both page-out; }
+    ::view-transition-new(.page-in) { animation: 380ms var(--ease-out) 100ms both page-in; }
+    ::view-transition-group(.morph) { animation-duration: 460ms; animation-timing-function: var(--ease-out); }
+}
+@media (prefers-reduced-motion: reduce) {
+    ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important; }
+}
+
+/* Endless loops wait until their element is on screen (RevealObserver sets `data-onscreen`).
+   Targeted selectors, no universal descendant rule: a `*` here made every style recalc walk the whole page. */
+.js .marquee:not([data-onscreen]) .marquee-track,
+.js .cards-marquee:not([data-onscreen]) .cards-marquee-track,
+.js .float-loop:not([data-onscreen]),
+.js .pulse-ring:not([data-onscreen]),
+.js .shine:not([data-onscreen])::after,
+.js .logo-shine:not([data-onscreen])::after {
+    animation-play-state: paused !important;
+}
+
+@keyframes rise-in { from { opacity: 0; translate: 0 24px; } }
+@keyframes settle { from { scale: 1.1; } }
+@keyframes photo-in { from { opacity: 0; scale: 1.04; } }
+@keyframes card-in { from { opacity: 0; translate: 0 12px; } }
+@keyframes logo-in { from { opacity: 0; scale: 0.86; rotate: -6deg; } }
+@keyframes logo-shine { 0% { translate: 130% 0; } 35%, 100% { translate: -130% 0; } }
+@keyframes float-loop { 50% { translate: 0 -5px; } }
+@keyframes shine { 0%, 55% { translate: 130% 0; } 100% { translate: -130% 0; } }
+@keyframes marquee { to { translate: 25% 0; } }
+@keyframes marquee-half { to { translate: 50% 0; } }
+@keyframes grow-x { to { scale: 1 1; } }
+@keyframes word-lit { from { opacity: 0.28; } }
+@keyframes page-out { to { opacity: 0; } }
+@keyframes page-in { from { opacity: 0; translate: 0 24px; } }

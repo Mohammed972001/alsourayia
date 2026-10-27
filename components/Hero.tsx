@@ -1,31 +1,54 @@
+import type { CSSProperties } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowLeft, Ruler, Wrench } from 'lucide-react';
+import { ArrowLeft, Ruler, SwatchBook, Wrench } from 'lucide-react';
 import { products } from '@/lib/products';
 import { whatsappLink } from '@/lib/contact';
 import { imageAlt } from '@/data/stock-images';
 import { WhatsAppIcon } from '@/components/WhatsAppIcon';
 
+/** Only owner-confirmed promises. */
 const TRUST = [
     { icon: Ruler, label: 'معاينة وقياس مجاناً' },
-    { icon: Wrench, label: 'تركيب احترافي' },
+    { icon: SwatchBook, label: 'عينة مجانية قبل الطلب' },
+    { icon: Wrench, label: 'توريد وتركيب' },
 ];
 
-/** Server component: this is the LCP block, so it ships no JS. */
+/** The searched words first, the brand on its own accented line; both inside the one H1. */
+const TITLE_LINE = 'موكيت وباركيه وأرضيات في الرياض';
+const BRAND_LINE = 'موكيت ومفروشات السُريع';
+
+/** Each word rises on its own, in reading order, without waiting for scripts (`.rise-in`). */
+function RiseWords({ text, from }: { text: string; from: number }) {
+    return text.split(' ').map((word, i) => (
+        <span key={i}>
+            <span className="rise-in inline-block" style={{ '--i': from + i * 0.5 } as CSSProperties}>
+                {word}
+            </span>{' '}
+        </span>
+    ));
+}
+
+const step = (n: number) => ({ '--i': n }) as CSSProperties;
+
+/** Server component: this is the LCP block, so it ships no JS and nothing here waits for the observer. */
 export function Hero() {
+    const titleWords = TITLE_LINE.split(' ').length;
+
     return (
         <>
             <section
                 id="home"
                 className="relative min-h-[88svh] md:min-h-[100svh] flex items-end md:items-center overflow-hidden bg-ink"
             >
-                {/* Background — slow settle-in zoom */}
+                {/* Background: slow settle-in zoom */}
                 <div className="absolute inset-0 animate-hero-zoom">
                     <Image
                         src="/heroBG.jpeg"
                         alt="موكيت ومفروشات السريع في الرياض"
                         fill
                         priority
+                        fetchPriority="high"
                         quality={85}
                         sizes="100vw"
                         className="object-cover"
@@ -38,34 +61,34 @@ export function Hero() {
                 <div className="relative z-10 container mx-auto px-5 lg:px-8 pt-28 pb-28 md:pb-36">
                     <div className="max-w-2xl">
                         <span
-                            className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 backdrop-blur px-4 py-1.5 text-xs md:text-sm text-white/90"
+                            className="rise-in inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 backdrop-blur px-4 py-1.5 text-xs md:text-sm text-white/90"
+                            style={step(0)}
                         >
                             <span className="w-1.5 h-1.5 rounded-full bg-brass" />
-                            موكيت · سجاد · أرضيات — الرياض
+                            موكيت · باركيه · أرضيات مطاط — حراج بن قاسم، الرياض
                         </span>
 
-                        <h1
-                            className="font-display font-bold text-white mt-5 text-[2.6rem] leading-[1.2] md:text-6xl lg:text-7xl"
-                            style={{ animationDelay: '120ms' }}
-                        >
-                            موكيت ومفروشات
-                            <span className="block text-brass">السُريع</span>
+                        <h1 className="font-display font-bold text-white mt-5 text-[2.2rem] leading-[1.25] md:text-6xl md:leading-[1.15] lg:text-7xl">
+                            <RiseWords text={TITLE_LINE} from={1} />
+                            {/* Keeps the two lines apart in the heading's text for search engines and readers. */}{' '}
+                            <span className="block text-brass">
+                                <RiseWords text={BRAND_LINE} from={1 + titleWords * 0.5} />
+                            </span>
                         </h1>
 
                         <p
-                            className="mt-5 text-base md:text-xl text-white/80 leading-relaxed max-w-xl"
-                            style={{ animationDelay: '240ms' }}
+                            className="rise-in mt-5 text-base md:text-xl text-white/80 leading-relaxed max-w-xl"
+                            style={step(5)}
                         >
-                            نحول مساحاتك إلى تحف فنية بأرقى السجاد والموكيت والأرضيات في الرياض
+                            موكيت مكاتب ومساجد، باركيه، فينيل وأرضيات مطاط، مع معاينة وقياس مجاناً وتوريد وتركيب في الرياض
+                            وتوريد لكل مدن المملكة.
                         </p>
 
-                        <div
-                            className="mt-8 grid grid-cols-2 gap-3 sm:flex sm:flex-wrap"
-                            style={{ animationDelay: '360ms' }}
-                        >
+                        <div className="mt-8 grid grid-cols-2 gap-3 sm:flex sm:flex-wrap">
                             <Link
                                 href="#products"
-                                className="press inline-flex items-center justify-center gap-2 whitespace-nowrap px-4 sm:px-8 py-3.5 bg-white text-ink rounded-full font-bold text-sm hover:bg-brass-soft transition-colors"
+                                className="rise-in shine press inline-flex items-center justify-center gap-2 whitespace-nowrap px-4 sm:px-8 py-3.5 bg-white text-ink rounded-full font-bold text-sm hover:bg-brass-soft transition-colors"
+                                style={step(6)}
                             >
                                 تصفح المنتجات
                                 <ArrowLeft size={16} />
@@ -74,19 +97,21 @@ export function Hero() {
                                 href={whatsappLink()}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="press inline-flex items-center justify-center gap-2 whitespace-nowrap px-4 sm:px-8 py-3.5 border border-white/35 bg-white/5 backdrop-blur text-white rounded-full font-bold text-sm hover:bg-white/15 transition-colors"
+                                className="rise-in press inline-flex items-center justify-center gap-2 whitespace-nowrap px-4 sm:px-8 py-3.5 border border-white/35 bg-white/5 backdrop-blur text-white rounded-full font-bold text-sm hover:bg-white/15 transition-colors"
+                                style={step(6.5)}
                             >
                                 <WhatsAppIcon className="w-4 h-4" />
                                 تواصل معنا
                             </a>
                         </div>
 
-                        <ul
-                            className="mt-8 flex items-center gap-4 md:gap-6 border-t border-white/15 pt-5"
-                            style={{ animationDelay: '480ms' }}
-                        >
-                            {TRUST.map(({ icon: Icon, label }) => (
-                                <li key={label} className="flex items-center gap-1.5 text-[11px] sm:text-sm text-white/75">
+                        <ul className="mt-8 flex flex-wrap items-center gap-x-4 gap-y-2 md:gap-x-6 border-t border-white/15 pt-5">
+                            {TRUST.map(({ icon: Icon, label }, i) => (
+                                <li
+                                    key={label}
+                                    className="rise-in flex items-center gap-1.5 text-[11px] sm:text-sm text-white/75"
+                                    style={step(7 + i * 0.5)}
+                                >
                                     <Icon size={15} className="text-brass shrink-0" />
                                     {label}
                                 </li>
@@ -106,14 +131,16 @@ export function Hero() {
     );
 }
 
-/** Product shortcuts overlapping the hero edge — scrolls sideways on phones. */
+/** Product shortcuts overlapping the hero edge; scrolls sideways on phones. Horse rubber is not stocked now. */
 function CategoryRail() {
+    const items = products.filter((product) => product.id !== 'horse-rubber');
+
     return (
         <div className="relative z-20 -mt-16 md:-mt-20">
             <div className="container mx-auto px-4 lg:px-8">
                 <div
                     className="bg-white rounded-3xl shadow-[0_20px_50px_-20px_rgba(20,20,20,0.35)] ring-1 ring-line p-4 md:p-6"
-                    data-reveal
+                    data-reveal="clip"
                 >
                     <div className="flex items-center justify-between mb-3 md:mb-4 px-1">
                         <h2 className="font-display text-lg md:text-xl font-semibold text-ink">تسوّق حسب القسم</h2>
@@ -126,10 +153,13 @@ function CategoryRail() {
                         </Link>
                     </div>
 
-                    <ul className="flex gap-3 md:gap-4 overflow-x-auto no-scrollbar snap-x snap-mandatory -mx-4 px-4 md:mx-0 md:px-0 pb-1">
-                        {products.map((product) => (
-                            <li key={product.id} className="snap-start shrink-0 w-[118px] md:w-[150px]">
-                                <Link href={`/products/${product.id}`} className="press group block text-center">
+                    <ul
+                        className="tiles-in flex gap-3 md:gap-4 overflow-x-auto no-scrollbar snap-x snap-mandatory -mx-4 px-4 md:mx-0 md:px-0 pb-1"
+                        data-reveal="tiles"
+                    >
+                        {items.map((product, i) => (
+                            <li key={product.id} className="snap-start shrink-0 w-[118px] md:w-[150px]" style={step(i)}>
+                                <Link href={`/products/${product.id}`} className="lift press group block text-center rounded-2xl">
                                     <span className="relative block aspect-square rounded-2xl overflow-hidden bg-cream ring-1 ring-line">
                                         <Image
                                             src={product.image}

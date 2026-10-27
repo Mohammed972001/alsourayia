@@ -1,20 +1,23 @@
-'use client';
-
-import { useState } from 'react';
+import type { CSSProperties } from 'react';
 import Link from 'next/link';
 import { ArrowLeft, ChevronDown } from 'lucide-react';
 import { SectionHeading } from '@/components/SectionHeading';
 
 const cards = [
-    { title: 'موكيت مساجد', href: '/products/mosque-carpets', desc: 'موكيت مساجد عالي الجودة بتصاميم إسلامية فاخرة، مقاوم للحريق ومعالج ضد البكتيريا. مع التركيب في جميع أحياء الرياض.' },
-    { title: 'أرضيات مكتبية', href: '/products/office-flooring', desc: 'أرضيات مكتبية احترافية تناسب بيئات العمل الحديثة. سهلة التنظيف ومقاومة للخدوش مع تشكيلة واسعة من الألوان.' },
-    { title: 'باركيه فاخر', href: '/products/category/parquet', desc: 'باركيه ضد الماء للمطابخ والحمامات، وباركيه بمظهر الخشب الطبيعي للصالات وغرف النوم في المنازل والفلل والشقق.' },
-    { title: 'عشب صناعي', href: '/products/artificial-grass', desc: 'عشب صناعي عالي الكثافة للحدائق والملاعب والمساحات الخارجية. مقاوم للأشعة فوق البنفسجية.' },
+    { title: 'موكيت مساجد', href: '/products/mosque-carpets', desc: 'موكيت مساجد بخطوط صفوف أو سادة وألوان هادئة، يُفرش على اتجاه القبلة مع التوريد والتركيب في الرياض.' },
+    { title: 'أرضيات مكتبية', href: '/products/office-flooring', desc: 'أرضيات للاستقبال والممرات وصالات الموظفين بألوان رمادية وبيج، تُمسح بسهولة وتُركّب على مراحل والمكتب يعمل.' },
+    { title: 'باركيه', href: '/products/category/parquet', desc: 'باركيه ضد الماء للمطابخ والملاحق، وباركيه بمظهر الخشب للصالات وغرف النوم في المنازل والفلل والشقق.' },
+    { title: 'عشب صناعي', href: '/products/artificial-grass', desc: 'عشب صناعي للحدائق المنزلية والملاعب والمساحات الخارجية، بالمقاس الذي يناسب مكانك.' },
 ];
 
+const link = 'text-ink underline decoration-brass underline-offset-4';
+
+/**
+ * Server component. On phones the long copy is clamped behind a CSS-only expander (a hidden checkbox
+ * and its label), so it stays in the HTML for crawlers and opens without scripts.
+ */
 export function SEOContent() {
-    // Mobile only: long copy is clamped behind a toggle. It stays in the DOM for crawlers.
-    const [expanded, setExpanded] = useState(false);
+    const moreId = 'seo-more';
 
     return (
         <section className="py-16 md:py-24 bg-cream">
@@ -22,14 +25,15 @@ export function SEOContent() {
                 <div className="max-w-4xl mx-auto">
                     <SectionHeading eyebrow="لماذا السريع" title="لماذا تختار موكيت ومفروشات السريع في الرياض؟" />
 
-                    {/* Category cards — swipe rail on phones, grid on desktop */}
+                    {/* Category cards: swipe rail on phones, grid on desktop */}
                     <div className="flex md:grid md:grid-cols-2 gap-3 md:gap-5 overflow-x-auto no-scrollbar snap-x snap-mandatory -mx-4 px-4 md:mx-0 md:px-0 pb-2 mb-10">
                         {cards.map((card, i) => (
                             <div
                                 key={card.title}
-                                data-reveal
-                                style={{ '--d': `${(i % 2) * 90}ms` } as React.CSSProperties}
-                                className="press snap-start shrink-0 w-[78%] sm:w-[55%] md:w-auto flex flex-col p-6 bg-white rounded-2xl border border-line"
+                                data-reveal="clip"
+                                data-spotlight
+                                style={{ '--i': i } as CSSProperties}
+                                className="lift press relative snap-start shrink-0 w-[78%] sm:w-[55%] md:w-auto flex flex-col p-6 bg-white rounded-2xl border border-line"
                             >
                                 <span className="font-display text-sm text-brass-deep mb-3 tabular-nums">0{i + 1}</span>
                                 <h3 className="font-display text-lg font-semibold text-ink mb-2">{card.title}</h3>
@@ -45,59 +49,51 @@ export function SEOContent() {
                         ))}
                     </div>
 
-                    <div className="relative" data-reveal>
-                        <div
-                            className={`space-y-5 text-ink-soft leading-loose text-[0.95rem] md:text-base overflow-hidden transition-[max-height] duration-700 md:max-h-none ${
-                                expanded ? 'max-h-[80rem]' : 'max-h-44'
-                            }`}
-                        >
+                    <div className="relative" data-reveal="blur">
+                        {/* The checkbox must come before what it controls (peer-checked). */}
+                        <input type="checkbox" id={moreId} className="seo-more sr-only" />
+                        <div className="seo-text space-y-5 text-ink-soft leading-loose text-[0.95rem] md:text-base overflow-hidden max-h-44 md:max-h-none">
                             <p>
                                 تُعد <strong className="text-ink">موكيت ومفروشات السريع</strong> متخصصة في توفير{' '}
-                                <Link href="/products" className="text-ink underline decoration-brass underline-offset-4">الموكيت والسجاد والمفروشات</Link>{' '}
-                                في <strong className="text-ink">الرياض</strong> والمملكة العربية السعودية. نقدم تشكيلة واسعة ومتنوعة من{' '}
-                                <strong className="text-ink">الأرضيات</strong> عالية الجودة تشمل <strong className="text-ink">موكيت المساجد</strong>،{' '}
+                                <Link href="/products" className={link}>الموكيت والسجاد والمفروشات</Link>{' '}
+                                في <strong className="text-ink">الرياض</strong> والمملكة العربية السعودية. نقدم تشكيلة متنوعة من{' '}
+                                <strong className="text-ink">الأرضيات</strong> تشمل <strong className="text-ink">موكيت المساجد</strong>،{' '}
                                 <strong className="text-ink">الأرضيات المكتبية</strong>، <strong className="text-ink">الباركيه</strong>، و<strong className="text-ink">العشب الصناعي</strong>.
                             </p>
 
                             <p>
                                 نحن في <strong className="text-ink">موكيت ومفروشات السريع</strong> نؤمن بأن الأرضيات هي أساس جمال أي مساحة.
                                 لذلك نساعدك تختار الخامة المناسبة للمكان قبل الطلب.
-                                سواء كنت تبحث عن <Link href="/products/mokite" className="text-ink underline decoration-brass underline-offset-4">موكيت فاخر</Link> لمنزلك،
-                                أو <strong className="text-ink">أرضيات احترافية</strong> لمكتبك، أو <strong className="text-ink">موكيت مساجد</strong> بتصاميم إسلامية راقية،
+                                سواء كنت تبحث عن <Link href="/products/mokite" className={link}>موكيت</Link> لمنزلك،
+                                أو <strong className="text-ink">أرضيات</strong> لمكتبك، أو <strong className="text-ink">موكيت مساجد</strong> بنقشات هادئة،
                                 ستجد لدينا ما يلبي احتياجاتك.
                             </p>
 
                             <p>
-                                نتميز في <strong className="text-ink">موكيت السريع</strong> بتقديم خدمات متكاملة تشمل:{' '}
-                                <strong className="text-ink">الاستشارة المجانية</strong>، <strong className="text-ink">المعاينة والقياس</strong>،{' '}
-                                و<strong className="text-ink">التركيب الاحترافي</strong>{' '}
-                                بواسطة فريق متخصص.
+                                نقدم في <strong className="text-ink">موكيت السريع</strong> خدمات متكاملة تشمل:{' '}
+                                <strong className="text-ink">المعاينة والقياس مجاناً</strong>، <strong className="text-ink">عينة مجانية قبل الطلب</strong>،{' '}
+                                و<strong className="text-ink">التوريد والتركيب</strong>.
                             </p>
 
                             <p>
-                                نخدم جميع أحياء <strong className="text-ink">الرياض</strong> ومناطق المملكة الرئيسية:{' '}
+                                نخدم جميع أحياء <strong className="text-ink">الرياض</strong> ونورّد لكل مدن المملكة:{' '}
                                 <strong className="text-ink">جدة</strong>، <strong className="text-ink">الدمام</strong>، <strong className="text-ink">مكة المكرمة</strong>،{' '}
                                 <strong className="text-ink">المدينة المنورة</strong>، وغيرها. تواصل معنا الآن عبر{' '}
-                                <Link href="/contact" className="text-ink underline decoration-brass underline-offset-4">الواتساب أو الهاتف</Link>{' '}
-                                للحصول على عرض سعر مجاني.
+                                <Link href="/contact" className={link}>الواتساب أو الهاتف</Link>{' '}
+                                وأرسل مقاسات المكان وصوره لنرد عليك بعرض السعر.
                             </p>
                         </div>
 
-                        {/* Fade + toggle (mobile) */}
-                        <div
-                            className={`md:hidden absolute inset-x-0 bottom-10 h-20 bg-gradient-to-t from-cream to-transparent pointer-events-none transition-opacity ${
-                                expanded ? 'opacity-0' : 'opacity-100'
-                            }`}
-                        />
-                        <button
-                            type="button"
-                            onClick={() => setExpanded((v) => !v)}
-                            aria-expanded={expanded}
-                            className="md:hidden relative mt-3 mx-auto flex items-center gap-1.5 px-5 py-2 rounded-full border border-line bg-white text-sm text-ink font-medium"
+                        {/* Fade + toggle (phones only). Space on the focused checkbox toggles it too. */}
+                        <div className="seo-fade md:hidden absolute inset-x-0 bottom-10 h-20 bg-gradient-to-t from-cream to-transparent pointer-events-none transition-opacity" />
+                        <label
+                            htmlFor={moreId}
+                            className="seo-toggle md:hidden relative mt-3 mx-auto flex w-fit cursor-pointer items-center gap-1.5 px-5 py-2 rounded-full border border-line bg-white text-sm text-ink font-medium"
                         >
-                            {expanded ? 'عرض أقل' : 'اقرأ المزيد'}
-                            <ChevronDown size={16} className={`transition-transform duration-300 ${expanded ? 'rotate-180' : ''}`} />
-                        </button>
+                            <span className="seo-read">اقرأ المزيد</span>
+                            <span className="seo-less hidden">عرض أقل</span>
+                            <ChevronDown size={16} className="transition-transform duration-300" />
+                        </label>
                     </div>
                 </div>
             </div>

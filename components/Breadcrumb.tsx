@@ -1,5 +1,4 @@
-'use client';
-
+// Server component: static markup plus BreadcrumbList JSON-LD, no client JS.
 import { ChevronLeft, Home } from 'lucide-react';
 import Link from 'next/link';
 
