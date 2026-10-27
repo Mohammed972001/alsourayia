@@ -1,7 +1,7 @@
 import type { CSSProperties } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowLeft, Check } from 'lucide-react';
+import { Icon } from '@/components/icons/Icon';
 import { products } from '@/lib/products';
 import { whatsappLink } from '@/lib/contact';
 import { imageAlt } from '@/data/stock-images';
@@ -87,7 +87,7 @@ export function Hero() {
                                 style={step(6)}
                             >
                                 تصفح المنتجات
-                                <ArrowLeft size={16} />
+                                <Icon name="arrow-start" size={16} />
                             </Link>
                             <a
                                 href={whatsappLink()}
@@ -108,7 +108,7 @@ export function Hero() {
                                     className="rise-in flex items-center gap-1.5 text-[11px] sm:text-sm text-white/75"
                                     style={step(7 + i * 0.5)}
                                 >
-                                    <Check size={15} strokeWidth={2.2} className="text-mint shrink-0" />
+                                    <Icon name="check" size={16} className="text-mint shrink-0" />
                                     {label}
                                 </li>
                             ))}
@@ -145,7 +145,7 @@ function CategoryRail() {
                             className="inline-flex items-center gap-1 text-sm text-mint-deep font-bold hover:gap-2 transition-all"
                         >
                             عرض الكل
-                            <ArrowLeft size={15} />
+                            <Icon name="arrow-start" size={16} />
                         </Link>
                     </div>
 

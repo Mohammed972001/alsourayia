@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { MapPin, Truck } from 'lucide-react';
+import { Icon } from '@/components/icons/Icon';
 import { Navigation } from '@/components/Navigation';
 import { Footer } from '@/components/Footer';
 import { FloatingButtons } from '@/components/FloatingButtons';
@@ -95,7 +95,7 @@ export default function ServiceAreasPage() {
                                         style={{ '--i': i } as CSSProperties}
                                         className="flex items-center gap-2 p-4 rounded-2xl border border-line bg-white"
                                     >
-                                        {i === 0 ? <MapPin size={18} className="text-brass shrink-0" /> : <Truck size={18} className="text-brass shrink-0" />}
+                                        {i === 0 ? <Icon name="location" size={20} className="text-brass shrink-0" /> : <Icon name="delivery" size={20} className="text-brass shrink-0" />}
                                         <span className="font-display text-base md:text-lg font-semibold text-ink">{city}</span>
                                         {i === 0 && <span className="ms-auto rounded-full bg-brass text-ink text-[10px] font-bold px-2.5 py-1">المعرض</span>}
                                     </li>

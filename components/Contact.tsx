@@ -1,19 +1,19 @@
 import type { CSSProperties } from 'react';
-import { MapPin, Phone, Clock, Navigation as NavIcon } from 'lucide-react';
+import { Icon, type IconName } from '@/components/icons/Icon';
 import { SectionHeading } from '@/components/SectionHeading';
 import { WhatsAppIcon } from '@/components/WhatsAppIcon';
 import { ADDRESS, MAPS_URL, PHONE_DISPLAY, PHONE_TEL, PHONE2_DISPLAY, PHONE2_TEL, whatsappLink } from '@/lib/contact';
 
-const quickActions = [
-    { label: 'اتصل بنا', href: PHONE_TEL, icon: Phone, external: false, tone: 'bg-ink text-white' },
+const quickActions: { label: string; href: string; icon: IconName | null; external: boolean; tone: string }[] = [
+    { label: 'اتصل بنا', href: PHONE_TEL, icon: 'phone', external: false, tone: 'bg-ink text-white' },
     { label: 'واتساب', href: whatsappLink('السلام عليكم'), icon: null, external: true, tone: 'shine bg-whatsapp text-white' },
-    { label: 'الاتجاهات', href: MAPS_URL, icon: NavIcon, external: true, tone: 'bg-white text-ink ring-1 ring-line' },
+    { label: 'الاتجاهات', href: MAPS_URL, icon: 'map', external: true, tone: 'bg-white text-ink ring-1 ring-line' },
 ];
 
-const rows = [
-    { icon: MapPin, title: 'العنوان' },
-    { icon: Phone, title: 'الهاتف' },
-    { icon: Clock, title: 'أوقات العمل' },
+const rows: { icon: IconName; title: string }[] = [
+    { icon: 'location', title: 'العنوان' },
+    { icon: 'phone', title: 'الهاتف' },
+    { icon: 'clock', title: 'أوقات العمل' },
 ];
 
 export function Contact({ headingAs = 'h2' }: { headingAs?: 'h1' | 'h2' }) {
@@ -40,7 +40,7 @@ export function Contact({ headingAs = 'h2' }: { headingAs?: 'h1' | 'h2' }) {
                                     style={{ '--i': i } as CSSProperties}
                                     className={`press flex flex-col items-center justify-center gap-2 py-4 rounded-2xl text-xs md:text-sm font-bold transition-transform hover:-translate-y-0.5 ${action.tone}`}
                                 >
-                                    {action.icon ? <action.icon size={20} /> : <WhatsAppIcon className="w-5 h-5" />}
+                                    {action.icon ? <Icon name={action.icon} size={20} /> : <WhatsAppIcon className="w-5 h-5" />}
                                     {action.label}
                                 </a>
                             ))}
@@ -50,7 +50,7 @@ export function Contact({ headingAs = 'h2' }: { headingAs?: 'h1' | 'h2' }) {
                             {rows.map((row, i) => (
                                 <div key={row.title} className="flex items-start gap-4 p-5" data-reveal="slide" style={{ '--i': 3 + i } as CSSProperties}>
                                     <span className="w-11 h-11 shrink-0 grid place-items-center rounded-xl bg-cream text-brass-deep">
-                                        <row.icon size={20} />
+                                        <Icon name={row.icon} size={20} />
                                     </span>
                                     <div>
                                         <h3 className="text-sm font-bold text-ink mb-1">{row.title}</h3>

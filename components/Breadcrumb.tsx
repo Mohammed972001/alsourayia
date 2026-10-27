@@ -1,5 +1,5 @@
 // Server component: static markup plus BreadcrumbList JSON-LD, no client JS.
-import { ChevronLeft, Home } from 'lucide-react';
+import { Icon } from '@/components/icons/Icon';
 import Link from 'next/link';
 
 interface BreadcrumbItem {
@@ -43,7 +43,7 @@ export function Breadcrumb({ items }: BreadcrumbProps) {
                             itemType="https://schema.org/ListItem"
                         >
                             {index > 0 && (
-                                <ChevronLeft size={16} className="mx-2 text-gray-400" />
+                                <Icon name="arrow-start" size={16} className="mx-2 text-gray-400" />
                             )}
                             {item.href ? (
                                 <Link
@@ -51,7 +51,7 @@ export function Breadcrumb({ items }: BreadcrumbProps) {
                                     className="flex items-center gap-1 text-[#4A4A4A] hover:text-[#1A1A1A] transition-colors"
                                     itemProp="item"
                                 >
-                                    {index === 0 && <Home size={16} />}
+                                    {index === 0 && <Icon name="home" size={16} />}
                                     <span itemProp="name">{item.label}</span>
                                 </Link>
                             ) : (

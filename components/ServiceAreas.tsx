@@ -1,5 +1,5 @@
 import type { CSSProperties } from 'react';
-import { MapPin } from 'lucide-react';
+import { Icon } from '@/components/icons/Icon';
 import { SectionHeading } from '@/components/SectionHeading';
 
 const areas = [
@@ -38,7 +38,7 @@ export function ServiceAreas({ headingAs = 'h2' }: { headingAs?: 'h1' | 'h2' }) 
                                     : 'bg-white/[0.04] border-white/10'
                             }`}
                         >
-                            <MapPin size={18} className="text-brass mb-4" strokeWidth={1.7} />
+                            <Icon name="location" size={20} className="text-brass mb-4" />
                             <h3 className="font-display text-lg md:text-xl font-semibold text-white">{area.name}</h3>
                             {i === 0 && (
                                 <span className="absolute top-4 left-4 rounded-full bg-brass text-ink text-[10px] font-bold px-2.5 py-1">

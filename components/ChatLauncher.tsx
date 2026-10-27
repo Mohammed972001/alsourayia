@@ -2,6 +2,7 @@
 
 import dynamic from 'next/dynamic';
 import { useState } from 'react';
+import { Icon } from '@/components/icons/Icon';
 
 /**
  * Stand-in for the chat launcher button. The widget itself (state, fetch to
@@ -16,10 +17,7 @@ const ChatWidget = dynamic(() => import('@/components/ChatWidget'), {
 
 function ChatIcon() {
     return (
-        <svg viewBox="0 0 24 24" width={24} height={24} fill="none" stroke="currentColor" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-            <path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.4A8 8 0 1 1 21 12Z" />
-            <path d="M8.5 12h.01M12 12h.01M15.5 12h.01" />
-        </svg>
+        <Icon name="message" size={24} />
     );
 }
 

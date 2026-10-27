@@ -1,6 +1,6 @@
 import type { CSSProperties } from 'react';
 import Link from 'next/link';
-import { ArrowLeft, ChevronDown } from 'lucide-react';
+import { Icon } from '@/components/icons/Icon';
 import { SectionHeading } from '@/components/SectionHeading';
 
 const cards = [
@@ -43,7 +43,7 @@ export function SEOContent() {
                                     className="mt-4 inline-flex items-center gap-1.5 text-ink text-sm font-medium hover:gap-2.5 transition-all"
                                 >
                                     عرض {card.title}
-                                    <ArrowLeft size={15} className="text-mint-deep" />
+                                    <Icon name="arrow-start" size={16} className="text-mint-deep" />
                                 </Link>
                             </div>
                         ))}
@@ -92,7 +92,7 @@ export function SEOContent() {
                         >
                             <span className="seo-read">اقرأ المزيد</span>
                             <span className="seo-less hidden">عرض أقل</span>
-                            <ChevronDown size={16} className="transition-transform duration-300" />
+                            <Icon name="chevron-down" size={16} className="transition-transform duration-300" />
                         </label>
                     </div>
                 </div>

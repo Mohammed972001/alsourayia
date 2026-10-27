@@ -1,5 +1,5 @@
 import type { CSSProperties } from 'react';
-import { Plus } from 'lucide-react';
+import { Icon } from '@/components/icons/Icon';
 import { SectionHeading } from '@/components/SectionHeading';
 import { WhatsAppIcon } from '@/components/WhatsAppIcon';
 import { whatsappLink } from '@/lib/contact';
@@ -79,7 +79,7 @@ export function FAQ() {
                                     <span className="font-display text-base md:text-lg font-semibold text-ink">{faq.question}</span>
                                 </span>
                                 <span className="w-8 h-8 shrink-0 grid place-items-center rounded-full bg-cream text-ink transition-all duration-300 group-open:bg-ink group-open:text-white group-open:rotate-45">
-                                    <Plus size={16} />
+                                    <Icon name="plus" size={16} />
                                 </span>
                             </summary>
                             <p className="px-5 md:px-6 pb-6 text-ink-soft leading-loose text-[0.95rem] md:pr-14">{faq.answer}</p>

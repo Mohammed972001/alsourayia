@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { Phone, MapPin, Clock } from 'lucide-react';
+import { Icon } from '@/components/icons/Icon';
 import { Navigation } from '@/components/Navigation';
 import { Footer } from '@/components/Footer';
 import { FloatingButtons } from '@/components/FloatingButtons';
@@ -152,18 +152,18 @@ export default async function CategoryPage({ params }: Props) {
                                     href={PHONE_TEL}
                                     className="press inline-flex items-center justify-center gap-2 h-12 px-6 rounded-full bg-ink text-white font-bold text-sm"
                                 >
-                                    <Phone size={17} />
+                                    <Icon name="phone" size={16} />
                                     <span>اتصل الآن</span>
                                     <span dir="ltr">{PHONE_DISPLAY}</span>
                                 </a>
                             </div>
                             <address className="not-italic text-sm text-ink-muted flex flex-col sm:flex-row sm:flex-wrap justify-center gap-x-6 gap-y-1.5">
                                 <span className="inline-flex items-center justify-center gap-1.5">
-                                    <MapPin size={15} className="text-brass shrink-0" />
+                                    <Icon name="location" size={16} className="text-brass shrink-0" />
                                     {ADDRESS}
                                 </span>
                                 <span className="inline-flex items-center justify-center gap-1.5">
-                                    <Clock size={15} className="text-brass shrink-0" />
+                                    <Icon name="clock" size={16} className="text-brass shrink-0" />
                                     {HOURS}
                                 </span>
                             </address>

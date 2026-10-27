@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Phone, MapPin, ArrowLeft } from 'lucide-react';
+import { Icon } from '@/components/icons/Icon';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
@@ -159,7 +159,7 @@ export function Navigation() {
                                     aria-label="اتصل الآن"
                                     className="press w-[42px] h-[42px] grid place-items-center rounded-[10px] bg-mint-soft text-mint-deep hover:bg-mint-line transition-colors"
                                 >
-                                    <Phone size={19} strokeWidth={1.8} />
+                                    <Icon name="phone" size={20} />
                                 </a>
                                 <a
                                     href={whatsappLink()}
@@ -228,8 +228,9 @@ export function Navigation() {
                                         <span className="text-xs text-mint-deep tabular-nums">0{i + 1}</span>
                                         <span className="font-display text-2xl font-semibold text-ink">{item.label}</span>
                                     </span>
-                                    <ArrowLeft
-                                        size={18}
+                                    <Icon
+                                        name="arrow-start"
+                                        size={20}
                                         className="text-ink-muted transition-transform group-active:-translate-x-1"
                                     />
                                 </Link>
@@ -249,7 +250,7 @@ export function Navigation() {
                                 tabIndex={isMobileMenuOpen ? 0 : -1}
                                 className="press flex items-center justify-center gap-2 py-3.5 rounded-full bg-ink text-white text-sm font-bold"
                             >
-                                <Phone size={16} />
+                                <Icon name="phone" size={16} />
                                 <span dir="ltr">{PHONE_DISPLAY}</span>
                             </a>
                             <a
@@ -264,7 +265,7 @@ export function Navigation() {
                             </a>
                         </div>
                         <p className="flex items-start gap-2 text-xs text-ink-muted leading-relaxed">
-                            <MapPin size={14} className="mt-0.5 shrink-0 text-brass" />
+                            <Icon name="location" size={16} className="mt-0.5 shrink-0 text-brass" />
                             {ADDRESS}
                         </p>
                     </div>

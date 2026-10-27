@@ -4,6 +4,7 @@
 // Talks to POST /api/chat (app/api/chat/route.ts → lib/chat).
 import { useEffect, useRef, useState } from "react";
 import { whatsappLink } from "@/lib/contact";
+import { Icon } from "@/components/icons/Icon";
 
 const WA_GENERAL = whatsappLink();
 
@@ -49,10 +50,7 @@ function Linkified({ text }: { text: string }) {
 
 function ChatIcon() {
   return (
-    <svg viewBox="0 0 24 24" width={24} height={24} fill="none" stroke="currentColor" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-      <path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.4A8 8 0 1 1 21 12Z" />
-      <path d="M8.5 12h.01M12 12h.01M15.5 12h.01" />
-    </svg>
+    <Icon name="message" size={24} />
   );
 }
 
@@ -129,8 +127,8 @@ export default function ChatWidget({
               <p className="text-sm font-semibold">{TEXT.title}</p>
               <p className="text-xs opacity-75">ردود آلية من معلومات الموقع</p>
             </div>
-            <button type="button" onClick={() => setOpen(false)} aria-label="إغلاق" className="rounded-full px-2 text-xl leading-none opacity-80 hover:opacity-100">
-              ×
+            <button type="button" onClick={() => setOpen(false)} aria-label="إغلاق" className="grid h-8 w-8 place-items-center rounded-full opacity-80 hover:opacity-100">
+              <Icon name="close" size={20} />
             </button>
           </header>
 

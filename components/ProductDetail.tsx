@@ -2,7 +2,7 @@
 // related products and JSON-LD as client JS props; now only the gallery
 // (components/product/DetailGallery) and the colour chips
 // (components/product/ColorPicker) hydrate.
-import { ArrowRight, Check, Phone, MessageCircle, MapPin } from 'lucide-react';
+import { Icon } from '@/components/icons/Icon';
 import { categoryToSlug, getProductById, mergedCategories, type Product } from '@/lib/products';
 import Link from 'next/link';
 import { Breadcrumb } from './Breadcrumb';
@@ -151,7 +151,7 @@ export function ProductDetail({ productId, dynamicGallery }: ProductDetailProps)
                         className="inline-flex items-center gap-2 text-[#4A4A4A] hover:text-[#1A1A1A] transition-colors mb-4 lg:mb-8 text-sm"
                     >
                         <span>العودة إلى المنتجات</span>
-                        <ArrowRight size={16} />
+                        <Icon name="arrow-end" size={16} />
                     </Link>
 
                     {/* Three blocks placed explicitly. On a phone they stack in source
@@ -191,7 +191,7 @@ export function ProductDetail({ productId, dynamicGallery }: ProductDetailProps)
                                     href={PHONE_TEL}
                                     className="flex items-center justify-center gap-2 px-4 py-3 bg-[#F9FAFB] text-[#4A4A4A] rounded-lg hover:bg-gray-100 transition-colors text-sm"
                                 >
-                                    <Phone size={16} />
+                                    <Icon name="phone" size={16} />
                                     <span>اتصل الآن</span>
                                 </a>
                                 <a
@@ -200,7 +200,7 @@ export function ProductDetail({ productId, dynamicGallery }: ProductDetailProps)
                                     rel="noopener noreferrer"
                                     className="flex items-center justify-center gap-2 px-4 py-3 bg-[#F9FAFB] text-[#4A4A4A] rounded-lg hover:bg-gray-100 transition-colors text-sm"
                                 >
-                                    <MessageCircle size={16} />
+                                    <Icon name="message" size={16} />
                                     <span>واتساب</span>
                                 </a>
                             </div>
@@ -211,7 +211,7 @@ export function ProductDetail({ productId, dynamicGallery }: ProductDetailProps)
                                 <div className="flex flex-wrap gap-x-4 gap-y-1.5 mb-2">
                                     {['معاينة وقياس مجاناً', 'عينة مجانية', 'عرض سعر على الواتساب'].map((item) => (
                                         <span key={item} className="flex items-center gap-1.5">
-                                            <Check size={14} className="text-green-700" />
+                                            <Icon name="check" size={16} className="text-green-700" />
                                             {item}
                                         </span>
                                     ))}
@@ -222,7 +222,7 @@ export function ProductDetail({ productId, dynamicGallery }: ProductDetailProps)
                                     rel="noopener noreferrer"
                                     className="flex items-start gap-1.5 text-[#4A4A4A] hover:text-[#1A1A1A]"
                                 >
-                                    <MapPin size={14} className="mt-0.5 shrink-0" />
+                                    <Icon name="location" size={16} className="mt-0.5 shrink-0" />
                                     <span>معرضنا: {ADDRESS} — الموقع على الخريطة</span>
                                 </a>
                             </div>
@@ -241,7 +241,7 @@ export function ProductDetail({ productId, dynamicGallery }: ProductDetailProps)
                             <div className="space-y-3">
                                 {product.features.map((feature) => (
                                     <div key={feature} className="flex items-start gap-3">
-                                        <Check size={16} className="text-[#4A4A4A] flex-shrink-0 mt-0.5" />
+                                        <Icon name="check" size={16} className="text-[#4A4A4A] flex-shrink-0 mt-0.5" />
                                         <span className="text-[#4A4A4A] text-sm">{feature}</span>
                                     </div>
                                 ))}

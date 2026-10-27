@@ -1,4 +1,4 @@
-import { Phone } from 'lucide-react';
+import { Icon } from '@/components/icons/Icon';
 import { PHONE_TEL, PHONE_DISPLAY, whatsappLink } from '@/lib/contact';
 import { WhatsAppIcon } from '@/components/WhatsAppIcon';
 import { HeadingWords } from '@/components/motion/HeadingWords';
@@ -42,7 +42,7 @@ export function HelpBand({ question = 'محتاج تعرف الأنسب لمكا
                             className="press inline-flex items-center justify-center gap-2 h-12 px-6 rounded-full bg-ink text-white font-bold text-sm"
                             dir="ltr"
                         >
-                            <Phone size={17} />
+                            <Icon name="phone" size={16} />
                             {PHONE_DISPLAY}
                         </a>
                     </div>

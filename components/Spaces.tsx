@@ -1,15 +1,15 @@
 import type { CSSProperties } from 'react';
 import Link from 'next/link';
-import { ArrowLeft, Building2, Dumbbell, Hospital, House, Landmark } from 'lucide-react';
+import { Icon } from '@/components/icons/Icon';
 import { SectionHeading } from '@/components/SectionHeading';
 
 /** The places the shop's products are made for, each pointing at its product or hub page. */
 const spaces = [
-    { label: 'مساجد', text: 'موكيت مساجد بخطوط صفوف أو سادة، يُفرش على اتجاه القبلة.', href: '/products/mosque-carpets', icon: Landmark },
-    { label: 'مكاتب وشركات', text: 'موكيت مكاتب رول وبلاط موكيت، ويُركّب على مراحل والمكتب يعمل.', href: '/products/office-carpet', icon: Building2 },
-    { label: 'صالات رياضية', text: 'ربل جيم يمتص صدمة الأوزان ويقلل الضوضاء، ومطاط للمناطق المبللة.', href: '/products/category/rubber-flooring', icon: Dumbbell },
-    { label: 'مستشفيات وعيادات', text: 'أرضيات طبية ملساء تُمسح وتتحمل المطهرات في الممرات وغرف الكشف.', href: '/products/hospital-flooring', icon: Hospital },
-    { label: 'منازل ومجالس', text: 'موكيت للمجالس وغرف النوم، وباركيه وفينيل للصالات والمطابخ.', href: '/products/mokite', icon: House },
+    { label: 'مساجد', text: 'موكيت مساجد بخطوط صفوف أو سادة، يُفرش على اتجاه القبلة.', href: '/products/mosque-carpets', icon: 'mosque' },
+    { label: 'مكاتب وشركات', text: 'موكيت مكاتب رول وبلاط موكيت، ويُركّب على مراحل والمكتب يعمل.', href: '/products/office-carpet', icon: 'office' },
+    { label: 'صالات رياضية', text: 'ربل جيم يمتص صدمة الأوزان ويقلل الضوضاء، ومطاط للمناطق المبللة.', href: '/products/category/rubber-flooring', icon: 'gym' },
+    { label: 'مستشفيات وعيادات', text: 'أرضيات طبية ملساء تُمسح وتتحمل المطهرات في الممرات وغرف الكشف.', href: '/products/hospital-flooring', icon: 'hospital' },
+    { label: 'منازل ومجالس', text: 'موكيت للمجالس وغرف النوم، وباركيه وفينيل للصالات والمطابخ.', href: '/products/mokite', icon: 'home' },
 ] as const;
 
 /**
@@ -35,7 +35,7 @@ export function Spaces() {
                                 className="lift press group flex h-full flex-col rounded-[14px] border border-line bg-white p-3.5 lg:p-5"
                             >
                                 <span className="mb-2.5 grid h-10 w-10 place-items-center rounded-xl bg-mint-soft text-mint-deep">
-                                    <space.icon size={20} strokeWidth={1.7} />
+                                    <Icon name={space.icon} size={20} />
                                 </span>
                                 <span className="block text-[15px] font-bold text-ink">{space.label}</span>
                                 <span className="mt-0.5 block flex-1 text-[12.5px] md:text-[13px] leading-relaxed text-ink-muted">
@@ -43,7 +43,7 @@ export function Spaces() {
                                 </span>
                                 <span className="mt-3 inline-flex items-center gap-1 text-[13px] font-bold text-mint-deep transition-all group-hover:gap-2">
                                     اعرف المزيد
-                                    <ArrowLeft size={14} />
+                                    <Icon name="arrow-start" size={16} />
                                 </span>
                             </Link>
                         </li>

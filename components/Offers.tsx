@@ -2,12 +2,12 @@
 
 import { useEffect, useState, type CSSProperties } from 'react';
 import Link from 'next/link';
-import { Ruler, SwatchBook, Wrench, Truck, Tag, ArrowLeft } from 'lucide-react';
+import { Icon, type IconName } from '@/components/icons/Icon';
 import { offers, type OfferIcon } from '@/data/offers';
 import { activeOffers } from '@/lib/campaign';
 import { SectionHeading } from '@/components/SectionHeading';
 
-const ICONS: Record<OfferIcon, typeof Ruler> = { ruler: Ruler, sample: SwatchBook, wrench: Wrench, truck: Truck, tag: Tag };
+const ICONS: Record<OfferIcon, IconName> = { ruler: 'tape-measure', sample: 'swatch', wrench: 'install', truck: 'delivery', tag: 'check' };
 
 /**
  * «العروض والخدمات»: cards from data/offers.ts. Undated cards are rendered on the server; a dated
@@ -31,7 +31,7 @@ export function Offers() {
                 {/* Phones: icon on the start side, text beside it. Desktop: four stacked cards in a row. */}
                 <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4 lg:gap-[18px]">
                     {items.map((offer, i) => {
-                        const Icon = ICONS[offer.icon];
+                        const icon = ICONS[offer.icon];
                         const external = !offer.href.startsWith('/');
                         const linkClass =
                             'col-start-2 lg:col-start-1 mt-2 justify-self-start inline-flex items-center gap-1.5 text-[13px] md:text-sm font-bold text-mint-deep transition-all hover:gap-2.5';
@@ -44,7 +44,7 @@ export function Offers() {
                                 className="lift relative grid grid-cols-[44px_1fr] lg:grid-cols-1 content-start gap-x-3.5 gap-y-1 rounded-[14px] bg-white border border-mint-line p-[18px] lg:p-6"
                             >
                                 <span className="row-span-4 lg:row-span-1 lg:mb-2 w-11 h-11 grid place-items-center rounded-xl bg-mint-soft text-mint-deep">
-                                    <Icon size={20} strokeWidth={1.7} />
+                                    <Icon name={icon} size={20} />
                                 </span>
                                 <span className="justify-self-start rounded-full bg-mint-soft text-mint-deep text-[11px] font-bold px-2.5 py-0.5">
                                     {offer.badge}
@@ -54,12 +54,12 @@ export function Offers() {
                                 {external ? (
                                     <a href={offer.href} target="_blank" rel="noopener noreferrer" className={linkClass}>
                                         {offer.cta}
-                                        <ArrowLeft size={15} />
+                                        <Icon name="arrow-start" size={16} />
                                     </a>
                                 ) : (
                                     <Link href={offer.href} className={linkClass}>
                                         {offer.cta}
-                                        <ArrowLeft size={15} />
+                                        <Icon name="arrow-start" size={16} />
                                     </Link>
                                 )}
                             </li>

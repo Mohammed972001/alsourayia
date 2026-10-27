@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
-import { Phone } from 'lucide-react';
+import { Icon } from '@/components/icons/Icon';
 import { PHONE_TEL, whatsappLink } from '@/lib/contact';
 import { WhatsAppIcon } from '@/components/WhatsAppIcon';
 import { ChatLauncher } from '@/components/ChatLauncher';
@@ -38,7 +38,7 @@ export function FloatingButtons({ message }: { message?: string } = {}) {
                         href={PHONE_TEL}
                         className="press flex items-center justify-center gap-2 h-12 rounded-full bg-ink text-white text-sm font-bold"
                     >
-                        <Phone size={17} />
+                        <Icon name="phone" size={16} />
                         اتصل الآن
                     </a>
                     <a
@@ -75,7 +75,7 @@ export function FloatingButtons({ message }: { message?: string } = {}) {
                 aria-label="اتصل الآن"
                 className="hidden lg:flex fixed right-6 bottom-6 z-40 items-center justify-center w-14 h-14 bg-ink text-white rounded-full shadow-lg hover:scale-110 transition-transform"
             >
-                <Phone size={22} />
+                <Icon name="phone" size={24} />
             </a>
         </>
     );

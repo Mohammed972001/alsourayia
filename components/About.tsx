@@ -1,17 +1,17 @@
 import type { CSSProperties } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Ruler, SwatchBook, Headset } from 'lucide-react';
+import { Icon, type IconName } from '@/components/icons/Icon';
 import { SectionHeading } from '@/components/SectionHeading';
 import { ADDRESS, NATIONAL_ADDRESS, legalLine } from '@/lib/contact';
 import { getProductById } from '@/lib/products';
 import { imageAlt } from '@/data/stock-images';
 
 /** Only owner-confirmed promises. */
-const features = [
-    { icon: Ruler, title: 'معاينة وقياس مجاناً', desc: 'نقيس المكان ونرى الأرضية الحالية قبل عرض السعر، لتعرف الكمية والخامة المناسبة قبل أن تلتزم بشيء' },
-    { icon: SwatchBook, title: 'عينة مجانية قبل الطلب', desc: 'تختار اللون والملمس من عينة حقيقية تراها في مكانك، لا من صورة على الشاشة' },
-    { icon: Headset, title: 'تواصل مباشر', desc: 'اتصل أو راسلنا على الواتساب يومياً من 9 صباحاً حتى 10 مساءً' },
+const features: { icon: IconName; title: string; desc: string }[] = [
+    { icon: 'tape-measure', title: 'معاينة وقياس مجاناً', desc: 'نقيس المكان ونرى الأرضية الحالية قبل عرض السعر، لتعرف الكمية والخامة المناسبة قبل أن تلتزم بشيء' },
+    { icon: 'swatch', title: 'عينة مجانية قبل الطلب', desc: 'تختار اللون والملمس من عينة حقيقية تراها في مكانك، لا من صورة على الشاشة' },
+    { icon: 'support', title: 'تواصل مباشر', desc: 'اتصل أو راسلنا على الواتساب يومياً من 9 صباحاً حتى 10 مساءً' },
 ];
 
 /** Two of the shop's own photos, opened as frames when they scroll in. */
@@ -72,7 +72,7 @@ export function About({ headingAs = 'h2' }: { headingAs?: 'h1' | 'h2' }) {
                             className="lift group relative flex md:flex-col items-start gap-4 p-5 md:p-8 rounded-2xl bg-cream border border-line"
                         >
                             <span className="w-12 h-12 shrink-0 grid place-items-center rounded-xl bg-white text-brass-deep ring-1 ring-line group-hover:bg-ink group-hover:text-brass transition-colors duration-300">
-                                <feature.icon size={22} strokeWidth={1.6} />
+                                <Icon name={feature.icon} size={24} />
                             </span>
                             <div>
                                 <h3 className="font-display text-lg md:text-xl font-semibold text-ink mb-1.5">{feature.title}</h3>

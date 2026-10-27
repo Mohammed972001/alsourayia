@@ -1,7 +1,7 @@
 import type { CSSProperties } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Eye } from 'lucide-react';
+import { Icon } from '@/components/icons/Icon';
 import { whatsappLink } from '@/lib/contact';
 import { WhatsAppIcon } from '@/components/WhatsAppIcon';
 
@@ -71,7 +71,7 @@ export function ProductCard({
                             aria-label={`عرض ${product.name}`}
                             className="grid h-8 w-8 place-items-center rounded-full text-ink hover:bg-cream transition-colors"
                         >
-                            <Eye size={16} />
+                            <Icon name="view" size={16} />
                         </Link>
                         <a
                             href={whatsappLink(`أريد الاستفسار عن ${product.name} من موكيت ومفروشات السريع`)}
