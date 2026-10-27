@@ -4,7 +4,8 @@ import Script from 'next/script';
 import { RevealObserver } from '@/components/RevealObserver';
 import ConversionTracker from '@/components/analytics/ConversionTracker';
 import { ADS_ID, GA4_ID } from '@/lib/analytics';
-import { LEGAL_NAME, UNIFIED_NUMBER, VAT_NUMBER } from '@/lib/contact';
+import { businessGraph } from '@/lib/schema';
+import { EMAIL, GEO, PHONE_DISPLAY, PHONE_E164, SITE_URL } from '@/data/business';
 import './globals.css';
 
 // Self-hosted via Next.js — eliminates render-blocking Google Fonts request.
@@ -28,9 +29,7 @@ const reemKufi = Reem_Kufi({
     display: 'optional',
 });
 
-// Get the site URL from environment variable with fallback
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.mokeet-elsuarye.com';
-const baseUrl = siteUrl.replace(/\/$/, ''); // Remove trailing slash
+const baseUrl = SITE_URL;
 
 export const metadata: Metadata = {
     // Metadata Base URL - Uses environment variable for flexibility
@@ -41,7 +40,7 @@ export const metadata: Metadata = {
         default: 'موكيت مكاتب وأرضيات ربل في الرياض | موكيت ومفروشات السريع',
         template: '%s | موكيت ومفروشات السريع'
     },
-    description: 'موكيت وباركيه وأرضيات مطاط (ربل جيم) وفينيل طبي وموكيت مساجد في الرياض. معاينة وقياس مجاناً وعينة قبل الطلب. اتصل 0550101867.',
+    description: `موكيت وباركيه وأرضيات مطاط (ربل جيم) وفينيل طبي وموكيت مساجد في الرياض. معاينة وقياس مجاناً وعينة قبل الطلب. اتصل ${PHONE_DISPLAY}.`,
 
     // Keywords for SEO
     keywords: [
@@ -146,10 +145,10 @@ export const metadata: Metadata = {
     other: {
         'geo.region': 'SA-01',
         'geo.placename': 'Riyadh',
-        'geo.position': '24.5959;46.7306',
-        'ICBM': '24.5959, 46.7306',
-        'contact': '+966550101867',
-        'reply-to': 'info@mokeet-elsuarye.com',
+        'geo.position': `${GEO.lat};${GEO.lng}`,
+        'ICBM': `${GEO.lat}, ${GEO.lng}`,
+        'contact': PHONE_E164,
+        'reply-to': EMAIL,
     },
 };
 
@@ -158,113 +157,6 @@ export default function RootLayout({
 }: {
     children: React.ReactNode;
 }) {
-    // Enhanced Structured Data for Local Business (JSON-LD)
-    const localBusinessSchema = {
-        "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "@id": `${baseUrl}/#localbusiness`,
-        "name": "موكيت ومفروشات السريع",
-        // «مفروشات السريع» is another shop's name; it is not ours to claim.
-        "alternateName": ["Al-Sari Carpets & Furnishings", "موكيت السريع"],
-        "legalName": LEGAL_NAME,
-        "vatID": VAT_NUMBER,
-        "description": "موكيت ومفروشات وأرضيات في الرياض: موكيت مكاتب وبلاط موكيت، أرضيات مطاط (ربل) للجيم ودورات المياه، موكيت مساجد، فينيل، باركيه وعشب صناعي.",
-        "image": [
-            `${baseUrl}/images/og-image.jpg`
-        ],
-        "logo": `${baseUrl}/logo.png`,
-        "telephone": ["+966550101867", "+966559686290"],
-        "email": "info@mokeet-elsuarye.com",
-        "url": baseUrl,
-        "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "مخرج ٢٢ حراج بن قاسم القديم سوق العرب الدولي",
-            "addressLocality": "الرياض",
-            "addressRegion": "منطقة الرياض",
-            "addressCountry": "SA"
-        },
-        "geo": {
-            "@type": "GeoCoordinates",
-            "latitude": 24.596556,
-            "longitude": 46.730583
-        },
-        "areaServed": [
-            {
-                "@type": "City",
-                "name": "الرياض",
-                "@id": "https://www.wikidata.org/wiki/Q3692"
-            },
-            {
-                "@type": "Country",
-                "name": "المملكة العربية السعودية"
-            }
-        ],
-        "priceRange": "$$",
-        "currenciesAccepted": "SAR",
-        "openingHoursSpecification": [
-            {
-                "@type": "OpeningHoursSpecification",
-                "dayOfWeek": ["Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-                "opens": "09:00",
-                "closes": "22:00"
-            }
-        ],
-        "hasMap": "https://www.google.com/maps?q=24.596556,46.730583",
-        "sameAs": [
-            "https://www.tiktok.com/@httpswww.mokeetelsuarye1"
-        ]
-    };
-
-    // Organization Schema
-    const organizationSchema = {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "@id": `${baseUrl}/#organization`,
-        "name": "موكيت ومفروشات السريع",
-        "alternateName": "Al-Sari Carpets & Furnishings",
-        "legalName": LEGAL_NAME,
-        "vatID": VAT_NUMBER,
-        "identifier": {
-            "@type": "PropertyValue",
-            "propertyID": "الرقم الوطني الموحد",
-            "value": UNIFIED_NUMBER
-        },
-        "url": baseUrl,
-        "logo": `${baseUrl}/logo.png`,
-        "description": "موكيت ومفروشات وأرضيات في الرياض",
-        "sameAs": ["https://www.tiktok.com/@httpswww.mokeetelsuarye1"],
-        "contactPoint": [
-            {
-                "@type": "ContactPoint",
-                "telephone": "+966550101867",
-                "contactType": "sales",
-                "areaServed": "SA",
-                "availableLanguage": "Arabic"
-            },
-            {
-                "@type": "ContactPoint",
-                "telephone": "+966559686290",
-                "contactType": "sales",
-                "areaServed": "SA",
-                "availableLanguage": "Arabic"
-            }
-        ]
-    };
-
-    // WebSite Schema for Sitelinks
-    const websiteSchema = {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "@id": `${baseUrl}/#website`,
-        "url": baseUrl,
-        "name": "موكيت ومفروشات السريع",
-        "description": "موكيت ومفروشات وأرضيات في الرياض",
-        "publisher": {
-            "@id": `${baseUrl}/#organization`
-        },
-        "inLanguage": "ar-SA"
-    };
-
     // data-scroll-behavior: globals.css makes in-page anchor jumps smooth; since Next.js 16
     // this attribute is what keeps page-to-page navigation jumping straight to the top.
     return (
@@ -285,22 +177,11 @@ export default function RootLayout({
                 <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png" />
                 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 
-                {/* Structured Data - Local Business */}
+                {/* Structured data: the one business/organisation/website graph (lib/schema.ts, built from
+                    data/business.ts). Page-level blocks point at its nodes by @id instead of repeating them. */}
                 <script
                     type="application/ld+json"
-                    dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
-                />
-
-                {/* Structured Data - Organization */}
-                <script
-                    type="application/ld+json"
-                    dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
-                />
-
-                {/* Structured Data - Website */}
-                <script
-                    type="application/ld+json"
-                    dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(businessGraph()) }}
                 />
 
                 {/* Additional SEO Meta Tags */}

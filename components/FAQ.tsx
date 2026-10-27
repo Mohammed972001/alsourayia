@@ -3,6 +3,7 @@ import { Icon } from '@/components/icons/Icon';
 import { SectionHeading } from '@/components/SectionHeading';
 import { WhatsAppIcon } from '@/components/WhatsAppIcon';
 import { whatsappLink } from '@/lib/contact';
+import { HOURS_TEXT } from '@/data/business';
 
 interface FAQItem {
     question: string;
@@ -33,7 +34,7 @@ const faqData: FAQItem[] = [
     },
     {
         question: 'ما هي أوقات العمل؟',
-        answer: 'يومياً من 9 صباحاً حتى 10 مساءً، بالاتصال أو الواتساب.',
+        answer: `${HOURS_TEXT}، بالاتصال أو الواتساب.`,
     },
 ];
 

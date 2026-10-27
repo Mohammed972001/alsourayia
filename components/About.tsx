@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { Icon, type IconName } from '@/components/icons/Icon';
 import { SectionHeading } from '@/components/SectionHeading';
 import { ADDRESS, NATIONAL_ADDRESS, legalLine } from '@/lib/contact';
+import { HOURS_TEXT } from '@/data/business';
 import { getProductById } from '@/lib/products';
 import { imageAlt } from '@/data/stock-images';
 
@@ -11,7 +12,7 @@ import { imageAlt } from '@/data/stock-images';
 const features: { icon: IconName; title: string; desc: string }[] = [
     { icon: 'tape-measure', title: 'معاينة وقياس مجاناً', desc: 'نقيس المكان ونرى الأرضية الحالية قبل عرض السعر، لتعرف الكمية والخامة المناسبة قبل أن تلتزم بشيء' },
     { icon: 'swatch', title: 'عينة مجانية قبل الطلب', desc: 'تختار اللون والملمس من عينة حقيقية تراها في مكانك، لا من صورة على الشاشة' },
-    { icon: 'support', title: 'تواصل مباشر', desc: 'اتصل أو راسلنا على الواتساب يومياً من 9 صباحاً حتى 10 مساءً' },
+    { icon: 'support', title: 'تواصل مباشر', desc: `اتصل أو راسلنا على الواتساب ${HOURS_TEXT}` },
 ];
 
 /** Two of the shop's own photos, opened as frames when they scroll in. */

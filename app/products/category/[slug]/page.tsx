@@ -17,13 +17,13 @@ import {
     generateCategoryStaticParams,
 } from '@/lib/products';
 import { ADDRESS, PHONE_DISPLAY, PHONE_TEL, whatsappLink } from '@/lib/contact';
+import { HOURS_TEXT as HOURS } from '@/data/business';
 import { imageAlt } from '@/data/stock-images';
 import { ProductCard } from '@/components/product/ProductCard';
 import Link from 'next/link';
 import type { CSSProperties } from 'react';
 
 const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://www.mokeet-elsuarye.com').replace(/\/$/, '');
-const HOURS = 'يومياً من 9 صباحاً حتى 10 مساءً';
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -88,6 +88,9 @@ export default async function CategoryPage({ params }: Props) {
         name: `${categoryName} - موكيت ومفروشات السريع`,
         description: content?.description ?? `تشكيلة ${categoryName} من موكيت ومفروشات السريع في الرياض`,
         url: `${baseUrl}/products/category/${slug}`,
+        // The business entity is described once, in the layout's @graph.
+        publisher: { '@id': `${baseUrl}/#business` },
+        isPartOf: { '@id': `${baseUrl}/#website` },
         numberOfItems: categoryProducts.length,
         hasPart: categoryProducts.map(p => ({
             '@type': 'WebPage',

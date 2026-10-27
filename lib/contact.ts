@@ -1,27 +1,11 @@
-export const BRAND_NAME = 'موكيت ومفروشات السريع';
-// The registered establishment behind the brand, spelled exactly as on its
-// commercial registration certificate (Ministry of Commerce), and its unified
-// national number. Google Ads needs the advertiser behind the site to be
-// identifiable, and the name must match the payments profile letter for letter.
-export const LEGAL_NAME = 'مؤسسة فنون العاديات لديكورات والارضيات العالميه';
-export const UNIFIED_NUMBER = '7054751560';
-// ZATCA VAT registration certificate.
-export const VAT_NUMBER = '314892165400003';
-// Saudi National Address of the showroom (building 3189, Mazroah St, Manfuhah, 12685).
-export const NATIONAL_ADDRESS = 'RCNA3189';
+// Contact helpers. The facts themselves live in data/business.ts (the one facts record);
+// they are re-exported here so existing `@/lib/contact` imports keep working.
+import { ADDRESS, BRAND_NAME, LEGAL_NAME, MAPS_URL, NATIONAL_ADDRESS, PHONE2_DISPLAY, PHONE2_TEL, PHONE_DISPLAY, PHONE_TEL, UNIFIED_NUMBER, VAT_NUMBER, WHATSAPP2_NUMBER, WHATSAPP_NUMBER, legalLine } from '@/data/business';
 
-/** «موكيت ومفروشات السريع تابع لـ<establishment> (الرقم الوطني الموحد … - الرقم الضريبي …)». */
-export function legalLine(): string {
-    return `${BRAND_NAME} تابع لـ${LEGAL_NAME} (الرقم الوطني الموحد ${UNIFIED_NUMBER} - الرقم الضريبي ${VAT_NUMBER})`;
-}
-
-export const PHONE_DISPLAY = '0550101867';
-export const PHONE_TEL = 'tel:+966550101867';
-export const WHATSAPP_NUMBER = '966550101867';
-// Second line: calls, and WhatsApp on the pages below.
-export const PHONE2_DISPLAY = '0559686290';
-export const PHONE2_TEL = 'tel:+966559686290';
-export const WHATSAPP2_NUMBER = '966559686290';
+export {
+    ADDRESS, BRAND_NAME, LEGAL_NAME, MAPS_URL, NATIONAL_ADDRESS, PHONE2_DISPLAY, PHONE2_TEL, PHONE_DISPLAY, PHONE_TEL,
+    UNIFIED_NUMBER, VAT_NUMBER, WHATSAPP2_NUMBER, WHATSAPP_NUMBER, legalLine,
+};
 
 /**
  * Rubber, parquet and medical-vinyl pages. Their ads carry the second number,
@@ -37,8 +21,6 @@ const SECOND_LINE_PAGES = new Set([
 export function whatsappNumberFor(pathname: string): string {
     return SECOND_LINE_PAGES.has(pathname.replace(/\/+$/, '')) ? WHATSAPP2_NUMBER : WHATSAPP_NUMBER;
 }
-export const ADDRESS = 'مخرج ٢٢ حراج بن قاسم القديم سوق العرب الدولي، الرياض';
-export const MAPS_URL = 'https://www.google.com/maps?q=24.596556,46.730583';
 
 export function whatsappLink(message = 'السلام عليكم، أريد الاستفسار عن منتجات الموكيت والمفروشات') {
     return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;

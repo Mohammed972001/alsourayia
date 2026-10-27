@@ -1,6 +1,8 @@
 import { MetadataRoute } from 'next';
 import { productsDetails } from '@/data/products';
 import { hubCategorySlugs } from '@/lib/products';
+import { getProductWithDynamicImages } from '@/lib/products.server';
+import { isStockImage } from '@/data/stock-images';
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.mokeet-elsuarye.com';
 const baseUrl = siteUrl.replace(/\/$/, '');
@@ -61,12 +63,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }));
 
     // Individual product pages
-    const productPages: MetadataRoute.Sitemap = productsDetails.map((product) => ({
-        url: `${baseUrl}/products/${product.id}`,
-        lastModified: currentDate,
-        changeFrequency: 'monthly' as const,
-        priority: 0.8,
-    }));
+    // Owner photos only: licensed stock (/stock/) is not the shop's work and stays out of image search.
+    const productPages: MetadataRoute.Sitemap = productsDetails.map((product) => {
+        const photos = (getProductWithDynamicImages(product.id)?.gallery ?? [])
+            .filter((src) => !src.startsWith('/stock/') && !isStockImage(src) && !src.startsWith('/images/'))
+            // Folder and file names hold spaces.
+            .map((src) => encodeURI(`${baseUrl}${src}`));
+        return {
+            url: `${baseUrl}/products/${product.id}`,
+            lastModified: currentDate,
+            changeFrequency: 'monthly' as const,
+            priority: 0.8,
+            ...(photos.length ? { images: photos } : {}),
+        };
+    });
 
     return [...staticPages, ...categoryPages, ...productPages];
 }

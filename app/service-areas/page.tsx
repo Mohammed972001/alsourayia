@@ -8,6 +8,7 @@ import { HelpBand } from '@/components/HelpBand';
 import { PageView } from '@/components/motion/PageView';
 import { HeadingWords } from '@/components/motion/HeadingWords';
 import { ADDRESS, MAPS_URL } from '@/lib/contact';
+import { HOURS_TEXT } from '@/data/business';
 import Link from 'next/link';
 import type { CSSProperties } from 'react';
 
@@ -36,7 +37,7 @@ const cities = ['الرياض', 'جدة', 'الدمام', 'الخبر', 'مكة 
 const steps = [
     { title: 'في الرياض', text: 'معاينة وقياس مجاناً في مكانك، وعينة مجانية قبل الطلب، ثم عرض السعر على الواتساب، ثم التوريد والتركيب.' },
     { title: 'خارج الرياض', text: 'أرسل مقاسات المكان وصوره على الواتساب، ونرسل لك عرض السعر، ونوصّل الطلب إلى مدينتك.' },
-    { title: 'المعرض', text: `${ADDRESS}، يومياً من 9 صباحاً حتى 10 مساءً.` },
+    { title: 'المعرض', text: `${ADDRESS}، ${HOURS_TEXT}.` },
 ];
 
 export default function ServiceAreasPage() {

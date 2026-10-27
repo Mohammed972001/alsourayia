@@ -5,6 +5,8 @@ import { Icon } from '@/components/icons/Icon';
 import { ADDRESS, PHONE_DISPLAY, PHONE_TEL, PHONE2_DISPLAY, PHONE2_TEL, legalLine, whatsappLink } from '@/lib/contact';
 import { WhatsAppIcon } from '@/components/WhatsAppIcon';
 import { HeadingWords } from '@/components/motion/HeadingWords';
+import { BRAND_LATIN } from '@/data/business';
+import { categorySlugMap, hubCategorySlugs, products } from '@/lib/products';
 
 // Real URLs rather than #section anchors: the footer is on every page, so
 // these links are how crawlers reach the inner pages.
@@ -17,15 +19,12 @@ const quickLinks = [
     { name: 'سياسة الخصوصية', href: '/privacy' },
 ];
 
-// Horse rubber is not stocked now, so it is not listed here.
+// Every indexable product and both hubs, so each is linked from every page (some were only linked
+// from home). Horse rubber is not stocked now, so it is not listed here.
+const NOT_LISTED = new Set(['horse-rubber']);
 const productLinks = [
-    { name: 'موكيت مساجد', href: '/products/mosque-carpets' },
-    { name: 'موكيت مكاتب', href: '/products/office-carpet' },
-    { name: 'أرضيات مكتبية', href: '/products/office-flooring' },
-    { name: 'باركيه', href: '/products/category/parquet' },
-    { name: 'عشب صناعي', href: '/products/artificial-grass' },
-    { name: 'ربل جيم', href: '/products/rabal-gem' },
-    { name: 'مطاط دورات المياه', href: '/products/non-slip-rubber' },
+    ...hubCategorySlugs.map((slug) => ({ name: `${categorySlugMap[slug]} (كل الأنواع)`, href: `/products/category/${slug}` })),
+    ...products.filter((p) => !NOT_LISTED.has(p.id)).map((p) => ({ name: p.name, href: `/products/${p.id}` })),
 ];
 
 export function Footer() {
@@ -54,7 +53,7 @@ export function Footer() {
                     </a>
                 </div>
 
-                <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10 py-12">
+                <div className="grid grid-cols-2 lg:grid-cols-5 gap-x-6 gap-y-10 py-12">
                     {/* Company Info */}
                     <div className="col-span-2 lg:col-span-1" data-reveal style={{ '--i': 0 } as CSSProperties}>
                         <Image
@@ -65,18 +64,18 @@ export function Footer() {
                             className="mb-4 opacity-90"
                         />
                         <h3 className="font-display text-xl font-semibold mb-1">موكيت ومفروشات السريع</h3>
-                        <p className="text-white/40 text-xs mb-4">Al-Sari Carpets & Furnishings</p>
+                        <p className="text-white/40 text-xs mb-4">{BRAND_LATIN}</p>
                         <p className="text-white/60 text-sm leading-relaxed">
                             موكيت مكاتب وأرضيات ربل وموكيت مساجد ومفروشات في الرياض.
                         </p>
                     </div>
 
                     {/* Quick Links */}
-                    <div data-reveal style={{ '--i': 1 } as CSSProperties}>
+                    <div className="col-span-2 lg:col-span-1" data-reveal style={{ '--i': 1 } as CSSProperties}>
                         <h4 className="text-sm mb-4 text-brass">روابط سريعة</h4>
-                        <ul className="space-y-2.5">
+                        <ul className="grid grid-cols-2 lg:grid-cols-1 gap-x-4 gap-y-2.5">
                             {quickLinks.map((link) => (
-                                <li key={link.name}>
+                                <li key={link.href}>
                                     <Link href={link.href} className="text-white/60 hover:text-white text-sm transition-colors">
                                         {link.name}
                                     </Link>
@@ -85,12 +84,12 @@ export function Footer() {
                         </ul>
                     </div>
 
-                    {/* Products */}
-                    <div data-reveal style={{ '--i': 2 } as CSSProperties}>
-                        <h4 className="text-sm mb-4 text-brass">منتجاتنا</h4>
-                        <ul className="space-y-2.5">
+                    {/* All products */}
+                    <div className="col-span-2" data-reveal style={{ '--i': 2 } as CSSProperties}>
+                        <h4 className="text-sm mb-4 text-brass">كل المنتجات</h4>
+                        <ul className="grid grid-cols-2 gap-x-4 gap-y-2.5">
                             {productLinks.map((link) => (
-                                <li key={link.name}>
+                                <li key={link.href}>
                                     <Link href={link.href} className="text-white/60 hover:text-white text-sm transition-colors">
                                         {link.name}
                                     </Link>

@@ -6,6 +6,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { PHONE_DISPLAY, PHONE_TEL, ADDRESS, whatsappLink } from '@/lib/contact';
+import { BRAND_LATIN, HOURS_SHORT } from '@/data/business';
 import { WhatsAppIcon } from '@/components/WhatsAppIcon';
 
 const menuItems = [
@@ -21,7 +22,7 @@ const STRIP = [
     { label: 'معاينة وقياس مجاناً', desktopOnly: false },
     { label: 'عينة مجانية قبل الطلب', desktopOnly: false },
     { label: 'توريد لكل مدن المملكة', desktopOnly: true },
-    { label: 'يومياً 9 صباحاً – 10 مساءً', desktopOnly: true },
+    { label: HOURS_SHORT, desktopOnly: true },
 ];
 
 const isActive = (pathname: string, href: string) =>
@@ -127,7 +128,7 @@ export function Navigation() {
                                         موكيت ومفروشات السريع
                                     </span>
                                     <span className="text-[11px] text-ink-muted tracking-[0.2px] truncate">
-                                        Al-Sari Carpets & Furnishings
+                                        {BRAND_LATIN}
                                     </span>
                                 </span>
                             </Link>

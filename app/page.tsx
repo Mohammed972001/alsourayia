@@ -7,13 +7,14 @@ import { PageView } from '@/components/motion/PageView';
 import { Spaces } from '@/components/Spaces';
 import { About } from '@/components/About';
 import { Offers } from '@/components/Offers';
-import { ProductGallery } from '@/components/ProductGallery';
+import { FeaturedProducts } from '@/components/FeaturedProducts';
 import { HowWeWork } from '@/components/HowWeWork';
 import { SEOContent } from '@/components/SEOContent';
 import { HelpBand } from '@/components/HelpBand';
 import { Footer } from '@/components/Footer';
 import { FloatingButtons } from '@/components/FloatingButtons';
 import { Breadcrumb } from '@/components/Breadcrumb';
+import { ADDRESS_SHORT, HOURS_SHORT, SERVICES } from '@/data/business';
 
 const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://www.mokeet-elsuarye.com').replace(/\/$/, '');
 
@@ -28,14 +29,7 @@ const FAQ = dynamic(() => import('@/components/FAQ').then((m) => ({ default: m.F
 const Contact = dynamic(() => import('@/components/Contact').then((m) => ({ default: m.Contact })));
 
 /** Only owner-confirmed points. */
-const STRIP = [
-    'معاينة وقياس مجاناً',
-    'عينة مجانية قبل الطلب',
-    'توريد وتركيب',
-    'توريد لكل مدن المملكة',
-    'يومياً 9 صباحاً – 10 مساءً',
-    'حراج بن قاسم، الرياض',
-];
+const STRIP = [...SERVICES, HOURS_SHORT, ADDRESS_SHORT];
 
 export default function Home() {
     const homeBreadcrumb = [{ label: 'الرئيسية' }];
@@ -57,7 +51,7 @@ export default function Home() {
                     <Spaces />
                     <About />
                     <Offers />
-                    <ProductGallery />
+                    <FeaturedProducts />
                     <HowWeWork />
                     <SEOContent />
                     <ServiceAreas />

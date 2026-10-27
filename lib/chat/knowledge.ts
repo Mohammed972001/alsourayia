@@ -3,16 +3,17 @@
 // deploy. The home FAQ is left out on purpose: it carries unconfirmed claims (instalments,
 // free samples at home).
 import { ADDRESS, PHONE2_DISPLAY, PHONE_DISPLAY, whatsappLink } from "@/lib/contact";
+import { BRAND_NAME, HOURS_TEXT, SERVICES, SITE_URL } from "@/data/business";
 import { categoryContent, products } from "@/lib/products";
 import type { ChatSite } from "./core";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://www.mokeet-elsuarye.com";
-const NAME = "موكيت ومفروشات السريع";
+const NAME = BRAND_NAME;
 
 const lines: string[] = [
   `# ${NAME}`,
   `الهاتف وواتساب: ${PHONE_DISPLAY} · رقم ثانٍ للاتصال وواتساب الربل والباركيه والفينيل الطبي: ${PHONE2_DISPLAY}`,
-  "أوقات العمل: يومياً 9:00 صباحاً - 10:00 مساءً، اتصال وواتساب.",
+  `أوقات العمل: ${HOURS_TEXT}، اتصال وواتساب.`,
+  `الخدمات: ${SERVICES.join("، ")}.`,
   `العنوان: ${ADDRESS}`,
   "",
   "## المنتجات",

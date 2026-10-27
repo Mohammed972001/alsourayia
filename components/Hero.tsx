@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { Icon } from '@/components/icons/Icon';
 import { products } from '@/lib/products';
 import { whatsappLink } from '@/lib/contact';
+import { ADDRESS_SHORT } from '@/data/business';
 import { imageAlt } from '@/data/stock-images';
 import { WhatsAppIcon } from '@/components/WhatsAppIcon';
 
@@ -61,7 +62,7 @@ export function Hero() {
                             style={step(0)}
                         >
                             <span className="w-1.5 h-1.5 rounded-full bg-mint" />
-                            موكيت · باركيه · أرضيات مطاط — حراج بن قاسم، الرياض
+                            موكيت · باركيه · أرضيات مطاط — {ADDRESS_SHORT}
                         </span>
 
                         <h1 className="font-display font-bold text-white mt-5 text-[2.2rem] leading-[1.25] md:text-6xl md:leading-[1.15] lg:text-7xl">

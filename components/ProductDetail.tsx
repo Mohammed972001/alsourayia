@@ -7,6 +7,7 @@ import { categoryToSlug, getProductById, mergedCategories, type Product } from '
 import Link from 'next/link';
 import { Breadcrumb } from './Breadcrumb';
 import { ADDRESS, MAPS_URL, PHONE_TEL, whatsappLink } from '@/lib/contact';
+import { SITE_URL } from '@/data/business';
 import { imageAlt, isStockImage } from '@/data/stock-images';
 import { DetailGallery, type GalleryImage } from './product/DetailGallery';
 import { ColorPicker } from './product/ColorPicker';
@@ -68,7 +69,7 @@ export function ProductDetail({ productId, dynamicGallery }: ProductDetailProps)
     const allImages = dynamicGallery && dynamicGallery.length > 0
         ? dynamicGallery
         : product.gallery.length > 0 ? product.gallery : [product.image];
-    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.mokeet-elsuarye.com';
+    const baseUrl = SITE_URL;
 
     // Priced per project after measuring, so this is a Service: a Product
     // would need a real price or genuine reviews, and the site has neither.
@@ -83,21 +84,18 @@ export function ProductDetail({ productId, dynamicGallery }: ProductDetailProps)
         // Folder and file names hold spaces; JSON-LD needs valid URLs.
         "image": allImages.map((img) => encodeURI(`${baseUrl}${img}`)),
         "areaServed": { "@type": "City", "name": "الرياض" },
-        "provider": {
-            "@type": "LocalBusiness",
-            "@id": `${baseUrl}/#localbusiness`,
-            "name": "موكيت ومفروشات السريع",
-            "url": baseUrl,
-            "telephone": ["+966550101867", "+966559686290"]
-        }
+        // The business entity is described once, in the layout's @graph.
+        "provider": { "@id": `${baseUrl}/#business` }
     };
 
     const categorySlug = categoryToSlug[product.category];
+    // The hub page of this product's category, when the category still has one (T031).
+    const hubHref = categorySlug && !mergedCategories[categorySlug] ? `/products/category/${categorySlug}` : null;
     const breadcrumbItems = [
         { label: 'الرئيسية', href: '/' },
         { label: 'المنتجات', href: '/products' },
         // A merged category redirects to this very page, so leave it out.
-        ...(categorySlug && !mergedCategories[categorySlug] ? [{ label: product.category, href: `/products/category/${categorySlug}` }] : []),
+        ...(hubHref ? [{ label: product.category, href: hubHref }] : []),
         { label: product.name }
     ];
 
@@ -275,7 +273,15 @@ export function ProductDetail({ productId, dynamicGallery }: ProductDetailProps)
 
                     {relatedProducts.length > 0 && (
                         <div className="mt-12" data-reveal>
-                            <h2 className="text-xl text-[#1A1A1A] mb-6">منتجات قريبة قد تناسبك</h2>
+                            <h2 className={`text-xl text-[#1A1A1A] ${hubHref ? 'mb-2' : 'mb-6'}`}>منتجات قريبة قد تناسبك</h2>
+                            {hubHref && (
+                                <p className="mb-6 text-sm text-[#4A4A4A]">
+                                    قارن كل الأنواع في صفحة{' '}
+                                    <Link href={hubHref} className="font-semibold text-ink underline decoration-brass underline-offset-4 hover:no-underline">
+                                        {product.category} في الرياض
+                                    </Link>
+                                </p>
+                            )}
                             <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-5">
                                 {relatedProducts.map((p) => (
                                     <li key={p.id}>

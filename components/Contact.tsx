@@ -4,6 +4,7 @@ import { SectionHeading } from '@/components/SectionHeading';
 import { WhatsAppIcon } from '@/components/WhatsAppIcon';
 import { ContactRow, ContactRows } from '@/components/cards/ContactRow';
 import { ADDRESS, MAPS_URL, PHONE_DISPLAY, PHONE_TEL, PHONE2_DISPLAY, PHONE2_TEL, whatsappLink } from '@/lib/contact';
+import { HOURS_SHORT, HOURS_TEXT } from '@/data/business';
 
 const quickActions: { label: string; href: string; icon: IconName | null; external: boolean; tone: string }[] = [
     { label: 'اتصل بنا', href: PHONE_TEL, icon: 'phone', external: false, tone: 'bg-ink text-white' },
@@ -19,7 +20,7 @@ export function Contact({ headingAs = 'h2' }: { headingAs?: 'h1' | 'h2' }) {
                     as={headingAs}
                     eyebrow="نحن بانتظارك"
                     title="تواصل معنا"
-                    description="نرد على الواتساب والهاتف يومياً من 9 صباحاً حتى 10 مساءً، ونرتب معك المعاينة والقياس مجاناً"
+                    description={`نرد على الواتساب والهاتف ${HOURS_TEXT}، ونرتب معك المعاينة والقياس مجاناً`}
                 />
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12">
@@ -65,7 +66,7 @@ export function Contact({ headingAs = 'h2' }: { headingAs?: 'h1' | 'h2' }) {
                                 </span>
                             </ContactRow>
                             <ContactRow icon="clock" label="أوقات العمل" labelAs="h3" dataAttrs={{ 'data-reveal': 'slide' }} style={{ '--i': 5 } as CSSProperties}>
-                                يومياً: 9:00 صباحاً - 10:00 مساءً
+                                {HOURS_SHORT}
                             </ContactRow>
                         </ContactRows>
                     </div>

@@ -7,19 +7,20 @@ import { Breadcrumb } from '@/components/Breadcrumb';
 import { HelpBand } from '@/components/HelpBand';
 import { PageView } from '@/components/motion/PageView';
 import { PHONE_DISPLAY, PHONE2_DISPLAY } from '@/lib/contact';
+import { HOURS_TEXT } from '@/data/business';
 
 const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://www.mokeet-elsuarye.com').replace(/\/$/, '');
 
 export const metadata: Metadata = {
     title: 'اتصل أو واتساب: موكيت وأرضيات الرياض',
-    description: `موكيت ومفروشات السريع في الرياض: اتصل على ${PHONE_DISPLAY} أو ${PHONE2_DISPLAY} أو راسلنا على واتساب يومياً من 9 صباحاً حتى 10 مساءً لطلب معاينة وقياس مجاناً وعرض السعر.`,
+    description: `موكيت ومفروشات السريع في الرياض: اتصل على ${PHONE_DISPLAY} أو ${PHONE2_DISPLAY} أو راسلنا على واتساب ${HOURS_TEXT} لطلب معاينة وقياس مجاناً وعرض السعر.`,
     keywords: 'تواصل موكيت السريع, رقم موكيت الرياض, واتساب موكيت السريع, اتصل موكيت مفروشات',
     alternates: {
         canonical: `${baseUrl}/contact`,
     },
     openGraph: {
         title: 'اتصل أو واتساب: موكيت وأرضيات الرياض | موكيت ومفروشات السريع',
-        description: 'اتصل بنا أو راسلنا على واتساب يومياً من 9 صباحاً حتى 10 مساءً لطلب معاينة وقياس مجاناً وعرض السعر.',
+        description: `اتصل بنا أو راسلنا على واتساب ${HOURS_TEXT} لطلب معاينة وقياس مجاناً وعرض السعر.`,
         locale: 'ar_SA',
         type: 'website',
         url: `${baseUrl}/contact`,

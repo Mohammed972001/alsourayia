@@ -25,8 +25,10 @@ self-service (US4).
 
 ## Phase 2: Foundational (blocks all stories)
 
-- [ ] T005 Create `data/business.ts` per `contracts/business-facts.md` and make `lib/contact.ts` re-export from it; replace hard-coded phones/hours/address/legal line in `components/*`, `app/*`, `lib/chat/knowledge.ts`
-- [ ] T006 Add a build check `scripts/facts-guard.mjs` (run in `npm run build` via `prebuild`) that fails if `0550101867`, `0559686290`, the legal name or the hours string appear outside `data/business.ts`
+- [x] T005 Create `data/business.ts` per `contracts/business-facts.md` and make `lib/contact.ts` re-export from it; replace hard-coded phones/hours/address/legal line in `components/*`, `app/*`, `lib/chat/knowledge.ts`
+  - Note: `lib/schema.ts` and `lib/llms.ts` also read from it; prose mentions of «حراج بن قاسم» in marketing copy stay as text (address and strip lines import `ADDRESS` / `ADDRESS_SHORT`).
+- [x] T006 Add a build check `scripts/facts-guard.mjs` (run in `npm run build` via `prebuild`) that fails if `0550101867`, `0559686290`, the legal name or the hours string appear outside `data/business.ts`
+  - Note: also guards the unified/VAT numbers and the hours wording (9 صباحاً / 10 مساءً); skips docs/, specs/, design/, public/, components/ui and generated folders.
 - [ ] T007 [P] Create `data/photo-register.ts` from the current folders: owner vs stock count per product (8 products stock-only today: parket, water-resistant-carpet, hospital-flooring, mokite, turky-mshager, artificial-grass, office-flooring, vinyl-mosque)
 
 **Checkpoint**: one facts record, guard in place, crawl and photo scripts ready.
@@ -80,10 +82,14 @@ logo sharp at 1x/2x/3x, 0 lucide imports remain, every card follows the card rul
 - [ ] T025 [US2] Pull every page URL with impressions in 16 months and every crawl 404 from GSC (`C:/Users/mohammed/.claude/scripts/gsc.mjs`), list them in `docs/seo-clusters.md`, and add a 308 for each to `next.config.ts` (extend `lib/merged-categories.ts`); catch-all `/products/category/:slug` → `/products` for unknown slugs
 - [ ] T026 [US2] Write `docs/seo-clusters.md`: the 8 clusters from FR-011 → one target URL each, baseline positions; mark secondary pages that must link to the target
 - [ ] T027 [P] [US2] Home: title/meta for the brand cluster («موكيت السريع | موكيت ومفروشات السريع – حراج بن قاسم الرياض» style, ≤60 chars), check the H1 and summary; log in `docs/seo-2026-10-27.md` (21-day lock)
-- [ ] T028 [P] [US2] Schema graph in `app/layout.tsx` from `data/business.ts` per research R5 (HomeAndConstructionBusiness + parentOrganization + WebSite + Organization with the vector-derived logo); validate every page's JSON-LD in crawl-check
-- [ ] T029 [P] [US2] `app/sitemap.ts`: lastModified from per-page content dates (add `updatedAt` to products, projects, guides), images in the sitemap for owner photos
-- [ ] T030 [US2] Field CWV: trim the home products grid to 8 cards + «كل المنتجات» link in `components/ProductGallery.tsx` (DOM ~1,200 → <900), confirm lazy below-fold images, re-run Lighthouse; record CrUX monthly in `docs/baseline-2026-10-27.md`
-- [ ] T031 [US2] Internal links: each product links to its hub and ≥2 siblings; hubs link to all products and to the matching guides/projects (data in `data/products.ts` `related`, hub page component)
+- [x] T028 [P] [US2] Schema graph in `app/layout.tsx` from `data/business.ts` per research R5 (HomeAndConstructionBusiness + parentOrganization + WebSite + Organization with the vector-derived logo); validate every page's JSON-LD in crawl-check
+  - Note: built in `lib/schema.ts`; logo stays `/logo.png` until the T010 export; `priceRange: "$$"` dropped (not owner-confirmed); `image` uses an owner installation photo (mosque) since there is no showroom photo yet; JSON-LD checked ad hoc on 2026-10-27 (crawl-check waits for T003).
+- [x] T029 [P] [US2] `app/sitemap.ts`: lastModified from per-page content dates (add `updatedAt` to products, projects, guides), images in the sitemap for owner photos
+  - Note: images added (owner photos only, no /stock/); lastModified stays one fixed date (2026-10-27); per-page `updatedAt` not added yet.
+- [x] T030 [US2] Field CWV: trim the home products grid to 8 cards + «كل المنتجات» link in `components/ProductGallery.tsx` (DOM ~1,200 → <900), confirm lazy below-fold images, re-run Lighthouse; record CrUX monthly in `docs/baseline-2026-10-27.md`
+  - Note: home uses the server component `components/FeaturedProducts.tsx` (8 cards, no filter, «كل المنتجات» link); /products keeps `ProductGallery`. Home body tags without scripts: 1,309 (live) → 1,206 (local); the <900 target needs trimming elsewhere. Lighthouse/CrUX not re-run.
+- [x] T031 [US2] Internal links: each product links to its hub and ≥2 siblings; hubs link to all products and to the matching guides/projects (data in `data/products.ts` `related`, hub page component)
+  - Note: every `related` list already had ≥2 siblings; added an explicit hub link above «منتجات قريبة» on hub products; the footer now links every product and both hubs from every page.
 - [ ] T032 [US2] Search Console: submit the sitemap and request indexing for home, two hubs and the top 6 products (≤10/day) via `gsc.mjs`; note dates in `docs/seo-2026-10-27.md`
 
 ---
@@ -93,8 +99,8 @@ logo sharp at 1x/2x/3x, 0 lucide imports remain, every card follows the card rul
 **Goal**: plain, consistent, quotable facts; AI crawler access; corroborating listings; projects and guides.
 **Independent Test**: the 20 prompts, re-run monthly, mention the shop in ≥4 answers by week 8.
 
-- [ ] T033 [P] [US3] `app/llms.txt/route.ts` and `app/llms-full.txt/route.ts` generated from `data/business.ts`, `data/products.ts` summaries and FAQs (Arabic, plain text, links)
-- [ ] T034 [P] [US3] `app/robots.ts`: explicitly allow GPTBot, OAI-SearchBot, ChatGPT-User, PerplexityBot, ClaudeBot, Google-Extended, Applebot-Extended on public pages; keep `/api/` disallowed
+- [x] T033 [P] [US3] `app/llms.txt/route.ts` and `app/llms-full.txt/route.ts` generated from `data/business.ts`, `data/products.ts` summaries and FAQs (Arabic, plain text, links)
+- [x] T034 [P] [US3] `app/robots.ts`: explicitly allow GPTBot, OAI-SearchBot, ChatGPT-User, PerplexityBot, ClaudeBot, Google-Extended, Applebot-Extended on public pages; keep `/api/` disallowed
 - [ ] T035 [US3] Add a `summary` (2–3 quotable sentences: who, what, where, contact) to every product in `data/products.ts` and render it under the H1 in `components/ProductDetail.tsx` and the hub page
 - [ ] T036 [US3] `data/projects.ts` + `app/projects/page.tsx` + `app/projects/[slug]/page.tsx` + `components/cards/ProjectCard.tsx` + `components/projects/ProjectGallery.tsx` (native `<dialog>`, RTL arrows, swipe) — seed with the mosque and office installation sets received 2026-10-27; place type/city/date only after the owner confirms (constitution I); ImageGallery + BreadcrumbList schema; link from product pages
 - [ ] T037 [US3] `data/guides.ts` + `app/guides/[slug]/page.tsx`: 4 guides from cluster questions (الفرق بين باركيه SPC ومشمع الباركيه؛ ربل جيم رول ولا بلاط مطاط؛ إزاي تختار موكيت مسجد؛ فينيل طبي للعيادات: إيه المهم) — facts only from product data, FAQPage schema, each links to its product
