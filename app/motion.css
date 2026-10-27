@@ -54,7 +54,10 @@
     .js [data-reveal='zoom'], .js [data-reveal='scale'] { translate: none; scale: 0.9; }
     .js [data-reveal='zoom'][data-revealed], .js [data-reveal='scale'][data-revealed] { scale: 1; }
 
-    .js [data-reveal='slide'], .js [data-reveal='start'] { translate: -48px 0; }
+    /* Enters from the inline start, inside its own box: a sideways translate pushed rows past the screen edge
+       before they revealed, and in RTL that made the whole page scroll sideways on phones. */
+    .js [data-reveal='slide'], .js [data-reveal='start'] { translate: none; clip-path: inset(0 0 0 100%); }
+    .js [data-reveal='slide'][data-revealed], .js [data-reveal='start'][data-revealed] { clip-path: inset(0 0 0 0); transition-duration: 900ms; }
 
     .js [data-reveal='mask'] { translate: 0 70%; clip-path: inset(0 0 85% 0); }
     .js [data-reveal='mask'][data-revealed] { clip-path: inset(-25% 0 -25% 0); }

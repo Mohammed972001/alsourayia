@@ -229,6 +229,12 @@ h1, h2, h3,
     }
 }
 
+/* Nothing may widen the page sideways (an entrance offset, a long word, a wide table): the page scrolled
+   sideways on phones in RTL. `clip`, not `hidden`, so position: sticky keeps working. */
+html, body {
+    overflow-x: clip;
+}
+
 /* Smooth Scrolling with offset for fixed nav */
 html {
     scroll-behavior: smooth;
