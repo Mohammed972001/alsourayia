@@ -41,17 +41,17 @@ logo sharp at 1x/2x/3x, 0 lucide imports remain, every card follows the card rul
 
 ### A1 — Vector logo (owner gate)
 
-- [ ] T008 [US1] Trace the «السريع» badge from `public/logo.png` into `design/brand/badge.svg` (S emblem with parquet inlay as flat brass/brown fills, wordmark as outlines, round marble frame simplified to a flat cream disc), plus `design/brand/emblem.svg` (S only, square) and `design/brand/mono.svg` (one colour, for dark backgrounds); optimise with SVGO
-- [ ] T009 [US1] Render a side-by-side board (old raster vs new SVG at 32/64/256 px, on white and on ink) to `design/brand/compare.png` and send it to the owner — **stop until he approves**
-- [ ] T010 [US1] After approval: `components/brand/Logo.tsx` (variants badge | emblem | mono, inline SVG, `aria-label`), use it in `components/Navigation.tsx` and `components/Footer.tsx`; regenerate `public/favicon.ico`, `public/apple-touch-icon.png`, `public/icon-512.png`, `public/logo.png` and `public/brand/*.svg` from the masters with `design/brand/export.mjs`
+- [x] T008 [US1] Trace the «السريع» badge from `public/logo.png` into `design/brand/badge.svg` (S emblem with parquet inlay as flat brass/brown fills, wordmark as outlines, round marble frame simplified to a flat cream disc), plus `design/brand/emblem.svg` (S only, square) and `design/brand/mono.svg` (one colour, for dark backgrounds); optimise with SVGO
+- [x] T009 [US1] Render a side-by-side board (old raster vs new SVG at 32/64/256 px, on white and on ink) to `design/brand/compare.png` and send it to the owner — **stop until he approves**
+- [x] T010 [US1] After approval: `components/brand/Logo.tsx` (variants badge | emblem | mono, inline SVG, `aria-label`), use it in `components/Navigation.tsx` and `components/Footer.tsx`; regenerate `public/favicon.ico`, `public/apple-touch-icon.png`, `public/icon-512.png`, `public/logo.png` and `public/brand/*.svg` from the masters with `design/brand/export.mjs`
 
 ### A2 — Icon family
 
-- [ ] T011 [P] [US1] Add the icon source per research R2 (Hugeicons free set) and create `components/icons/Icon.tsx` with a typed name map per `contracts/icon-set.md` (24 grid, 1.5 stroke, currentColor, aria-hidden by default, RTL mirroring for arrows only)
-- [ ] T012 [P] [US1] Draw the custom glyphs in the same grid in `components/icons/custom.tsx`: mosque, carpet-roll, carpet-tile, parquet, rubber-roll, gym, tape-measure, swatch
-- [ ] T013 [US1] Render an icon board (all names, 24 and 32 px, ink and mint-deep) to `design/icons/board.png` and send it to the owner — **stop until he approves**
-- [ ] T014 [US1] Replace every `lucide-react` import (34 files: Navigation, Hero, Spaces, Offers, HowWeWork, Contact, Footer, ProductDetail, product/*, SEOContent, ServiceAreas, FloatingButtons, ChatLauncher, ChatWidget, app/products/category/[slug]/page.tsx, app/contact/page.tsx …) with `<Icon>`; remove `lucide-react` from `package.json` and `next.config.ts` `optimizePackageImports`
-- [ ] T015 [US1] Add `scripts/icon-inventory.mjs` that fails when any non-`Icon` SVG glyph library import is found; run it
+- [x] T011 [P] [US1] Add the icon source per research R2 (Hugeicons free set) and create `components/icons/Icon.tsx` with a typed name map per `contracts/icon-set.md` (24 grid, 1.5 stroke, currentColor, aria-hidden by default, RTL mirroring for arrows only)
+- [x] T012 [P] [US1] Draw the custom glyphs in the same grid in `components/icons/custom.tsx`: mosque, carpet-roll, carpet-tile, parquet, rubber-roll, gym, tape-measure, swatch
+- [x] T013 [US1] Render an icon board (all names, 24 and 32 px, ink and mint-deep) to `design/icons/board.png` and send it to the owner — **stop until he approves**
+- [x] T014 [US1] Replace every `lucide-react` import (34 files: Navigation, Hero, Spaces, Offers, HowWeWork, Contact, Footer, ProductDetail, product/*, SEOContent, ServiceAreas, FloatingButtons, ChatLauncher, ChatWidget, app/products/category/[slug]/page.tsx, app/contact/page.tsx …) with `<Icon>`; remove `lucide-react` from `package.json` and `next.config.ts` `optimizePackageImports`
+- [x] T015 [US1] Add `scripts/icon-inventory.mjs` that fails when any non-`Icon` SVG glyph library import is found; run it
 
 ### A3 — Cards (owner gate)
 
