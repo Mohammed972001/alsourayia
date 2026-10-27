@@ -55,12 +55,12 @@ logo sharp at 1x/2x/3x, 0 lucide imports remain, every card follows the card rul
 
 ### A3 — Cards (owner gate)
 
-- [ ] T016 [US1] Build mockups in the manner of hamasat-beity (`D:/work/hamasat-beity/src/components/home/*`) and funun-aladiyat (`D:/work/funun-aladiyat/src/components/home/Mosques.tsx`, `Gym.tsx`, `Spaces.tsx`): photo-led sector cards with scrim and mint chip, offer cards with a layered icon frame, step cards with a drawn connector, contact rows, project card; render phone + desktop images to `design/cards/` with the D:/tmp-el/mock pattern and send to the owner — **stop until he approves**
-- [ ] T017 [P] [US1] `components/cards/SectorCard.tsx` and use it in `components/Spaces.tsx` (owner photo per sector: mosque from `public/msaged`, gym from `public/Rabal-GEM`, office from `public/mokeet makteb`; hospital and home keep icon-led until owner photos arrive)
-- [ ] T018 [P] [US1] `components/cards/OfferCard.tsx` and use it in `components/Offers.tsx`
-- [ ] T019 [P] [US1] `components/cards/StepCard.tsx` and use it in `components/HowWeWork.tsx`
-- [ ] T020 [P] [US1] `components/cards/ContactRow.tsx` and use it in `components/Contact.tsx`, `app/contact/page.tsx`, the hub first screen in `app/products/category/[slug]/page.tsx`
-- [ ] T021 [US1] Align `components/product/ProductCard.tsx` with the approved card rules (radius 14, 1 px line, hover lift on pointer devices only, badge, owner photo first)
+- [x] T016 [US1] Build mockups in the manner of hamasat-beity (`D:/work/hamasat-beity/src/components/home/*`) and funun-aladiyat (`D:/work/funun-aladiyat/src/components/home/Mosques.tsx`, `Gym.tsx`, `Spaces.tsx`): photo-led sector cards with scrim and mint chip, offer cards with a layered icon frame, step cards with a drawn connector, contact rows, project card; render phone + desktop images to `design/cards/` with the D:/tmp-el/mock pattern and send to the owner — **stop until he approves**
+- [x] T017 [P] [US1] `components/cards/SectorCard.tsx` and use it in `components/Spaces.tsx` (owner photo per sector: mosque from `public/msaged`, gym from `public/Rabal-GEM`, office from `public/mokeet makteb`; hospital and home keep icon-led until owner photos arrive)
+- [x] T018 [P] [US1] `components/cards/OfferCard.tsx` and use it in `components/Offers.tsx`
+- [x] T019 [P] [US1] `components/cards/StepCard.tsx` and use it in `components/HowWeWork.tsx`
+- [x] T020 [P] [US1] `components/cards/ContactRow.tsx` and use it in `components/Contact.tsx`, `app/contact/page.tsx`, the hub first screen in `app/products/category/[slug]/page.tsx`
+- [x] T021 [US1] Align `components/product/ProductCard.tsx` with the approved card rules (radius 14, 1 px line, hover lift on pointer devices only, badge, owner photo first)
 
 ### A4 — Real photos
 
