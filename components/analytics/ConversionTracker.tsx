@@ -73,7 +73,8 @@ export default function ConversionTracker() {
         const source = adSource();
 
         const onClick = (event: MouseEvent) => {
-            const link = (event.target as HTMLElement | null)?.closest?.('a');
+            // Skips the agency credit in the footer: a chat with the agency is not a lead.
+            const link = (event.target as HTMLElement | null)?.closest?.<HTMLAnchorElement>('a:not([data-credit])');
             const href = link?.getAttribute('href');
             if (!link || !href) return;
 

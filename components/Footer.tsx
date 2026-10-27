@@ -117,6 +117,20 @@ export function Footer() {
                     <p className="text-white/40 text-xs md:text-sm text-center">
                         &copy; {new Date().getFullYear()} موكيت ومفروشات السريع. جميع الحقوق محفوظة.
                     </p>
+                    {/* Agency credit. data-credit keeps the conversion tracker off it: it would count the chat as a
+                        lead and swap the number for the shop's. */}
+                    <p className="text-white/40 text-xs md:text-sm text-center">
+                        <a
+                            href="https://wa.me/201003736539"
+                            target="_blank"
+                            rel="nofollow noopener"
+                            dir="ltr"
+                            data-credit
+                            className="transition-colors hover:text-white/70"
+                        >
+                            Powered by Digitalizing Tech
+                        </a>
+                    </p>
                 </div>
             </div>
         </footer>
