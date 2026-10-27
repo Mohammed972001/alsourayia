@@ -1,16 +1,15 @@
 import type { CSSProperties } from 'react';
 import { Fragment } from 'react';
-import { MessageCircle, Ruler, Wrench } from 'lucide-react';
 import { SectionHeading } from '@/components/SectionHeading';
 
 const steps = [
-    { n: '01', icon: MessageCircle, title: 'تواصل على الواتساب أو اتصل', text: 'أرسل صورة المكان ومقاسه التقريبي، أو اتصل بنا يومياً من 9 صباحاً حتى 10 مساءً.' },
-    { n: '02', icon: Ruler, title: 'معاينة وقياس مجاناً', text: 'نأتي إلى مكانك، نأخذ المقاسات ونعرض عليك العينات، ثم نرسل عرض السعر.' },
-    { n: '03', icon: Wrench, title: 'توريد وتركيب', text: 'نورّد الخامة المختارة ونركّبها في الموعد المتفق عليه، في الرياض أو أي مدينة في المملكة.' },
+    { n: '01', title: 'تواصل على الواتساب أو اتصل', text: 'أرسل صورة المكان ومقاسه التقريبي، أو اتصل بنا يومياً من 9 صباحاً حتى 10 مساءً.' },
+    { n: '02', title: 'معاينة وقياس مجاناً', text: 'نأتي إلى مكانك، نأخذ المقاسات ونعرض عليك العينات، ثم نرسل عرض السعر.' },
+    { n: '03', title: 'توريد وتركيب', text: 'نورّد الخامة المختارة ونركّبها في الموعد المتفق عليه، في الرياض أو أي مدينة في المملكة.' },
 ] as const;
 
 /**
- * Three numbered steps joined by a line that draws itself: sideways between the steps on desktop,
+ * Three numbered mint circles joined by a line that draws itself: sideways between the steps on desktop,
  * downwards between them on phones (app/motion.css `grow` / `grow-down`).
  */
 export function HowWeWork() {
@@ -23,22 +22,19 @@ export function HowWeWork() {
                     {steps.map((step, i) => (
                         <Fragment key={step.n}>
                             {i > 0 && (
-                                <li aria-hidden className="flex justify-center md:block md:pt-9">
+                                <li aria-hidden className="flex justify-center md:block md:pt-8">
                                     {/* Phone: a vertical line between the steps. */}
-                                    <span className="block md:hidden w-px h-12 bg-brass/60" data-reveal="grow-down" />
+                                    <span className="block md:hidden w-px h-12 bg-mint" data-reveal="grow-down" />
                                     {/* Desktop: a horizontal line. */}
-                                    <span className="hidden md:block w-16 lg:w-28 h-px bg-brass/60" data-reveal="grow" />
+                                    <span className="hidden md:block w-16 lg:w-28 h-px bg-mint" data-reveal="grow" />
                                 </li>
                             )}
                             <li className="flex flex-col items-center text-center" style={{ '--i': i } as CSSProperties}>
                                 <span
                                     data-reveal="pop"
-                                    className="relative grid place-items-center w-20 h-20 rounded-full bg-cream ring-1 ring-line text-ink"
+                                    className="grid place-items-center w-16 h-16 rounded-full bg-mint-soft ring-1 ring-inset ring-mint-line text-mint-deep font-display text-xl tabular-nums"
                                 >
-                                    <step.icon size={26} strokeWidth={1.6} className="text-brass-deep" />
-                                    <span className="absolute -top-2 -end-2 grid place-items-center min-w-8 h-8 px-2 rounded-full bg-ink text-brass font-display text-sm font-semibold tabular-nums">
-                                        {step.n}
-                                    </span>
+                                    {step.n}
                                 </span>
                                 <h3 data-reveal className="font-display text-lg md:text-xl font-semibold text-ink mt-5 mb-2" style={{ '--i': i + 1 } as CSSProperties}>
                                     {step.title}

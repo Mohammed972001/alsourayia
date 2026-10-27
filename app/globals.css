@@ -45,7 +45,6 @@
 }
 
 @theme inline {
-    --font-tajawal: 'Tajawal', sans-serif;
     --color-background: var(--background);
     --color-foreground: var(--foreground);
     --color-card: var(--card);
@@ -82,7 +81,7 @@
         @apply bg-background text-foreground;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
-        font-family: var(--font-tajawal), sans-serif;
+        font-family: var(--font-cairo), 'Cairo', sans-serif;
     }
 }
 
@@ -151,7 +150,16 @@ html {
     --color-line: #ECE8E0;
     --color-whatsapp: #25D366;
 
-    --font-display: var(--font-messiri), var(--font-tajawal), serif;
+    /* Light mint accent (approved mockup). Mint itself is decorative (dots, ticks, lines);
+       text that must be read in green uses mint-deep: 5.1:1 on white, 4.7:1 on mint-soft and cream.
+       (#3B7B56, a touch darker than the mockup's #3E8059, which gave only 4.4:1 on mint-soft.) */
+    --color-mint: #86C79C;
+    --color-mint-deep: #3B7B56;
+    --color-mint-soft: #F0F8F2;
+    --color-mint-line: #DCF0E2;
+
+    --font-sans: var(--font-cairo), 'Cairo', sans-serif;
+    --font-display: var(--font-reem), var(--font-cairo), serif;
 
     --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 
@@ -183,10 +191,15 @@ html {
     }
 }
 
-h1, h2, h3,
-.font-display {
-    font-family: var(--font-messiri), var(--font-tajawal), serif;
-    letter-spacing: 0;
+/* Headings in Reem Kufi 700. In the base layer so a utility (e.g. a product card title set in
+   Cairo) can still override it. */
+@layer base {
+    h1, h2, h3,
+    .font-display {
+        font-family: var(--font-reem), var(--font-cairo), serif;
+        font-weight: 700;
+        letter-spacing: 0;
+    }
 }
 
 /* Horizontal rails (category chips, mobile carousels) */
@@ -238,8 +251,16 @@ html, body {
 /* Smooth Scrolling with offset for fixed nav */
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 80px;
+    scroll-padding-top: calc(var(--header-now) + 12px);
 }
+
+/* Fixed header: a 34px mint strip over a 70px bar. Pages pad their top by the full height; sticky bars
+   follow --header-now, which drops to the bar alone once the strip has slid away on scroll (Navigation). */
+:root {
+    --header-full: 104px;
+    --header-now: 104px;
+}
+html[data-scrolled] { --header-now: 70px; }
 
 /* Clean Scrollbar */
 ::-webkit-scrollbar {

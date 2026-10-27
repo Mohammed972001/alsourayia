@@ -73,7 +73,10 @@ export default async function ProductPage({ params }: Props) {
     return (
         <div className="min-h-screen bg-white" dir="rtl">
             <Navigation />
-            <ProductDetail productId={product.id} dynamicGallery={product.gallery} />
+            {/* Clears the fixed header (strip + bar). */}
+            <div className="pt-[var(--header-full)]">
+                <ProductDetail productId={product.id} dynamicGallery={product.gallery} />
+            </div>
             <Footer />
             <FloatingButtons message={`أريد الاستفسار عن ${product.name} من موكيت ومفروشات السريع`} />
         </div>

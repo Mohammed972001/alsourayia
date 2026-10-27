@@ -43,7 +43,7 @@ export function SEOContent() {
                                     className="mt-4 inline-flex items-center gap-1.5 text-ink text-sm font-medium hover:gap-2.5 transition-all"
                                 >
                                     عرض {card.title}
-                                    <ArrowLeft size={15} className="text-brass" />
+                                    <ArrowLeft size={15} className="text-mint-deep" />
                                 </Link>
                             </div>
                         ))}

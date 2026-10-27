@@ -16,15 +16,31 @@ const menuItems = [
     { label: 'تواصل معنا', href: '/contact', sectionId: 'contact' },
 ];
 
+/** Owner-confirmed points for the strip above the bar; the last two only fit on desktop. */
+const STRIP = [
+    { label: 'معاينة وقياس مجاناً', desktopOnly: false },
+    { label: 'عينة مجانية قبل الطلب', desktopOnly: false },
+    { label: 'توريد لكل مدن المملكة', desktopOnly: true },
+    { label: 'يومياً 9 صباحاً – 10 مساءً', desktopOnly: true },
+];
+
+const isActive = (pathname: string, href: string) =>
+    href === '/' ? pathname === '/' : pathname === href || pathname.startsWith(`${href}/`);
+
 export function Navigation() {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const pathname = usePathname();
     const isHome = pathname === '/';
-    const solid = isScrolled || !isHome;
 
+    // Once scrolled, the strip slides up out of view and only the 70px bar stays; <html data-scrolled>
+    // tells sticky bars (globals.css --header-now) to follow it.
     useEffect(() => {
-        const handleScroll = () => setIsScrolled(window.scrollY > 40);
+        const handleScroll = () => {
+            const scrolled = window.scrollY > 40;
+            setIsScrolled(scrolled);
+            document.documentElement.toggleAttribute('data-scrolled', scrolled);
+        };
         handleScroll();
         window.addEventListener('scroll', handleScroll, { passive: true });
         return () => window.removeEventListener('scroll', handleScroll);
@@ -48,7 +64,7 @@ export function Navigation() {
         }
         const element = document.getElementById(sectionId);
         if (element) {
-            const navHeight = 72;
+            const navHeight = 70;
             const offsetPosition = element.getBoundingClientRect().top + window.pageYOffset - navHeight;
             window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
         }
@@ -64,129 +80,121 @@ export function Navigation() {
         }
     };
 
-    // The bar sits over the dark hero until scrolled; the open menu is always light
-    const onDark = !solid && !isMobileMenuOpen;
-
     return (
         <>
             <nav
-                className={`site-header fixed top-0 right-0 left-0 z-50 transition-all duration-500 ${
-                    solid && !isMobileMenuOpen
-                        ? 'bg-white/85 backdrop-blur-xl shadow-[0_1px_0_0_var(--color-line)]'
-                        : 'bg-transparent'
+                className={`site-header fixed top-0 right-0 left-0 z-50 transition-transform duration-300 ease-out ${
+                    isScrolled && !isMobileMenuOpen ? '-translate-y-[34px]' : ''
                 }`}
             >
-                <div className="container mx-auto px-4 lg:px-8">
-                    <div
-                        className={`flex items-center justify-between transition-[height] duration-500 ${
-                            solid ? 'h-16' : 'h-20'
-                        }`}
-                    >
-                        {/* Logo */}
-                        <Link
-                            href="/"
-                            aria-label="موكيت ومفروشات السريع - الصفحة الرئيسية"
-                            onClick={() => setIsMobileMenuOpen(false)}
-                            className="flex items-center gap-3"
-                        >
-                            <span className="relative w-10 h-10 md:w-11 md:h-11 rounded-xl overflow-hidden flex-shrink-0 ring-1 ring-brass/40">
-                                <Image
-                                    src="/brand/emblem.webp"
-                                    alt="شعار موكيت ومفروشات السريع"
-                                    fill
-                                    sizes="44px"
-                                    className="object-cover"
-                                    // Eager but not `priority`: priority adds a high-priority
-                                    // preload for a 44px logo that competes with the hero / product
-                                    // picture for the first bytes on a slow phone.
-                                    loading="eager"
-                                />
-                            </span>
-                            <span className="flex flex-col">
-                                <span
-                                    className={`font-display font-bold text-base md:text-lg leading-tight transition-colors ${
-                                        onDark ? 'text-white' : 'text-ink'
-                                    }`}
-                                >
-                                    موكيت ومفروشات السريع
-                                </span>
-                                <span
-                                    className={`text-[11px] md:text-xs transition-colors ${
-                                        onDark ? 'text-white/65' : 'text-ink-muted'
-                                    }`}
-                                >
-                                    Al-Sari Carpets & Furnishings
-                                </span>
-                            </span>
-                        </Link>
+                {/* Strip of owner-confirmed points */}
+                <div className="bg-mint-soft text-mint-deep text-[12.5px] font-semibold">
+                    <ul className="container mx-auto px-4 lg:px-8 h-[34px] flex items-center justify-center gap-[18px] whitespace-nowrap overflow-hidden">
+                        {STRIP.map(({ label, desktopOnly }) => (
+                            <li key={label} className={`${desktopOnly ? 'hidden lg:flex' : 'flex'} items-center gap-[7px]`}>
+                                <span aria-hidden className="w-1.5 h-1.5 rounded-full bg-mint" />
+                                {label}
+                            </li>
+                        ))}
+                    </ul>
+                </div>
 
-                        {/* Desktop Menu */}
-                        <div className="hidden lg:flex items-center gap-8">
-                            {menuItems.map((item) => (
-                                <Link
-                                    key={item.label}
-                                    href={item.href}
-                                    onClick={(e) => handleNavClick(e, item.sectionId)}
-                                    className={`nav-link py-1 text-sm transition-colors ${
-                                        onDark ? 'text-white/85 hover:text-white' : 'text-ink-soft hover:text-ink'
-                                    }`}
-                                >
-                                    {item.label}
-                                </Link>
-                            ))}
-                        </div>
-
-                        {/* Desktop CTA */}
-                        <div className="hidden lg:block">
-                            <a
-                                href={PHONE_TEL}
-                                className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium transition-colors ${
-                                    onDark ? 'bg-white text-ink hover:bg-brass-soft' : 'bg-ink text-white hover:bg-ink-soft'
-                                }`}
+                <div className="bg-white border-b border-line">
+                    <div className="container mx-auto px-4 lg:px-8">
+                        <div className="flex items-center gap-4 h-[70px]">
+                            {/* Logo: the round emblem with a thin brass ring */}
+                            <Link
+                                href="/"
+                                aria-label="موكيت ومفروشات السريع - الصفحة الرئيسية"
+                                onClick={() => setIsMobileMenuOpen(false)}
+                                className="flex items-center gap-2.5 min-w-0"
                             >
-                                <Phone size={16} />
-                                <span>اتصل الآن</span>
-                            </a>
-                        </div>
-
-                        {/* Mobile: quick call + animated burger */}
-                        <div className="flex items-center gap-1 lg:hidden">
-                            <a
-                                href={PHONE_TEL}
-                                aria-label="اتصل الآن"
-                                className={`w-10 h-10 grid place-items-center rounded-full transition-colors ${
-                                    onDark ? 'text-white bg-white/10' : 'text-ink bg-cream'
-                                }`}
-                            >
-                                <Phone size={18} />
-                            </a>
-                            <button
-                                onClick={() => setIsMobileMenuOpen((open) => !open)}
-                                className={`relative w-10 h-10 grid place-items-center rounded-full transition-colors ${
-                                    onDark ? 'text-white' : 'text-ink'
-                                }`}
-                                aria-label={isMobileMenuOpen ? 'إغلاق القائمة' : 'فتح القائمة'}
-                                aria-expanded={isMobileMenuOpen}
-                                aria-controls="mobile-menu"
-                            >
-                                <span className="relative block w-5 h-3.5">
-                                    <span
-                                        className={`absolute right-0 h-[1.5px] bg-current rounded-full transition-all duration-300 ${
-                                            isMobileMenuOpen ? 'top-1.5 w-5 rotate-45' : 'top-0 w-5'
-                                        }`}
-                                    />
-                                    <span
-                                        className={`absolute right-0 top-1.5 h-[1.5px] bg-current rounded-full transition-all duration-300 ${
-                                            isMobileMenuOpen ? 'opacity-0 w-0' : 'w-3.5'
-                                        }`}
-                                    />
-                                    <span
-                                        className={`absolute right-0 h-[1.5px] bg-current rounded-full transition-all duration-300 ${
-                                            isMobileMenuOpen ? 'top-1.5 w-5 -rotate-45' : 'top-3 w-5'
-                                        }`}
+                                <span className="relative w-[46px] h-[46px] rounded-full overflow-hidden flex-shrink-0 ring-1 ring-brass/45">
+                                    <Image
+                                        src="/brand/emblem.webp"
+                                        alt="شعار موكيت ومفروشات السريع"
+                                        fill
+                                        sizes="46px"
+                                        className="object-cover"
+                                        // Eager but not `priority`: priority adds a high-priority
+                                        // preload for a 46px logo that competes with the hero / product
+                                        // picture for the first bytes on a slow phone.
+                                        loading="eager"
                                     />
                                 </span>
-                            </button>
+                                <span className="flex flex-col min-w-0">
+                                    <span className="font-display text-base sm:text-lg leading-tight text-ink truncate">
+                                        موكيت ومفروشات السريع
+                                    </span>
+                                    <span className="text-[11px] text-ink-muted tracking-[0.2px] truncate">
+                                        Al-Sari Carpets & Furnishings
+                                    </span>
+                                </span>
+                            </Link>
+
+                            {/* Desktop Menu */}
+                            <div className="hidden lg:flex items-center gap-7 ms-6 flex-1">
+                                {menuItems.map((item) => {
+                                    const active = isActive(pathname, item.href);
+                                    return (
+                                        <Link
+                                            key={item.label}
+                                            href={item.href}
+                                            onClick={(e) => handleNavClick(e, item.sectionId)}
+                                            aria-current={active ? 'page' : undefined}
+                                            className={`nav-link py-1.5 text-[15px] font-medium transition-colors ${
+                                                active ? 'text-mint-deep' : 'text-ink hover:text-mint-deep'
+                                            }`}
+                                        >
+                                            {item.label}
+                                        </Link>
+                                    );
+                                })}
+                            </div>
+
+                            {/* Call (all sizes), quote on WhatsApp (desktop), burger (phones) */}
+                            <div className="ms-auto flex items-center gap-2">
+                                <a
+                                    href={PHONE_TEL}
+                                    aria-label="اتصل الآن"
+                                    className="press w-[42px] h-[42px] grid place-items-center rounded-[10px] bg-mint-soft text-mint-deep hover:bg-mint-line transition-colors"
+                                >
+                                    <Phone size={19} strokeWidth={1.8} />
+                                </a>
+                                <a
+                                    href={whatsappLink()}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="hidden lg:inline-flex items-center justify-center h-[42px] px-[18px] rounded-[10px] bg-mint-deep text-white text-sm font-bold whitespace-nowrap hover:bg-ink transition-colors"
+                                >
+                                    اطلب عرض سعر
+                                </a>
+                                <button
+                                    onClick={() => setIsMobileMenuOpen((open) => !open)}
+                                    className="lg:hidden relative w-[42px] h-[42px] grid place-items-center rounded-[10px] text-ink"
+                                    aria-label={isMobileMenuOpen ? 'إغلاق القائمة' : 'فتح القائمة'}
+                                    aria-expanded={isMobileMenuOpen}
+                                    aria-controls="mobile-menu"
+                                >
+                                    <span className="relative block w-5 h-3.5">
+                                        <span
+                                            className={`absolute right-0 h-[1.5px] bg-current rounded-full transition-all duration-300 ${
+                                                isMobileMenuOpen ? 'top-1.5 w-5 rotate-45' : 'top-0 w-5'
+                                            }`}
+                                        />
+                                        <span
+                                            className={`absolute right-0 top-1.5 h-[1.5px] bg-current rounded-full transition-all duration-300 ${
+                                                isMobileMenuOpen ? 'opacity-0 w-0' : 'w-5'
+                                            }`}
+                                        />
+                                        <span
+                                            className={`absolute right-0 h-[1.5px] bg-current rounded-full transition-all duration-300 ${
+                                                isMobileMenuOpen ? 'top-1.5 w-5 -rotate-45' : 'top-3 w-3.5'
+                                            }`}
+                                        />
+                                    </span>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -196,11 +204,11 @@ export function Navigation() {
             <div
                 id="mobile-menu"
                 className={`lg:hidden fixed inset-0 z-[45] bg-white transition-[clip-path] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-                    isMobileMenuOpen ? '[clip-path:circle(150%_at_2.25rem_2.5rem)]' : '[clip-path:circle(0%_at_2.25rem_2.5rem)] pointer-events-none'
+                    isMobileMenuOpen ? '[clip-path:circle(150%_at_2.3rem_4.3rem)]' : '[clip-path:circle(0%_at_2.3rem_4.3rem)] pointer-events-none'
                 }`}
                 aria-hidden={!isMobileMenuOpen}
             >
-                <div className="h-full flex flex-col px-6 pt-24 pb-8 overflow-y-auto">
+                <div className="h-full flex flex-col px-6 pt-32 pb-8 overflow-y-auto">
                     <ul className="flex-1">
                         {menuItems.map((item, i) => (
                             <li
@@ -217,7 +225,7 @@ export function Navigation() {
                                     className="group flex items-center justify-between py-4"
                                 >
                                     <span className="flex items-baseline gap-4">
-                                        <span className="text-xs text-brass-deep tabular-nums">0{i + 1}</span>
+                                        <span className="text-xs text-mint-deep tabular-nums">0{i + 1}</span>
                                         <span className="font-display text-2xl font-semibold text-ink">{item.label}</span>
                                     </span>
                                     <ArrowLeft

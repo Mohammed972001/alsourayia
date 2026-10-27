@@ -6,7 +6,6 @@ import { Ruler, SwatchBook, Wrench, Truck, Tag, ArrowLeft } from 'lucide-react';
 import { offers, type OfferIcon } from '@/data/offers';
 import { activeOffers } from '@/lib/campaign';
 import { SectionHeading } from '@/components/SectionHeading';
-import { WhatsAppIcon } from '@/components/WhatsAppIcon';
 
 const ICONS: Record<OfferIcon, typeof Ruler> = { ruler: Ruler, sample: SwatchBook, wrench: Wrench, truck: Truck, tag: Tag };
 
@@ -21,7 +20,7 @@ export function Offers() {
     const items = activeOffers(offers, now);
 
     return (
-        <section id="offers" className="py-16 md:py-28 bg-cream">
+        <section id="offers" className="py-14 md:py-24 bg-mint-soft">
             <div className="container mx-auto px-4 lg:px-8">
                 <SectionHeading
                     eyebrow="العروض والخدمات"
@@ -29,41 +28,36 @@ export function Offers() {
                     description="خدمات ثابتة مع كل توريد، من المعاينة إلى التركيب"
                 />
 
-                <ul className="grid gap-4 md:gap-6 sm:grid-cols-2 lg:grid-cols-4">
+                {/* Phones: icon on the start side, text beside it. Desktop: four stacked cards in a row. */}
+                <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4 lg:gap-[18px]">
                     {items.map((offer, i) => {
                         const Icon = ICONS[offer.icon];
                         const external = !offer.href.startsWith('/');
+                        const linkClass =
+                            'col-start-2 lg:col-start-1 mt-2 justify-self-start inline-flex items-center gap-1.5 text-[13px] md:text-sm font-bold text-mint-deep transition-all hover:gap-2.5';
                         return (
                             <li
                                 key={offer.id}
                                 data-reveal="clip"
                                 data-spotlight
                                 style={{ '--i': i } as CSSProperties}
-                                className="lift relative flex flex-col rounded-3xl bg-white border border-line p-6 md:p-7"
+                                className="lift relative grid grid-cols-[44px_1fr] lg:grid-cols-1 content-start gap-x-3.5 gap-y-1 rounded-[14px] bg-white border border-mint-line p-[18px] lg:p-6"
                             >
-                                <div className="flex items-center justify-between gap-3">
-                                    <span className="w-12 h-12 grid place-items-center rounded-2xl bg-cream text-brass-deep ring-1 ring-line">
-                                        <Icon size={22} strokeWidth={1.6} />
-                                    </span>
-                                    <span className="rounded-full bg-brass text-ink text-[11px] font-bold px-3 py-1">{offer.badge}</span>
-                                </div>
-                                <h3 className="font-display text-lg md:text-xl font-semibold text-ink mt-5 mb-2">{offer.title}</h3>
-                                <p className="text-ink-muted text-sm md:text-[15px] leading-relaxed flex-1">{offer.body}</p>
+                                <span className="row-span-4 lg:row-span-1 lg:mb-2 w-11 h-11 grid place-items-center rounded-xl bg-mint-soft text-mint-deep">
+                                    <Icon size={20} strokeWidth={1.7} />
+                                </span>
+                                <span className="justify-self-start rounded-full bg-mint-soft text-mint-deep text-[11px] font-bold px-2.5 py-0.5">
+                                    {offer.badge}
+                                </span>
+                                <h3 className="font-sans text-base md:text-[17px] font-bold text-ink">{offer.title}</h3>
+                                <p className="text-ink-muted text-[13px] md:text-sm leading-relaxed">{offer.body}</p>
                                 {external ? (
-                                    <a
-                                        href={offer.href}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="press mt-6 inline-flex items-center justify-center gap-2 h-11 rounded-full bg-ink text-white text-sm font-bold hover:bg-ink-soft transition-colors"
-                                    >
-                                        <WhatsAppIcon className="w-4 h-4" />
+                                    <a href={offer.href} target="_blank" rel="noopener noreferrer" className={linkClass}>
                                         {offer.cta}
+                                        <ArrowLeft size={15} />
                                     </a>
                                 ) : (
-                                    <Link
-                                        href={offer.href}
-                                        className="press mt-6 inline-flex items-center justify-center gap-2 h-11 rounded-full bg-ink text-white text-sm font-bold hover:bg-ink-soft transition-colors"
-                                    >
+                                    <Link href={offer.href} className={linkClass}>
                                         {offer.cta}
                                         <ArrowLeft size={15} />
                                     </Link>

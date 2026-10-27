@@ -1,18 +1,14 @@
 import type { CSSProperties } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowLeft, Ruler, SwatchBook, Wrench } from 'lucide-react';
+import { ArrowLeft, Check } from 'lucide-react';
 import { products } from '@/lib/products';
 import { whatsappLink } from '@/lib/contact';
 import { imageAlt } from '@/data/stock-images';
 import { WhatsAppIcon } from '@/components/WhatsAppIcon';
 
 /** Only owner-confirmed promises. */
-const TRUST = [
-    { icon: Ruler, label: 'معاينة وقياس مجاناً' },
-    { icon: SwatchBook, label: 'عينة مجانية قبل الطلب' },
-    { icon: Wrench, label: 'توريد وتركيب' },
-];
+const TRUST = ['معاينة وقياس مجاناً', 'عينة مجانية قبل الطلب', 'توريد وتركيب'];
 
 /** The searched words first, the brand on its own accented line; both inside the one H1. */
 const TITLE_LINE = 'موكيت وباركيه وأرضيات في الرياض';
@@ -58,13 +54,13 @@ export function Hero() {
                 <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-ink/60 to-transparent" />
 
                 {/* Content */}
-                <div className="relative z-10 container mx-auto px-5 lg:px-8 pt-28 pb-28 md:pb-36">
+                <div className="relative z-10 container mx-auto px-5 lg:px-8 pt-36 pb-28 md:pt-40 md:pb-36">
                     <div className="max-w-2xl">
                         <span
                             className="rise-in inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 backdrop-blur px-4 py-1.5 text-xs md:text-sm text-white/90"
                             style={step(0)}
                         >
-                            <span className="w-1.5 h-1.5 rounded-full bg-brass" />
+                            <span className="w-1.5 h-1.5 rounded-full bg-mint" />
                             موكيت · باركيه · أرضيات مطاط — حراج بن قاسم، الرياض
                         </span>
 
@@ -87,7 +83,7 @@ export function Hero() {
                         <div className="mt-8 grid grid-cols-2 gap-3 sm:flex sm:flex-wrap">
                             <Link
                                 href="#products"
-                                className="rise-in shine press inline-flex items-center justify-center gap-2 whitespace-nowrap px-4 sm:px-8 py-3.5 bg-white text-ink rounded-full font-bold text-sm hover:bg-brass-soft transition-colors"
+                                className="rise-in shine press inline-flex items-center justify-center gap-2 whitespace-nowrap px-4 sm:px-8 py-3.5 bg-white text-ink rounded-xl font-bold text-sm md:text-[15px] hover:bg-mint-soft transition-colors"
                                 style={step(6)}
                             >
                                 تصفح المنتجات
@@ -97,7 +93,7 @@ export function Hero() {
                                 href={whatsappLink()}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="rise-in press inline-flex items-center justify-center gap-2 whitespace-nowrap px-4 sm:px-8 py-3.5 border border-white/35 bg-white/5 backdrop-blur text-white rounded-full font-bold text-sm hover:bg-white/15 transition-colors"
+                                className="rise-in press inline-flex items-center justify-center gap-2 whitespace-nowrap px-4 sm:px-8 py-3.5 bg-whatsapp text-white rounded-xl font-bold text-sm md:text-[15px] hover:brightness-95 transition"
                                 style={step(6.5)}
                             >
                                 <WhatsAppIcon className="w-4 h-4" />
@@ -106,13 +102,13 @@ export function Hero() {
                         </div>
 
                         <ul className="mt-8 flex flex-wrap items-center gap-x-4 gap-y-2 md:gap-x-6 border-t border-white/15 pt-5">
-                            {TRUST.map(({ icon: Icon, label }, i) => (
+                            {TRUST.map((label, i) => (
                                 <li
                                     key={label}
                                     className="rise-in flex items-center gap-1.5 text-[11px] sm:text-sm text-white/75"
                                     style={step(7 + i * 0.5)}
                                 >
-                                    <Icon size={15} className="text-brass shrink-0" />
+                                    <Check size={15} strokeWidth={2.2} className="text-mint shrink-0" />
                                     {label}
                                 </li>
                             ))}
@@ -139,14 +135,14 @@ function CategoryRail() {
         <div className="relative z-20 -mt-16 md:-mt-20">
             <div className="container mx-auto px-4 lg:px-8">
                 <div
-                    className="bg-white rounded-3xl shadow-[0_20px_50px_-20px_rgba(20,20,20,0.35)] ring-1 ring-line p-4 md:p-6"
+                    className="bg-white rounded-2xl shadow-[0_20px_50px_-20px_rgba(20,20,20,0.35)] ring-1 ring-line p-4 md:p-6"
                     data-reveal="clip"
                 >
                     <div className="flex items-center justify-between mb-3 md:mb-4 px-1">
                         <h2 className="font-display text-lg md:text-xl font-semibold text-ink">تسوّق حسب القسم</h2>
                         <Link
                             href="/products"
-                            className="inline-flex items-center gap-1 text-sm text-brass-deep font-medium hover:gap-2 transition-all"
+                            className="inline-flex items-center gap-1 text-sm text-mint-deep font-bold hover:gap-2 transition-all"
                         >
                             عرض الكل
                             <ArrowLeft size={15} />
@@ -159,8 +155,8 @@ function CategoryRail() {
                     >
                         {items.map((product, i) => (
                             <li key={product.id} className="snap-start shrink-0 w-[118px] md:w-[150px]" style={step(i)}>
-                                <Link href={`/products/${product.id}`} className="lift press group block text-center rounded-2xl">
-                                    <span className="relative block aspect-square rounded-2xl overflow-hidden bg-cream ring-1 ring-line">
+                                <Link href={`/products/${product.id}`} className="lift press group block text-center rounded-xl">
+                                    <span className="relative block aspect-square rounded-xl overflow-hidden bg-cream ring-1 ring-line">
                                         <Image
                                             src={product.image}
                                             alt={imageAlt(product.image, product.name)}
@@ -169,7 +165,7 @@ function CategoryRail() {
                                             className="object-cover transition-transform duration-500 group-hover:scale-110"
                                         />
                                     </span>
-                                    <span className="mt-2 block text-[13px] md:text-sm font-medium text-ink leading-snug line-clamp-2 group-hover:text-brass-deep transition-colors">
+                                    <span className="mt-2 block text-[13px] md:text-sm font-medium text-ink leading-snug line-clamp-2 group-hover:text-mint-deep transition-colors">
                                         {product.name}
                                     </span>
                                 </Link>

@@ -14,7 +14,7 @@ export type OfferIcon = 'ruler' | 'sample' | 'wrench' | 'truck' | 'tag';
 
 export interface Offer extends DatedWindow {
     id: string;
-    /** Short label on the brass pill. */
+    /** Short label on the mint pill. */
     badge: string;
     title: string;
     body: string;

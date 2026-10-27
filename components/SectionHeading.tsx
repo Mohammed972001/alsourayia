@@ -10,7 +10,7 @@ interface SectionHeadingProps {
 }
 
 /**
- * Eyebrow + display title + brass rule. Shared by every home section. The eyebrow rises first, the
+ * Eyebrow (mint label after a short brass dash) + display title + brass rule. Shared by every home section. The eyebrow rises first, the
  * title's words follow one by one, then the rule draws and the description settles (app/motion.css).
  */
 export function SectionHeading({ eyebrow, title, description, tone = 'light', as: Tag = 'h2' }: SectionHeadingProps) {
@@ -20,11 +20,11 @@ export function SectionHeading({ eyebrow, title, description, tone = 'light', as
         <div className="text-center mb-10 md:mb-14">
             <span
                 data-reveal
-                className={`inline-flex items-center gap-2 text-xs md:text-sm font-medium tracking-wide mb-3 ${
-                    dark ? 'text-brass' : 'text-brass-deep'
+                className={`inline-flex items-center gap-2 text-[13px] md:text-sm font-bold mb-3 ${
+                    dark ? 'text-mint' : 'text-mint-deep'
                 }`}
             >
-                <span className="w-1.5 h-1.5 rounded-full bg-brass" />
+                <span aria-hidden className="w-[18px] h-0.5 rounded-full bg-brass" />
                 {eyebrow}
             </span>
             <Tag

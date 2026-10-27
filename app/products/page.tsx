@@ -38,7 +38,7 @@ export default function ProductsPage() {
         <div className="min-h-screen bg-white" dir="rtl">
             <Navigation />
             <PageView>
-                <div className="pt-20">
+                <div className="pt-[var(--header-full)]">
                     <div className="container mx-auto px-4 lg:px-8 py-4">
                         <Breadcrumb items={breadcrumb} />
                     </div>

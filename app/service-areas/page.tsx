@@ -49,14 +49,14 @@ export default function ServiceAreasPage() {
         <div className="min-h-screen bg-white" dir="rtl">
             <Navigation />
             <PageView>
-                <div className="pt-20">
+                <div className="pt-[var(--header-full)]">
                     <div className="container mx-auto px-4 lg:px-8 py-4">
                         <Breadcrumb items={breadcrumb} />
                     </div>
                     <main className="container mx-auto px-4 lg:px-8 pb-16">
                         <header className="max-w-3xl mx-auto text-center mb-10 md:mb-14">
-                            <span className="inline-flex items-center gap-2 text-xs md:text-sm font-medium tracking-wide mb-3 text-brass-deep">
-                                <span className="w-1.5 h-1.5 rounded-full bg-brass" />
+                            <span className="inline-flex items-center gap-2 text-[13px] md:text-sm font-bold mb-3 text-mint-deep">
+                                <span aria-hidden className="w-[18px] h-0.5 rounded-full bg-brass" />
                                 مناطق الخدمة
                             </span>
                             <h1 className="font-display text-[1.7rem] leading-[1.35] md:text-4xl lg:text-[2.75rem] font-semibold text-ink">

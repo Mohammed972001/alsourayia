@@ -196,6 +196,8 @@
     transition: scale var(--motion-base) var(--ease-out);
 }
 .nav-link:hover::after, .nav-link:focus-visible::after { scale: 1 1; }
+/* The current page keeps a brass underline under its mint label. */
+.nav-link[aria-current='page']::after { scale: 1 1; background: var(--color-brass); border-radius: 2px; }
 
 /* A strip of short phrases that moves sideways without end: four copies of the list, moved by one copy. */
 .marquee { overflow: hidden; }
@@ -220,15 +222,15 @@
     }
     .lift:hover {
         translate: 0 -6px;
-        border-color: rgb(184 146 79 / 0.45);
-        box-shadow: 0 24px 48px -24px rgb(20 20 20 / 0.35), 0 8px 20px -12px rgb(184 146 79 / 0.25);
+        border-color: var(--color-mint-line);
+        box-shadow: 0 14px 34px -18px rgb(20 20 20 / 0.35);
     }
     [data-spotlight] { isolation: isolate; }
     [data-spotlight]::before {
         position: absolute;
         inset: 0;
         z-index: -1;
-        background: radial-gradient(circle 240px at var(--mx, 50%) var(--my, 0%), rgb(184 146 79 / 0.16), transparent 70%);
+        background: radial-gradient(circle 240px at var(--mx, 50%) var(--my, 0%), rgb(134 199 156 / 0.16), transparent 70%);
         content: '';
         opacity: 0;
         pointer-events: none;

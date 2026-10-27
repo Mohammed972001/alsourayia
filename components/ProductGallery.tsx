@@ -1,14 +1,12 @@
 'use client';
 
 import { useRef, useState, type CSSProperties } from 'react';
-import { ArrowLeft } from 'lucide-react';
 import { products, getCategories } from '@/lib/products';
 import { whatsappLink } from '@/lib/contact';
 import { imageAlt } from '@/data/stock-images';
 import { SectionHeading } from '@/components/SectionHeading';
 import { WhatsAppIcon } from '@/components/WhatsAppIcon';
-import Image from 'next/image';
-import Link from 'next/link';
+import { ProductCard } from '@/components/product/ProductCard';
 
 export function ProductGallery({ headingAs = 'h2' }: { headingAs?: 'h1' | 'h2' }) {
     const [selectedCategory, setSelectedCategory] = useState('الكل');
@@ -42,7 +40,7 @@ export function ProductGallery({ headingAs = 'h2' }: { headingAs?: 'h1' | 'h2' }
                 />
 
                 {/* Category filter: sticky swipe rail on phones, wraps on desktop */}
-                <div className="sticky top-16 z-30 -mx-4 px-4 py-3 mb-6 md:mb-10 bg-white/90 backdrop-blur-xl md:static md:bg-transparent md:backdrop-blur-none md:py-0">
+                <div className="sticky top-[var(--header-now)] z-30 -mx-4 px-4 py-3 mb-6 md:mb-10 bg-white/90 backdrop-blur-xl md:static md:bg-transparent md:backdrop-blur-none md:py-0">
                     <div
                         className="flex md:flex-wrap md:justify-center gap-2 overflow-x-auto no-scrollbar snap-x"
                         role="tablist"
@@ -56,7 +54,7 @@ export function ProductGallery({ headingAs = 'h2' }: { headingAs?: 'h1' | 'h2' }
                                     onClick={() => selectCategory(category)}
                                     role="tab"
                                     aria-selected={active}
-                                    className={`snap-start shrink-0 px-4 py-2 text-sm rounded-full border transition-all duration-300 ${
+                                    className={`snap-start shrink-0 px-3.5 py-1.5 text-[13px] font-semibold rounded-full border transition-all duration-300 ${
                                         active
                                             ? 'bg-ink border-ink text-white shadow-md shadow-ink/20'
                                             : 'bg-white border-line text-ink-soft hover:border-ink/40 hover:text-ink'
@@ -76,47 +74,20 @@ export function ProductGallery({ headingAs = 'h2' }: { headingAs?: 'h1' | 'h2' }
                 {/* Products grid, keyed by filter so cards re-enter on change */}
                 <div
                     key={selectedCategory}
-                    className={`grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6 ${filtered ? '' : 'tiles-in'}`}
+                    className={`grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3 md:gap-5 ${filtered ? '' : 'tiles-in'}`}
                     {...(filtered ? {} : { 'data-reveal': 'tiles' })}
                 >
                     {filteredProducts.map((product, index) => (
-                        <article
+                        <ProductCard
                             key={product.id}
-                            style={{ '--i': filtered ? index : index % 3 } as CSSProperties}
-                            className={`group ${filtered ? 'card-in' : ''}`}
-                        >
-                            <Link
-                                href={`/products/${product.id}`}
-                                data-spotlight
-                                className="lift press relative flex flex-col h-full rounded-2xl overflow-hidden bg-white border border-line"
-                            >
-                                <div className="relative aspect-square md:aspect-[4/3] overflow-hidden bg-cream">
-                                    <Image
-                                        src={product.image}
-                                        alt={imageAlt(product.image, `${product.name} - ${product.category} من موكيت ومفروشات السريع الرياض`)}
-                                        fill
-                                        sizes="(max-width: 1024px) 50vw, 33vw"
-                                        className="object-cover transition-transform duration-700 group-hover:scale-110"
-                                        loading={index < 4 ? 'eager' : 'lazy'}
-                                    />
-                                    <span className="absolute top-2.5 right-2.5 md:top-4 md:right-4 rounded-full bg-white/90 backdrop-blur px-2.5 py-1 text-[10px] md:text-xs font-medium text-ink">
-                                        {product.category}
-                                    </span>
-                                </div>
-
-                                <div className="flex flex-1 flex-col p-3 md:p-5">
-                                    <h3 className="font-display text-sm md:text-lg font-semibold text-ink leading-snug line-clamp-2">
-                                        {product.name}
-                                    </h3>
-                                    <span className="mt-auto pt-3 flex items-center justify-between text-xs md:text-sm text-ink-muted">
-                                        عرض التفاصيل
-                                        <span className="w-7 h-7 md:w-9 md:h-9 grid place-items-center rounded-full bg-cream text-ink group-hover:bg-ink group-hover:text-white transition-colors duration-300">
-                                            <ArrowLeft size={14} />
-                                        </span>
-                                    </span>
-                                </div>
-                            </Link>
-                        </article>
+                            product={product}
+                            badge={product.category}
+                            alt={imageAlt(product.image, `${product.name} - ${product.category} من موكيت ومفروشات السريع الرياض`)}
+                            sizes="(max-width: 768px) 50vw, (max-width: 1280px) 33vw, 25vw"
+                            eager={index < 4}
+                            className={filtered ? 'card-in' : ''}
+                            style={{ '--i': filtered ? index : index % 4 } as CSSProperties}
+                        />
                     ))}
                 </div>
 

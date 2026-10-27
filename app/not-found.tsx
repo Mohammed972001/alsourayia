@@ -20,7 +20,7 @@ export default function NotFound() {
     return (
         <div className="min-h-screen bg-white" dir="rtl">
             <Navigation />
-            <main className="pt-32 pb-24">
+            <main className="pt-[calc(var(--header-full)+3rem)] pb-24">
                 <div className="container mx-auto px-4 lg:px-8 text-center">
                     <h1 className="font-display text-3xl md:text-4xl font-semibold text-ink mb-4">الصفحة غير موجودة</h1>
                     <p className="text-ink-soft mb-8">ربما تغيّر الرابط. اختر من الأقسام التالية أو تواصل معنا على الواتساب.</p>

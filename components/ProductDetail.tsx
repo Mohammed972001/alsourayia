@@ -10,6 +10,7 @@ import { ADDRESS, MAPS_URL, PHONE_TEL, whatsappLink } from '@/lib/contact';
 import { imageAlt, isStockImage } from '@/data/stock-images';
 import { DetailGallery, type GalleryImage } from './product/DetailGallery';
 import { ColorPicker } from './product/ColorPicker';
+import { ProductCard } from './product/ProductCard';
 
 interface ProductDetailProps {
     productId: string;
@@ -273,18 +274,17 @@ export function ProductDetail({ productId, dynamicGallery }: ProductDetailProps)
                     )}
 
                     {relatedProducts.length > 0 && (
-                        <div className="mt-12 max-w-4xl" data-reveal>
+                        <div className="mt-12" data-reveal>
                             <h2 className="text-xl text-[#1A1A1A] mb-6">منتجات قريبة قد تناسبك</h2>
-                            <ul className="grid sm:grid-cols-2 gap-3">
+                            <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-5">
                                 {relatedProducts.map((p) => (
                                     <li key={p.id}>
-                                        <Link
-                                            href={`/products/${p.id}`}
-                                            className="lift block h-full rounded-lg border border-gray-200 p-4 hover:border-gray-400 transition-colors"
-                                        >
-                                            <span className="block font-semibold text-[#1A1A1A] mb-1">{p.name}</span>
-                                            <span className="block text-sm text-[#6B7280] leading-relaxed">{p.description}</span>
-                                        </Link>
+                                        <ProductCard
+                                            product={p}
+                                            badge={p.category}
+                                            alt={imageAlt(p.image, `${p.name} - ${p.category} من موكيت ومفروشات السريع الرياض`)}
+                                            sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                                        />
                                     </li>
                                 ))}
                             </ul>

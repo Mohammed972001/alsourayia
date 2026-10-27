@@ -18,7 +18,7 @@ import {
 } from '@/lib/products';
 import { ADDRESS, PHONE_DISPLAY, PHONE_TEL, whatsappLink } from '@/lib/contact';
 import { imageAlt } from '@/data/stock-images';
-import Image from 'next/image';
+import { ProductCard } from '@/components/product/ProductCard';
 import Link from 'next/link';
 import type { CSSProperties } from 'react';
 
@@ -125,7 +125,7 @@ export default async function CategoryPage({ params }: Props) {
             )}
 
             <PageView>
-                <div className="pt-24 pb-20">
+                <div className="pt-[calc(var(--header-full)+1rem)] pb-20">
                     <div className="container mx-auto px-4 lg:px-8">
                         <Breadcrumb items={breadcrumb} />
 
@@ -212,32 +212,22 @@ export default async function CategoryPage({ params }: Props) {
                         )}
 
                         {categoryProducts.length > 0 ? (
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            <div className="flex flex-wrap justify-center gap-3 md:gap-5">
+                                {/* Centred rows: a hub often has fewer products than a full row. */}
                                 {categoryProducts.map((product, index) => (
-                                    <article
+                                    <ProductCard
                                         key={product.id}
-                                        className="group lift rounded-2xl border border-line bg-white p-3"
-                                        data-reveal
+                                        product={product}
+                                        badge={categoryName}
+                                        alt={imageAlt(product.image, `${product.name} - ${categoryName} من موكيت ومفروشات السريع الرياض`)}
+                                        sizes="(max-width: 768px) 50vw, (max-width: 1280px) 33vw, 25vw"
+                                        eager={index < 4}
+                                        priority={index < 3}
+                                        titleAs="h2"
+                                        className="w-[calc((100%-12px)/2)] md:w-[calc((100%-40px)/3)] xl:w-[calc((100%-60px)/4)]"
+                                        dataAttrs={{ 'data-reveal': '' }}
                                         style={{ '--i': index } as CSSProperties}
-                                    >
-                                        <Link href={`/products/${product.id}`} className="block">
-                                            <div className="relative aspect-[4/3] overflow-hidden rounded-xl bg-gray-100 mb-4">
-                                                <Image
-                                                    src={product.image}
-                                                    alt={imageAlt(product.image, `${product.name} - ${categoryName} من موكيت ومفروشات السريع الرياض`)}
-                                                    fill
-                                                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                                                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                                                    priority={index < 3}
-                                                    loading={index < 3 ? 'eager' : 'lazy'}
-                                                />
-                                            </div>
-                                            <span className="text-xs text-ink-muted mb-1 block">{categoryName}</span>
-                                            <h2 className="text-ink group-hover:text-ink-soft transition-colors">
-                                                {product.name}
-                                            </h2>
-                                        </Link>
-                                    </article>
+                                    />
                                 ))}
                             </div>
                         ) : (
@@ -288,7 +278,7 @@ export default async function CategoryPage({ params }: Props) {
                                         <Link
                                             key={s}
                                             href={categoryHref(s)}
-                                            className="px-4 py-2 rounded-lg bg-gray-100 text-ink-soft hover:bg-ink hover:text-white transition-colors text-sm"
+                                            className="px-3.5 py-1.5 rounded-full border border-line bg-white text-ink-soft font-semibold hover:bg-ink hover:border-ink hover:text-white transition-colors text-[13px]"
                                         >
                                             {name}
                                         </Link>

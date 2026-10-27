@@ -1,49 +1,51 @@
 import type { CSSProperties } from 'react';
 import Link from 'next/link';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, Building2, Dumbbell, Hospital, House, Landmark } from 'lucide-react';
 import { SectionHeading } from '@/components/SectionHeading';
 
 /** The places the shop's products are made for, each pointing at its product or hub page. */
 const spaces = [
-    { label: 'مساجد', text: 'موكيت مساجد بخطوط صفوف أو سادة، يُفرش على اتجاه القبلة.', href: '/products/mosque-carpets' },
-    { label: 'مكاتب وشركات', text: 'موكيت مكاتب رول وبلاط موكيت، ويُركّب على مراحل والمكتب يعمل.', href: '/products/office-carpet' },
-    { label: 'صالات رياضية', text: 'ربل جيم يمتص صدمة الأوزان ويقلل الضوضاء، ومطاط للمناطق المبللة.', href: '/products/category/rubber-flooring' },
-    { label: 'مستشفيات وعيادات', text: 'أرضيات طبية ملساء تُمسح وتتحمل المطهرات في الممرات وغرف الكشف.', href: '/products/hospital-flooring' },
-    { label: 'منازل ومجالس', text: 'موكيت للمجالس وغرف النوم، وباركيه وفينيل للصالات والمطابخ.', href: '/products/mokite' },
+    { label: 'مساجد', text: 'موكيت مساجد بخطوط صفوف أو سادة، يُفرش على اتجاه القبلة.', href: '/products/mosque-carpets', icon: Landmark },
+    { label: 'مكاتب وشركات', text: 'موكيت مكاتب رول وبلاط موكيت، ويُركّب على مراحل والمكتب يعمل.', href: '/products/office-carpet', icon: Building2 },
+    { label: 'صالات رياضية', text: 'ربل جيم يمتص صدمة الأوزان ويقلل الضوضاء، ومطاط للمناطق المبللة.', href: '/products/category/rubber-flooring', icon: Dumbbell },
+    { label: 'مستشفيات وعيادات', text: 'أرضيات طبية ملساء تُمسح وتتحمل المطهرات في الممرات وغرف الكشف.', href: '/products/hospital-flooring', icon: Hospital },
+    { label: 'منازل ومجالس', text: 'موكيت للمجالس وغرف النوم، وباركيه وفينيل للصالات والمطابخ.', href: '/products/mokite', icon: House },
 ] as const;
 
 /**
- * A dark band of five sector chips with hairline rules between them: a column on phones, a row on
- * desktop. Each chip links to the product (or hub) that serves that place.
+ * Five white bordered cards, each with a mint icon tile, linking to the product (or hub) that serves that
+ * place: two columns on phones with the last card across the row, five in a row on desktop.
  */
 export function Spaces() {
     return (
-        <section id="spaces" aria-labelledby="spaces-title" className="relative overflow-hidden grain bg-ink text-white py-16 md:py-24">
-            <div className="relative container mx-auto px-4 lg:px-8">
-                <SectionHeading tone="dark" eyebrow="الأماكن التي نخدمها" title="أرضية مناسبة لكل مكان" />
+        <section id="spaces" aria-labelledby="spaces-title" className="bg-white py-14 md:py-24">
+            <div className="container mx-auto px-4 lg:px-8">
+                <SectionHeading eyebrow="الأماكن التي نخدمها" title="أرضية مناسبة لكل مكان" />
 
-                <ul className="grid lg:grid-cols-5 divide-y divide-white/10 lg:divide-y-0 lg:divide-x lg:divide-white/10 border-y border-white/10">
+                <ul className="grid grid-cols-2 lg:grid-cols-5 gap-2.5 lg:gap-4">
                     {spaces.map((space, i) => (
-                        <li key={space.label} className="py-7 lg:py-2 lg:px-6 first:lg:ps-0 last:lg:pe-0">
-                            <div
-                                data-reveal
-                                style={{ '--i': i } as CSSProperties}
-                                className="flex items-center gap-5 lg:flex-col lg:items-start lg:gap-6 lg:py-6"
+                        <li
+                            key={space.label}
+                            data-reveal
+                            style={{ '--i': i } as CSSProperties}
+                            className="last:col-span-2 lg:last:col-span-1"
+                        >
+                            <Link
+                                href={space.href}
+                                className="lift press group flex h-full flex-col rounded-[14px] border border-line bg-white p-3.5 lg:p-5"
                             >
-                                <span className="inline-flex shrink-0 items-center rounded-full border border-brass/50 px-4 py-1.5 text-sm font-semibold text-brass">
-                                    {space.label}
+                                <span className="mb-2.5 grid h-10 w-10 place-items-center rounded-xl bg-mint-soft text-mint-deep">
+                                    <space.icon size={20} strokeWidth={1.7} />
                                 </span>
-                                <div className="flex-1">
-                                    <p className="text-sm md:text-[15px] leading-relaxed text-white/70">{space.text}</p>
-                                    <Link
-                                        href={space.href}
-                                        className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-white hover:gap-2 hover:text-brass transition-all"
-                                    >
-                                        اعرف المزيد
-                                        <ArrowLeft size={14} className="text-brass" />
-                                    </Link>
-                                </div>
-                            </div>
+                                <span className="block text-[15px] font-bold text-ink">{space.label}</span>
+                                <span className="mt-0.5 block flex-1 text-[12.5px] md:text-[13px] leading-relaxed text-ink-muted">
+                                    {space.text}
+                                </span>
+                                <span className="mt-3 inline-flex items-center gap-1 text-[13px] font-bold text-mint-deep transition-all group-hover:gap-2">
+                                    اعرف المزيد
+                                    <ArrowLeft size={14} />
+                                </span>
+                            </Link>
                         </li>
                     ))}
                 </ul>

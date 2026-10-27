@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Tajawal, El_Messiri } from 'next/font/google';
+import { Cairo, Reem_Kufi } from 'next/font/google';
 import Script from 'next/script';
 import { RevealObserver } from '@/components/RevealObserver';
 import ConversionTracker from '@/components/analytics/ConversionTracker';
@@ -8,13 +8,12 @@ import { LEGAL_NAME, UNIFIED_NUMBER, VAT_NUMBER } from '@/lib/contact';
 import './globals.css';
 
 // Self-hosted via Next.js — eliminates render-blocking Google Fonts request.
-// Only the weights the site uses: 400 body, 500 headings/buttons, 700 bold
-// (font-semibold has no 600 face in Tajawal and resolves to 700). 300 and 800
-// were never referenced and cost two woff2 files per visit.
-const tajawal = Tajawal({
-    subsets: ['arabic'],
-    weight: ['400', '500', '700'],
-    variable: '--font-tajawal',
+// Type pairing shared with the sister storefront: Cairo for body text,
+// Reem Kufi for headings. Only the weights the site uses.
+const cairo = Cairo({
+    subsets: ['arabic', 'latin'],
+    weight: ['400', '500', '600', '700'],
+    variable: '--font-cairo',
     // "optional", not "swap": on a slow phone the Arabic woff2 files arrive
     // after first paint and swapping them re-wraps every line (CLS 0.22 on
     // another client's site), which Google Ads scores as a poor landing page.
@@ -22,10 +21,10 @@ const tajawal = Tajawal({
 });
 
 // Display face for headings only
-const messiri = El_Messiri({
-    subsets: ['arabic'],
-    weight: ['500', '600', '700'],
-    variable: '--font-messiri',
+const reemKufi = Reem_Kufi({
+    subsets: ['arabic', 'latin'],
+    weight: ['500', '700'],
+    variable: '--font-reem',
     display: 'optional',
 });
 
@@ -269,7 +268,7 @@ export default function RootLayout({
     // data-scroll-behavior: globals.css makes in-page anchor jumps smooth; since Next.js 16
     // this attribute is what keeps page-to-page navigation jumping straight to the top.
     return (
-        <html lang="ar" dir="rtl" data-scroll-behavior="smooth" className={`${tajawal.variable} ${messiri.variable}`}>
+        <html lang="ar" dir="rtl" data-scroll-behavior="smooth" className={`${cairo.variable} ${reemKufi.variable}`}>
             <head>
                 {/* Motion boot: `js` lets app/motion.css hide revealable elements before they enter the screen; it is
                     taken away again if RevealObserver has not started within 4 s, so content never stays hidden. */}
@@ -314,7 +313,7 @@ export default function RootLayout({
                 <meta name="apple-mobile-web-app-title" content="موكيت السريع" />
 
             </head>
-            <body className="font-tajawal antialiased">
+            <body className="font-sans antialiased">
                 <ConversionTracker />
                 {children}
                 <RevealObserver />
