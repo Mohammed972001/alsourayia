@@ -47,7 +47,7 @@ export function ProductCard({
             {...dataAttrs}
             style={style}
             data-spotlight
-            className={`group lift press relative flex h-full flex-col overflow-hidden rounded-xl border border-line bg-white ${className}`}
+            className={`group lift press relative flex h-full flex-col overflow-hidden rounded-[14px] border border-line bg-white ${className}`}
         >
             <div className="relative aspect-square overflow-hidden bg-cream">
                 <Image
@@ -90,7 +90,7 @@ export function ProductCard({
                 <Title className="font-sans text-[14.5px] md:text-base font-semibold leading-[1.45] text-ink min-h-[42px] md:min-h-0 line-clamp-2">
                     <Link
                         href={href}
-                        className="after:absolute after:inset-0 after:content-[''] focus-visible:outline-none focus-visible:after:rounded-xl focus-visible:after:ring-2 focus-visible:after:ring-mint-deep"
+                        className="after:absolute after:inset-0 after:content-[''] focus-visible:outline-none focus-visible:after:rounded-[14px] focus-visible:after:ring-2 focus-visible:after:ring-mint-deep"
                     >
                         {product.name}
                     </Link>

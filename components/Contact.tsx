@@ -2,18 +2,13 @@ import type { CSSProperties } from 'react';
 import { Icon, type IconName } from '@/components/icons/Icon';
 import { SectionHeading } from '@/components/SectionHeading';
 import { WhatsAppIcon } from '@/components/WhatsAppIcon';
+import { ContactRow, ContactRows } from '@/components/cards/ContactRow';
 import { ADDRESS, MAPS_URL, PHONE_DISPLAY, PHONE_TEL, PHONE2_DISPLAY, PHONE2_TEL, whatsappLink } from '@/lib/contact';
 
 const quickActions: { label: string; href: string; icon: IconName | null; external: boolean; tone: string }[] = [
     { label: 'اتصل بنا', href: PHONE_TEL, icon: 'phone', external: false, tone: 'bg-ink text-white' },
     { label: 'واتساب', href: whatsappLink('السلام عليكم'), icon: null, external: true, tone: 'shine bg-whatsapp text-white' },
     { label: 'الاتجاهات', href: MAPS_URL, icon: 'map', external: true, tone: 'bg-white text-ink ring-1 ring-line' },
-];
-
-const rows: { icon: IconName; title: string }[] = [
-    { icon: 'location', title: 'العنوان' },
-    { icon: 'phone', title: 'الهاتف' },
-    { icon: 'clock', title: 'أوقات العمل' },
 ];
 
 export function Contact({ headingAs = 'h2' }: { headingAs?: 'h1' | 'h2' }) {
@@ -46,30 +41,33 @@ export function Contact({ headingAs = 'h2' }: { headingAs?: 'h1' | 'h2' }) {
                             ))}
                         </div>
 
-                        <div className="rounded-2xl border border-line divide-y divide-line">
-                            {rows.map((row, i) => (
-                                <div key={row.title} className="flex items-start gap-4 p-5" data-reveal="slide" style={{ '--i': 3 + i } as CSSProperties}>
-                                    <span className="w-11 h-11 shrink-0 grid place-items-center rounded-xl bg-cream text-brass-deep">
-                                        <Icon name={row.icon} size={20} />
-                                    </span>
-                                    <div>
-                                        <h3 className="text-sm font-bold text-ink mb-1">{row.title}</h3>
-                                        {i === 0 && <address className="not-italic text-ink-soft text-sm leading-relaxed">{ADDRESS}</address>}
-                                        {i === 1 && (
-                                            <div className="flex flex-wrap gap-x-4 gap-y-1">
-                                                <a href={PHONE_TEL} className="text-ink-soft hover:text-ink transition-colors" dir="ltr">
-                                                    {PHONE_DISPLAY}
-                                                </a>
-                                                <a href={PHONE2_TEL} className="text-ink-soft hover:text-ink transition-colors" dir="ltr">
-                                                    {PHONE2_DISPLAY}
-                                                </a>
-                                            </div>
-                                        )}
-                                        {i === 2 && <p className="text-ink-soft text-sm">يومياً: 9:00 صباحاً - 10:00 مساءً</p>}
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
+                        <ContactRows>
+                            {/* The address row opens the map; the phone row holds one real tel: link per number. */}
+                            <ContactRow
+                                icon="store"
+                                label="العنوان"
+                                labelAs="h3"
+                                href={MAPS_URL}
+                                external
+                                dataAttrs={{ 'data-reveal': 'slide' }}
+                                style={{ '--i': 3 } as CSSProperties}
+                            >
+                                <address className="not-italic">{ADDRESS}</address>
+                            </ContactRow>
+                            <ContactRow icon="phone" label="الهاتف" labelAs="h3" dataAttrs={{ 'data-reveal': 'slide' }} style={{ '--i': 4 } as CSSProperties}>
+                                <span className="flex flex-wrap gap-x-4 gap-y-1">
+                                    <a href={PHONE_TEL} className="inline-flex min-h-11 items-center hover:text-mint-deep transition-colors" dir="ltr">
+                                        {PHONE_DISPLAY}
+                                    </a>
+                                    <a href={PHONE2_TEL} className="inline-flex min-h-11 items-center hover:text-mint-deep transition-colors" dir="ltr">
+                                        {PHONE2_DISPLAY}
+                                    </a>
+                                </span>
+                            </ContactRow>
+                            <ContactRow icon="clock" label="أوقات العمل" labelAs="h3" dataAttrs={{ 'data-reveal': 'slide' }} style={{ '--i': 5 } as CSSProperties}>
+                                يومياً: 9:00 صباحاً - 10:00 مساءً
+                            </ContactRow>
+                        </ContactRows>
                     </div>
 
                     {/* Map */}
