@@ -1,5 +1,7 @@
 export interface ProductDetails {
   id: string;
+  /** Date of the last real change to this page's own copy or photos (sitemap lastmod). */
+  updatedAt: string;
   title: string;
   description: string;
   detailedDescription: string;

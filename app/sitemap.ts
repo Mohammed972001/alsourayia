@@ -7,48 +7,59 @@ import { isStockImage } from '@/data/stock-images';
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.mokeet-elsuarye.com';
 const baseUrl = siteUrl.replace(/\/$/, '');
 
-export default function sitemap(): MetadataRoute.Sitemap {
-    // Date of the last real content change. A lastmod that moves on every
-    // build teaches Google to ignore it, so bump this when pages change.
-    // 2026-10-27: Google Ads landing-page pass (titles, H1s, hub copy, FAQs,
-    // page wrappers) touched every page in this list; see docs/seo-2026-10-27.md.
-    const currentDate = new Date('2026-10-27');
+// lastmod is the date a page's own copy really changed: a date that moves on every build,
+// or one date on every URL, teaches Google to ignore it. Bump the matching entry (or the
+// product's updatedAt) only when that page's content changes.
+const PAGE_UPDATED: Record<string, string> = {
+    home: '2026-10-27',
+    about: '2026-10-27',
+    products: '2026-10-27',
+    'service-areas': '2026-10-27',
+    contact: '2026-10-27',
+    privacy: '2026-10-23',
+};
 
+const HUB_UPDATED: Record<string, string> = {
+    parquet: '2026-10-27',
+    'rubber-flooring': '2026-10-27',
+};
+
+export default function sitemap(): MetadataRoute.Sitemap {
     // Core pages - each a real, crawlable URL
     const staticPages: MetadataRoute.Sitemap = [
         {
             url: baseUrl,
-            lastModified: currentDate,
+            lastModified: new Date(PAGE_UPDATED['home']),
             changeFrequency: 'weekly',
             priority: 1.0,
         },
         {
             url: `${baseUrl}/about`,
-            lastModified: currentDate,
+            lastModified: new Date(PAGE_UPDATED['about']),
             changeFrequency: 'monthly',
             priority: 0.8,
         },
         {
             url: `${baseUrl}/products`,
-            lastModified: currentDate,
+            lastModified: new Date(PAGE_UPDATED['products']),
             changeFrequency: 'weekly',
             priority: 0.9,
         },
         {
             url: `${baseUrl}/service-areas`,
-            lastModified: currentDate,
+            lastModified: new Date(PAGE_UPDATED['service-areas']),
             changeFrequency: 'monthly',
             priority: 0.85,
         },
         {
             url: `${baseUrl}/contact`,
-            lastModified: currentDate,
+            lastModified: new Date(PAGE_UPDATED['contact']),
             changeFrequency: 'monthly',
             priority: 0.7,
         },
         {
             url: `${baseUrl}/privacy`,
-            lastModified: currentDate,
+            lastModified: new Date(PAGE_UPDATED['privacy']),
             changeFrequency: 'yearly',
             priority: 0.3,
         },
@@ -57,7 +68,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // Category pages - one crawlable URL per product category
     const categoryPages: MetadataRoute.Sitemap = hubCategorySlugs.map((slug) => ({
         url: `${baseUrl}/products/category/${slug}`,
-        lastModified: currentDate,
+        lastModified: new Date(HUB_UPDATED[slug]),
         changeFrequency: 'weekly' as const,
         priority: 0.85,
     }));
@@ -71,7 +82,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
             .map((src) => encodeURI(`${baseUrl}${src}`));
         return {
             url: `${baseUrl}/products/${product.id}`,
-            lastModified: currentDate,
+            lastModified: new Date(product.updatedAt),
             changeFrequency: 'monthly' as const,
             priority: 0.8,
             ...(photos.length ? { images: photos } : {}),
