@@ -17,8 +17,10 @@ self-service (US4).
 ## Phase 1: Setup
 
 - [ ] T001 Record baselines in `docs/baseline-2026-10-27.md`: GSC 90 d by query and page (8 clicks / ~530 impressions), Ads landing-page rating per keyword (from `C:/Users/mohammed/.claude/scripts/ads/ads.mjs`, account 9768232646, `ad_group_criterion.quality_info.post_click_quality_score`), Lighthouse mobile per landing page, CrUX origin data
+  - Note (2026-11-02): Search Console part in `docs/baseline-2026-10-27.md`; Ads rating, Lighthouse and CrUX still missing, so this stays open.
 - [ ] T002 [P] Write the 20 tracked AI prompts (Arabic, Riyadh flooring intents: ربل جيم، موكيت مساجد، باركيه الرياض، فينيل طبي، brand) in `scripts/geo-prompts.md` and record the baseline answers in `docs/geo-tracking.md`
-- [ ] T003 [P] Create `scripts/crawl-check.mjs`: for every sitemap URL (or a base URL) report status, H1 count, self canonical, JSON-LD parse, title length, and sideways overflow at 360/393 px via CDP (port the scratchpad `overflow3.mjs` logic)
+- [x] T003 [P] Create `scripts/crawl-check.mjs`: for every sitemap URL (or a base URL) report status, H1 count, self canonical, JSON-LD parse, title length, and sideways overflow at 360/393 px via CDP (port the scratchpad `overflow3.mjs` logic)
+  - Note (2026-11-02): `scripts/crawl-check.mjs` checks status, H1, canonical, JSON-LD and title length. Sideways overflow needs a browser and is not ported.
 - [ ] T004 [P] Create `scripts/photo-intake.mjs <zip|folder> <product-id|project-slug>`: extract into a new empty folder, WebP ≤1600 px q78 via sharp, md5 duplicate check against every image under `D:/work/*/public` (port `D:/tmp-el/newphotos/dup.cjs`), write a contact sheet for review, update `data/photo-register.ts`
 
 ---
@@ -79,13 +81,15 @@ logo sharp at 1x/2x/3x, 0 lucide imports remain, every card follows the card rul
 **Goal**: every old URL redirected, one target page per cluster, complete metadata and schema, good field CWV.
 **Independent Test**: crawl-check passes on all URLs; GSC shows impressions per cluster page at weeks 2/4/8.
 
-- [ ] T025 [US2] Pull every page URL with impressions in 16 months and every crawl 404 from GSC (`C:/Users/mohammed/.claude/scripts/gsc.mjs`), list them in `docs/seo-clusters.md`, and add a 308 for each to `next.config.ts` (extend `lib/merged-categories.ts`); catch-all `/products/category/:slug` → `/products` for unknown slugs
-- [ ] T026 [US2] Write `docs/seo-clusters.md`: the 8 clusters from FR-011 → one target URL each, baseline positions; mark secondary pages that must link to the target
+- [x] T025 [US2] Pull every page URL with impressions in 16 months and every crawl 404 from GSC (`C:/Users/mohammed/.claude/scripts/gsc.mjs`), list them in `docs/seo-clusters.md`, and add a 308 for each to `next.config.ts` (extend `lib/merged-categories.ts`); catch-all `/products/category/:slug` → `/products` for unknown slugs
+  - Note (2026-11-02): every URL with impressions in 16 months is live or 308s (`docs/seo-clusters.md`). The catch-all was not built: unknown slugs stay real 404s rather than soft 404s.
+- [x] T026 [US2] Write `docs/seo-clusters.md`: the 8 clusters from FR-011 → one target URL each, baseline positions; mark secondary pages that must link to the target
+  - Note (2026-11-02): `docs/seo-clusters.md`.
 - [ ] T027 [P] [US2] Home: title/meta for the brand cluster («موكيت السريع | موكيت ومفروشات السريع – حراج بن قاسم الرياض» style, ≤60 chars), check the H1 and summary; log in `docs/seo-2026-10-27.md` (21-day lock)
 - [x] T028 [P] [US2] Schema graph in `app/layout.tsx` from `data/business.ts` per research R5 (HomeAndConstructionBusiness + parentOrganization + WebSite + Organization with the vector-derived logo); validate every page's JSON-LD in crawl-check
   - Note: built in `lib/schema.ts`; logo stays `/logo.png` until the T010 export; `priceRange: "$$"` dropped (not owner-confirmed); `image` uses an owner installation photo (mosque) since there is no showroom photo yet; JSON-LD checked ad hoc on 2026-10-27 (crawl-check waits for T003).
 - [x] T029 [P] [US2] `app/sitemap.ts`: lastModified from per-page content dates (add `updatedAt` to products, projects, guides), images in the sitemap for owner photos
-  - Note: images added (owner photos only, no /stock/); lastModified stays one fixed date (2026-10-27); per-page `updatedAt` not added yet.
+  - Note: images added (owner photos only, no /stock/). 2026-11-02: per-page dates in `app/sitemap.ts` and `updatedAt` on products and guides.
 - [x] T030 [US2] Field CWV: trim the home products grid to 8 cards + «كل المنتجات» link in `components/ProductGallery.tsx` (DOM ~1,200 → <900), confirm lazy below-fold images, re-run Lighthouse; record CrUX monthly in `docs/baseline-2026-10-27.md`
   - Note: home uses the server component `components/FeaturedProducts.tsx` (8 cards, no filter, «كل المنتجات» link); /products keeps `ProductGallery`. Home body tags without scripts: 1,309 (live) → 1,206 (local); the <900 target needs trimming elsewhere. Lighthouse/CrUX not re-run.
 - [x] T031 [US2] Internal links: each product links to its hub and ≥2 siblings; hubs link to all products and to the matching guides/projects (data in `data/products.ts` `related`, hub page component)
@@ -102,8 +106,10 @@ logo sharp at 1x/2x/3x, 0 lucide imports remain, every card follows the card rul
 - [x] T033 [P] [US3] `app/llms.txt/route.ts` and `app/llms-full.txt/route.ts` generated from `data/business.ts`, `data/products.ts` summaries and FAQs (Arabic, plain text, links)
 - [x] T034 [P] [US3] `app/robots.ts`: explicitly allow GPTBot, OAI-SearchBot, ChatGPT-User, PerplexityBot, ClaudeBot, Google-Extended, Applebot-Extended on public pages; keep `/api/` disallowed
 - [ ] T035 [US3] Add a `summary` (2–3 quotable sentences: who, what, where, contact) to every product in `data/products.ts` and render it under the H1 in `components/ProductDetail.tsx` and the hub page
+  - Note (2026-11-02): done on `/products/mosque-carpets` and `/products/mokite` (`summary` in `data/products.ts`); 12 products and the hubs remain, a few per run.
 - [ ] T036 [US3] `data/projects.ts` + `app/projects/page.tsx` + `app/projects/[slug]/page.tsx` + `components/cards/ProjectCard.tsx` + `components/projects/ProjectGallery.tsx` (native `<dialog>`, RTL arrows, swipe) — seed with the mosque and office installation sets received 2026-10-27; place type/city/date only after the owner confirms (constitution I); ImageGallery + BreadcrumbList schema; link from product pages
 - [ ] T037 [US3] `data/guides.ts` + `app/guides/[slug]/page.tsx`: 4 guides from cluster questions (الفرق بين باركيه SPC ومشمع الباركيه؛ ربل جيم رول ولا بلاط مطاط؛ إزاي تختار موكيت مسجد؛ فينيل طبي للعيادات: إيه المهم) — facts only from product data, FAQPage schema, each links to its product
+  - Note (2026-11-02): first guide live: `/guides/spc-vs-vinyl-parquet`. Three remain, at most one new page a week.
 - [ ] T038 [US3] `docs/listing-text.md`: Google Business Profile description, categories, services, Q&A seeds and photo list; Bing Places and Apple Business Connect texts; a list of Saudi/Arabic directories to claim — all generated from `data/business.ts`; hand to the owner (his logins)
 - [ ] T039 [US3] Monthly routine in `docs/geo-tracking.md`: re-run the 20 prompts in ChatGPT and Gemini (and Ahrefs Brand Radar if available), log mentions/citations and wrong facts to fix
 
