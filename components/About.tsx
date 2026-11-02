@@ -1,6 +1,6 @@
 import type { CSSProperties } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
+import Link from '@/components/AppLink';
 import { Icon, type IconName } from '@/components/icons/Icon';
 import { SectionHeading } from '@/components/SectionHeading';
 import { ADDRESS, NATIONAL_ADDRESS, legalLine } from '@/lib/contact';

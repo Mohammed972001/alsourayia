@@ -9,7 +9,7 @@ import { PageView } from '@/components/motion/PageView';
 import { HeadingWords } from '@/components/motion/HeadingWords';
 import { ADDRESS, MAPS_URL } from '@/lib/contact';
 import { HOURS_TEXT } from '@/data/business';
-import Link from 'next/link';
+import Link from '@/components/AppLink';
 import type { CSSProperties } from 'react';
 
 const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://www.mokeet-elsuarye.com').replace(/\/$/, '');

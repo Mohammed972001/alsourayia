@@ -1,6 +1,6 @@
 import type { CSSProperties } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
+import Link from '@/components/AppLink';
 import { Icon } from '@/components/icons/Icon';
 import { products } from '@/lib/products';
 import { whatsappLink } from '@/lib/contact';

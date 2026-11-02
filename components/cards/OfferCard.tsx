@@ -1,5 +1,5 @@
 import type { CSSProperties } from 'react';
-import Link from 'next/link';
+import Link from '@/components/AppLink';
 import { Icon, type IconName } from '@/components/icons/Icon';
 
 interface OfferCardProps {

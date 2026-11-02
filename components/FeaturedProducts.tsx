@@ -2,7 +2,7 @@
 // the full filterable gallery (components/ProductGallery.tsx). Server component: the home page no
 // longer ships the filter state or renders all fourteen cards, which cut its DOM size.
 import type { CSSProperties } from 'react';
-import Link from 'next/link';
+import Link from '@/components/AppLink';
 import { getProductById, type Product } from '@/lib/products';
 import { whatsappLink } from '@/lib/contact';
 import { imageAlt } from '@/data/stock-images';

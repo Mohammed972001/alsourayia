@@ -4,7 +4,7 @@
 // (components/product/ColorPicker) hydrate.
 import { Icon } from '@/components/icons/Icon';
 import { categoryToSlug, getProductById, mergedCategories, type Product } from '@/lib/products';
-import Link from 'next/link';
+import Link from '@/components/AppLink';
 import { Breadcrumb } from './Breadcrumb';
 import { ADDRESS, MAPS_URL, PHONE_TEL, whatsappLink } from '@/lib/contact';
 import { SITE_URL } from '@/data/business';

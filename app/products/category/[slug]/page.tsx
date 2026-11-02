@@ -22,7 +22,7 @@ import { imageAlt } from '@/data/stock-images';
 import { guidesForHub } from '@/data/guides';
 import { ComparisonTable } from '@/components/ComparisonTable';
 import { ProductCard } from '@/components/product/ProductCard';
-import Link from 'next/link';
+import Link from '@/components/AppLink';
 import type { CSSProperties } from 'react';
 
 const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://www.mokeet-elsuarye.com').replace(/\/$/, '');

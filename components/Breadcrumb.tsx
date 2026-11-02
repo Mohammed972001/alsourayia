@@ -1,6 +1,6 @@
 // Server component: static markup plus BreadcrumbList JSON-LD, no client JS.
 import { Icon } from '@/components/icons/Icon';
-import Link from 'next/link';
+import Link from '@/components/AppLink';
 
 interface BreadcrumbItem {
     label: string;

@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { Icon } from '@/components/icons/Icon';
-import Link from 'next/link';
+import Link from '@/components/AppLink';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { PHONE_DISPLAY, PHONE_TEL, ADDRESS, whatsappLink } from '@/lib/contact';

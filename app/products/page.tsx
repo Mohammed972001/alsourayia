@@ -7,7 +7,7 @@ import { Breadcrumb } from '@/components/Breadcrumb';
 import { HelpBand } from '@/components/HelpBand';
 import { PageView } from '@/components/motion/PageView';
 import { categoryHref, categorySlugMap } from '@/lib/products';
-import Link from 'next/link';
+import Link from '@/components/AppLink';
 import type { CSSProperties } from 'react';
 
 const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://www.mokeet-elsuarye.com').replace(/\/$/, '');
