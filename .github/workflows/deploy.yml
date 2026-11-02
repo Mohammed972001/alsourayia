@@ -46,3 +46,7 @@ jobs:
           NEXT_PUBLIC_ADS_LABEL_WHATSAPP: "ZyWkCIjwlp4dEOn9lO1E"
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
+      # Tell Bing (ChatGPT search reads its index) about the pages just deployed.
+      - run: node scripts/indexnow.mjs
+        continue-on-error: true
