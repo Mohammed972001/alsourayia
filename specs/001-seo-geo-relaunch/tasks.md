@@ -17,9 +17,9 @@ self-service (US4).
 ## Phase 1: Setup
 
 - [ ] T001 Record baselines in `docs/baseline-2026-10-27.md`: GSC 90 d by query and page (8 clicks / ~530 impressions), Ads landing-page rating per keyword (from `C:/Users/mohammed/.claude/scripts/ads/ads.mjs`, account 9768232646, `ad_group_criterion.quality_info.post_click_quality_score`), Lighthouse mobile per landing page, CrUX origin data
-  - Note (2026-11-02): Search Console and Ads rating in `docs/baseline-2026-10-27.md`; Lighthouse and CrUX still missing, so this stays open.
-- [ ] T002 [P] Write the 20 tracked AI prompts (Arabic, Riyadh flooring intents: ربل جيم، موكيت مساجد، باركيه الرياض، فينيل طبي، brand) in `scripts/geo-prompts.md` and record the baseline answers in `docs/geo-tracking.md`
-  - Note (2026-11-02): Prompts in `scripts/geo-prompts.md`, tracking in `docs/geo-tracking.md`. Only a Gemini run without search so far (search quota used up), so the real baseline in ChatGPT and in Gemini with search is still to do by hand.
+  - Note (2026-11-02): Search Console, Ads rating and Lighthouse are in `docs/baseline-2026-10-27.md`. Only CrUX is missing, because the PageSpeed API quota was used up.
+- [x] T002 [P] Write the 20 tracked AI prompts (Arabic, Riyadh flooring intents: ربل جيم، موكيت مساجد، باركيه الرياض، فينيل طبي، brand) in `scripts/geo-prompts.md` and record the baseline answers in `docs/geo-tracking.md`
+  - Note (2026-11-02): Prompts in `scripts/geo-prompts.md`. Baseline in `docs/geo-tracking.md`: ChatGPT named the shop on 3 of 4 customer questions, Perplexity on 0 of 1. The other prompts roll through the weekly test.
 - [x] T003 [P] Create `scripts/crawl-check.mjs`: for every sitemap URL (or a base URL) report status, H1 count, self canonical, JSON-LD parse, title length, and sideways overflow at 360/393 px via CDP (port the scratchpad `overflow3.mjs` logic)
   - Note (2026-11-02): `scripts/crawl-check.mjs` checks status, H1, canonical, JSON-LD and title length. Sideways overflow needs a browser and is not ported.
 - [x] T004 [P] Create `scripts/photo-intake.mjs <zip|folder> <product-id|project-slug>`: extract into a new empty folder, WebP ≤1600 px q78 via sharp, md5 duplicate check against every image under `D:/work/*/public` (port `D:/tmp-el/newphotos/dup.cjs`), write a contact sheet for review, update `data/photo-register.ts`
@@ -110,7 +110,7 @@ logo sharp at 1x/2x/3x, 0 lucide imports remain, every card follows the card rul
 - [x] T033 [P] [US3] `app/llms.txt/route.ts` and `app/llms-full.txt/route.ts` generated from `data/business.ts`, `data/products.ts` summaries and FAQs (Arabic, plain text, links)
 - [x] T034 [P] [US3] `app/robots.ts`: explicitly allow GPTBot, OAI-SearchBot, ChatGPT-User, PerplexityBot, ClaudeBot, Google-Extended, Applebot-Extended on public pages; keep `/api/` disallowed
 - [ ] T035 [US3] Add a `summary` (2–3 quotable sentences: who, what, where, contact) to every product in `data/products.ts` and render it under the H1 in `components/ProductDetail.tsx` and the hub page
-  - Note (2026-11-02): Done on mosque-carpets, mokite, parket, rabal-gem and hospital-flooring. Nine products and the hubs remain, three pages a run at most.
+  - Note (2026-11-02): Done on mosque-carpets, mokite, parket, rabal-gem, hospital-flooring and non-slip-rubber. Eight products remain, three pages a run at most. The hubs already open with their `intro`, so they need no separate summary.
 - [ ] T036 [US3] `data/projects.ts` + `app/projects/page.tsx` + `app/projects/[slug]/page.tsx` + `components/cards/ProjectCard.tsx` + `components/projects/ProjectGallery.tsx` (native `<dialog>`, RTL arrows, swipe) — seed with the mosque and office installation sets received 2026-10-27; place type/city/date only after the owner confirms (constitution I); ImageGallery + BreadcrumbList schema; link from product pages
 - [ ] T037 [US3] `data/guides.ts` + `app/guides/[slug]/page.tsx`: 4 guides from cluster questions (الفرق بين باركيه SPC ومشمع الباركيه؛ ربل جيم رول ولا بلاط مطاط؛ إزاي تختار موكيت مسجد؛ فينيل طبي للعيادات: إيه المهم) — facts only from product data, FAQPage schema, each links to its product
   - Note (2026-11-02): First guide live: `/guides/spc-vs-vinyl-parquet`. Three remain, one new page a week at most, so the next can go up from 2026-11-09.
@@ -137,7 +137,8 @@ logo sharp at 1x/2x/3x, 0 lucide imports remain, every card follows the card rul
 
 - [x] T042 [P] Delete dead code and assets listed in the 2026-10-27 audit: `components/ui/*` (48 unused shadcn files), unused deps (@radix-ui/*, cmdk, embla, recharts, sonner, vaul, next-themes, motion, input-otp, react-hook-form, react-resizable-panels), `public/home/*.svg`, `public/NavBar/*.svg`, the unused mp4, `public/brand/mark.png` — ask the owner before deleting files (deletions were classifier-blocked before)
   - Note (2026-11-02): Owner approved on 2026-11-02. `components/cards/ProjectCard.tsx` stays for T036. A copy of the deleted video is in the Downloads folder.
-- [ ] T043 [P] Accessibility pass with axe on the five landing pages (focus, labels on icon-only buttons, contrast of mint text)
+- [x] T043 [P] Accessibility pass with axe on the five landing pages (focus, labels on icon-only buttons, contrast of mint text)
+  - Note (2026-11-02): Lighthouse accessibility 96 on five landing pages: white on WhatsApp green (1.98:1) and repeated thumbnail text, both fixed. Re-check after deploy.
 - [ ] T044 Run `quickstart.md` end to end on the live site; update `C:/Users/mohammed/.claude/scripts/SITE-LESSONS.md` with new lessons
 - [ ] T045 Reports to the owner at weeks 2, 4, 8, 16: GSC per cluster, Ads landing-page ratings, CWV, AI mentions, contacts vs spend
 
