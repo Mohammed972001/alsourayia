@@ -85,10 +85,8 @@ export const metadata: Metadata = {
 
         // Brand Combinations
         'موكيت السريع',
-        'مفروشات السريع',
         'سجاد السريع',
         'موكيت السريع الرياض',
-        'مفروشات السريع الرياض',
         'ارضيات السريع',
 
         // English Keywords
