@@ -60,9 +60,8 @@ const nextConfig: NextConfig = {
   // Strip unused exports from server components to reduce bundle size
   experimental: {
     optimizePackageImports: ['@hugeicons/core-free-icons'],
-    // The whole stylesheet is ~21 KB; inlining it removes the render-blocking CSS request
-    // (Lighthouse on a slow phone charged it ~0.6-2 s before first paint).
-    inlineCss: true,
+    // inlineCss stays off: it put the stylesheet in the page three times (once inline, twice in the page data). Measured
+    // 2026-11-02 on the home page, mobile Lighthouse: 66 with it, 74 without.
   },
 };
 
