@@ -1,12 +1,14 @@
 interface ComparisonTableProps {
+    caption?: string;
     columns: readonly string[];
     rows: readonly { label: string; values: readonly string[] }[];
 }
 
 /** Types side by side in a real table: easy to scan on a phone, and easy for AI assistants to quote. */
-export function ComparisonTable({ columns, rows }: ComparisonTableProps) {
+export function ComparisonTable({ caption, columns, rows }: ComparisonTableProps) {
     return (
         <table className="w-full table-fixed border-collapse text-sm text-ink-soft leading-relaxed">
+            {caption && <caption className="mb-3 text-start font-semibold text-ink">{caption}</caption>}
             <thead>
                 <tr className="bg-[#F9FAFB] text-ink">
                     <th scope="col" className="w-[22%] border border-line p-2 text-start font-semibold">

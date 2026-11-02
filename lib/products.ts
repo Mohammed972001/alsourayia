@@ -117,7 +117,7 @@ export interface CategoryContent {
   items: { productId: string; label: string; text: string }[];
   /** «ما الفرق بين …» in plain prose, one paragraph per type, no prices. */
   /** `table` repeats the paragraphs side by side, facts already on the page only. */
-  comparison: { heading: string; paragraphs: string[]; table?: { columns: string[]; rows: { label: string; values: string[] }[] } };
+  comparison: { heading: string; paragraphs: string[]; table?: { caption?: string; columns: string[]; rows: { label: string; values: string[] }[] } };
   faqs: { question: string; answer: string }[];
   outro: string;
   /** Prefilled WhatsApp message for the hub's buttons. */
@@ -184,6 +184,16 @@ export const categoryContent: Record<string, CategoryContent> = {
     ],
     comparison: {
       heading: 'ما الفرق بين ربل جيم رول وبلاط مطاط وفوم الأطفال؟',
+      table: {
+        caption: 'ربل جيم رول وبلاط مطاط وربل حمامات في جدول',
+        columns: ['ربل جيم رول', 'بلاط مطاط', 'ربل حمامات'],
+        rows: [
+          { label: 'ما هو', values: ['لفّة طويلة من المطاط', 'قطع مربعة سميكة', 'مطاط بسطح منقوش ضد الانزلاق'] },
+          { label: 'مكانه', values: ['مناطق الأجهزة والكارديو والممرات الواسعة', 'منطقة الأوزان الحرة والجيم المنزلي', 'دورات المياه وأماكن الوضوء والمناطق المبللة'] },
+          { label: 'ميزته', values: ['وصلات قليلة، ويصعب أن يتحرك تحت الأجهزة الثقيلة', 'القطعة المتضررة تُستبدل وحدها، والسماكة الأكبر تخفف الصوت', 'قبضة على الأرض المبللة، ولا يمتص الماء، ويتحمل المطهرات'] },
+          { label: 'التركيب', values: ['أرضية مستوية ونظيفة، ونقصه على مقاس المكان', 'تُرصّ القطع متجاورة', 'نراجع ميول الأرضية ومكان الصفاية في المعاينة'] },
+        ],
+      },
       paragraphs: [
         'ربل جيم رول لفّة طويلة من المطاط تُفرش على طول الصالة بوصلات قليلة، فتناسب مناطق الأجهزة والكارديو والممرات الواسعة، ويصعب أن تتحرك تحت الأجهزة الثقيلة. تحتاج أرضية مستوية ونظيفة، ونقصها على مقاس المكان في التركيب.',
         'بلاط مطاط قطع مربعة سميكة تُرصّ متجاورة، ويختارها أصحاب النوادي لمنطقة الأوزان الحرة لأن القطعة التي تتضرر من سقوط الأوزان تُستبدل وحدها، ولأن السماكة الأكبر تمتص الصدمة وتخفف الصوت على الجيران في الجيم المنزلي. وهو نفسه ما يُستخدم بسطح منقوش في ربل حمامات دورات المياه.',

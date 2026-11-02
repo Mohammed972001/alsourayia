@@ -205,7 +205,7 @@ export default async function CategoryPage({ params }: Props) {
                                     </h2>
                                     {content.comparison.table && (
                                         <div className="mb-6" data-reveal>
-                                            <ComparisonTable columns={content.comparison.table.columns} rows={content.comparison.table.rows} />
+                                            <ComparisonTable {...content.comparison.table} />
                                         </div>
                                     )}
                                     {content.comparison.paragraphs.map((p, i) => (

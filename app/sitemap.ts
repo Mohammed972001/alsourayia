@@ -22,7 +22,7 @@ const PAGE_UPDATED: Record<string, string> = {
 
 const HUB_UPDATED: Record<string, string> = {
     parquet: '2026-11-02',
-    'rubber-flooring': '2026-10-27',
+    'rubber-flooring': '2026-11-03',
 };
 
 export default function sitemap(): MetadataRoute.Sitemap {
