@@ -259,7 +259,7 @@ export function Navigation() {
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 tabIndex={isMobileMenuOpen ? 0 : -1}
-                                className="press flex items-center justify-center gap-2 py-3.5 rounded-full bg-whatsapp text-white text-sm font-bold"
+                                className="press flex items-center justify-center gap-2 py-3.5 rounded-full bg-whatsapp text-ink text-sm font-bold"
                             >
                                 <WhatsAppIcon className="w-4 h-4" />
                                 واتساب

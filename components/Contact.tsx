@@ -8,7 +8,7 @@ import { HOURS_SHORT, HOURS_TEXT } from '@/data/business';
 
 const quickActions: { label: string; href: string; icon: IconName | null; external: boolean; tone: string }[] = [
     { label: 'اتصل بنا', href: PHONE_TEL, icon: 'phone', external: false, tone: 'bg-ink text-white' },
-    { label: 'واتساب', href: whatsappLink('السلام عليكم'), icon: null, external: true, tone: 'shine bg-whatsapp text-white' },
+    { label: 'واتساب', href: whatsappLink('السلام عليكم'), icon: null, external: true, tone: 'shine bg-whatsapp text-ink' },
     { label: 'الاتجاهات', href: MAPS_URL, icon: 'map', external: true, tone: 'bg-white text-ink ring-1 ring-line' },
 ];
 

@@ -147,7 +147,7 @@ export default async function CategoryPage({ params }: Props) {
                                     href={whatsappLink(whatsappMessage)}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="shine press inline-flex items-center justify-center gap-2 h-12 px-6 rounded-full bg-whatsapp text-white font-bold text-sm"
+                                    className="shine press inline-flex items-center justify-center gap-2 h-12 px-6 rounded-full bg-whatsapp text-ink font-bold text-sm"
                                 >
                                     <WhatsAppIcon className="w-5 h-5" />
                                     اطلب عرض سعر على الواتساب

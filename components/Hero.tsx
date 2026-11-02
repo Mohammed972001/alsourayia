@@ -94,7 +94,7 @@ export function Hero() {
                                 href={whatsappLink()}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="rise-in press inline-flex items-center justify-center gap-2 whitespace-nowrap px-4 sm:px-8 py-3.5 bg-whatsapp text-white rounded-xl font-bold text-sm md:text-[15px] hover:brightness-95 transition"
+                                className="rise-in press inline-flex items-center justify-center gap-2 whitespace-nowrap px-4 sm:px-8 py-3.5 bg-whatsapp text-ink rounded-xl font-bold text-sm md:text-[15px] hover:brightness-95 transition"
                                 style={step(6.5)}
                             >
                                 <WhatsAppIcon className="w-4 h-4" />
@@ -160,7 +160,7 @@ function CategoryRail() {
                                     <span className="relative block aspect-square rounded-xl overflow-hidden bg-cream ring-1 ring-line">
                                         <Image
                                             src={product.image}
-                                            alt={imageAlt(product.image, product.name)}
+                                            alt={imageAlt(product.image, `صورة ${product.name}`)}
                                             fill
                                             sizes="150px"
                                             className="object-cover transition-transform duration-500 group-hover:scale-110"

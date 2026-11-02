@@ -45,7 +45,7 @@ export function FloatingButtons({ message }: { message?: string } = {}) {
                         href={whatsappLink(message)}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="press flex items-center justify-center gap-2 h-12 rounded-full bg-whatsapp text-white text-sm font-bold"
+                        className="press flex items-center justify-center gap-2 h-12 rounded-full bg-whatsapp text-ink text-sm font-bold"
                     >
                         <WhatsAppIcon className="w-5 h-5" />
                         اطلب عرض سعر
@@ -65,7 +65,7 @@ export function FloatingButtons({ message }: { message?: string } = {}) {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="تواصل عبر واتساب"
-                className="hidden lg:flex fixed left-6 bottom-6 z-40 items-center justify-center w-14 h-14 bg-whatsapp text-white rounded-full shadow-lg hover:scale-110 transition-transform"
+                className="hidden lg:flex fixed left-6 bottom-6 z-40 items-center justify-center w-14 h-14 bg-whatsapp text-ink rounded-full shadow-lg hover:scale-110 transition-transform"
             >
                 <span className="absolute inset-0 rounded-full bg-whatsapp animate-pulse-ring" aria-hidden="true" />
                 <WhatsAppIcon className="relative w-7 h-7" />

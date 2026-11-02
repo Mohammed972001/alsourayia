@@ -159,7 +159,7 @@ export function LeadForm() {
                         <div className="sm:col-span-2" data-reveal style={{ '--i': 6 } as CSSProperties}>
                             <button
                                 type="submit"
-                                className="shine press w-full inline-flex items-center justify-center gap-2.5 h-13 rounded-full bg-whatsapp text-white font-bold text-sm hover:brightness-95 transition"
+                                className="shine press w-full inline-flex items-center justify-center gap-2.5 h-13 rounded-full bg-whatsapp text-ink font-bold text-sm hover:brightness-95 transition"
                             >
                                 <WhatsAppIcon className="w-5 h-5" />
                                 أرسل الطلب عبر الواتساب
