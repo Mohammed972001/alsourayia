@@ -15,7 +15,7 @@ const SKIP_DIRS = new Set([
     'node_modules', '.next', '.open-next', '.wrangler', '.vercel', '.git', '.claude', '.specify',
     'docs', 'specs', 'design', 'public', 'out', 'build', 'coverage',
 ]);
-const SKIP_PATHS = new Set(['components/ui', 'scripts/facts-guard.mjs']);
+const SKIP_PATHS = new Set(['scripts/facts-guard.mjs']);
 const TEXT_EXT = /\.(?:[cm]?[jt]sx?|json|md|mdx|css|html|txt|ya?ml|jsonc|env.*)$/i;
 
 // Built from pieces so this file does not trip its own check if the skip list changes.

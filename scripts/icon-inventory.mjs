@@ -2,7 +2,7 @@
 /**
  * Icon inventory (specs/001-seo-geo-relaunch, T015; contract: contracts/icon-set.md).
  *
- * Scans app/ and components/ (components/ui/ is unused shadcn code and is skipped) and:
+ * Scans app/ and components/ and:
  *  - fails (exit 1) on any import from an icon library: lucide-react, react-icons, heroicons,
  *    phosphor, tabler, font awesome, …; @hugeicons/* is allowed only inside components/icons/;
  *  - prints how many times each icon name is used through <Icon name="…">.
@@ -15,7 +15,7 @@ import { fileURLToPath } from 'node:url';
 
 const root = join(fileURLToPath(import.meta.url), '..', '..');
 const scanDirs = ['app', 'components'];
-const skipDirs = new Set([join('components', 'ui'), 'node_modules', '.next']);
+const skipDirs = new Set(['node_modules', '.next']);
 const exts = /\.(tsx?|jsx?|mjs)$/;
 
 /** Module specifiers that are icon libraries. */

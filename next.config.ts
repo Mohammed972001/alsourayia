@@ -59,7 +59,7 @@ const nextConfig: NextConfig = {
 
   // Strip unused exports from server components to reduce bundle size
   experimental: {
-    optimizePackageImports: ['@hugeicons/core-free-icons', 'motion/react'],
+    optimizePackageImports: ['@hugeicons/core-free-icons'],
     // The whole stylesheet is ~21 KB; inlining it removes the render-blocking CSS request
     // (Lighthouse on a slow phone charged it ~0.6-2 s before first paint).
     inlineCss: true,
