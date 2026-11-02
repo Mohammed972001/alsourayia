@@ -12,7 +12,7 @@ const baseUrl = siteUrl.replace(/\/$/, '');
 // or one date on every URL, teaches Google to ignore it. Bump the matching entry (or the
 // product's updatedAt) only when that page's content changes.
 const PAGE_UPDATED: Record<string, string> = {
-    home: '2026-10-27',
+    home: '2026-11-02',
     about: '2026-10-27',
     products: '2026-10-27',
     'service-areas': '2026-10-27',
