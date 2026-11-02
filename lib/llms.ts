@@ -6,6 +6,7 @@ import {
     NATIONAL_ADDRESS, PHONE2_DISPLAY, PHONE_DISPLAY, POSTAL_CODE, SERVICES, SITE_URL, UNIFIED_NUMBER, VAT_NUMBER,
     WHATSAPP_NUMBER,
 } from '@/data/business';
+import { guides } from '@/data/guides';
 import { productsDetails } from '@/data/products';
 import { categoryContent, categorySlugMap, getCategoryFromId, hubCategorySlugs } from '@/lib/products';
 
@@ -59,6 +60,14 @@ function productsSection(): string[] {
     ];
 }
 
+function guidesSection(): string[] {
+    return [
+        '## أدلة للمشتري',
+        ...guides.map((g) => `- [${g.title}](${SITE_URL}/guides/${g.slug}): ${g.answerSummary}`),
+        '',
+    ];
+}
+
 function pagesSection(): string[] {
     return [
         '## صفحات أخرى',
@@ -72,7 +81,7 @@ function pagesSection(): string[] {
 }
 
 export function llmsText(): string {
-    return [...header(), ...hubsSection(), ...productsSection(), ...pagesSection()].join('\n');
+    return [...header(), ...hubsSection(), ...productsSection(), ...guidesSection(), ...pagesSection()].join('\n');
 }
 
 export function llmsFullText(): string {
@@ -107,6 +116,6 @@ export function llmsFullText(): string {
         }
     }
 
-    lines.push(...pagesSection());
+    lines.push(...guidesSection(), ...pagesSection());
     return lines.join('\n');
 }

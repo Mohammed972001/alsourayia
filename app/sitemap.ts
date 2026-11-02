@@ -3,6 +3,7 @@ import { productsDetails } from '@/data/products';
 import { hubCategorySlugs } from '@/lib/products';
 import { getProductWithDynamicImages } from '@/lib/products.server';
 import { isStockImage } from '@/data/stock-images';
+import { guides } from '@/data/guides';
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.mokeet-elsuarye.com';
 const baseUrl = siteUrl.replace(/\/$/, '');
@@ -20,7 +21,7 @@ const PAGE_UPDATED: Record<string, string> = {
 };
 
 const HUB_UPDATED: Record<string, string> = {
-    parquet: '2026-10-27',
+    parquet: '2026-11-02',
     'rubber-flooring': '2026-10-27',
 };
 
@@ -89,5 +90,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
         };
     });
 
-    return [...staticPages, ...categoryPages, ...productPages];
+    const guidePages: MetadataRoute.Sitemap = guides.map((guide) => ({
+        url: `${baseUrl}/guides/${guide.slug}`,
+        lastModified: new Date(guide.updatedAt),
+        changeFrequency: 'monthly' as const,
+        priority: 0.7,
+    }));
+
+    return [...staticPages, ...categoryPages, ...productPages, ...guidePages];
 }

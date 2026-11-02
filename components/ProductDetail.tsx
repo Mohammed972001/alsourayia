@@ -8,6 +8,7 @@ import Link from 'next/link';
 import { Breadcrumb } from './Breadcrumb';
 import { ADDRESS, MAPS_URL, PHONE_TEL, whatsappLink } from '@/lib/contact';
 import { SITE_URL } from '@/data/business';
+import { guidesForProduct } from '@/data/guides';
 import { imageAlt, isStockImage } from '@/data/stock-images';
 import { DetailGallery, type GalleryImage } from './product/DetailGallery';
 import { ColorPicker } from './product/ColorPicker';
@@ -256,6 +257,15 @@ export function ProductDetail({ productId, dynamicGallery }: ProductDetailProps)
                             </div>
                         </div>
                     )}
+
+                    {guidesForProduct(product.id).map((guide) => (
+                        <p key={guide.slug} className="mt-8 max-w-4xl text-sm text-[#4A4A4A]">
+                            تحتار بين الأنواع؟ اقرأ{' '}
+                            <Link href={`/guides/${guide.slug}`} className="font-semibold text-ink underline decoration-brass underline-offset-4 hover:no-underline">
+                                {guide.title}
+                            </Link>
+                        </p>
+                    ))}
 
                     {product.faqs && product.faqs.length > 0 && (
                         <div className="mt-12 max-w-4xl" data-reveal>
