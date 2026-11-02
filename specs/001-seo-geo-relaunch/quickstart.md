@@ -3,7 +3,8 @@
 ```bash
 npm run build
 npx next start -p 3040
-node scripts/crawl-check.mjs http://localhost:3040     # status, H1, canonical, JSON-LD, overflow 360/393
+node scripts/crawl-check.mjs http://localhost:3040     # status, H1, canonical, JSON-LD
+node scripts/phone-check.mjs http://localhost:3040     # sideways overflow at 360/393, visible WhatsApp link
 ```
 
 Deploy = push to `main` (GitHub Actions → Cloudflare Workers). Then:
@@ -11,6 +12,7 @@ Deploy = push to `main` (GitHub Actions → Cloudflare Workers). Then:
 ```bash
 gh run watch <id> --exit-status
 node scripts/crawl-check.mjs https://www.mokeet-elsuarye.com
+node scripts/phone-check.mjs https://www.mokeet-elsuarye.com
 ```
 
 Live tag check: the CDP script pattern in the session scratchpad (`tag-check-live.mjs`), analytics hits blocked,

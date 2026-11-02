@@ -5,7 +5,7 @@
 // For every sitemap URL: status 200, exactly one H1, a self canonical, JSON-LD that parses and a
 // title of at most 60 characters. Exits 1 on any failure. Long titles only warn: several were
 // locked at that length on purpose (docs/seo-2026-10-27.md).
-// Sideways overflow at 360/393 px needs a real browser and is not checked here.
+// Sideways overflow at 360/393 px needs a real browser: see scripts/phone-check.mjs.
 const SITE = 'https://www.mokeet-elsuarye.com';
 const base = (process.argv[2] || SITE).replace(/\/$/, '');
 
