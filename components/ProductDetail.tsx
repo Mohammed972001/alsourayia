@@ -162,7 +162,7 @@ export function ProductDetail({ productId, dynamicGallery }: ProductDetailProps)
                         <div className="lg:col-start-2 lg:row-start-1">
                             <span className="text-xs text-[#6B7280] mb-2 block">{product.category}</span>
                             <h1 className="text-2xl md:text-3xl text-[#1A1A1A] mb-3 lg:mb-4">{product.name}</h1>
-                            <p className="text-[#4A4A4A] mb-5 lg:mb-8 leading-relaxed">{product.description}</p>
+                            <p className="text-[#4A4A4A] mb-5 lg:mb-8 leading-relaxed">{product.summary ?? product.description}</p>
 
                             {/* CTAs */}
                             <div className="flex flex-col sm:flex-row gap-3 mb-3">
@@ -253,6 +253,8 @@ export function ProductDetail({ productId, dynamicGallery }: ProductDetailProps)
                         <div className="mt-16 max-w-4xl" data-reveal>
                             <h2 className="text-xl text-[#1A1A1A] mb-6">تفاصيل {product.name}</h2>
                             <div className="text-[#4A4A4A] leading-relaxed">
+                                {/* With a summary up top, the longer description keeps its place here. */}
+                                {product.summary && <p className="mb-6">{product.description}</p>}
                                 <RichText text={product.detailedDescription} />
                             </div>
                         </div>

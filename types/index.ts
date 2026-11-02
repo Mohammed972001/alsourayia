@@ -4,6 +4,8 @@ export interface ProductDetails {
   updatedAt: string;
   title: string;
   description: string;
+  /** Two or three quotable sentences under the H1: what, for whom, where, how to reach the shop (T035). */
+  summary?: string;
   detailedDescription: string;
   metaDescription: string;
   keywords: string[];

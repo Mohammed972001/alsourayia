@@ -3,7 +3,8 @@ import { ProductDetails } from "@/types";
 export const productsDetails: ProductDetails[] = [
   {
     id: "mosque-carpets",
-    updatedAt: "2026-10-27",
+    updatedAt: "2026-11-02",
+    summary: "موكيت ومفروشات السريع في حراج بن قاسم بالرياض يورّد ويركّب موكيت مساجد (سجاد مساجد) بخطوط صفوف أو سادة، بألوان أخضر وأزرق وبني، لمن يتولى فرش مسجد أو مصلى. المعاينة والقياس مجاناً، والعينة قبل الطلب، وعرض السعر على الواتساب بعد القياس.",
     imageDir: "msaged",
     newestFirst: true,
     title: "موكيت مساجد وسجاد مساجد - فرش المساجد والمصليات في الرياض",

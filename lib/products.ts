@@ -8,6 +8,7 @@ export interface Product {
   image: string;
   colors: { name: string; value: string }[];
   description: string;
+  summary?: string;
   detailedDescription: string;
   features: string[];
   gallery: string[];
@@ -57,6 +58,7 @@ export const products: Product[] = productsDetails.map((product) => ({
   image: product.images[0] || '/images/placeholder.jpg',
   colors: product.availableColors,
   description: product.description,
+  summary: product.summary,
   detailedDescription: product.detailedDescription,
   features: product.features,
   gallery: product.images,
