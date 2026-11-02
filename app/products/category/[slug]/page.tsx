@@ -20,6 +20,7 @@ import { ADDRESS, PHONE_DISPLAY, PHONE_TEL, whatsappLink } from '@/lib/contact';
 import { HOURS_TEXT as HOURS } from '@/data/business';
 import { imageAlt } from '@/data/stock-images';
 import { guidesForHub } from '@/data/guides';
+import { ComparisonTable } from '@/components/ComparisonTable';
 import { ProductCard } from '@/components/product/ProductCard';
 import Link from 'next/link';
 import type { CSSProperties } from 'react';
@@ -202,6 +203,11 @@ export default async function CategoryPage({ params }: Props) {
                                     <h2 id="compare" className="font-display text-2xl font-semibold text-ink mb-4" data-reveal="words">
                                         <HeadingWords lines={[content.comparison.heading]} />
                                     </h2>
+                                    {content.comparison.table && (
+                                        <div className="mb-6" data-reveal>
+                                            <ComparisonTable columns={content.comparison.table.columns} rows={content.comparison.table.rows} />
+                                        </div>
+                                    )}
                                     {content.comparison.paragraphs.map((p, i) => (
                                         <p key={i} className="text-ink-soft leading-loose mb-4" data-reveal style={{ '--i': i } as CSSProperties}>
                                             {p}

@@ -10,6 +10,7 @@ import { Icon } from '@/components/icons/Icon';
 import { ProductCard } from '@/components/product/ProductCard';
 import { BRAND_NAME, HOURS_TEXT, SITE_URL } from '@/data/business';
 import { getGuide, guides } from '@/data/guides';
+import { ComparisonTable } from '@/components/ComparisonTable';
 import { imageAlt } from '@/data/stock-images';
 import { ADDRESS, PHONE_DISPLAY, PHONE_TEL, whatsappLink } from '@/lib/contact';
 import { getProductById, type Product } from '@/lib/products';
@@ -129,28 +130,7 @@ export default async function GuidePage({ params }: Props) {
 
                         <section className="mb-10">
                             <h2 className="font-display text-2xl font-semibold text-ink mb-4">{guide.comparison.heading}</h2>
-                            <table className="w-full table-fixed border-collapse text-sm text-ink-soft leading-relaxed">
-                                <thead>
-                                    <tr className="bg-[#F9FAFB] text-ink">
-                                        <th scope="col" className="w-[22%] border border-line p-2 text-start font-semibold">
-                                            <span className="sr-only">وجه المقارنة</span>
-                                        </th>
-                                        {guide.comparison.columns.map((column) => (
-                                            <th key={column} scope="col" className="border border-line p-2 text-start font-semibold">{column}</th>
-                                        ))}
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {guide.comparison.rows.map((row) => (
-                                        <tr key={row.label}>
-                                            <th scope="row" className="border border-line p-2 text-start font-semibold text-ink align-top">{row.label}</th>
-                                            {row.values.map((value, i) => (
-                                                <td key={i} className="border border-line p-2 align-top">{value}</td>
-                                            ))}
-                                        </tr>
-                                    ))}
-                                </tbody>
-                            </table>
+                            <ComparisonTable columns={guide.comparison.columns} rows={guide.comparison.rows} />
                         </section>
 
                         {guide.sections.map((section) => (

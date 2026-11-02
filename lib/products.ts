@@ -116,7 +116,8 @@ export interface CategoryContent {
   /** One line per product in the category: what it is for, linked to its page. */
   items: { productId: string; label: string; text: string }[];
   /** «ما الفرق بين …» in plain prose, one paragraph per type, no prices. */
-  comparison: { heading: string; paragraphs: string[] };
+  /** `table` repeats the paragraphs side by side, facts already on the page only. */
+  comparison: { heading: string; paragraphs: string[]; table?: { columns: string[]; rows: { label: string; values: string[] }[] } };
   faqs: { question: string; answer: string }[];
   outro: string;
   /** Prefilled WhatsApp message for the hub's buttons. */
@@ -144,6 +145,16 @@ export const categoryContent: Record<string, CategoryContent> = {
     ],
     comparison: {
       heading: 'ما الفرق بين باركيه خشب وباركيه SPC ومشمع باركيه؟',
+      table: {
+        columns: ['باركيه خشب', 'باركيه SPC (ضد الماء)', 'مشمع باركيه (فينيل رول)'],
+        rows: [
+          { label: 'ما هو', values: ['ألواح بملمس ودفء الخشب', 'ألواح بقلب حجري مضغوط وطبقة علوية بشكل الخشب', 'فينيل رول مطبوع بشكل الخشب'] },
+          { label: 'مكانه', values: ['غرف النوم والمجالس والصالات', 'المطبخ المفتوح على الصالة والملحق والمداخل', 'المحلات والمستودعات والشقق المؤجرة'] },
+          { label: 'مع الماء', values: ['يتأثر بالماء الراكد والرطوبة الصاعدة', 'يتحمل الانسكاب والمسح اليومي', 'سطحه لا يمتص الماء'] },
+          { label: 'الفرش', values: ['ألواح نتفق على اتجاهها قبل التركيب', 'ألواح فوق البلاط المستوي', 'يُقص على مقاس المكان ويُفرش كقطعة شبه متصلة'] },
+          { label: 'انتبه إلى', values: ['استواء الأرضية والمسافة تحت الأبواب', 'يختلف عن الخشب في الملمس تحت القدم', 'أرق من الألواح، فتظهر عليه حفر الأرضية إن لم تُعالج'] },
+        ],
+      },
       paragraphs: [
         'باركيه خشب هو الألواح التي يقصدها أغلب من يبحث عن باركيه ارضيات لبيته: ملمس ودفء الخشب، ويُفرش في الغرف الجافة التي يُمشى فيها بالنعال والجوارب. يتأثر بالماء الراكد وبالرطوبة الصاعدة من الأرض، لذلك نبعده عن المطبخ ودورات المياه، ونفحص استواء الأرضية والمسافة تحت الأبواب في المعاينة.',
         'باركيه SPC ألواح بقلب حجري مضغوط وطبقة علوية بشكل الخشب، وهو ما يُباع في السوق باسم باركيه ضد الماء. يتحمل الانسكاب والمسح اليومي، فيناسب المطبخ المفتوح على الصالة والملحق والمداخل، ويُركّب فوق البلاط المستوي. يبدو من بعيد مثل الخشب، ويختلف عنه في الملمس تحت القدم.',
