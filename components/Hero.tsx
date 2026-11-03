@@ -162,7 +162,7 @@ function CategoryRail() {
                                             src={product.image}
                                             alt={imageAlt(product.image, `صورة ${product.name}`)}
                                             fill
-                                            sizes="150px"
+                                            sizes="(max-width: 767px) 118px, 150px"
                                             className="object-cover transition-transform duration-500 group-hover:scale-110"
                                         />
                                     </span>
