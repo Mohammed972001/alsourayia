@@ -14,7 +14,10 @@ export interface ProductDetails {
   newestFirst?: boolean;
   images: string[];
   availableColors: { name: string; value: string }[];
-  price: number;
+  /** The owner's starting price per square metre (2026-11-03). */
+  startingPriceSar?: number;
+  /** Common market values or the supplier's catalogue, at the owner's request; the page says the quote confirms them. */
+  specs?: { label: string; value: string }[];
   features: string[];
   faqs?: { question: string; answer: string }[];
   /** Ids of products to cross-link from this product page. */

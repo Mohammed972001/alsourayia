@@ -11,7 +11,7 @@ import { SectionHeading } from '@/components/SectionHeading';
 import { WhatsAppIcon } from '@/components/WhatsAppIcon';
 import { ProductCard } from '@/components/product/ProductCard';
 
-// The ad landing products first, then the rest of the range. Horse rubber is not stocked now.
+// The ad landing products first, then the rest of the range.
 const FEATURED_IDS = [
     'office-carpet',
     'rabal-gem',

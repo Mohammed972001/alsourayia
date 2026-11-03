@@ -11,6 +11,8 @@ export interface Product {
   summary?: string;
   detailedDescription: string;
   features: string[];
+  startingPriceSar?: number;
+  specs?: { label: string; value: string }[];
   gallery: string[];
   faqs?: { question: string; answer: string }[];
   related?: string[];
@@ -61,6 +63,8 @@ export const products: Product[] = productsDetails.map((product) => ({
   summary: product.summary,
   detailedDescription: product.detailedDescription,
   features: product.features,
+  startingPriceSar: product.startingPriceSar,
+  specs: product.specs,
   gallery: product.images,
   faqs: product.faqs,
   related: product.related,

@@ -85,6 +85,8 @@ export function ProductDetail({ productId, dynamicGallery }: ProductDetailProps)
         // Folder and file names hold spaces; JSON-LD needs valid URLs.
         "image": allImages.map((img) => encodeURI(`${baseUrl}${img}`)),
         "areaServed": { "@type": "City", "name": "الرياض" },
+        // «يبدأ من»: the owner's lowest price per square metre.
+        ...(product.startingPriceSar && { "offers": { "@type": "AggregateOffer", "lowPrice": product.startingPriceSar, "priceCurrency": "SAR" } }),
         // The business entity is described once, in the layout's @graph.
         "provider": { "@id": `${baseUrl}/#business` }
     };
@@ -163,6 +165,13 @@ export function ProductDetail({ productId, dynamicGallery }: ProductDetailProps)
                             <span className="text-xs text-[#6B7280] mb-2 block">{product.category}</span>
                             <h1 className="text-2xl md:text-3xl text-[#1A1A1A] mb-3 lg:mb-4">{product.name}</h1>
                             <p className="text-[#4A4A4A] mb-5 lg:mb-8 leading-relaxed">{product.summary ?? product.description}</p>
+                            {product.startingPriceSar && (
+                                <p className="-mt-2 mb-5 lg:-mt-4 lg:mb-8 text-[#1A1A1A]">
+                                    <span className="text-sm text-[#6B7280]">يبدأ من </span>
+                                    <span className="text-xl font-semibold">{product.startingPriceSar}</span>
+                                    <span className="text-sm text-[#6B7280]"> ريال للمتر المربع</span>
+                                </p>
+                            )}
 
                             {/* CTAs */}
                             <div className="flex flex-col sm:flex-row gap-3 mb-3">
@@ -245,6 +254,20 @@ export function ProductDetail({ productId, dynamicGallery }: ProductDetailProps)
                                     </div>
                                 ))}
                             </div>
+                            {product.specs && (
+                                <>
+                                    <h2 className="text-lg text-[#1A1A1A] mt-6 mb-4">المواصفات</h2>
+                                    <dl className="space-y-2 text-sm">
+                                        {product.specs.map((spec) => (
+                                            <div key={spec.label} className="flex flex-wrap gap-x-2">
+                                                <dt className="text-[#6B7280]">{spec.label}:</dt>
+                                                <dd className="text-[#1A1A1A]">{spec.value}</dd>
+                                            </div>
+                                        ))}
+                                    </dl>
+                                    <p className="mt-4 text-xs text-[#6B7280]">هذه القيم هي الشائعة لهذا النوع، ونؤكد المتوفر منها في عرض السعر.</p>
+                                </>
+                            )}
                         </div>
                     </div>
 

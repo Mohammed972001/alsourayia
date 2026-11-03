@@ -128,9 +128,9 @@ export function Hero() {
     );
 }
 
-/** Product shortcuts overlapping the hero edge; scrolls sideways on phones. Horse rubber is not stocked now. */
+/** Product shortcuts overlapping the hero edge; scrolls sideways on phones. */
 function CategoryRail() {
-    const items = products.filter((product) => product.id !== 'horse-rubber');
+    const items = products;
 
     return (
         <div className="relative z-20 -mt-16 md:-mt-20">

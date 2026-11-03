@@ -1,7 +1,7 @@
 // The site-wide JSON-LD graph (research R5): one business, one organisation, one website,
 // all built from data/business.ts. Page-level blocks (BreadcrumbList, FAQPage, Service,
 // CollectionPage) reference these nodes by @id instead of describing the business again.
-// No aggregateRating and no Offer with a price: neither is confirmed by the owner.
+// No aggregateRating. Prices live on the product pages (the owner's starting prices, 2026-11-03).
 import {
     BRAND_ALTERNATE_NAMES, BRAND_NAME, CITY, COUNTRY_CODE, EMAIL, GEO, HOURS, LEGAL_NAME, MAPS_URL,
     NATIONAL_ADDRESS, PHONES, POSTAL_CODE, REGION, SAME_AS, SITE_URL, STREET_ADDRESS, UNIFIED_NUMBER, VAT_NUMBER,

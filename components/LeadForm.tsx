@@ -6,8 +6,8 @@ import { whatsappLink } from '@/lib/contact';
 import { SectionHeading } from '@/components/SectionHeading';
 import { WhatsAppIcon } from '@/components/WhatsAppIcon';
 
-/** Products a visitor can ask about; horse rubber is not stocked now. */
-const PRODUCT_NAMES = products.filter((p) => p.id !== 'horse-rubber').map((p) => p.name);
+/** Products a visitor can ask about. */
+const PRODUCT_NAMES = products.map((p) => p.name);
 const OTHER = 'غير محدد، أحتاج مساعدة في الاختيار';
 
 /** Arabic-Indic (٠-٩) and Eastern Arabic-Indic (۰-۹) digits to ASCII. */
