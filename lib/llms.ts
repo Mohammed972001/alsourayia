@@ -55,7 +55,7 @@ function hubsSection(): string[] {
 function productsSection(): string[] {
     return [
         '## المنتجات',
-        ...offered.map((p) => `- [${productName(p.title)}](${SITE_URL}/products/${p.id}): ${p.metaDescription}`),
+        ...offered.map((p) => `- [${productName(p.title)}](${SITE_URL}/products/${p.id}): ${p.summary ?? p.metaDescription}`),
         '',
     ];
 }
