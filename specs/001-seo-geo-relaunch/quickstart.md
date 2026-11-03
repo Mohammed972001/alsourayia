@@ -15,7 +15,7 @@ node scripts/crawl-check.mjs https://www.mokeet-elsuarye.com
 node scripts/phone-check.mjs https://www.mokeet-elsuarye.com
 ```
 
-Live tag check: the CDP script pattern in the session scratchpad (`tag-check-live.mjs`), analytics hits blocked,
+Live tag check: `node scripts/tag-check.mjs` (from Git Bash: `MSYS_NO_PATHCONV=1` when passing page paths), analytics hits blocked,
 `?gclid=TEST123`.
 
 Photos: `node scripts/photo-intake.mjs <zip> <product-id>` → WebP ≤1600 px, duplicate check against other client
