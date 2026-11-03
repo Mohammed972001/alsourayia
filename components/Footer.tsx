@@ -14,17 +14,17 @@ const quickLinks = [
     { name: 'الرئيسية', href: '/' },
     { name: 'من نحن', href: '/about' },
     { name: 'المنتجات', href: '/products' },
+    { name: 'الكتالوجات', href: '/catalogs' },
     { name: 'مناطق الخدمة', href: '/service-areas' },
     { name: 'تواصل معنا', href: '/contact' },
     { name: 'سياسة الخصوصية', href: '/privacy' },
 ];
 
 // Every indexable product and both hubs, so each is linked from every page (some were only linked
-// from home). Horse rubber is not stocked now, so it is not listed here.
-const NOT_LISTED = new Set(['horse-rubber']);
+// from home).
 const productLinks = [
     ...hubCategorySlugs.map((slug) => ({ name: `${categorySlugMap[slug]} (كل الأنواع)`, href: `/products/category/${slug}` })),
-    ...products.filter((p) => !NOT_LISTED.has(p.id)).map((p) => ({ name: p.name, href: `/products/${p.id}` })),
+    ...products.map((p) => ({ name: p.name, href: `/products/${p.id}` })),
 ];
 
 export function Footer() {

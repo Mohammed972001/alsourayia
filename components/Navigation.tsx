@@ -13,6 +13,7 @@ const menuItems = [
     { label: 'الرئيسية', href: '/', sectionId: 'home' },
     { label: 'من نحن', href: '/about', sectionId: 'about' },
     { label: 'المنتجات', href: '/products', sectionId: 'products' },
+    { label: 'الكتالوجات', href: '/catalogs', sectionId: 'catalogs' },
     { label: 'مناطق الخدمة', href: '/service-areas', sectionId: 'service-areas' },
     { label: 'تواصل معنا', href: '/contact', sectionId: 'contact' },
 ];

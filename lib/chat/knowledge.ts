@@ -25,6 +25,8 @@ for (const p of products) {
     p.description,
     p.detailedDescription,
     ...p.features.map((f) => `- ${f}`),
+    ...(p.startingPriceSar ? [`السعر: يبدأ من ${p.startingPriceSar} ريال للمتر المربع، والسعر النهائي في عرض السعر.`] : []),
+    ...(p.specs ?? []).map((s) => `- ${s.label}: ${s.value} (شائعة، ويؤكدها عرض السعر)`),
     ...(p.faqs ?? []).map((f) => `س: ${f.question}\nج: ${f.answer}`),
     "",
   );
@@ -35,11 +37,11 @@ for (const [slug, c] of Object.entries(categoryContent)) {
   lines.push(`### ${c.heading} — ${SITE_URL}/products/category/${slug}`, c.intro, ...c.items.map((i) => `- ${i.label}: ${i.text}`), c.outro, "");
 }
 
-lines.push("", "## صفحات أخرى", `- كل المنتجات: ${SITE_URL}/products`, `- مناطق الخدمة: ${SITE_URL}/service-areas`, `- التواصل: ${SITE_URL}/contact`);
+lines.push("", "## صفحات أخرى", `- كل المنتجات: ${SITE_URL}/products`, `- الكتالوجات: ${SITE_URL}/catalogs`, `- مناطق الخدمة: ${SITE_URL}/service-areas`, `- التواصل: ${SITE_URL}/contact`);
 
 export const CHAT_SITE: ChatSite = {
   name: NAME,
-  niche: "أرضيات متخصصة في الرياض، وأولها الربل: ربل جيم ومطاط دورات المياه (مطاط الخيل غير متوفر حالياً)، مع الموكيت والباركيه",
+  niche: "أرضيات متخصصة في الرياض، وأولها الربل: ربل جيم ومطاط دورات المياه ومطاط الخيل، مع الموكيت والباركيه",
   phone: PHONE_DISPLAY,
   whatsappUrl: whatsappLink(),
   knowledge: lines.join("\n"),

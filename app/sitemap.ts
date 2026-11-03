@@ -18,6 +18,7 @@ const PAGE_UPDATED: Record<string, string> = {
     'service-areas': '2026-10-27',
     contact: '2026-10-27',
     privacy: '2026-10-23',
+    catalogs: '2026-11-04',
 };
 
 const HUB_UPDATED: Record<string, string> = {
@@ -33,6 +34,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
             lastModified: new Date(PAGE_UPDATED['home']),
             changeFrequency: 'weekly',
             priority: 1.0,
+        },
+        {
+            url: `${baseUrl}/catalogs`,
+            lastModified: new Date(PAGE_UPDATED['catalogs']),
+            changeFrequency: 'monthly',
+            priority: 0.7,
         },
         {
             url: `${baseUrl}/about`,

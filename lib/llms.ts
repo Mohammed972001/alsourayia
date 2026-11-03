@@ -10,10 +10,8 @@ import { guides } from '@/data/guides';
 import { productsDetails } from '@/data/products';
 import { categoryContent, categorySlugMap, getCategoryFromId, hubCategorySlugs } from '@/lib/products';
 
-// Not stocked now; its page stays online but it is not offered.
-const NOT_OFFERED = new Set(['horse-rubber']);
 
-const offered = productsDetails.filter((p) => !NOT_OFFERED.has(p.id));
+const offered = productsDetails;
 const productName = (title: string) => title.split(' - ')[0];
 
 function header(): string[] {
@@ -35,7 +33,7 @@ function header(): string[] {
         `- أوقات العمل: ${HOURS_TEXT}`,
         `- نطاق الخدمة: ${AREA_SERVED_TEXT}`,
         `- الخدمات: ${SERVICES.join('، ')}`,
-        '- الأسعار: حسب المقاس والنوع بعد المعاينة، ويُرسل عرض السعر على الواتساب.',
+        `- الأسعار تبدأ من (للمتر المربع): ${productsDetails.filter((p) => p.startingPriceSar).map((p) => `${p.title.split(' - ')[0]} ${p.startingPriceSar} ريال`).join('، ')}. السعر النهائي حسب المقاس والنوع بعد المعاينة، ويُرسل عرض السعر على الواتساب.`,
         `- الموقع الإلكتروني: ${SITE_URL}`,
         '',
     ];
@@ -72,6 +70,7 @@ function pagesSection(): string[] {
     return [
         '## صفحات أخرى',
         `- [كل المنتجات](${SITE_URL}/products)`,
+        `- [الكتالوجات](${SITE_URL}/catalogs)`,
         `- [من نحن](${SITE_URL}/about)`,
         `- [مناطق الخدمة والتوصيل](${SITE_URL}/service-areas)`,
         `- [التواصل](${SITE_URL}/contact)`,
@@ -91,7 +90,7 @@ export function llmsFullText(): string {
         const c = categoryContent[slug];
         if (!c) continue;
         lines.push(`## ${c.heading}`, `${SITE_URL}/products/category/${slug}`, '', c.intro, '');
-        for (const item of c.items.filter((i) => !NOT_OFFERED.has(i.productId))) {
+        for (const item of c.items) {
             lines.push(`- [${item.label}](${SITE_URL}/products/${item.productId}): ${item.text}`);
         }
         lines.push('', `### ${c.comparison.heading}`, ...c.comparison.paragraphs, '');
