@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, ResolvingMetadata } from 'next';
 import dynamic from 'next/dynamic';
 import { Navigation } from '@/components/Navigation';
 import { Hero } from '@/components/Hero';
@@ -21,9 +21,14 @@ import { ADDRESS_SHORT, HOURS_SHORT, SERVICES } from '@/data/business';
 
 const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://www.mokeet-elsuarye.com').replace(/\/$/, '');
 
-export const metadata: Metadata = {
-    alternates: { canonical: baseUrl, languages: { 'ar-SA': baseUrl } },
-};
+export async function generateMetadata(_: unknown, parent: ResolvingMetadata): Promise<Metadata> {
+    // The share title and image stay in app/layout.tsx; only the page's own address is added here.
+    const { openGraph } = await parent;
+    return {
+        alternates: { canonical: baseUrl, languages: { 'ar-SA': baseUrl } },
+        openGraph: { ...openGraph, url: baseUrl } as Metadata['openGraph'],
+    };
+}
 
 // The tail of the page loads after the top; it is still rendered on the server.
 const ServiceAreas = dynamic(() => import('@/components/ServiceAreas').then((m) => ({ default: m.ServiceAreas })));
