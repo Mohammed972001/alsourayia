@@ -5,6 +5,9 @@ import { Hero } from '@/components/Hero';
 import { Marquee } from '@/components/motion/Marquee';
 import { PageView } from '@/components/motion/PageView';
 import { Spaces } from '@/components/Spaces';
+import { Scenes } from '@/components/home/Scenes';
+import { HomeCatalogs } from '@/components/home/HomeCatalogs';
+import { Promises } from '@/components/home/Promises';
 import { About } from '@/components/About';
 import { Offers } from '@/components/Offers';
 import { FeaturedProducts } from '@/components/FeaturedProducts';
@@ -48,10 +51,13 @@ export default function Home() {
                         label="ما نقدمه"
                         className="mt-10 md:mt-14 border-y border-line bg-cream py-3 md:py-4 text-ink"
                     />
+                    <Scenes />
                     <Spaces />
                     <About />
                     <Offers />
                     <FeaturedProducts />
+                    <HomeCatalogs />
+                    <Promises />
                     <HowWeWork />
                     <SEOContent />
                     <ServiceAreas />

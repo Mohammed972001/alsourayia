@@ -4,7 +4,6 @@ import Link from '@/components/AppLink';
 import { Icon } from '@/components/icons/Icon';
 import { products } from '@/lib/products';
 import { whatsappLink } from '@/lib/contact';
-import { ADDRESS_SHORT } from '@/data/business';
 import { imageAlt } from '@/data/stock-images';
 import { WhatsAppIcon } from '@/components/WhatsAppIcon';
 
@@ -57,15 +56,7 @@ export function Hero() {
                 {/* Content */}
                 <div className="relative z-10 container mx-auto px-5 lg:px-8 pt-36 pb-28 md:pt-40 md:pb-36">
                     <div className="max-w-2xl">
-                        <span
-                            className="rise-in inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 backdrop-blur px-4 py-1.5 text-xs md:text-sm text-white/90"
-                            style={step(0)}
-                        >
-                            <span className="w-1.5 h-1.5 rounded-full bg-mint" />
-                            موكيت · باركيه · أرضيات مطاط — {ADDRESS_SHORT}
-                        </span>
-
-                        <h1 className="font-display font-bold text-white mt-5 text-[2.2rem] leading-[1.25] md:text-6xl md:leading-[1.15] lg:text-7xl">
+                        <h1 className="font-display font-bold text-white text-[2.2rem] leading-[1.25] md:text-6xl md:leading-[1.15] lg:text-7xl">
                             <RiseWords text={TITLE_LINE} from={1} />
                             {/* Keeps the two lines apart in the heading's text for search engines and readers. */}{' '}
                             <span className="block text-brass">
@@ -77,8 +68,7 @@ export function Hero() {
                             className="rise-in mt-5 text-base md:text-xl text-white/80 leading-relaxed max-w-xl"
                             style={step(5)}
                         >
-                            موكيت مكاتب ومساجد، باركيه، فينيل وأرضيات مطاط من معرضنا في حراج بن قاسم بالرياض، مع معاينة وقياس مجاناً وتوريد وتركيب،
-                            وتوريد لكل مدن المملكة.
+                            من معرضنا في حراج بن قاسم بالرياض، مع توريد لكل مدن المملكة.
                         </p>
 
                         <div className="mt-8 grid grid-cols-2 gap-3 sm:flex sm:flex-wrap">
