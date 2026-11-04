@@ -49,6 +49,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
             type: 'website',
             locale: 'ar_SA',
             siteName: 'موكيت ومفروشات السريع',
+            url: `${baseUrl}/products/${product.id}`,
         },
         twitter: {
             card: 'summary_large_image',
