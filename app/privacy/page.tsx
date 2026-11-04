@@ -6,6 +6,7 @@ import { Breadcrumb } from '@/components/Breadcrumb';
 import { PageView } from '@/components/motion/PageView';
 import { ADDRESS, BRAND_NAME, LEGAL_NAME, NATIONAL_ADDRESS, PHONE_DISPLAY, PHONE2_DISPLAY, UNIFIED_NUMBER, VAT_NUMBER } from '@/lib/contact';
 import type { CSSProperties } from 'react';
+import { DEFAULT_OG_IMAGE } from '@/lib/og';
 
 const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://www.mokeet-elsuarye.com').replace(/\/$/, '');
 
@@ -14,6 +15,14 @@ export const metadata: Metadata = {
     description: `كيف يتعامل موقع ${BRAND_NAME} مع بياناتك: التواصل بالهاتف وواتساب، المساعد الآلي، وأدوات قياس الزيارات والإعلانات.`,
     alternates: {
         canonical: `${baseUrl}/privacy`,
+    },
+    openGraph: {
+        title: `سياسة الخصوصية | ${BRAND_NAME}`,
+        description: `كيف يتعامل موقع ${BRAND_NAME} مع بياناتك: التواصل بالهاتف وواتساب، المساعد الآلي، وأدوات قياس الزيارات والإعلانات.`,
+        locale: 'ar_SA',
+        type: 'website',
+        url: `${baseUrl}/privacy`,
+        images: [DEFAULT_OG_IMAGE],
     },
 };
 

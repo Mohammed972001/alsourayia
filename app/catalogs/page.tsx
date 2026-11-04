@@ -7,6 +7,7 @@ import { Breadcrumb } from '@/components/Breadcrumb';
 import { PageView } from '@/components/motion/PageView';
 import { catalogGroups } from '@/data/catalogs';
 import { whatsappLink } from '@/lib/contact';
+import { DEFAULT_OG_IMAGE } from '@/lib/og';
 
 const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://www.mokeet-elsuarye.com').replace(/\/$/, '');
 
@@ -14,6 +15,14 @@ export const metadata: Metadata = {
     title: 'كتالوجات الأرضيات والموكيت',
     description: 'كتالوجات موكيت المربعات والفينيل الطبي وأرضيات الفوم وSPC واللامينيت، للعرض والتحميل. اختر التصميم وأرسل لنا اسمه لنرسل عرض السعر.',
     alternates: { canonical: `${baseUrl}/catalogs` },
+    openGraph: {
+        title: 'كتالوجات الأرضيات والموكيت | موكيت ومفروشات السريع',
+        description: 'كتالوجات موكيت المربعات والفينيل الطبي وأرضيات الفوم وSPC واللامينيت، للعرض والتحميل. اختر التصميم وأرسل لنا اسمه لنرسل عرض السعر.',
+        locale: 'ar_SA',
+        type: 'website',
+        url: `${baseUrl}/catalogs`,
+        images: [DEFAULT_OG_IMAGE],
+    },
 };
 
 export default function CatalogsPage() {
