@@ -8,6 +8,7 @@ import { HelpBand } from '@/components/HelpBand';
 import { PageView } from '@/components/motion/PageView';
 import { PHONE_DISPLAY, PHONE2_DISPLAY } from '@/lib/contact';
 import { HOURS_TEXT } from '@/data/business';
+import { DEFAULT_OG_IMAGE } from '@/lib/og';
 
 const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://www.mokeet-elsuarye.com').replace(/\/$/, '');
 
@@ -24,6 +25,7 @@ export const metadata: Metadata = {
         locale: 'ar_SA',
         type: 'website',
         url: `${baseUrl}/contact`,
+        images: [DEFAULT_OG_IMAGE],
     },
 };
 

@@ -11,6 +11,7 @@ import { ADDRESS, MAPS_URL } from '@/lib/contact';
 import { HOURS_TEXT } from '@/data/business';
 import Link from '@/components/AppLink';
 import type { CSSProperties } from 'react';
+import { DEFAULT_OG_IMAGE } from '@/lib/og';
 
 const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://www.mokeet-elsuarye.com').replace(/\/$/, '');
 
@@ -27,6 +28,7 @@ export const metadata: Metadata = {
         locale: 'ar_SA',
         type: 'website',
         url: `${baseUrl}/service-areas`,
+        images: [DEFAULT_OG_IMAGE],
     },
 };
 

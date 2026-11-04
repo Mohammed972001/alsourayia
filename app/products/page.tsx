@@ -9,6 +9,7 @@ import { PageView } from '@/components/motion/PageView';
 import { categoryHref, categorySlugMap } from '@/lib/products';
 import Link from '@/components/AppLink';
 import type { CSSProperties } from 'react';
+import { DEFAULT_OG_IMAGE } from '@/lib/og';
 
 const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://www.mokeet-elsuarye.com').replace(/\/$/, '');
 
@@ -25,6 +26,7 @@ export const metadata: Metadata = {
         locale: 'ar_SA',
         type: 'website',
         url: `${baseUrl}/products`,
+        images: [DEFAULT_OG_IMAGE],
     },
 };
 

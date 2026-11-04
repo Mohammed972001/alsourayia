@@ -6,6 +6,7 @@ import { FloatingButtons } from '@/components/FloatingButtons';
 import { Breadcrumb } from '@/components/Breadcrumb';
 import { HelpBand } from '@/components/HelpBand';
 import { PageView } from '@/components/motion/PageView';
+import { DEFAULT_OG_IMAGE } from '@/lib/og';
 
 const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://www.mokeet-elsuarye.com').replace(/\/$/, '');
 
@@ -22,6 +23,7 @@ export const metadata: Metadata = {
         locale: 'ar_SA',
         type: 'website',
         url: `${baseUrl}/about`,
+        images: [DEFAULT_OG_IMAGE],
     },
 };
 
