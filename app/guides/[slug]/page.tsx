@@ -13,6 +13,7 @@ import { getGuide, guides } from '@/data/guides';
 import { ComparisonTable } from '@/components/ComparisonTable';
 import { imageAlt } from '@/data/stock-images';
 import { ADDRESS, PHONE_DISPLAY, PHONE_TEL, whatsappLink } from '@/lib/contact';
+import { DEFAULT_OG_IMAGE } from '@/lib/og';
 import { getProductById, type Product } from '@/lib/products';
 
 type Props = { params: Promise<{ slug: string }> };
@@ -40,6 +41,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
             type: 'article',
             locale: 'ar_SA',
             siteName: BRAND_NAME,
+            images: [DEFAULT_OG_IMAGE],
         },
     };
 }
