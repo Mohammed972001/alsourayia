@@ -14,6 +14,7 @@ function adSource(): string | null {
         if (params.has('gclid') || params.has('gbraid') || params.has('wbraid')) source = 'google';
         else if (params.get('utm_source') === 'google' && params.get('utm_medium') === 'cpc') source = 'google';
         else if (params.has('ttclid')) source = 'tiktok';
+        else if (params.get('utm_source') === 'tiktok' && params.get('utm_medium') === 'cpc') source = 'tiktok';
         if (source) sessionStorage.setItem(AD_SOURCE_KEY, source);
         return source ?? sessionStorage.getItem(AD_SOURCE_KEY);
     } catch {

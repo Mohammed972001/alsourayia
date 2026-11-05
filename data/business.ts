@@ -46,7 +46,8 @@ export const PHONES = [
 ] as const;
 
 export const EMAIL = 'info@mokeet-elsuarye.com';
-export const SAME_AS = ['https://www.tiktok.com/@httpswww.mokeetelsuarye1'];
+export const TIKTOK_URL = 'https://www.tiktok.com/@httpswww.mokeetelsuarye1';
+export const SAME_AS = [TIKTOK_URL];
 
 // --- Place ----------------------------------------------------------------------------------
 

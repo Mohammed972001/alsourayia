@@ -21,7 +21,7 @@
 | swatch | free sample | custom |
 | install | supply and installation | hugeicons (tool) |
 | delivery | delivery to all cities | hugeicons (truck) |
-| phone, whatsapp, location, clock | contact rows | hugeicons / official WhatsApp glyph |
+| phone, whatsapp, tiktok, location, clock | contact rows | hugeicons / official WhatsApp glyph |
 | arrow, chevron, menu, close, check, eye, plus, minus | navigation and UI | hugeicons |
 
 Acceptance: an inventory script lists every icon use; 0 lucide imports; every name is in this table.
