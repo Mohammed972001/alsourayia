@@ -4,7 +4,7 @@ import { SectionHeading } from '@/components/SectionHeading';
 import { WhatsAppIcon } from '@/components/WhatsAppIcon';
 import { ContactRow, ContactRows } from '@/components/cards/ContactRow';
 import { ADDRESS, MAPS_URL, PHONE_DISPLAY, PHONE_TEL, PHONE2_DISPLAY, PHONE2_TEL, whatsappLink } from '@/lib/contact';
-import { HOURS_SHORT, HOURS_TEXT } from '@/data/business';
+import { HOURS_SHORT, HOURS_TEXT, TIKTOK_URL } from '@/data/business';
 
 const quickActions: { label: string; href: string; icon: IconName | null; external: boolean; tone: string }[] = [
     { label: 'اتصل بنا', href: PHONE_TEL, icon: 'phone', external: false, tone: 'bg-ink text-white' },
@@ -67,6 +67,17 @@ export function Contact({ headingAs = 'h2' }: { headingAs?: 'h1' | 'h2' }) {
                             </ContactRow>
                             <ContactRow icon="clock" label="أوقات العمل" labelAs="h3" dataAttrs={{ 'data-reveal': 'slide' }} style={{ '--i': 5 } as CSSProperties}>
                                 {HOURS_SHORT}
+                            </ContactRow>
+                            <ContactRow
+                                icon="tiktok"
+                                label="تيك توك"
+                                labelAs="h3"
+                                href={TIKTOK_URL}
+                                external
+                                dataAttrs={{ 'data-reveal': 'slide' }}
+                                style={{ '--i': 6 } as CSSProperties}
+                            >
+                                تابعنا على تيك توك
                             </ContactRow>
                         </ContactRows>
                     </div>

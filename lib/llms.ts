@@ -3,7 +3,7 @@
 // nothing the pages do not. The home FAQ is left out on purpose (see lib/chat/knowledge.ts).
 import {
     ADDRESS, AREA_SERVED_TEXT, BRAND_LATIN, BRAND_NAME, BRAND_SHORT, EMAIL, HOURS_TEXT, LEGAL_NAME, MAPS_URL,
-    NATIONAL_ADDRESS, PHONE2_DISPLAY, PHONE_DISPLAY, POSTAL_CODE, SERVICES, SITE_URL, UNIFIED_NUMBER, VAT_NUMBER,
+    NATIONAL_ADDRESS, PHONE2_DISPLAY, PHONE_DISPLAY, POSTAL_CODE, SERVICES, SITE_URL, TIKTOK_URL, UNIFIED_NUMBER, VAT_NUMBER,
     WHATSAPP_NUMBER,
 } from '@/data/business';
 import { guides } from '@/data/guides';
@@ -30,6 +30,7 @@ function header(): string[] {
         `- الهاتف وواتساب: ${PHONE_DISPLAY} (واتساب: https://wa.me/${WHATSAPP_NUMBER})`,
         `- رقم ثانٍ للاتصال، وواتساب صفحات الباركيه والمطاط والأرضيات الطبية: ${PHONE2_DISPLAY}`,
         `- البريد: ${EMAIL}`,
+        `- تيك توك: ${TIKTOK_URL}`,
         `- أوقات العمل: ${HOURS_TEXT}`,
         `- نطاق الخدمة: ${AREA_SERVED_TEXT}`,
         `- الخدمات: ${SERVICES.join('، ')}`,

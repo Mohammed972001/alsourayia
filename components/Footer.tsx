@@ -5,7 +5,7 @@ import { Icon } from '@/components/icons/Icon';
 import { ADDRESS, PHONE_DISPLAY, PHONE_TEL, PHONE2_DISPLAY, PHONE2_TEL, legalLine, whatsappLink } from '@/lib/contact';
 import { WhatsAppIcon } from '@/components/WhatsAppIcon';
 import { HeadingWords } from '@/components/motion/HeadingWords';
-import { BRAND_LATIN } from '@/data/business';
+import { BRAND_LATIN, TIKTOK_URL } from '@/data/business';
 import { categorySlugMap, hubCategorySlugs, products } from '@/lib/products';
 
 // Real URLs rather than #section anchors: the footer is on every page, so
@@ -114,6 +114,15 @@ export function Footer() {
                                 <Icon name="location" size={16} className="mt-0.5 flex-shrink-0" />
                                 <span>{ADDRESS}</span>
                             </address>
+                            <a
+                                href={TIKTOK_URL}
+                                target="_blank"
+                                rel="me noopener noreferrer"
+                                className="flex items-center gap-2 text-white/60 hover:text-white text-sm transition-colors"
+                            >
+                                <Icon name="tiktok" size={16} />
+                                <span>تابعنا على تيك توك</span>
+                            </a>
                         </div>
                     </div>
                 </div>

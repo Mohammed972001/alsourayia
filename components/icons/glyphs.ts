@@ -23,6 +23,7 @@ import {
     MinusSignIcon,
     TapeMeasureIcon,
     Tick02Icon,
+    TiktokIcon,
     ToolsIcon,
     ViewIcon,
     WhatsappIcon,
@@ -110,6 +111,7 @@ export const glyphs = {
     // contact
     phone: Call02Icon,
     whatsapp: WhatsappIcon,
+    tiktok: TiktokIcon,
     location: Location01Icon,
     map: MapsLocation01Icon,
     store: StoreLocation01Icon,
