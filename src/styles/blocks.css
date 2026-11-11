@@ -244,11 +244,16 @@
 
 /* ---- Category hubs ------------------------------------------------------------------------------ */
 
-.hub-actions {
+.page-hero--compact .page-hero__title {
+  font-size: var(--size-3xl);
+  line-height: var(--leading-snug);
+}
+
+.page-hero__actions {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-3);
-  margin-block: calc(var(--space-6) * -1) var(--space-6);
+  margin-top: var(--space-6);
 }
 
 .hub-group__more {

@@ -8,7 +8,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { PageHero } from "@/components/PageHero";
 import { ProductCard } from "@/components/ProductCard";
 import { guidesForHub } from "@/content/guides";
-import { hubs, productsIn } from "@/content/products";
+import { collections, hubs, productsIn } from "@/content/products";
 import { whatsappHref } from "@/lib/contact";
 import { absoluteUrl, breadcrumbNode, faqNode, graph, pageMetadata, webPageNode } from "@/lib/seo";
 
@@ -38,7 +38,7 @@ export default async function HubPage({ params }: PageProps<"/products/category/
   const trail = [
     { name: "الرئيسية", path: "/" },
     { name: "الأرضيات", path: "/products" },
-    { name: hub.h1, path },
+    { name: collections[hub.collection].name, path },
   ];
   const itemList = {
     "@type": "ItemList",
@@ -49,18 +49,16 @@ export default async function HubPage({ params }: PageProps<"/products/category/
   return (
     <>
       <JsonLd data={graph(webPageNode(path, hub.seoTitle, hub.seoDescription, "CollectionPage"), breadcrumbNode(trail), itemList, faqNode(hub.faq))} />
-      <PageHero trail={trail} eyebrow="مقارنة وأنواع" title={hub.h1} lead={hub.summary} images={photos} />
-
-      <div className="container hub-actions" data-reveal>
-        <a className="btn btn--primary" href={whatsappHref(hub.h1)} data-wa>
+      <PageHero trail={trail} eyebrow="مقارنة وأنواع" title={hub.h1} lead={hub.summary} images={photos} compact>
+        <a className="btn btn--primary" href={whatsappHref(collections[hub.collection].name)} data-wa>
           <Icon name="whatsapp" size={20} />
           <span>اطلب معاينة مجانية</span>
         </a>
-        <a className="btn btn--ghost" href={whatsappHref(hub.h1, true)} data-wa>
+        <a className="btn btn--ghost" href={whatsappHref(collections[hub.collection].name, true)} data-wa>
           <Icon name="sample" size={20} />
           <span>اطلب عينة مجانية</span>
         </a>
-      </div>
+      </PageHero>
 
       <section className="section hub-group" aria-labelledby="hub-items-title">
         <div className="container">
