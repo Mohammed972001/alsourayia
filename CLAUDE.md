@@ -35,3 +35,14 @@ After a live deploy: `node scripts/tag-check.mjs` and `node scripts/phone-check.
 - Git Bash rewrites a lone `/` argument into a Windows path: prefix `MSYS_NO_PATHCONV=1`.
 - The header is fixed over `.header-space`; never let a header part change the page height on scroll.
 - Commits: Conventional Commits ending with the `Assisted-by:` trailer from the global CLAUDE.md; never `Co-Authored-By`.
+
+## Round 3 (2026-11-12)
+
+- Design picker: `design/options/` (`node design/options/build.mjs` joins `parts/`; local review
+  `node design/options/serve.mjs 3072` → http://localhost:3072/design/options/). It ships with the preview only:
+  after `npm run build`, run `node design/options/to-preview.mjs` before `npx wrangler deploy -c wrangler.preview.jsonc`
+  so https://mokeet-elsuarye-preview.bareeq-kitchens.workers.dev/options/ keeps working. It is the user's reference
+  for future sites (copy in `D:/work/_design-reference/options-picker/`).
+- The user's picks and the task list: `specs/002-redesign/tasks.md` (Round 3), ADR-0002 amendment.
+- AI art lives in `media-src/ai/` (labelled «رسمة توضيحية») and `public/textures/`; never present it as the
+  shop's own work.
