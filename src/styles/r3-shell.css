@@ -1,1 +1,164 @@
-/* Round 3 (2026-11-12): shell styles from the user's picks in design/options. */
+/* Round 3 (2026-11-12): shell styles from the user's picks in design/options. The closing card
+   («ج الكارت الغامق بالرسمة») lives here; it overrides the old copper band rules still in home.css. */
+
+.cta {
+  overflow: visible;
+  padding-block: var(--section-y);
+  background: var(--surface-page);
+  color: var(--text-inverse);
+}
+
+.cta__card {
+  display: grid;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  background: var(--surface-inverse);
+  color: var(--text-inverse);
+  box-shadow: var(--shadow-lg);
+}
+
+@media (min-width: 64rem) {
+  .cta__card {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  }
+}
+
+.cta__art {
+  position: relative;
+  min-height: 15rem;
+  overflow: hidden;
+  background: #071a1f;
+}
+
+@media (min-width: 64rem) {
+  .cta__art {
+    min-height: 26rem;
+  }
+}
+
+.cta__art img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 30% 50%;
+  animation: cta-zoom 18s ease-in-out infinite alternate;
+}
+
+/* The art melts into the card on its inner edge (the card's start side in RTL holds the copy). */
+.cta__art::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, var(--surface-inverse) 0, transparent 55%);
+}
+
+@media (min-width: 64rem) {
+  .cta__art::after {
+    background: linear-gradient(to right, var(--surface-inverse) 0, transparent 45%);
+  }
+}
+
+.cta__note {
+  position: absolute;
+  z-index: 1;
+  inset-block-start: var(--space-3);
+  inset-inline-end: var(--space-3);
+  padding: 0.1rem var(--space-2);
+  border-radius: 2px;
+  background: rgba(7, 26, 31, 0.6);
+  color: var(--text-inverse);
+  font-size: var(--size-xs);
+}
+
+@keyframes cta-zoom {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.14) translateX(-2%);
+  }
+}
+
+.cta__copy {
+  display: grid;
+  align-content: center;
+  justify-items: start;
+  gap: var(--space-4);
+  padding: var(--space-6) var(--space-5) var(--space-8);
+}
+
+@media (min-width: 64rem) {
+  .cta__copy {
+    padding: var(--space-12) var(--space-12) var(--space-12) var(--space-8);
+  }
+}
+
+.cta__copy .eyebrow {
+  color: var(--text-inverse-accent);
+}
+
+.cta__title {
+  color: var(--text-inverse);
+  font-size: var(--size-3xl);
+}
+
+.cta__text {
+  max-width: 36ch;
+  margin: 0;
+  color: var(--text-inverse-muted);
+  font-size: var(--size-base);
+}
+
+.cta__phones {
+  display: grid;
+  gap: var(--space-3);
+  width: 100%;
+  margin: var(--space-1) 0 var(--space-2);
+}
+
+.cta__phones li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--border-inverse);
+}
+
+.cta__phones svg {
+  flex: none;
+  color: var(--text-inverse-accent);
+}
+
+.cta__phones a {
+  color: var(--text-inverse);
+  font-family: var(--font-display), sans-serif;
+  font-size: var(--size-2xl);
+  letter-spacing: 0.02em;
+  text-decoration: none;
+}
+
+.cta__phones a:hover {
+  color: var(--text-inverse-accent);
+}
+
+.cta__phones small {
+  margin-inline-start: auto;
+  color: var(--text-inverse-muted);
+  font-size: var(--size-xs);
+}
+
+@media (max-width: 47.99rem) {
+  .cta {
+    padding-block: var(--space-12);
+  }
+
+  .cta__copy .btn {
+    width: 100%;
+  }
+}
+
+.cta :focus-visible {
+  outline-color: var(--focus-ring-inverse);
+}

@@ -55,16 +55,16 @@ export default async function GuidePage({ params }: PageProps<"/guides/[slug]">)
       <PageHero trail={trail} eyebrow="دليل شراء" title={g.heading} lead={g.answerSummary} images={photos} />
 
       <div className="container guide-body">
-        <section className="pdp-block" aria-labelledby="g-compare">
-          <h2 id="g-compare" className="pdp-block__title" data-reveal>
+        <section className="guide-sec" aria-labelledby="g-compare">
+          <h2 id="g-compare" className="blk-title" data-reveal>
             {g.comparison.heading}
           </h2>
           <CompareTable columns={[...g.comparison.columns]} rows={g.comparison.rows.map((r) => ({ label: r.label, values: [...r.values] }))} />
         </section>
 
         {g.sections.map((s, i) => (
-          <section key={s.heading} className="pdp-block" aria-labelledby={`g-s${i}`}>
-            <h2 id={`g-s${i}`} className="pdp-block__title" data-reveal>
+          <section key={s.heading} className="guide-sec" aria-labelledby={`g-s${i}`}>
+            <h2 id={`g-s${i}`} className="blk-title" data-reveal>
               {s.heading}
             </h2>
             {s.intro && (
@@ -78,7 +78,7 @@ export default async function GuidePage({ params }: PageProps<"/guides/[slug]">)
               </p>
             ))}
             {s.bullets && (
-              <ul className="care__list" data-reveal>
+              <ul className="guide-bullets" data-reveal>
                 {s.bullets.map((b) => (
                   <li key={b}>
                     <Icon name="check" size={18} />
@@ -90,8 +90,8 @@ export default async function GuidePage({ params }: PageProps<"/guides/[slug]">)
           </section>
         ))}
 
-        <section className="pdp-block" aria-labelledby="g-faq">
-          <h2 id="g-faq" className="pdp-block__title" data-reveal>
+        <section className="guide-sec" aria-labelledby="g-faq">
+          <h2 id="g-faq" className="blk-title" data-reveal>
             أسئلة شائعة
           </h2>
           <FaqList items={g.faqs.map((f) => ({ q: f.question, a: f.answer }))} />
@@ -105,12 +105,12 @@ export default async function GuidePage({ params }: PageProps<"/guides/[slug]">)
         </p>
       </div>
 
-      <section className="section section--sand related" aria-labelledby="g-related">
+      <section className="section section--sand guide-related" aria-labelledby="g-related">
         <div className="container">
-          <h2 id="g-related" className="related__title" data-reveal>
+          <h2 id="g-related" className="blk-title" data-reveal>
             الأرضيات في هذا الدليل
           </h2>
-          <ul className="related__grid">
+          <ul className="hub-grid">
             {related.map((p, i) => (
               <li key={p.slug} data-reveal style={{ "--i": i } as React.CSSProperties}>
                 <ProductCard product={p} sizes="(min-width: 64rem) 26vw, 88vw" />

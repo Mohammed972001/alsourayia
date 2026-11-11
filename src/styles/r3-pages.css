@@ -1,1 +1,520 @@
-/* Round 3 (2026-11-12): pages styles from the user's picks in design/options. */
+/* Round 3 (2026-11-12): inner-page pieces from the user's picks in design/options — the About cinema hero,
+   block titles, the shared FAQ list (.qa), hub product grids, guide sections and the contact steps. These
+   pages no longer borrow classes from home.css or product.css. */
+
+/* ---- Breadcrumbs in the page heroes ------------------------------------------------------------- */
+
+:is(.page-hero, .cin) .crumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-1) var(--space-2);
+  color: var(--text-muted);
+  font-size: var(--size-sm);
+}
+
+:is(.page-hero, .cin) .crumbs li {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+:is(.page-hero, .cin) .crumbs a:hover {
+  color: var(--text-accent);
+}
+
+:is(.page-hero, .cin) .crumbs [aria-current] {
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+.cin .crumbs ol,
+.cin .crumbs [aria-current] {
+  color: var(--text-inverse);
+}
+
+.cin .crumbs a {
+  color: var(--text-inverse-muted);
+}
+
+.cin .crumbs a:hover {
+  color: var(--text-inverse-accent);
+}
+
+/* ---- Block titles -------------------------------------------------------------------------------- */
+
+.blk-title {
+  margin-block: var(--space-2) var(--space-6);
+  font-size: var(--size-3xl);
+  line-height: var(--leading-snug);
+}
+
+.eyebrow + .blk-title {
+  margin-top: var(--space-2);
+}
+
+.blk-intro {
+  max-width: var(--measure);
+  margin: calc(-1 * var(--space-3)) 0 var(--space-8);
+  color: var(--text-secondary);
+  font-size: var(--size-lg);
+}
+
+.page-hero__eyebrow::before {
+  opacity: 1;
+}
+
+/* ---- Product grids on hubs and guides (cards come from ProductCard) ------------------------------ */
+
+.hub-grid {
+  display: grid;
+  gap: var(--space-6);
+}
+
+@media (min-width: 40rem) {
+  .hub-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 64rem) {
+  .hub-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* ---- FAQ list (every page that shows questions) --------------------------------------------------- */
+
+.qa-section__inner {
+  display: grid;
+  gap: var(--space-6);
+}
+
+@media (min-width: 64rem) {
+  .qa-section__inner {
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.4fr);
+    align-items: start;
+    gap: var(--space-16);
+  }
+}
+
+.qa {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.qa__item {
+  border: 1px solid var(--border-default);
+  border-inline-start: 4px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  background: var(--surface-card);
+  transition: border-color var(--duration-fast) var(--ease-out);
+}
+
+.qa__item[open] {
+  border-inline-start-color: var(--action-primary);
+}
+
+.qa__q {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  min-height: 3.5rem;
+  padding: var(--space-4) var(--space-5);
+  font-weight: 700;
+  cursor: pointer;
+  list-style: none;
+}
+
+.qa__q::-webkit-details-marker {
+  display: none;
+}
+
+.qa__toggle {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 2px;
+  background: var(--surface-sunken);
+  color: var(--text-teal);
+  transition:
+    transform var(--duration-base) var(--ease-out),
+    background-color var(--duration-fast) var(--ease-out);
+}
+
+.qa__q:hover .qa__toggle {
+  background: var(--surface-teal-soft);
+}
+
+.qa__item[open] .qa__toggle {
+  transform: rotate(45deg);
+  background: var(--action-primary);
+  color: var(--text-on-accent);
+}
+
+.qa__a {
+  margin: 0;
+  padding: 0 var(--space-5) var(--space-5);
+  color: var(--text-secondary);
+  line-height: var(--leading-body);
+}
+
+/* ---- Guides ---------------------------------------------------------------------------------------- */
+
+.guide-sec + .guide-sec {
+  margin-top: var(--space-12);
+}
+
+.guide-sec .prose + .prose {
+  margin-top: var(--space-4);
+}
+
+.guide-bullets {
+  display: grid;
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+}
+
+.guide-bullets li {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+
+.guide-bullets svg {
+  flex: none;
+  margin-top: 0.35rem;
+  color: var(--text-teal);
+}
+
+/* ---- About: the cinema hero (picker «هـ سينما الشغل») ---------------------------------------------
+   Full-bleed install photos. Each slide is cut into six strips that slide in from the reading start one
+   after another, like planks being laid; the photo then settles from a slow zoom. Under the transparent
+   header, so the copy pads by var(--header-h). */
+
+.cin {
+  position: relative;
+  display: grid;
+  min-height: clamp(36rem, 92svh, 50rem);
+  overflow: hidden;
+  background: #071a1f;
+  color: var(--text-inverse);
+}
+
+.cin__slides,
+.cin__slide {
+  position: absolute;
+  inset: 0;
+}
+
+.cin__slide {
+  display: none;
+}
+
+.cin__slide.is-prev,
+.cin__slide.is-on {
+  display: block;
+}
+
+.cin__slide.is-prev {
+  z-index: 1;
+}
+
+.cin__slide.is-on {
+  z-index: 2;
+}
+
+.cin__base {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  animation: cin-burns 7s var(--ease-out) both;
+}
+
+/* The first slide shows its photo straight away (no strips) so the hero paints at once. */
+.cin__slide.is-first .cin__strip {
+  display: none;
+}
+
+.cin__strip {
+  position: absolute;
+  inset-inline: 0;
+  top: calc(var(--i) * 100% / 6);
+  height: calc(100% / 6 + 1px);
+  overflow: hidden;
+}
+
+.cin__strip i {
+  position: absolute;
+  inset-inline: 0;
+  top: calc(var(--i) * -100%);
+  height: 600%;
+  background: var(--img-sm) center / cover no-repeat;
+}
+
+@media (min-width: 48rem) {
+  .cin__strip i {
+    background-image: var(--img);
+  }
+}
+
+.cin__slide.is-on:not(.is-first) .cin__strip {
+  animation: cin-plank 0.9s var(--ease-in-out) both;
+  animation-delay: calc(var(--i) * 70ms);
+}
+
+.cin__slide.is-on .cin__strip i {
+  animation: cin-burns 7s var(--ease-out) both;
+}
+
+.cin__slide.is-prev .cin__strip i,
+.cin__slide.is-prev .cin__base {
+  animation-play-state: paused;
+}
+
+@keyframes cin-plank {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: none;
+  }
+}
+
+@keyframes cin-burns {
+  from {
+    transform: scale(1.12);
+  }
+  to {
+    transform: none;
+  }
+}
+
+.cin__shade {
+  position: absolute;
+  z-index: 3;
+  inset: 0;
+  background:
+    linear-gradient(to left, rgba(7, 26, 31, 0.9), rgba(7, 26, 31, 0.4) 48%, rgba(7, 26, 31, 0.1) 75%),
+    linear-gradient(0deg, rgba(7, 26, 31, 0.85), transparent 32%);
+}
+
+.cin__inner {
+  position: relative;
+  z-index: 4;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  gap: var(--space-8);
+  padding-block: calc(var(--header-h) + var(--space-8)) var(--space-6);
+}
+
+.cin__copy {
+  display: grid;
+  align-content: center;
+  justify-items: start;
+  gap: var(--space-4);
+  max-width: 36rem;
+}
+
+.cin__copy .eyebrow {
+  margin-top: var(--space-4);
+  color: var(--text-inverse-accent);
+}
+
+.cin__title {
+  color: var(--text-inverse);
+  font-size: var(--size-display);
+  line-height: 1.15;
+}
+
+.cin__lead {
+  color: #e9e1d3;
+  font-size: var(--size-lg);
+}
+
+.cin__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-2);
+}
+
+.cin__now {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: end;
+  gap: var(--space-2) var(--space-6);
+}
+
+.cin__count {
+  color: var(--text-inverse-muted);
+  font-size: var(--size-sm);
+}
+
+.cin__count b {
+  color: var(--text-inverse);
+  font-family: var(--font-display), sans-serif;
+  font-size: var(--size-2xl);
+  font-weight: 400;
+}
+
+.cin__name {
+  display: grid;
+  justify-self: end;
+  text-align: end;
+}
+
+.cin__name small {
+  color: var(--text-inverse-accent);
+  font-weight: 700;
+}
+
+.cin__bar {
+  grid-column: 1 / -1;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.cin__bar i {
+  display: block;
+  width: 0;
+  height: 100%;
+  background: var(--text-inverse-accent);
+}
+
+
+@media (max-width: 47.99rem) {
+  .cin {
+    min-height: 40rem;
+  }
+
+  .cin__shade {
+    background: linear-gradient(0deg, rgba(7, 26, 31, 0.95) 35%, rgba(7, 26, 31, 0.25) 75%);
+  }
+
+  .cin__copy {
+    align-content: end;
+  }
+
+  .cin__title {
+    font-size: var(--size-4xl);
+  }
+
+  .cin__lead {
+    font-size: var(--size-base);
+  }
+
+  .cin__actions .btn {
+    flex: 1 1 100%;
+  }
+}
+
+/* ---- About: story and the way we work --------------------------------------------------------------- */
+
+.about-story__copy .eyebrow + .blk-title {
+  margin-top: var(--space-2);
+}
+
+.about-values {
+  display: grid;
+  gap: var(--space-4);
+}
+
+@media (min-width: 48rem) {
+  .about-values {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.about-values li {
+  position: relative;
+  display: grid;
+  align-content: start;
+  gap: var(--space-3);
+  padding: var(--space-6);
+  border-top: 4px solid var(--action-primary);
+  border-radius: var(--radius-sm);
+  background: var(--surface-card);
+  box-shadow: var(--shadow-sm);
+}
+
+.about-values__num {
+  position: absolute;
+  inset-block-start: var(--space-3);
+  inset-inline-end: var(--space-5);
+  color: var(--surface-linen);
+  font-family: var(--font-display), sans-serif;
+  font-size: 4rem;
+  line-height: 1;
+}
+
+.about-values__icon {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: var(--radius-sm);
+  background: var(--surface-teal-soft);
+  color: var(--text-teal);
+}
+
+.about-values__title {
+  position: relative;
+  font-size: var(--size-xl);
+}
+
+.about-values__text {
+  color: var(--text-secondary);
+}
+
+/* ---- Contact: the four steps ------------------------------------------------------------------------ */
+
+.contact-steps {
+  display: grid;
+  gap: var(--space-4);
+  counter-reset: none;
+}
+
+@media (min-width: 48rem) {
+  .contact-steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 64rem) {
+  .contact-steps {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.contact-steps li {
+  display: grid;
+  align-content: start;
+  gap: var(--space-2);
+  padding: var(--space-6) var(--space-5);
+  border: 1px solid var(--border-default);
+  border-top: 4px solid var(--text-accent-display);
+  border-radius: var(--radius-sm);
+  background: var(--surface-card);
+}
+
+.contact-steps__num {
+  color: var(--text-accent-display);
+  font-family: var(--font-display), sans-serif;
+  font-size: var(--size-4xl);
+  line-height: 1;
+}
+
+.contact-steps__title {
+  font-size: var(--size-xl);
+}
+
+.contact-steps__text {
+  color: var(--text-secondary);
+}

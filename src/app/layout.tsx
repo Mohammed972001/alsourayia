@@ -4,7 +4,6 @@ import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { MobileBar } from "@/components/MobileBar";
 import { Motion } from "@/components/Motion";
-import { ServiceStrip } from "@/components/ServiceStrip";
 import { Tags } from "@/components/Tags";
 import { site, siteUrl } from "@/content/site";
 import "./globals.css";
@@ -37,11 +36,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           تخطَّ إلى المحتوى
         </a>
         <Header />
-        <main id="main">
-          {/* The owner's four promises first on every page, under the header. */}
-          <ServiceStrip />
-          {children}
-        </main>
+        {/* On HEADER_OVER pages (Header.tsx) the fixed header sits over the hero, so main has no top offset. */}
+        <main id="main">{children}</main>
         <Footer />
         <MobileBar />
         <Motion />
