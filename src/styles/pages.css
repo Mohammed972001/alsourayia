@@ -90,41 +90,6 @@
   font-size: var(--size-lg);
 }
 
-/* ---- Products hub --------------------------------------------------------------------------------- */
-
-.hub-jump {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-2);
-  padding-block: var(--space-6) 0;
-}
-
-.hub-group__head {
-  display: flex;
-  align-items: center;
-  gap: var(--space-5);
-  margin-bottom: var(--space-10);
-}
-
-.hub-group__num {
-  color: transparent;
-  font-family: var(--font-display), sans-serif;
-  font-size: clamp(3.5rem, 2.5rem + 4vw, 6rem);
-  font-weight: 700;
-  line-height: 1;
-  -webkit-text-stroke: 1.5px var(--bronze-400);
-}
-
-.hub-group__title {
-  font-size: var(--size-4xl);
-}
-
-.hub-group__note {
-  margin-top: var(--space-1);
-  color: var(--text-secondary);
-  font-size: var(--size-lg);
-}
-
 /* ---- About ---------------------------------------------------------------------------------------- */
 
 .about-story__inner {
