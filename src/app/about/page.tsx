@@ -39,7 +39,7 @@ export default function AboutPage() {
 
       <section className="section about-story" aria-labelledby="story-title">
         <div className="container about-story__inner">
-          <figure className="about-story__photo" data-reveal="wipe">
+          <figure className="about-story__photo" data-reveal="lay">
             <Photo name="showroom-rubber-01" alt="رولات ربل وعينات أرضيات داخل المحل" sizes="(min-width: 64rem) 46vw, 92vw" />
             <figcaption>من داخل المحل في حراج بن قاسم.</figcaption>
           </figure>

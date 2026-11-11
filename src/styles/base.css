@@ -105,7 +105,7 @@ bdi {
   top: -4rem;
   z-index: 100;
   padding: var(--space-3) var(--space-5);
-  border-radius: var(--radius-pill);
+  border-radius: var(--radius-sm);
   background: var(--action-secondary);
   color: var(--text-inverse);
   font-weight: 700;
@@ -159,68 +159,79 @@ main {
 .eyebrow {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-3);
+  gap: var(--space-2);
+  margin: 0;
   color: var(--text-accent);
   font-size: var(--size-sm);
   font-weight: 700;
-  letter-spacing: 0.02em;
 }
 
-.eyebrow__steps {
-  width: 2.75rem;
-  height: 0.75rem;
-  color: var(--gold-line);
+/* A small herringbone mark before every eyebrow (the parquet inside the badge's S). */
+.eyebrow::before {
+  content: "";
+  width: 1.1rem;
+  height: 0.55rem;
+  background:
+    linear-gradient(135deg, currentColor 0 25%, transparent 25% 50%, currentColor 50% 75%, transparent 75%) 0 0 / 0.55rem 0.55rem;
+  opacity: 0.85;
 }
 
 .section-head {
-  position: relative;
-  z-index: 0;
-  max-width: 46rem;
   margin-bottom: var(--space-12);
 }
 
+.section-head__main {
+  max-width: 46rem;
+}
+
 .section-head--center {
+  text-align: center;
+}
+
+.section-head--center .section-head__main,
+.section-head--center .section-head__text {
   margin-inline: auto;
-  text-align: center;
-}
-
-.section-head__ghost {
-  position: absolute;
-  z-index: -1;
-  inset-inline-start: -0.04em;
-  top: -0.62em;
-  translate: 0 var(--parallax, 0px);
-  direction: ltr;
-  color: transparent;
-  font-family: var(--font-display), serif;
-  font-size: clamp(4rem, 1.6rem + 10vw, 10rem);
-  font-weight: 500;
-  line-height: 1;
-  white-space: nowrap;
-  -webkit-text-stroke: 1px var(--border-default);
-  pointer-events: none;
-  user-select: none;
-}
-
-.section-head--center .section-head__ghost {
-  inset-inline: 0;
-  text-align: center;
 }
 
 .section-head__title {
-  margin-top: var(--space-3);
+  margin-top: var(--space-2);
   font-size: var(--size-4xl);
 }
 
-.section-head__text {
+.section-head__tape {
+  display: block;
+  width: 10rem;
+  height: 0.75rem;
   margin-top: var(--space-4);
+  fill: none;
+  stroke: var(--gold-line);
+  stroke-width: 1.5;
+}
+
+.section-head--center .section-head__tape {
+  margin-inline: auto;
+}
+
+.section-head__text {
   max-width: var(--measure);
+  margin-top: var(--space-4);
   color: var(--text-secondary);
   font-size: var(--size-lg);
 }
 
-.section-head--center .section-head__text {
-  margin-inline: auto;
+@media (min-width: 64rem) {
+  .section-head--split:not(.section-head--center) {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    align-items: end;
+    gap: var(--space-12);
+  }
+
+  .section-head--split:not(.section-head--center) .section-head__text {
+    margin: 0;
+    padding-inline-start: var(--space-8);
+    border-inline-start: 2px solid var(--border-accent);
+  }
 }
 
 .section-head--inverse .eyebrow {
@@ -235,10 +246,6 @@ main {
   color: var(--text-inverse-muted);
 }
 
-.section-head--inverse .section-head__ghost {
-  -webkit-text-stroke-color: var(--border-inverse);
-}
-
 /* ---- Buttons (default, hover, focus-visible, active, disabled) ------------------------------- */
 
 .btn {
@@ -249,7 +256,7 @@ main {
   min-height: 3rem;
   padding: var(--space-3) var(--space-6);
   border: 1.5px solid transparent;
-  border-radius: var(--radius-pill);
+  border-radius: var(--radius-sm);
   font-size: var(--size-base);
   font-weight: 700;
   line-height: 1.2;
@@ -370,7 +377,7 @@ main {
   min-height: 2rem;
   padding: var(--space-1) var(--space-3);
   border: 1px solid var(--border-default);
-  border-radius: var(--radius-pill);
+  border-radius: var(--radius-sm);
   background: var(--surface-card);
   font-size: var(--size-sm);
   font-weight: 500;

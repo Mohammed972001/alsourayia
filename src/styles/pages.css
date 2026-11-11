@@ -1,61 +1,53 @@
 /* Inner pages: page hero, products hub, about, contact, FAQ, privacy, 404. */
 
-/* ---- Page hero ------------------------------------------------------------------------------------ */
+/* ---- Page hero: title on a sand band, two photos laid side by side like floor tiles ---------- */
 
 .page-hero {
   position: relative;
-  overflow: hidden;
-  padding-block: var(--space-8) var(--space-16);
-  background: linear-gradient(to bottom, var(--surface-sunken), var(--surface-page));
-}
-
-.page-hero::after {
-  content: "";
-  position: absolute;
-  inset-inline-end: -6rem;
-  bottom: -14rem;
-  width: 28rem;
-  height: 28rem;
-  border: 1.5px solid var(--border-accent);
-  border-radius: 50%;
-  opacity: 0.35;
-  pointer-events: none;
+  padding-block: var(--space-6) var(--space-12);
+  border-bottom: 1px solid var(--border-subtle);
+  background:
+    repeating-linear-gradient(to left, var(--border-subtle) 0 1px, transparent 1px 3.5rem),
+    var(--surface-sunken);
 }
 
 .page-hero__inner {
   display: grid;
-  gap: var(--space-10);
+  gap: var(--space-8);
   align-items: center;
 }
 
 .page-hero__eyebrow {
-  margin-top: var(--space-8);
+  margin-top: var(--space-6);
 }
 
 .page-hero__title {
-  margin-top: var(--space-3);
-  font-size: var(--size-display);
+  margin-top: var(--space-2);
+  font-size: var(--size-4xl);
   font-weight: 700;
-  line-height: 1.1;
+  line-height: 1.15;
 }
 
 .page-hero__lead {
   max-width: 40rem;
-  margin-top: var(--space-5);
+  margin-top: var(--space-4);
   color: var(--text-secondary);
   font-size: var(--size-lg);
 }
 
 .page-hero__media {
-  position: relative;
-  min-height: clamp(18rem, 14rem + 14vw, 26rem);
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: var(--space-3);
+  align-items: end;
 }
 
 .page-hero__photo {
-  position: absolute;
+  margin: 0;
   overflow: hidden;
+  border-radius: var(--radius-sm);
   background: var(--surface-linen);
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow-md);
 }
 
 .page-hero__photo img {
@@ -65,25 +57,19 @@
 }
 
 .page-hero__photo--a {
-  inset-inline-end: 0;
-  top: 0;
-  width: 74%;
-  height: 92%;
-  border-radius: var(--radius-lg);
+  aspect-ratio: 4 / 3;
+  clip-path: polygon(1.75rem 0, 100% 0, 100% 100%, 0 100%, 0 1.75rem);
 }
 
 .page-hero__photo--b {
-  inset-inline-start: 0;
-  bottom: 0;
-  width: 38%;
-  height: 64%;
-  border: 6px solid var(--surface-card);
-  border-radius: var(--radius-arch);
+  aspect-ratio: 1;
+  margin-bottom: var(--space-6);
 }
 
 @media (min-width: 64rem) {
   .page-hero--media .page-hero__inner {
-    grid-template-columns: 1.1fr 1fr;
+    grid-template-columns: 1.15fr 1fr;
+    gap: var(--space-12);
   }
 }
 
@@ -341,7 +327,7 @@
   min-height: 3.5rem;
   padding: var(--space-3) var(--space-5);
   border: 1px solid var(--border-default);
-  border-radius: var(--radius-pill);
+  border-radius: var(--radius-sm);
   background: var(--surface-card);
   font-weight: 700;
   transition: border-color var(--duration-fast) var(--ease-out), background-color var(--duration-fast) var(--ease-out);

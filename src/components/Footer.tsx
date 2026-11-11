@@ -3,16 +3,26 @@ import { collections, productsIn } from "@/content/products";
 import type { CollectionId } from "@/content/types";
 import { legalLine, site } from "@/content/site";
 import { displayPhone, telHref, whatsappHref } from "@/lib/contact";
-import { Icon, Swoosh } from "./Icon";
+import { Icon, type IconKey } from "./Icon";
 import { Logo } from "./Logo";
 
 const ORDER: CollectionId[] = ["carpet", "parquet", "rubber", "special"];
+const PROMISE_ICONS: IconKey[] = ["measure", "sample", "tools", "truck"];
 
 export function Footer() {
   const year = new Date().getFullYear();
   return (
     <footer className="site-footer">
-      <Swoosh className="site-footer__steps" />
+      <div className="container">
+        <ul className="site-footer__promises">
+          {site.services.map((sv, i) => (
+            <li key={sv}>
+              <Icon name={PROMISE_ICONS[i]} size={22} />
+              <span>{sv}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
       <div className="container site-footer__grid">
         <div className="site-footer__brand">
           <Logo inverse />
@@ -89,9 +99,6 @@ export function Footer() {
         </div>
       </div>
 
-      <p className="site-footer__wordmark" aria-hidden="true">
-        السريع
-      </p>
 
       <div className="container site-footer__bottom">
         <p>

@@ -1,54 +1,60 @@
-/* Motion (FR-009). Content is visible without JavaScript: hiding starts only once Motion.tsx adds
-   .motion-ready. Parallax uses the `translate` property so it composes with reveal transforms. */
+/* Motion for «موكيت ومفروشات السريع»: the language of laying a floor. Pieces slide into place like planks,
+   grid tiles are set one by one, and the measuring tape and the badge's swoosh draw themselves. No parallax,
+   no tilt. Content is visible without JavaScript: hiding starts only once Motion.tsx adds .motion-ready,
+   and everything is off under prefers-reduced-motion. */
 
 [data-reveal] {
   transition:
-    opacity var(--duration-reveal) var(--ease-out),
-    transform var(--duration-reveal) var(--ease-out),
-    clip-path 1.3s var(--ease-out);
-  transition-delay: calc(var(--i, 0) * 70ms);
+    opacity 0.7s var(--ease-out),
+    transform 0.9s var(--ease-out),
+    clip-path 0.9s var(--ease-in-out);
+  transition-delay: calc(var(--i, 0) * 90ms);
 }
 
+/* Default «plank»: slides in from the reading start (the right in RTL) and settles. */
 .motion-ready [data-reveal]:not(.is-in) {
   opacity: 0;
-  transform: translateY(1.75rem);
+  transform: translateX(2.5rem);
 }
 
-.motion-ready [data-reveal="rise"]:not(.is-in) {
-  transform: translateY(3rem) scale(0.94);
+/* «lay»: a photo or card uncovered from the start edge, like a roll unrolled across the floor. */
+[data-reveal="lay"] {
+  clip-path: inset(0 0 0 0 round var(--radius-lg));
 }
 
-[data-reveal="wipe"] {
-  clip-path: inset(-12% -12% -12% -12%);
-}
-
-.motion-ready [data-reveal="wipe"]:not(.is-in) {
+.motion-ready [data-reveal="lay"]:not(.is-in) {
   opacity: 1;
   transform: none;
-  clip-path: inset(100% 0 0 0);
+  clip-path: inset(0 0 0 100% round var(--radius-lg));
 }
 
-[data-reveal="wipe"] img {
-  transition: transform 1.8s var(--ease-out);
+/* «tile»: a square set down from above with a small turn, for grids placed tile by tile. */
+.motion-ready [data-reveal="tile"]:not(.is-in) {
+  opacity: 0;
+  transform: translateY(-1.25rem) rotate(-2.5deg) scale(0.94);
 }
 
-.motion-ready [data-reveal="wipe"]:not(.is-in) img {
-  transform: scale(1.18);
+/* «up»: a plain rise, for text blocks. */
+.motion-ready [data-reveal="up"]:not(.is-in) {
+  transform: translateY(1.25rem);
 }
 
-[data-parallax] {
-  translate: 0 var(--parallax, 0px);
+/* Lines that draw (tape, swoosh): give each path pathLength="1". */
+[data-draw] path,
+[data-draw] line {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 1.6s var(--ease-in-out) 0.2s;
+}
+
+.motion-ready [data-draw]:not(.is-in) path,
+.motion-ready [data-draw]:not(.is-in) line {
+  stroke-dashoffset: 1;
 }
 
 @keyframes marquee {
   to {
     transform: translateX(50%);
-  }
-}
-
-@keyframes spin {
-  to {
-    rotate: 360deg;
   }
 }
 
@@ -58,33 +64,23 @@
   }
 }
 
-@keyframes shimmer {
-  0%,
-  100% {
-    background-position: 100% 0;
-  }
-  50% {
-    background-position: 0% 0;
-  }
-}
-
-@keyframes arch-in {
-  from {
-    clip-path: inset(100% 0 0 0 round 999px 999px 0.75rem 0.75rem);
-  }
-  to {
-    clip-path: inset(0 0 0 0 round 999px 999px 0.75rem 0.75rem);
-  }
-}
-
-@keyframes rise-in {
+@keyframes set-tile {
   from {
     opacity: 0;
-    transform: translateY(1.5rem);
+    transform: translateY(-14px) rotate(-4deg) scale(0.9);
   }
   to {
     opacity: 1;
     transform: none;
+  }
+}
+
+@keyframes tape-out {
+  from {
+    clip-path: inset(0 0 0 100%);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
   }
 }
 
@@ -105,11 +101,8 @@
     clip-path: none;
   }
 
-  [data-parallax] {
-    translate: none;
-  }
-
-  .hero__steps path {
+  .motion-ready [data-draw]:not(.is-in) path,
+  .motion-ready [data-draw]:not(.is-in) line {
     stroke-dashoffset: 0;
   }
 }

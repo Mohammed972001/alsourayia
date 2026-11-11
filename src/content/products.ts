@@ -16,10 +16,10 @@ export const collections: Record<CollectionId, { name: string; note: string; hub
 /** Places a buyer starts from: the home rail and the product pages. */
 export const rooms: Record<string, { name: string; text: string; image: string; product: string }> = {
   mosque: { name: "المساجد والمصليات", text: "موكيت بخطوط الصفوف يُفرش على اتجاه القبلة.", image: "mosque-12", product: "mosque-carpets" },
-  office: { name: "المكاتب والشركات", text: "بلاط موكيت 50 × 50 يهدّئ الصالات المفتوحة.", image: "office-05", product: "office-carpet" },
+  office: { name: "المكاتب والشركات", text: "بلاط موكيت 50 × 50 يهدّئ الصالات المفتوحة.", image: "office-08", product: "office-carpet" },
   home: { name: "غرف النوم والمجالس", text: "موكيت من الجدار إلى الجدار، أو باركيه خشب للغرف الجافة.", image: "art-carpet", product: "mokite" },
   kitchen: { name: "المطابخ والملاحق", text: "باركيه SPC بشكل الخشب يتحمل الماء المنسكب.", image: "spc-cat-01", product: "water-resistant-carpet" },
-  gym: { name: "الجيم والصالات الرياضية", text: "ربل رول أو بلاط يستقبل الأوزان بدل البلاط.", image: "gym-07", product: "rabal-gem" },
+  gym: { name: "الجيم والصالات الرياضية", text: "ربل رول أو بلاط يستقبل الأوزان بدل البلاط.", image: "gym-06", product: "rabal-gem" },
   bathroom: { name: "الحمامات وأماكن الوضوء", text: "ربل مثقّب أو شبكي يثبّت القدم على الأرض المبللة.", image: "bath-07", product: "non-slip-rubber" },
   clinic: { name: "العيادات والمستشفيات", text: "فينيل طبي رولات، يُختار نوعه حسب استخدام كل غرفة.", image: "art-medical", product: "hospital-flooring" },
   kids: { name: "غرف الأطفال وأماكن اللعب", text: "فوم بازل لين يُفك ويُركّب باليد.", image: "art-foam", product: "foam-flooring" },
@@ -123,7 +123,7 @@ export const products: Product[] = [
     lead:
       "أغلب طلبات المكاتب اليوم بلاط موكيت بدل الرول: مربعات تُرصّ متجاورة، وإذا اتسخ مربع أو تلف تحت كرسي يُبدَّل وحده. نقيس المكتب، ونعرض العينات بجانب لون الأثاث والجدران، ثم نتفق معكم على موعد تركيب يناسب الدوام.",
     priceFrom: 45,
-    images: ["office-05", "office-01", "office-08", "office-14", "office-06"],
+    images: ["office-08", "office-01", "office-14", "office-09"],
     facts: [
       { label: "يبدأ من", value: "45 ريال للمتر" },
       { label: "الشكل", value: "بلاط 50 × 50 سم" },
@@ -167,7 +167,7 @@ export const products: Product[] = [
     related: ["mosque-carpets", "vinyl-roll", "parket"],
     works: {
       intro: "بلاط موكيت من أعمالنا في مكاتب وصالات عمل مفتوحة، ومنه ما فُرش فوق الأرضيات المرفوعة.",
-      images: ["office-03", "office-07", "office-09", "office-10", "office-11", "office-12", "office-13", "office-15", "office-16"],
+      images: ["office-13", "office-12", "office-09", "office-14", "office-11", "office-15"],
     },
     samples: {
       intro: "عينات بلاط الموكيت عن قرب، لترى الخطوط والألوان قبل أن تختار.",
@@ -482,7 +482,7 @@ export const products: Product[] = [
     lead:
       "ربل الجيم طبقة من المطاط تُفرش فوق البلاط أو الخرسانة، فتستقبل سقوط الدمبل وضغط الأجهزة بدل أن يصل إلى الأرضية. يأتي رولًا طويلًا لمناطق الأجهزة والكارديو، وبلاطًا مربعًا لمنطقة الأوزان الحرة والجيم المنزلي.",
     priceFrom: 65,
-    images: ["gym-07", "gym-01", "gym-03", "gym-02"],
+    images: ["gym-06", "gym-01", "gym-03", "gym-02"],
     facts: [
       { label: "يبدأ من", value: "65 ريال للمتر" },
       { label: "الأشكال", value: "رول وبلاط 50 × 50 سم" },
@@ -527,7 +527,7 @@ export const products: Product[] = [
     related: ["non-slip-rubber", "foam-flooring", "artificial-grass"],
     works: {
       intro: "أرضية جيم بعد الفرش، ورولات المطاط كما تصل إلى المحل.",
-      images: ["gym-06", "gym-08", "gym-09", "gym-04", "gym-05", "showroom-rubber-01", "showroom-rubber-02"],
+      images: ["gym-06", "gym-08", "gym-04", "gym-05", "showroom-rubber-01", "showroom-rubber-02"],
     },
   },
   {

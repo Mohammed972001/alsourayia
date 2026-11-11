@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Icon, Swoosh } from "@/components/Icon";
+import { Icon } from "@/components/Icon";
 import { products } from "@/content/products";
 
 export const metadata: Metadata = {
@@ -15,7 +15,6 @@ export default function NotFound() {
         <p className="notfound__code" aria-hidden="true">
           ٤٠٤
         </p>
-        <Swoosh className="notfound__steps" />
         <h1 id="nf-title" className="notfound__title">
           هذه الصفحة غير موجودة
         </h1>

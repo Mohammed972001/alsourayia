@@ -1,12 +1,12 @@
 import { CtaBand } from "@/components/CtaBand";
 import { FaqList } from "@/components/Faq";
-import { Collections } from "@/components/home/Collections";
-import { Compare } from "@/components/home/Compare";
+import { FloorFinder } from "@/components/home/FloorFinder";
+import { Floors } from "@/components/home/Floors";
 import { Hero } from "@/components/home/Hero";
 import { HowTo } from "@/components/home/HowTo";
-import { Rooms } from "@/components/home/Rooms";
-import { Sectors } from "@/components/home/Sectors";
+import { Projects } from "@/components/home/Projects";
 import { Showroom } from "@/components/home/Showroom";
+import { WorksReel } from "@/components/home/WorksReel";
 import { JsonLd } from "@/components/JsonLd";
 import { SectionHead } from "@/components/SectionHead";
 import { home } from "@/content/home";
@@ -19,15 +19,15 @@ export default function HomePage() {
     <>
       <JsonLd data={graph(webPageNode("/", home.seoTitle, home.seoDescription), faqNode(home.faq))} />
       <Hero />
-      <Collections />
-      <Sectors />
-      <Showroom />
-      <Rooms />
-      <Compare />
+      <Floors />
+      <Projects />
+      <WorksReel />
+      <FloorFinder />
       <HowTo />
+      <Showroom />
       <section className="section section--sand faq-section" aria-labelledby="faq-title">
         <div className="container faq-section__inner">
-          <SectionHead id="faq-title" eyebrow={home.faqHead.eyebrow} title={home.faqHead.title} ghost="FAQ" />
+          <SectionHead id="faq-title" eyebrow={home.faqHead.eyebrow} title={home.faqHead.title} />
           <FaqList items={home.faq} />
         </div>
       </section>

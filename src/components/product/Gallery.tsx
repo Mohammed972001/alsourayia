@@ -9,7 +9,7 @@ export function Gallery({ images, name, label }: { images: string[]; name: strin
   return (
     <div className="gallery">
       <span className="gallery__frame" aria-hidden="true" />
-      <figure className="gallery__main" data-reveal="wipe">
+      <figure className="gallery__main" data-reveal="lay">
         {images.map((img, i) => (
           <Photo
             key={img}

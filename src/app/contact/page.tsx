@@ -78,7 +78,7 @@ export default function ContactPage() {
           </div>
 
           <div className="contact__visit">
-            <figure className="contact__photo" data-reveal="wipe">
+            <figure className="contact__photo" data-reveal="lay">
               <Photo name="showroom" alt="ممر داخل المحل بين معروضات الموكيت والسجاد" sizes="(min-width: 64rem) 40vw, 92vw" />
             </figure>
             <dl className="facts" data-reveal>

@@ -1,5 +1,4 @@
 import { Breadcrumbs } from "./Breadcrumbs";
-import { Swoosh } from "./Icon";
 import { Photo } from "./Photo";
 
 type Props = {
@@ -14,7 +13,7 @@ type Props = {
   children?: React.ReactNode;
 };
 
-/** Inner-page hero: title on the start side, two layered photos on the end side. */
+/** Inner-page hero: the title on a sand band, and two photos laid side by side like floor tiles. */
 export function PageHero({ trail, eyebrow, title, lead, images, compact = false, children }: Props) {
   return (
     <section className={`page-hero${images ? " page-hero--media" : ""}${compact ? " page-hero--compact" : ""}`} aria-labelledby="page-title">
@@ -22,7 +21,6 @@ export function PageHero({ trail, eyebrow, title, lead, images, compact = false,
         <div className="page-hero__copy">
           <Breadcrumbs trail={trail} />
           <p className="eyebrow page-hero__eyebrow" data-reveal>
-            <Swoosh className="eyebrow__steps" />
             {eyebrow}
           </p>
           <h1 id="page-title" className="page-hero__title" data-reveal>
@@ -39,10 +37,10 @@ export function PageHero({ trail, eyebrow, title, lead, images, compact = false,
         </div>
         {images && (
           <div className="page-hero__media" aria-hidden="true">
-            <figure className="page-hero__photo page-hero__photo--a" data-reveal="wipe">
+            <figure className="page-hero__photo page-hero__photo--a" data-reveal="lay">
               <Photo name={images[0]} alt="" sizes="(min-width: 64rem) 30vw, 70vw" priority />
             </figure>
-            <figure className="page-hero__photo page-hero__photo--b" data-parallax="-0.08" data-reveal="rise">
+            <figure className="page-hero__photo page-hero__photo--b" data-reveal="lay" style={{ "--i": 1 } as React.CSSProperties}>
               <Photo name={images[1]} alt="" sizes="(min-width: 64rem) 14vw, 36vw" />
             </figure>
           </div>

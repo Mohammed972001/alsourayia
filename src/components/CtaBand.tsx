@@ -1,35 +1,36 @@
 import { home } from "@/content/home";
-import { whatsappHref } from "@/lib/contact";
-import { Icon, Swoosh } from "./Icon";
-import { Photo } from "./Photo";
+import { site } from "@/content/site";
+import { displayPhone, telHref, whatsappHref } from "@/lib/contact";
+import { Icon } from "./Icon";
 
 type Props = { title?: string; text?: string; button?: string; product?: string; images?: [string, string] };
 
-/** The closing WhatsApp card: dark, inset, with two layered photos. */
-export function CtaBand({ title = home.cta.title, text = home.cta.text, button = home.cta.button, product, images = ["mosque-05", "office-swatch-03"] }: Props) {
+/** The closing band: copper with a herringbone weave, WhatsApp first and both numbers beside it. */
+export function CtaBand({ title = home.cta.title, text = home.cta.text, button = home.cta.button, product }: Props) {
   return (
-    <section className="section cta" aria-labelledby="cta-title">
-      <div className="container">
-        <div className="cta__card" data-reveal>
-          <Swoosh className="cta__steps" />
-          <div className="cta__copy">
-            <h2 id="cta-title" className="cta__title">
-              {title}
-            </h2>
-            <p className="cta__text">{text}</p>
-            <a className="btn btn--inverse btn--lg" href={whatsappHref(product)} data-wa>
-              <Icon name="whatsapp" size={20} />
-              <span>{button}</span>
+    <section className="cta" aria-labelledby="cta-title">
+      <div className="container cta__inner">
+        <div className="cta__copy" data-reveal="up">
+          <h2 id="cta-title" className="cta__title">
+            {title}
+          </h2>
+          <p className="cta__text">{text}</p>
+        </div>
+        <div className="cta__actions" data-reveal="up" style={{ "--i": 1 } as React.CSSProperties}>
+          <a className="btn btn--light btn--lg" href={whatsappHref(product)} data-wa>
+            <Icon name="whatsapp" size={20} />
+            <span>{button}</span>
+          </a>
+          <p className="cta__phones">
+            <Icon name="phone" size={18} />
+            <a href={telHref()} dir="ltr">
+              {displayPhone(site.phone)}
             </a>
-          </div>
-          <div className="cta__media" aria-hidden="true">
-            <figure className="cta__photo cta__photo--back" data-parallax="0.05">
-              <Photo name={images[0]} alt="" sizes="(min-width: 64rem) 28vw, 60vw" />
-            </figure>
-            <figure className="cta__photo cta__photo--front" data-parallax="-0.07">
-              <Photo name={images[1]} alt="" sizes="(min-width: 64rem) 16vw, 40vw" />
-            </figure>
-          </div>
+            <span aria-hidden="true">·</span>
+            <a href={telHref(true)} dir="ltr">
+              {displayPhone(site.phone2)}
+            </a>
+          </p>
         </div>
       </div>
     </section>

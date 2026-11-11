@@ -251,7 +251,7 @@ export default async function ProductPage({ params }: PageProps<"/products/[slug
                   ))}
                 </ul>
               </div>
-              <figure className="care__photo" data-reveal="wipe">
+              <figure className="care__photo" data-reveal="lay">
                 <Photo name={p.images[2] ?? p.images[0]} alt={`${p.name} عن قرب`} sizes="(min-width: 64rem) 22vw, 90vw" />
               </figure>
             </div>

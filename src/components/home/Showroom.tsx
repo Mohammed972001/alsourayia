@@ -1,64 +1,79 @@
 import Link from "next/link";
 import { home } from "@/content/home";
-import { site } from "@/content/site";
-import { Icon, Swoosh } from "../Icon";
+import { legalLine, site } from "@/content/site";
+import { displayPhone, telHref } from "@/lib/contact";
+import { Icon } from "../Icon";
 import { Photo } from "../Photo";
 import { SectionHead } from "../SectionHead";
 
-/** The real shop in Haraj bin Qasim: the owner's showroom photos, the legal name, the address and hours. */
+/** The shop as a visit ticket: address, hours and numbers on a perforated card, beside three photos from inside. */
 export function Showroom() {
   const s = home.showroom;
   return (
-    <section className="section section--inverse showroom" aria-labelledby="showroom-title">
-      <Swoosh className="showroom__steps" />
-      <div className="container showroom__inner">
-        <div className="showroom__media">
-          <figure className="showroom__photo" data-reveal="wipe">
-            <Photo name="showroom" alt="ممر داخل المحل بين معروضات الموكيت والسجاد وعلى الأرض ثلاث عينات" sizes="(min-width: 64rem) 52vw, 100vw" />
-          </figure>
-          <figure className="showroom__inset" data-parallax="-0.06" data-reveal="rise">
-            <Photo name="showroom-rubber-02" alt="رولات ربل جيم واقفة داخل المحل" sizes="(min-width: 64rem) 16vw, 40vw" />
-          </figure>
-          <p className="showroom__caption">من داخل المحل</p>
-        </div>
-
-        <div className="showroom__copy">
-          <SectionHead id="showroom-title" eyebrow={s.eyebrow} title={s.title} ghost="Showroom" inverse />
-          <p className="showroom__text" data-reveal>
+    <section className="section visit" aria-labelledby="visit-title">
+      <div className="container visit__inner">
+        <div className="visit__copy">
+          <SectionHead id="visit-title" eyebrow={s.eyebrow} title={s.title} />
+          <p className="visit__text" data-reveal="up">
             {s.text}
           </p>
-          <dl className="facts facts--inverse" data-reveal>
-            <div>
-              <dt>العنوان</dt>
-              <dd>
-                {site.area}، {site.district}
-              </dd>
+          <div className="ticket" data-reveal="lay">
+            <dl className="ticket__rows">
+              <div>
+                <dt>
+                  <Icon name="pin" size={18} />
+                  العنوان
+                </dt>
+                <dd>
+                  {site.street}، {site.district}
+                </dd>
+              </div>
+              <div>
+                <dt>
+                  <Icon name="clock" size={18} />
+                  المواعيد
+                </dt>
+                <dd>{site.hoursText}</dd>
+              </div>
+              <div>
+                <dt>
+                  <Icon name="phone" size={18} />
+                  اتصال
+                </dt>
+                <dd>
+                  <a href={telHref()} dir="ltr">
+                    {displayPhone(site.phone)}
+                  </a>
+                  <span aria-hidden="true"> · </span>
+                  <a href={telHref(true)} dir="ltr">
+                    {displayPhone(site.phone2)}
+                  </a>
+                </dd>
+              </div>
+            </dl>
+            <div className="ticket__stub">
+              <a className="btn btn--primary" href={site.mapUrl} target="_blank" rel="noopener">
+                <Icon name="pin" size={20} />
+                <span>{s.mapCta}</span>
+              </a>
+              <Link className="text-link" href="/contact">
+                صفحة الزيارة
+                <Icon name="arrow" size={16} />
+              </Link>
             </div>
-            <div>
-              <dt>المواعيد</dt>
-              <dd>{site.hoursText}</dd>
-            </div>
-            <div>
-              <dt>المنشأة</dt>
-              <dd>{site.legalName}</dd>
-            </div>
-            <div>
-              <dt>الرقم الوطني الموحد</dt>
-              <dd>
-                <bdi>{site.unifiedNumber}</bdi>
-              </dd>
-            </div>
-          </dl>
-          <div className="showroom__actions" data-reveal>
-            <a className="btn btn--inverse" href={site.mapUrl} target="_blank" rel="noopener">
-              <Icon name="pin" size={20} />
-              <span>{s.mapCta}</span>
-            </a>
-            <Link className="btn btn--outline-inverse" href="/contact">
-              <span>صفحة الزيارة</span>
-              <Icon name="arrow" size={18} />
-            </Link>
           </div>
+          <p className="visit__legal">{legalLine()}</p>
+        </div>
+        <div className="visit__photos">
+          <figure className="visit__photo visit__photo--a" data-reveal="lay">
+            <Photo name="showroom" alt="ممر داخل المحل بين معروضات الموكيت والسجاد، وعلى الأرض ثلاث عينات" sizes="(min-width: 64rem) 30vw, 70vw" />
+          </figure>
+          <figure className="visit__photo visit__photo--b" data-reveal="lay" style={{ "--i": 1 } as React.CSSProperties}>
+            <Photo name="showroom-rubber-02" alt="رولات ربل جيم واقفة داخل المحل" sizes="(min-width: 64rem) 16vw, 40vw" />
+          </figure>
+          <figure className="visit__photo visit__photo--c" data-reveal="lay" style={{ "--i": 2 } as React.CSSProperties}>
+            <Photo name="showroom-rubber-01" alt="رولات ربل وعينات أرضيات على رفوف المحل" sizes="(min-width: 64rem) 16vw, 40vw" />
+          </figure>
         </div>
       </div>
     </section>

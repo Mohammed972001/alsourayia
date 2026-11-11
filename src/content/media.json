@@ -164,18 +164,6 @@
     "temp": false,
     "source": "owner"
   },
-  "gym-07": {
-    "width": 1200,
-    "height": 1600,
-    "widths": [
-      160,
-      480,
-      828,
-      1200
-    ],
-    "temp": false,
-    "source": "owner"
-  },
   "gym-08": {
     "width": 1600,
     "height": 1200,
@@ -185,18 +173,6 @@
       828,
       1200,
       1600
-    ],
-    "temp": false,
-    "source": "owner"
-  },
-  "gym-09": {
-    "width": 1200,
-    "height": 1600,
-    "widths": [
-      160,
-      480,
-      828,
-      1200
     ],
     "temp": false,
     "source": "owner"
@@ -474,59 +450,12 @@
     "temp": false,
     "source": "owner"
   },
-  "office-03": {
-    "width": 640,
-    "height": 480,
-    "widths": [
-      160,
-      480,
-      640
-    ],
-    "temp": false,
-    "source": "owner"
-  },
   "office-04": {
     "width": 540,
     "height": 690,
     "widths": [
       160,
       480
-    ],
-    "temp": false,
-    "source": "owner"
-  },
-  "office-05": {
-    "width": 950,
-    "height": 1267,
-    "widths": [
-      160,
-      480,
-      828,
-      950
-    ],
-    "temp": false,
-    "source": "owner"
-  },
-  "office-06": {
-    "width": 960,
-    "height": 1280,
-    "widths": [
-      160,
-      480,
-      828,
-      960
-    ],
-    "temp": false,
-    "source": "owner"
-  },
-  "office-07": {
-    "width": 958,
-    "height": 1280,
-    "widths": [
-      160,
-      480,
-      828,
-      958
     ],
     "temp": false,
     "source": "owner"
@@ -551,18 +480,6 @@
       480,
       828,
       974
-    ],
-    "temp": false,
-    "source": "owner"
-  },
-  "office-10": {
-    "width": 968,
-    "height": 1280,
-    "widths": [
-      160,
-      480,
-      828,
-      968
     ],
     "temp": false,
     "source": "owner"
@@ -615,18 +532,6 @@
     "source": "owner"
   },
   "office-15": {
-    "width": 1200,
-    "height": 1600,
-    "widths": [
-      160,
-      480,
-      828,
-      1200
-    ],
-    "temp": false,
-    "source": "owner"
-  },
-  "office-16": {
     "width": 1200,
     "height": 1600,
     "widths": [

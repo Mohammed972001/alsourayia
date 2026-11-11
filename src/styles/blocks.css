@@ -20,78 +20,60 @@
   outline-color: var(--focus-ring-inverse);
 }
 
-/* ---- Services strip (first on every page) ------------------------------------------------------- */
+/* ---- Services strip (first on every page): four still tiles, 2 x 2 on phones, a row on wide screens */
 
 .services-strip {
-  overflow: hidden;
   border-bottom: 1px solid var(--border-subtle);
   background: var(--surface-accent-soft);
   color: var(--text-accent);
-  font-size: var(--size-sm);
+  font-size: var(--size-xs);
   font-weight: 700;
 }
 
 .services-strip__track {
-  display: flex;
-  width: max-content;
-  animation: marquee 30s linear infinite;
+  display: block;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
 }
 
 .services-strip__group {
-  display: flex;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
+.services-strip__group[aria-hidden="true"] {
+  display: none;
+}
+
 .services-strip__item {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   gap: var(--space-2);
-  padding-block: var(--space-3);
-  padding-inline-end: var(--space-6);
+  padding-block: var(--space-2);
   white-space: nowrap;
 }
 
 .services-strip__item svg:first-child {
+  flex: none;
   color: var(--text-accent-display);
 }
 
 .services-strip__sep {
-  width: 0.75rem;
-  height: 0.75rem;
-  margin-inline-start: var(--space-4);
-  color: var(--bronze-400);
+  display: none;
 }
 
-/* Wide screens: the four promises sit still, side by side. */
-@media (min-width: 64rem) {
-  .services-strip__track {
-    width: auto;
-    justify-content: center;
-    animation: none;
+@media (min-width: 48rem) {
+  .services-strip {
+    font-size: var(--size-sm);
   }
 
-  .services-strip__group[aria-hidden="true"] {
-    display: none;
-  }
-
-  .services-strip__group .services-strip__item:last-child .services-strip__sep {
-    display: none;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .services-strip__track {
-    width: auto;
-    flex-wrap: wrap;
-    justify-content: center;
-    animation: none;
-  }
-
-  .services-strip__group[aria-hidden="true"] {
-    display: none;
+  .services-strip__group {
+    display: flex;
+    justify-content: space-between;
   }
 }
 

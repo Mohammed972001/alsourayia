@@ -43,7 +43,7 @@ export const home = {
       text: "بلاط موكيت 50×50 يركّب قطعة قطعة ويُبدّل التالف منه وحده، وفينيل أو SPC للممرات والمطابخ الصغيرة.",
       points: ["مربعات تُفك وتُبدّل", "ألوان هادئة لصالات العمل", "كتالوجات موديلات تختار منها"],
       products: ["office-carpet", "water-resistant-carpet"],
-      images: ["office-05", "office-swatch-02"],
+      images: ["office-08", "office-swatch-02"],
     },
     {
       key: "gym",
@@ -52,7 +52,7 @@ export const home = {
       text: "ربل جيم رول أو بلاط 50×50 تحت الأجهزة والأوزان، وفوم وبازل لمساحات الأطفال والتمارين الخفيفة.",
       points: ["رولات وبلاط بسماكات مختلفة", "يمتص الصدمة ويحمي الأرضية", "يُقص على مقاس الصالة"],
       products: ["rabal-gem", "foam-flooring"],
-      images: ["gym-07", "gym-01"],
+      images: ["gym-06", "gym-01"],
     },
     {
       key: "clinic",
