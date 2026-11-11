@@ -6,11 +6,17 @@ import { Icon } from "@/components/Icon";
 import { JsonLd } from "@/components/JsonLd";
 import { ProductCard } from "@/components/ProductCard";
 import { Photo, photoSource } from "@/components/Photo";
+import { SampleTag } from "@/components/cards/SampleTag";
 import { Gallery } from "@/components/product/Gallery";
+import { InstalmentLine } from "@/components/product/InstalmentLine";
 import { QuantityCalc } from "@/components/product/QuantityCalc";
+import { RoomFloor, type RoomFloorItem } from "@/components/product/RoomFloor";
+import { StepsPath } from "@/components/product/StepsPath";
 import { Works } from "@/components/product/Works";
+import { home } from "@/content/home";
 import { collections, getProduct, productBySlug, products, rooms } from "@/content/products";
 import { site } from "@/content/site";
+import { floorTextures, roomCompare } from "@/content/textures";
 import { telHref, whatsappHref } from "@/lib/contact";
 import { breadcrumbNode, faqNode, graph, pageMetadata, productNode, webPageNode } from "@/lib/seo";
 
@@ -41,14 +47,21 @@ export default async function ProductPage({ params }: PageProps<"/products/[slug
   const source = photoSource(p.images[0]);
   const label = source === "art" ? "رسم توضيحي، وصور المحل قريبًا" : source === "catalog" ? "صور من كتالوج المورّد" : collections[p.collection].note;
   const related = p.related.map((s) => getProduct(s));
+  // «شوفها في المكان»: only for products with a matching floor texture, this product first.
+  const floors: RoomFloorItem[] = (roomCompare[p.slug] ?? []).map((s) => {
+    const q = getProduct(s);
+    return { slug: s, name: q.name, price: q.priceFrom, tex: floorTextures[s].tex, size: floorTextures[s].size, current: s === p.slug };
+  });
   const nav = [
     { id: "features", label: "المزايا" },
+    ...(floors.length ? [{ id: "room", label: "في المكان" }] : []),
     ...(p.works ? [{ id: "works", label: "على الطبيعة" }] : []),
     { id: "kinds", label: "الأنواع" },
     ...(p.samples ? [{ id: "samples", label: "العينات" }] : []),
     { id: "rooms", label: "الأماكن" },
     { id: "guide", label: "الكمية" },
     { id: "care", label: "العناية" },
+    { id: "steps", label: "طريقة الطلب" },
     { id: "faq", label: "الأسئلة" },
   ];
 
@@ -57,7 +70,6 @@ export default async function ProductPage({ params }: PageProps<"/products/[slug
       <JsonLd data={graph(webPageNode(path, p.seoTitle, p.seoDescription, "ItemPage"), productNode(p), breadcrumbNode(trail), faqNode(p.faq))} />
 
       <section className="pdp-hero" aria-labelledby="pdp-title">
-        <div className="pdp-hero__glow" aria-hidden="true" />
         <div className="container pdp-hero__inner">
           <div className="pdp-hero__copy">
             <Breadcrumbs trail={trail} />
@@ -82,6 +94,7 @@ export default async function ProductPage({ params }: PageProps<"/products/[slug
                 <span>للمتر المربع، والسعر النهائي حسب الموديل والكمية</span>
               </p>
             )}
+            <InstalmentLine price={p.priceFrom} />
             <dl className="facts pdp-hero__facts" data-reveal>
               {p.facts.map((f) => (
                 <div key={f.label}>
@@ -147,6 +160,21 @@ export default async function ProductPage({ params }: PageProps<"/products/[slug
             </ul>
           </section>
 
+          {floors.length > 0 && (
+            <section id="room" className="pdp-block" aria-labelledby="room-title">
+              <h2 id="room-title" className="pdp-block__title" data-reveal>
+                شوف {p.name} في المكان
+              </h2>
+              <p className="pdp-block__intro" data-reveal>
+                غرفة فاضية مرسومة، تتفرش قدامك. دوس على أي أرضية وقارن.
+              </p>
+              <RoomFloor
+                floors={floors}
+                room={<Photo name="ai-room" alt="رسمة توضيحية لغرفة فاضية بشباك مقوّس، تتفرش أرضيتها" sizes="(min-width: 64rem) 56rem, 100vw" className="room__img" />}
+              />
+            </section>
+          )}
+
           {p.works && (
             <section id="works" className="pdp-block" aria-labelledby="works-title">
               <h2 id="works-title" className="pdp-block__title" data-reveal>
@@ -189,7 +217,14 @@ export default async function ProductPage({ params }: PageProps<"/products/[slug
               <p className="pdp-block__intro" data-reveal>
                 {p.samples.intro}
               </p>
-              <Works works={p.samples} name={`عينة ${p.name}`} />
+              <div className="rack" data-reveal="up">
+                <span className="rack__bar" aria-hidden="true" />
+                <ul className="rack__tags">
+                  {p.samples.images.map((img, i) => (
+                    <SampleTag key={img} index={i} image={img} title={`عينة ${i + 1}`} href={whatsappHref(`${p.name}، العينة رقم ${i + 1} من صور الموقع`, true)} />
+                  ))}
+                </ul>
+              </div>
               <p className="pdp-block__cta" data-reveal>
                 <a className="btn btn--dark" href={whatsappHref(p.name, true)} data-wa>
                   <Icon name="sample" size={18} />
@@ -257,6 +292,16 @@ export default async function ProductPage({ params }: PageProps<"/products/[slug
             </div>
           </section>
 
+          <section id="steps" className="pdp-block" aria-labelledby="steps-title-p">
+            <p className="eyebrow" data-reveal>
+              {home.steps.eyebrow}
+            </p>
+            <h2 id="steps-title-p" className="pdp-block__title" data-reveal>
+              {home.steps.title}
+            </h2>
+            <StepsPath steps={[...home.steps.items]} />
+          </section>
+
           <section id="faq" className="pdp-block" aria-labelledby="faq-title-p">
             <h2 id="faq-title-p" className="pdp-block__title" data-reveal>
               أسئلة عن {p.name}
@@ -276,6 +321,7 @@ export default async function ProductPage({ params }: PageProps<"/products/[slug
                 من <strong><bdi>{p.priceFrom}</bdi></strong> ريال للمتر
               </p>
             )}
+            <InstalmentLine price={p.priceFrom} compact />
             <p className="buybox__line">أرسل المقاس وصورة المكان، ونرتّب معاينة وقياسًا مجانًا ونرد عليك بالسعر.</p>
             <a className="btn btn--primary" href={whatsappHref(p.name)} data-wa>
               <Icon name="whatsapp" size={20} />
