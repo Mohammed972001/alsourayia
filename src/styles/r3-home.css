@@ -1,1 +1,1539 @@
-/* Round 3 (2026-11-12): home styles from the user's picks in design/options. */
+/* Round 3 (2026-11-12): home sections from the user's picks in design/options. Prefix hm-. Tokens only,
+   except the hero's fixed night teal (the AI scene is dark whatever the palette), the WhatsApp green and the
+   collage's warm studio panel. Order: shared bits, hero, tapes, showcase rail, 3D slab, installs slider,
+   WhatsApp chat, Tabby/Tamara, shop collage. Motion runs on transform/opacity/clip-path; reduced motion is
+   handled in motion.css. */
+
+/* ---- Shared ------------------------------------------------------------------------------------- */
+
+.hm-wa {
+  border-color: #25d366;
+  background: #25d366;
+  color: #062b14;
+}
+
+.hm-wa:hover {
+  border-color: #1fbe5b;
+  background: #1fbe5b;
+}
+
+/* Small label on AI drawings and illustrations. */
+.hm-note {
+  position: absolute;
+  z-index: 6;
+  inset-block-end: var(--space-3);
+  inset-inline-end: var(--space-3);
+  padding: 0.1rem 0.5rem;
+  border-radius: 3px;
+  background: rgba(9, 31, 36, 0.6);
+  color: #fff;
+  font-size: var(--size-xs);
+  pointer-events: none;
+}
+
+/* ---- Hero «العينات الطايرة» ----------------------------------------------------------------------- */
+
+.hm-hero {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: flex-end;
+  min-height: 44rem;
+  padding-top: var(--header-h);
+  overflow: hidden;
+  background: #071a1f;
+  color: #f3ede3;
+}
+
+.hm-hero__bg {
+  position: absolute;
+  z-index: -3;
+  inset: 0 0 auto;
+  width: 100%;
+  height: 62%;
+  object-fit: cover;
+  object-position: 22% 0;
+  animation: hm-zoom 20s ease-in-out infinite alternate;
+}
+
+.hm-hero::after {
+  content: "";
+  position: absolute;
+  z-index: -2;
+  inset: 0;
+  background: linear-gradient(0deg, #071a1f 40%, rgba(7, 26, 31, 0.7) 54%, rgba(7, 26, 31, 0) 70%);
+}
+
+.hm-hero__dust,
+.hm-hero__shine {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  pointer-events: none;
+}
+
+.hm-hero__dust i {
+  position: absolute;
+  bottom: -10px;
+  left: var(--x, 10%);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--text-inverse-accent);
+  box-shadow: 0 0 10px 2px rgba(240, 185, 138, 0.6);
+  opacity: 0;
+  animation: hm-dust var(--d, 9s) linear infinite;
+  animation-delay: var(--w, 0s);
+}
+
+.hm-hero__dust i:nth-child(1) { --x: 8%; }
+.hm-hero__dust i:nth-child(2) { --x: 16%; --w: 3.2s; --d: 11s; }
+.hm-hero__dust i:nth-child(3) { --x: 24%; --w: 1.4s; width: 3px; height: 3px; }
+.hm-hero__dust i:nth-child(4) { --x: 31%; --w: 5.1s; --d: 12s; }
+.hm-hero__dust i:nth-child(5) { --x: 38%; --w: 2.3s; width: 2px; height: 2px; }
+.hm-hero__dust i:nth-child(6) { --x: 45%; --w: 6.6s; }
+.hm-hero__dust i:nth-child(7) { --x: 52%; --w: 0.8s; --d: 10s; width: 3px; height: 3px; }
+.hm-hero__dust i:nth-child(8) { --x: 59%; --w: 4.4s; }
+.hm-hero__dust i:nth-child(9) { --x: 66%; --w: 7.5s; width: 2px; height: 2px; }
+.hm-hero__dust i:nth-child(10) { --x: 12%; --w: 8.1s; --d: 13s; }
+.hm-hero__dust i:nth-child(11) { --x: 49%; --w: 9.3s; width: 3px; height: 3px; }
+.hm-hero__dust i:nth-child(12) { --x: 27%; --w: 10.2s; --d: 12s; }
+
+.hm-hero__shine {
+  background: linear-gradient(105deg, transparent 42%, rgba(240, 185, 138, 0.14) 50%, transparent 58%) 0 0 / 260% 100%;
+  mix-blend-mode: screen;
+  animation: hm-shine 8s linear infinite;
+}
+
+.hm-hero__inner {
+  padding-block: var(--space-8) var(--space-12);
+}
+
+.hm-hero__copy {
+  display: grid;
+  gap: var(--space-5);
+  max-width: 36rem;
+}
+
+.hm-hero__kicker {
+  color: var(--text-inverse-accent);
+  font-size: var(--size-sm);
+  font-weight: 700;
+  animation: hm-fade 0.8s var(--ease-out) both 0.1s;
+}
+
+.hm-hero__title {
+  display: grid;
+  color: #fff;
+  font-size: clamp(2.6rem, 1.6rem + 4vw, 4.9rem);
+  line-height: 1.12;
+}
+
+.hm-hero__l1,
+.hm-hero__l2 {
+  animation: hm-rise 0.9s var(--ease-out) both;
+}
+
+.hm-hero__l2 {
+  color: var(--text-inverse-accent);
+  font-size: 1.35em;
+  line-height: 1.05;
+  animation-delay: 0.18s;
+}
+
+.hm-hero__turn {
+  color: #d7cfc2;
+  font-size: var(--size-xl);
+  line-height: 1.5;
+  animation: hm-fade 0.8s var(--ease-out) both 0.5s;
+}
+
+.hm-hero__slot {
+  display: inline-block;
+  height: 1.5em;
+  overflow: hidden;
+  color: var(--text-inverse-accent);
+  font-weight: 700;
+  vertical-align: bottom;
+}
+
+.hm-hero__slot span {
+  display: block;
+  height: 1.5em;
+  line-height: 1.5em;
+  white-space: nowrap;
+  animation: hm-word 10s cubic-bezier(0.7, 0, 0.2, 1) infinite;
+}
+
+.hm-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  animation: hm-fade 0.8s var(--ease-out) both 0.65s;
+}
+
+.hm-hero__ghost {
+  border-color: rgba(255, 255, 255, 0.6);
+  color: #fff;
+}
+
+.hm-hero__ghost:hover {
+  border-color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.hm-hero__facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-5);
+  color: var(--text-inverse-muted);
+  font-size: var(--size-sm);
+  animation: hm-fade 0.8s var(--ease-out) both 0.8s;
+}
+
+.hm-hero__facts li::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin-inline-end: var(--space-2);
+  background: var(--text-inverse-accent);
+  rotate: 45deg;
+  vertical-align: middle;
+}
+
+.hm-hero__note {
+  inset-block-start: calc(var(--header-h) + var(--space-3));
+  inset-block-end: auto;
+}
+
+@media (min-width: 48rem) {
+  .hm-hero {
+    align-items: center;
+    min-height: max(38rem, min(100svh, 52rem));
+  }
+
+  .hm-hero__bg {
+    height: 100%;
+    object-position: 20% 50%;
+  }
+
+  .hm-hero::after {
+    background:
+      linear-gradient(to left, rgba(7, 26, 31, 0.92), rgba(7, 26, 31, 0.55) 40%, rgba(7, 26, 31, 0) 68%),
+      linear-gradient(0deg, rgba(7, 26, 31, 0.55), transparent 28%);
+  }
+
+  .hm-hero__inner {
+    padding-block: var(--space-16);
+  }
+
+  .hm-hero__note {
+    inset-block-start: auto;
+    inset-block-end: var(--space-3);
+  }
+}
+
+@keyframes hm-zoom {
+  from { scale: 1.03; translate: 0 0; }
+  to { scale: 1.16; translate: -2% -2%; }
+}
+
+@keyframes hm-dust {
+  0% { opacity: 0; translate: 0 0; }
+  10% { opacity: 0.9; }
+  80% { opacity: 0.5; }
+  100% { opacity: 0; translate: 30px -560px; }
+}
+
+@keyframes hm-shine {
+  from { background-position: 130% 0; }
+  to { background-position: -130% 0; }
+}
+
+@keyframes hm-rise {
+  from { opacity: 0; clip-path: inset(100% 0 0 0); translate: 0 30px; }
+  to { opacity: 1; clip-path: inset(0 0 -20% 0); translate: 0 0; }
+}
+
+@keyframes hm-fade {
+  from { opacity: 0; translate: 0 14px; }
+}
+
+@keyframes hm-word {
+  0%, 18% { translate: 0 0; }
+  25%, 43% { translate: 0 -100%; }
+  50%, 68% { translate: 0 -200%; }
+  75%, 93% { translate: 0 -300%; }
+  100% { translate: 0 -400%; }
+}
+
+/* ---- Two tapes crossing under the hero ------------------------------------------------------------ */
+
+.hm-tapes {
+  position: relative;
+  height: 9.5rem;
+  overflow: hidden;
+  background: linear-gradient(180deg, #071a1f 0 46%, var(--surface-page) 46%);
+}
+
+.hm-tape {
+  position: absolute;
+  inset-inline: -6%;
+  overflow: hidden;
+  padding-block: 0.7rem;
+}
+
+/* Tape ticks along both edges. */
+.hm-tape::before,
+.hm-tape::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  height: 7px;
+  background: repeating-linear-gradient(to left, currentColor 0 1.5px, transparent 1.5px 10px);
+  opacity: 0.45;
+}
+
+.hm-tape::before { top: 0; }
+.hm-tape::after { bottom: 0; }
+
+.hm-tape--a {
+  z-index: 2;
+  top: 1.9rem;
+  rotate: -1.8deg;
+  background: var(--action-primary);
+  color: var(--text-on-accent);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
+}
+
+.hm-tape--b {
+  z-index: 1;
+  top: 5.2rem;
+  rotate: 1.6deg;
+  background: var(--action-inverse);
+  color: var(--text-on-inverse-action);
+}
+
+.hm-tape__track {
+  display: flex;
+  width: max-content;
+  animation: hm-run 36s linear infinite;
+}
+
+.hm-tape--b .hm-tape__track {
+  animation-name: hm-run-back;
+  animation-duration: 46s;
+}
+
+.hm-tape__set {
+  display: flex;
+  flex: none;
+  align-items: center;
+}
+
+.hm-tape__set li {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding-inline: 1.4rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.hm-tape--a li {
+  font-family: var(--font-display), sans-serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+.hm-tape--a li::after {
+  content: "";
+  width: 7px;
+  height: 7px;
+  margin-inline-start: 1.4rem;
+  background: currentColor;
+  opacity: 0.6;
+  rotate: 45deg;
+}
+
+.hm-tape--b li::after {
+  content: "/";
+  margin-inline-start: 1.4rem;
+  color: var(--text-accent);
+}
+
+@media (min-width: 64rem) {
+  .hm-tapes { height: 11rem; }
+  .hm-tape--a { top: 2.4rem; }
+  .hm-tape--b { top: 6.2rem; }
+  .hm-tape--a li { font-size: 1.35rem; }
+}
+
+@keyframes hm-run { to { transform: translateX(50%); } }
+
+@keyframes hm-run-back {
+  from { transform: translateX(50%); }
+  to { transform: translateX(0); }
+}
+
+/* ---- Showcase: group tabs + drag rail ------------------------------------------------------------ */
+
+.hm-show {
+  padding-top: var(--space-12);
+}
+
+.hm-show__head {
+  display: grid;
+  gap: var(--space-5);
+  margin-bottom: var(--space-6);
+}
+
+.hm-show__head .section-head {
+  margin-bottom: 0;
+}
+
+.hm-show__controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  min-width: 0;
+}
+
+.hm-tabs {
+  display: flex;
+  gap: var(--space-1);
+  max-width: 100%;
+  overflow-x: auto;
+  border-bottom: 1px solid var(--border-default);
+  scrollbar-width: none;
+}
+
+.hm-tabs::-webkit-scrollbar { display: none; }
+
+.hm-tabs__btn {
+  position: relative;
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 3rem;
+  padding: 0 var(--space-4);
+  border: 0;
+  background: none;
+  color: var(--text-muted);
+  font-weight: 700;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.hm-tabs__btn::after {
+  content: "";
+  position: absolute;
+  inset-inline: var(--space-3);
+  bottom: -1px;
+  height: 3px;
+  background: var(--text-accent);
+  transform: scaleX(0);
+  transition: transform var(--duration-base) var(--ease-out);
+}
+
+.hm-tabs__btn:hover,
+.hm-tabs__btn[aria-pressed="true"] {
+  color: var(--text-primary);
+}
+
+.hm-tabs__btn[aria-pressed="true"]::after {
+  transform: scaleX(1);
+}
+
+.hm-tabs__count {
+  display: inline-grid;
+  place-items: center;
+  min-width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 3px;
+  background: var(--surface-sunken);
+  font-size: var(--size-xs);
+  transition: background-color var(--duration-fast), color var(--duration-fast);
+}
+
+.hm-tabs__btn[aria-pressed="true"] .hm-tabs__count {
+  background: var(--action-primary);
+  color: var(--text-on-accent);
+}
+
+.hm-arrows {
+  display: none;
+  gap: var(--space-2);
+}
+
+.hm-arrows__btn {
+  display: grid;
+  place-items: center;
+  width: 2.9rem;
+  height: 2.9rem;
+  border: 1.5px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  background: var(--surface-card);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: background-color var(--duration-fast), color var(--duration-fast), border-color var(--duration-fast);
+}
+
+.hm-arrows__btn:hover {
+  border-color: var(--action-primary);
+  background: var(--action-primary);
+  color: var(--text-on-accent);
+}
+
+.hm-arrows__btn:disabled {
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.hm-arrows__prev {
+  transform: scaleX(-1);
+}
+
+.hm-rail {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 76%;
+  gap: var(--space-4);
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding-block: var(--space-2);
+  scrollbar-width: none;
+}
+
+.hm-rail::-webkit-scrollbar { display: none; }
+
+.hm-rail__item {
+  min-width: 0;
+  scroll-snap-align: start;
+}
+
+.hm-rail.is-dragging {
+  scroll-snap-type: none;
+  scroll-behavior: auto;
+  cursor: grabbing;
+  user-select: none;
+}
+
+.hm-rail__bar {
+  position: relative;
+  height: 3px;
+  margin-top: var(--space-5);
+  overflow: hidden;
+  border-radius: 2px;
+  background: var(--border-default);
+}
+
+.hm-rail__bar span {
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: 0;
+  width: 25%;
+  background: var(--text-accent);
+  transition: width 0.25s, inset-inline-start 0.25s;
+}
+
+@media (min-width: 40rem) {
+  .hm-rail { grid-auto-columns: calc((100% - var(--space-4)) / 2.3); }
+}
+
+@media (min-width: 64rem) {
+  .hm-arrows { display: flex; }
+
+  .hm-rail {
+    grid-auto-columns: calc((100% - 3 * var(--space-5)) / 4);
+    gap: var(--space-5);
+    cursor: grab;
+  }
+}
+
+/* ---- 3D slab: the floor that assembles ------------------------------------------------------------ */
+
+.hm-slab {
+  --T: min(26vw, 10rem);
+  --th: calc(var(--T) * 0.1);
+  position: relative;
+  padding-block: var(--section-y);
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 35% 60%, var(--surface-card), transparent 60%),
+    repeating-linear-gradient(90deg, transparent 0 59px, var(--border-subtle) 59px 60px),
+    repeating-linear-gradient(0deg, transparent 0 59px, var(--border-subtle) 59px 60px),
+    var(--surface-sunken);
+}
+
+.hm-slab__inner {
+  display: grid;
+  gap: var(--space-6);
+  align-items: center;
+}
+
+.hm-slab__copy {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  gap: var(--space-4);
+  justify-items: start;
+}
+
+.hm-slab__title {
+  font-size: var(--size-4xl);
+}
+
+.hm-slab__text {
+  max-width: 30rem;
+  color: var(--text-muted);
+  font-size: var(--size-lg);
+}
+
+.hm-slab__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.hm-slab__stage {
+  position: relative;
+  order: -1;
+  display: grid;
+  place-items: center;
+  min-height: calc(var(--T) * 3.2);
+}
+
+.hm-slab__iso {
+  position: relative;
+  width: calc(var(--T) * 3);
+  height: calc(var(--T) * 2);
+  transform: rotateX(56deg) rotateZ(-40deg);
+  transform-style: preserve-3d;
+  animation: hm-sway 16s ease-in-out infinite;
+}
+
+.hm-slab__tile {
+  position: absolute;
+  left: calc(var(--x) * var(--T));
+  top: calc(var(--y) * var(--T));
+  width: calc(var(--T) - 4px);
+  height: calc(var(--T) - 4px);
+  background: var(--t) center / cover;
+  transform-style: preserve-3d;
+  transition: transform 0.35s var(--ease-out);
+}
+
+/* No filter and no opacity animation on these 3D pieces: either one makes Chrome flatten the tile. The two
+   layers under each tile give it thickness and are darkened with a gradient instead. */
+.hm-slab__tile::before,
+.hm-slab__tile::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.hm-slab__tile::before {
+  background: linear-gradient(rgba(9, 20, 22, 0.6), rgba(9, 20, 22, 0.6)), var(--t) center / cover;
+  transform: translateZ(calc(var(--th) * -1));
+}
+
+.hm-slab__tile::after {
+  background: linear-gradient(rgba(9, 20, 22, 0.4), rgba(9, 20, 22, 0.4)), var(--t) center / cover;
+  transform: translateZ(calc(var(--th) * -0.5));
+}
+
+.hm-slab__tile:hover,
+.hm-slab__tile:focus-visible {
+  transform: translateZ(calc(var(--T) * 0.18));
+}
+
+/* The tag stands up: the inverse of the slab's rotation, raised above the tile. */
+.hm-slab__tag {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  display: grid;
+  justify-items: center;
+  padding: 0.3rem 0.65rem;
+  background: var(--surface-card);
+  color: var(--text-primary);
+  font-size: var(--size-xs);
+  font-weight: 700;
+  line-height: 1.4;
+  white-space: nowrap;
+  box-shadow: 0 6px 16px rgba(9, 31, 36, 0.2);
+  transform: translate(-50%, -50%) translateZ(calc(var(--T) * 0.32)) rotateZ(40deg) rotateX(-56deg);
+}
+
+.hm-slab__tag::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: 1px;
+  height: calc(var(--T) * 0.2);
+  background: var(--text-accent-display);
+}
+
+.hm-slab__tag b {
+  color: var(--text-accent);
+  font-family: var(--font-display), sans-serif;
+  font-size: 1.15rem;
+  font-weight: 400;
+}
+
+.hm-slab__stage.is-in .hm-slab__tile {
+  animation: hm-drop 0.8s cubic-bezier(0.3, 1.4, 0.5, 1) both;
+  animation-delay: calc(var(--n) * 0.16s);
+}
+
+.hm-slab__stage.is-in .hm-slab__tag {
+  animation: hm-show 0.5s ease both;
+  animation-delay: calc(1.1s + var(--n) * 0.1s);
+}
+
+.hm-slab__unit {
+  position: absolute;
+  bottom: 0;
+  color: var(--text-muted);
+  font-size: var(--size-xs);
+}
+
+.hm-slab__stage .hm-note {
+  inset-block-start: 0;
+  inset-block-end: auto;
+}
+
+@media (min-width: 64rem) {
+  .hm-slab { --T: clamp(7rem, 10.5vw, 10.5rem); }
+
+  .hm-slab__inner {
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.4fr);
+  }
+
+  .hm-slab__stage {
+    order: 0;
+    min-height: calc(var(--T) * 3.6);
+  }
+}
+
+/* translate only: an opacity animation on a preserve-3d tile flattens it in Chrome, even after it ends. */
+@keyframes hm-drop {
+  from { translate: 0 0 calc(var(--T) * 4); }
+  to { translate: 0 0 0; }
+}
+
+@keyframes hm-show {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes hm-sway {
+  0%, 100% { transform: rotateX(56deg) rotateZ(-40deg); }
+  50% { transform: rotateX(52deg) rotateZ(-34deg); }
+}
+
+/* ---- Installs slider ---------------------------------------------------------------------------- */
+
+.hm-slider__stage {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  background: var(--surface-inverse);
+}
+
+.hm-slider__slide {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  opacity: 0;
+  transition: opacity 0.9s ease;
+}
+
+.hm-slider__slide.is-on {
+  z-index: 1;
+  opacity: 1;
+}
+
+.hm-slider__slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.1);
+  transition: transform 6.5s linear;
+}
+
+.hm-slider__slide.is-on img {
+  transform: scale(1);
+}
+
+.hm-slider__slide::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(7, 20, 23, 0.82), transparent 50%);
+  pointer-events: none;
+}
+
+.hm-slider__slide figcaption {
+  position: absolute;
+  z-index: 2;
+  inset-inline-start: clamp(1rem, 3vw, 2rem);
+  bottom: 2.2rem;
+  display: grid;
+  gap: var(--space-1);
+  justify-items: start;
+  color: #fff;
+}
+
+.hm-slider__place {
+  padding: 0 0.5rem;
+  border-radius: 3px;
+  background: var(--action-inverse);
+  color: var(--text-on-inverse-action);
+  font-size: var(--size-xs);
+  font-weight: 700;
+}
+
+.hm-slider__name {
+  font-family: var(--font-display), sans-serif;
+  font-size: clamp(1.5rem, 1.1rem + 1.6vw, 2.3rem);
+  line-height: 1.3;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.6s 0.3s, transform 0.6s 0.3s;
+}
+
+.hm-slider__slide.is-on .hm-slider__name {
+  opacity: 1;
+  transform: none;
+}
+
+.hm-slider__name:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--action-inverse);
+  text-underline-offset: 6px;
+}
+
+.hm-slider__count {
+  position: absolute;
+  z-index: 3;
+  top: 1.1rem;
+  inset-inline-start: clamp(1rem, 3vw, 2rem);
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  color: #fff;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+}
+
+.hm-slider__count b {
+  font-family: var(--font-display), sans-serif;
+  font-size: clamp(2.1rem, 1.4rem + 2.6vw, 3.6rem);
+  font-weight: 400;
+  line-height: 1;
+}
+
+.hm-slider__count span {
+  opacity: 0.85;
+}
+
+.hm-slider__nav {
+  position: absolute;
+  z-index: 3;
+  top: 1.1rem;
+  inset-inline-end: 1.1rem;
+  display: flex;
+  gap: var(--space-2);
+}
+
+.hm-slider__nav button {
+  display: grid;
+  place-items: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: var(--radius-sm);
+  background: rgba(7, 20, 23, 0.35);
+  color: #fff;
+  cursor: pointer;
+  transition: background-color var(--duration-fast), border-color var(--duration-fast);
+}
+
+.hm-slider__nav button:hover {
+  border-color: var(--action-primary);
+  background: var(--action-primary);
+}
+
+.hm-slider__progress {
+  position: absolute;
+  z-index: 3;
+  inset-inline: 0;
+  bottom: 0;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.hm-slider__progress span {
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: 0;
+  width: 0;
+  background: var(--action-inverse);
+}
+
+.hm-slider__progress.run span {
+  animation: hm-fill 5.5s linear forwards;
+}
+
+.hm-slider__thumbs {
+  display: flex;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.hm-slider__thumbs button {
+  position: relative;
+  flex: 0 0 4.5rem;
+  aspect-ratio: 4 / 3;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  border-radius: 3px;
+  background: none;
+  opacity: 0.5;
+  cursor: pointer;
+  transition: opacity var(--duration-base);
+}
+
+.hm-slider__thumbs button::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 2px solid transparent;
+  border-radius: 3px;
+  transition: border-color var(--duration-base);
+}
+
+.hm-slider__thumbs button.is-on,
+.hm-slider__thumbs button:hover {
+  opacity: 1;
+}
+
+.hm-slider__thumbs button.is-on::after {
+  border-color: var(--text-accent);
+}
+
+.hm-slider__thumbs img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (min-width: 48rem) {
+  .hm-slider__stage { aspect-ratio: 16 / 7; }
+
+  .hm-slider__nav {
+    top: auto;
+    bottom: 1.6rem;
+  }
+
+  .hm-slider__thumbs {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+}
+
+@keyframes hm-fill { to { width: 100%; } }
+
+/* ---- WhatsApp chat steps -------------------------------------------------------------------------- */
+
+.hm-chat__inner {
+  display: grid;
+  gap: var(--space-10);
+  align-items: center;
+}
+
+.hm-chat__copy {
+  display: grid;
+  gap: var(--space-5);
+  justify-items: start;
+}
+
+.hm-chat__copy .section-head {
+  margin-bottom: 0;
+}
+
+.hm-chat__steps {
+  display: grid;
+  gap: var(--space-3);
+  width: 100%;
+}
+
+.hm-chat__steps li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  background: var(--surface-card);
+  color: var(--text-muted);
+  transition: color 0.4s, border-color 0.4s;
+}
+
+.hm-chat__steps b {
+  display: block;
+  font-weight: 700;
+}
+
+.hm-chat__steps small {
+  display: block;
+  font-size: var(--size-sm);
+  line-height: 1.6;
+}
+
+.hm-chat__tick {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border: 2px solid var(--border-default);
+  border-radius: 50%;
+  color: transparent;
+  transition: background-color 0.4s, border-color 0.4s, color 0.4s;
+}
+
+.hm-chat__steps li.is-done {
+  border-color: var(--action-primary);
+  color: var(--text-primary);
+}
+
+.hm-chat__steps li.is-done .hm-chat__tick {
+  border-color: var(--action-primary);
+  background: var(--action-primary);
+  color: var(--text-on-accent);
+}
+
+.hm-phone {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  justify-self: center;
+  width: 100%;
+  max-width: 24rem;
+  height: 35rem;
+  overflow: hidden;
+  border: 10px solid var(--surface-inverse);
+  border-radius: 34px;
+  background: var(--surface-card);
+  box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.45);
+}
+
+.hm-phone__top {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  background: var(--surface-inverse);
+  color: var(--text-inverse);
+}
+
+.hm-phone__av {
+  width: 36px;
+  height: 36px;
+  padding: 3px;
+  border-radius: 50%;
+  background: #fff;
+  object-fit: contain;
+}
+
+.hm-phone__who {
+  display: grid;
+  margin-inline-end: auto;
+  line-height: 1.3;
+}
+
+.hm-phone__who small {
+  color: var(--text-inverse-muted);
+  font-size: 0.7rem;
+}
+
+.hm-phone__body {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: var(--space-2);
+  overflow: hidden;
+  padding: var(--space-3);
+  background:
+    radial-gradient(circle at 1px 1px, rgba(11, 35, 41, 0.08) 1px, transparent 0) 0 0 / 14px 14px,
+    var(--surface-sunken);
+}
+
+.hm-msg {
+  position: relative;
+  max-width: 84%;
+  padding: 0.45rem 0.7rem 1rem;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
+}
+
+.hm-msg--shop {
+  align-self: flex-start;
+  border-start-start-radius: 2px;
+  background: var(--surface-card);
+}
+
+.hm-msg--me {
+  align-self: flex-end;
+  border-start-end-radius: 2px;
+  background: #dcf5e4;
+}
+
+.hm-msg--photo {
+  padding: 4px 4px 1rem;
+}
+
+.hm-msg--photo img {
+  width: 13.5rem;
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: 9px;
+}
+
+.hm-msg--photo p {
+  padding: 0.35rem 0.45rem 0;
+}
+
+.hm-msg--card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding-bottom: 0.5rem;
+}
+
+.hm-msg__swatch {
+  flex: none;
+  width: 54px;
+  height: 54px;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+.hm-msg--card b {
+  display: block;
+  color: var(--text-accent);
+}
+
+.hm-msg__ticks {
+  position: absolute;
+  inset-block-end: 3px;
+  inset-inline-end: 8px;
+  display: flex;
+  color: var(--text-teal);
+}
+
+.hm-msg__ticks svg + svg {
+  margin-inline-start: -8px;
+}
+
+/* Scripted only once ChatPlayer runs; without it the whole chat shows. */
+.hm-phone.is-scripted .hm-msg {
+  display: none;
+}
+
+.hm-phone.is-scripted .hm-msg.is-in {
+  display: block;
+  animation: hm-pop 0.35s cubic-bezier(0.3, 1.3, 0.5, 1);
+}
+
+.hm-phone.is-scripted .hm-msg--card.is-in {
+  display: flex;
+}
+
+.hm-typing {
+  display: none;
+  align-self: flex-start;
+  gap: 4px;
+  padding: 0.7rem 0.8rem;
+  border-radius: 12px;
+  border-start-start-radius: 2px;
+  background: var(--surface-card);
+}
+
+.hm-typing.is-on {
+  display: inline-flex;
+}
+
+.hm-typing i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--text-muted);
+  animation: hm-dots 1s infinite;
+}
+
+.hm-typing i:nth-child(2) { animation-delay: 0.15s; }
+.hm-typing i:nth-child(3) { animation-delay: 0.3s; }
+
+.hm-phone__input {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2);
+  background: var(--surface-sunken);
+}
+
+.hm-phone__input span:first-child {
+  flex: 1;
+  padding: 0.5rem 0.9rem;
+  border-radius: 999px;
+  background: var(--surface-card);
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+.hm-phone__send {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #25d366;
+  color: #062b14;
+}
+
+@media (min-width: 64rem) {
+  .hm-chat__inner {
+    grid-template-columns: minmax(0, 1fr) minmax(20rem, 24rem);
+    gap: clamp(2rem, 5vw, 4.5rem);
+  }
+}
+
+@keyframes hm-pop {
+  from { opacity: 0; transform: translateY(8px) scale(0.96); }
+}
+
+@keyframes hm-dots {
+  0%, 60%, 100% { opacity: 0.35; transform: none; }
+  30% { opacity: 1; transform: translateY(-3px); }
+}
+
+/* ---- Tabby and Tamara ------------------------------------------------------------------------------ */
+
+.hm-pay__inner {
+  display: grid;
+  gap: var(--space-8);
+  align-items: center;
+}
+
+.hm-pay__copy {
+  display: grid;
+  gap: var(--space-4);
+  justify-items: start;
+}
+
+.hm-pay .eyebrow {
+  color: var(--text-inverse-accent);
+}
+
+.hm-pay__title {
+  color: var(--text-inverse);
+  font-size: var(--size-4xl);
+}
+
+.hm-pay__text {
+  color: var(--text-inverse-muted);
+  font-size: var(--size-lg);
+}
+
+.hm-pay__logos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+/* Official partner logos: unaltered, always on white. */
+.hm-pay__logos img {
+  width: auto;
+  height: 2.75rem;
+  padding: 0.45rem 0.8rem;
+  border-radius: var(--radius-sm);
+  background: #fff;
+}
+
+.hm-pay__list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-3);
+}
+
+.hm-pay__list li {
+  display: grid;
+  gap: var(--space-1);
+  justify-items: center;
+  padding: var(--space-5) var(--space-2);
+  border-top: 4px solid var(--action-inverse);
+  background: var(--surface-card);
+  color: var(--text-primary);
+  text-align: center;
+}
+
+.hm-pay__list small {
+  color: var(--text-muted);
+  font-weight: 700;
+}
+
+.hm-pay__list b {
+  color: var(--text-accent);
+  font-family: var(--font-display), sans-serif;
+  font-size: var(--size-3xl);
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.hm-pay__list span {
+  font-weight: 700;
+}
+
+.hm-pay__note {
+  margin-top: var(--space-3);
+  color: var(--text-inverse-muted);
+  font-size: var(--size-sm);
+}
+
+@media (min-width: 64rem) {
+  .hm-pay__inner {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.4fr);
+    gap: var(--space-12);
+  }
+
+  .hm-pay__list {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* ---- Shop collage --------------------------------------------------------------------------------- */
+
+.hm-col__inner {
+  display: grid;
+  gap: var(--space-8);
+  align-items: center;
+}
+
+.hm-col__copy {
+  display: grid;
+  gap: var(--space-4);
+  justify-items: start;
+}
+
+.hm-col__title {
+  font-size: var(--size-4xl);
+}
+
+.hm-col__text {
+  max-width: 32rem;
+  color: var(--text-muted);
+  font-size: var(--size-lg);
+}
+
+.hm-col__rows {
+  display: grid;
+  gap: var(--space-2);
+  width: 100%;
+  margin: 0;
+  padding: var(--space-4);
+  border-inline-start: 3px solid var(--action-primary);
+  background: var(--surface-sunken);
+}
+
+.hm-col__rows div {
+  display: grid;
+  grid-template-columns: 6.5rem minmax(0, 1fr);
+  gap: var(--space-2);
+}
+
+.hm-col__rows dt {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--text-muted);
+  font-weight: 700;
+}
+
+.hm-col__rows dd {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 var(--space-3);
+  margin: 0;
+}
+
+.hm-col__rows dd > span {
+  display: none;
+}
+
+.hm-col__rows a {
+  white-space: nowrap;
+}
+
+.hm-col__rows a:hover {
+  color: var(--text-accent);
+}
+
+.hm-col__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+/* A warm studio panel just darker than the AI shots' cream backdrop, so mix-blend-mode: darken hides it. */
+.hm-col__stage {
+  position: relative;
+  isolation: isolate;
+  min-height: 27rem;
+  overflow: hidden;
+  background: #e6dccb;
+}
+
+.hm-col__photo {
+  position: absolute;
+  left: 22%;
+  top: 12%;
+  width: 56%;
+  height: 72%;
+  margin: 0;
+  clip-path: polygon(0 0, 88% 0, 100% 9%, 100% 100%, 0 100%);
+}
+
+.hm-col__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hm-col__photo figcaption {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  padding: 1.4rem 0.9rem 0.6rem;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.7), transparent);
+  color: #fff;
+  font-size: var(--size-xs);
+}
+
+.hm-col__stage.is-in .hm-col__photo {
+  animation: hm-open 1s var(--ease-in-out) both;
+}
+
+/* No transform or z-index on the figure: either would isolate the blended image from the panel. */
+.hm-col__obj {
+  position: absolute;
+  margin: 0;
+}
+
+.hm-col__shot {
+  display: block;
+  width: 100%;
+  height: auto;
+  mix-blend-mode: darken;
+  -webkit-mask-image: radial-gradient(closest-side, #000 72%, transparent);
+  mask-image: radial-gradient(closest-side, #000 72%, transparent);
+  animation: hm-bob 6s ease-in-out infinite;
+  animation-delay: calc(var(--n) * -1.4s);
+}
+
+.hm-col__stage.is-in .hm-col__shot {
+  animation:
+    hm-fly 1.1s cubic-bezier(0.2, 0.9, 0.3, 1.15) both,
+    hm-bob 6s ease-in-out infinite;
+  animation-delay: calc(0.4s + var(--n) * 0.15s), calc(var(--n) * -1.4s);
+}
+
+.hm-col__obj figcaption {
+  position: absolute;
+  z-index: 3;
+}
+
+.hm-col__obj figcaption a {
+  display: grid;
+  padding: 0.3rem 0.6rem;
+  background: var(--surface-inverse);
+  color: var(--text-inverse);
+  font-size: var(--size-xs);
+  font-weight: 700;
+  white-space: nowrap;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
+}
+
+.hm-col__obj figcaption b {
+  color: var(--text-inverse-accent);
+  font-size: var(--size-sm);
+}
+
+.hm-col__stage.is-in .hm-col__obj figcaption {
+  animation: hm-fade 0.5s ease both;
+  animation-delay: calc(1.2s + var(--n) * 0.15s);
+}
+
+.hm-col__stage .hm-note {
+  inset-inline: 50% auto;
+  translate: 50% 0;
+  white-space: nowrap;
+}
+
+.hm-col__obj--0 { --fx: 60%; --fy: -60%; left: 52%; top: -4%; width: 42%; }
+.hm-col__obj--0 figcaption { right: 8%; top: 68%; }
+.hm-col__obj--1 { --fx: -70%; --fy: 30%; left: -2%; top: 50%; width: 40%; }
+.hm-col__obj--1 figcaption { left: 16%; bottom: 6%; }
+.hm-col__obj--2 { --fx: 70%; --fy: 50%; left: 66%; top: 56%; width: 32%; }
+.hm-col__obj--2 figcaption { right: 12%; bottom: 10%; }
+.hm-col__obj--3 { --fx: -60%; --fy: -60%; left: 0; top: -2%; width: 30%; }
+.hm-col__obj--3 figcaption { left: 12%; top: 62%; }
+
+@media (min-width: 64rem) {
+  .hm-col__inner {
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.3fr);
+    gap: var(--space-12);
+  }
+
+  .hm-col__stage {
+    min-height: 36rem;
+  }
+
+  .hm-col__photo {
+    left: 27%;
+    width: 44%;
+    height: 74%;
+  }
+}
+
+@keyframes hm-open {
+  from { clip-path: polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%, 50% 50%); }
+}
+
+@keyframes hm-fly {
+  from { opacity: 0; transform: translate(var(--fx), var(--fy)) rotate(-14deg) scale(0.7); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes hm-bob {
+  0%, 100% { translate: 0 0; rotate: 0deg; }
+  50% { translate: 0 -12px; rotate: 1.5deg; }
+}
