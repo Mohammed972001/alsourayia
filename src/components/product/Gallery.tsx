@@ -3,12 +3,11 @@
 import { useState } from "react";
 import { Photo } from "../Photo";
 
-/** Product gallery: an arch-topped main photo with overlapping thumbnails and a bronze frame. */
+/** Product gallery: a wide photo with a cut corner, its source label, and a strip of thumbnails under it. */
 export function Gallery({ images, name, label }: { images: string[]; name: string; label: string }) {
   const [active, setActive] = useState(0);
   return (
     <div className="gallery">
-      <span className="gallery__frame" aria-hidden="true" />
       <figure className="gallery__main" data-reveal="lay">
         {images.map((img, i) => (
           <Photo
