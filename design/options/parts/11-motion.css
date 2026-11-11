@@ -1,0 +1,47 @@
+/* Group 11: how sections enter while scrolling. a planks · b soft rise · c open from the centre · d tile flip.
+   Prefix mo-. Each demo starts under .play (added on view and by the replay button). */
+
+.site .mo-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.site .mo-card { overflow: hidden; border: 1px solid var(--line); border-radius: 4px; background: var(--card); }
+.site .mo-card__img { aspect-ratio: 4 / 3; overflow: hidden; }
+.site .mo-card figcaption { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 10px; padding: 12px 14px; }
+.site .mo-card b { font-size: 16px; }
+.site .mo-card .price { font-size: 14px; }
+@container (max-width: 700px) {
+  .site .mo-grid { grid-template-columns: 1fr; gap: 12px; }
+  .site .mo-card { display: grid; grid-template-columns: 120px 1fr; }
+  .site .mo-card__img { aspect-ratio: 1; }
+  .site .mo-card figcaption { flex-direction: column; justify-content: center; }
+}
+
+/* a: planks slide in from the start side (the right in Arabic) with a clip. */
+.site .mo-a .sec-h, .site .mo-a .mo-card { opacity: 0; transform: translateX(70px); clip-path: inset(0 0 0 100%); }
+.site .mo-a.play .sec-h { animation: mo-plank .8s cubic-bezier(.2, .8, .2, 1) forwards; }
+.site .mo-a.play .mo-card { animation: mo-plank .85s cubic-bezier(.2, .8, .2, 1) forwards; animation-delay: calc(.25s + var(--i) * .16s); }
+
+/* b: soft rise. */
+.site .mo-b .sec-h, .site .mo-b .mo-card { opacity: 0; transform: translateY(24px); }
+.site .mo-b.play .sec-h { animation: mo-rise .9s ease-out forwards; }
+.site .mo-b.play .mo-card { animation: mo-rise .9s ease-out forwards; animation-delay: calc(.2s + var(--i) * .12s); }
+
+/* c: the photo opens from its centre outward, the image settles from a slight zoom. */
+.site .mo-c .sec-h { opacity: 0; }
+.site .mo-c.play .sec-h { animation: mo-fade .8s ease-out forwards; }
+.site .mo-c .mo-card { clip-path: inset(0 50% 0 50%); }
+.site .mo-c .mo-card img { transform: scale(1.25); }
+.site .mo-c.play .mo-card { animation: mo-open 1.1s cubic-bezier(.7, 0, .2, 1) forwards; animation-delay: calc(.2s + var(--i) * .18s); }
+.site .mo-c.play .mo-card img { animation: mo-settle 1.6s cubic-bezier(.2, .8, .2, 1) forwards; animation-delay: calc(.2s + var(--i) * .18s); }
+
+/* d: each card flips down into place on its X axis. */
+.site .mo-d .mo-grid { perspective: 1100px; }
+.site .mo-d .sec-h { opacity: 0; transform: translateY(-14px); }
+.site .mo-d.play .sec-h { animation: mo-rise .6s ease-out forwards; }
+.site .mo-d .mo-card { opacity: 0; transform-origin: 50% 0; transform: rotateX(-90deg); backface-visibility: hidden; }
+.site .mo-d.play .mo-card { animation: mo-flip .8s cubic-bezier(.3, 1.3, .5, 1) forwards; animation-delay: calc(.3s + var(--i) * .3s); }
+
+@keyframes mo-plank { to { opacity: 1; transform: none; clip-path: inset(0 0 0 0); } }
+@keyframes mo-rise { to { opacity: 1; transform: none; } }
+@keyframes mo-fade { to { opacity: 1; } }
+@keyframes mo-open { to { clip-path: inset(0 0 0 0); } }
+@keyframes mo-settle { to { transform: scale(1); } }
+@keyframes mo-flip { 0% { opacity: 0; transform: rotateX(-90deg); } 30% { opacity: 1; } 100% { opacity: 1; transform: rotateX(0); } }

@@ -1,0 +1,1245 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>اختيارات تصميم موكيت السريع — الجولة الثالثة</title>
+<link rel="stylesheet" href="picker.css">
+<link rel="stylesheet" href="demos.css">
+</head>
+<body data-view="desktop">
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-wa" viewBox="0 0 24 24"><path d="M3.5 20.5l1.3-4.6A8.5 8.5 0 1112 20.5a8.4 8.4 0 01-4.1-1.1l-4.4 1.1z"/><path d="M9 8.5c.3 2.6 2.4 5.3 5.8 6.4l.9-1.3-1.8-1-.9.8a5 5 0 01-2.3-2.3l.8-.9-1-1.8z"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 3h3.5l1.5 4.5-2 1.5a12 12 0 006 6l1.5-2L20 14.5V18a2 2 0 01-2 2A15 15 0 013 5a2 2 0 012-2z"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></symbol>
+  <symbol id="i-arrow-r" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h10"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0119 9.5C19 14.8 12 21 12 21zM12 7a2.5 2.5 0 110 5 2.5 2.5 0 010-5z"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><path d="M12 3a9 9 0 110 18 9 9 0 010-18zM12 7v5l3 2"/></symbol>
+  <symbol id="i-ruler" viewBox="0 0 24 24"><path d="M3 16.5L16.5 3 21 7.5 7.5 21zM7 12.5l2 2M10 9.5l2 2M13 6.5l2 2"/></symbol>
+  <symbol id="i-sample" viewBox="0 0 24 24"><path d="M4 4h10l6 6v10H4zM14 4v6h6M8 14h8M8 17h5"/></symbol>
+  <symbol id="i-truck" viewBox="0 0 24 24"><path d="M2 6h12v10H2zM14 10h4l3 3v3h-7M6.5 19a1.5 1.5 0 100-3 1.5 1.5 0 000 3zM17.5 19a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"/></symbol>
+  <symbol id="i-tools" viewBox="0 0 24 24"><path d="M14 6a4 4 0 005 5l-8 8a2 2 0 01-3-3l8-8a4 4 0 01-2-2zM4 4l4 4M3 7l4-4"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+  <symbol id="i-camera" viewBox="0 0 24 24"><path d="M3 8h4l2-3h6l2 3h4v11H3zM12 10a3.5 3.5 0 110 7 3.5 3.5 0 010-7z"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5l11 7-11 7z"/></symbol>
+  <symbol id="i-mosque" viewBox="0 0 24 24"><path d="M12 3c2.5 2 5 3.5 5 6.5V20H7V9.5C7 6.5 9.5 5 12 3zM4 20V11M20 20V11M10 20v-4a2 2 0 014 0v4M3 20h18"/></symbol>
+  <symbol id="i-office" viewBox="0 0 24 24"><path d="M4 21V5l9-2v18M13 9h7v12M8 8h1M8 12h1M8 16h1M16 13h1M16 17h1M3 21h18"/></symbol>
+  <symbol id="i-gym" viewBox="0 0 24 24"><path d="M3 10v4M6 7v10M18 7v10M21 10v4M6 12h12"/></symbol>
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11l9-7 9 7M5 9.5V20h5v-6h4v6h5V9.5"/></symbol>
+  <symbol id="i-layers" viewBox="0 0 24 24"><path d="M12 3l9 5-9 5-9-5zM3 13l9 5 9-5M3 17l9 5 9-5"/></symbol>
+</svg>
+
+<header class="pk-top">
+  <div class="pk-top__brand"><img src="../../public/brand/logo-lockup-inverse.webp" alt="السريع"> <span>اختيارات التصميم — الجولة الثالثة</span></div>
+  <div class="pk-top__tools">
+    <div class="pk-seg" role="group" aria-label="العرض">
+      <button type="button" data-set-view="desktop" aria-pressed="true">ديسكتوب</button>
+      <button type="button" data-set-view="mobile" aria-pressed="false">موبايل</button>
+    </div>
+    <span class="pk-count" id="pk-count">0/0</span>
+    <button type="button" class="pk-copy" id="pk-copy">انسخ اختياراتي</button>
+  </div>
+</header>
+
+<div class="pk-layout">
+<nav class="pk-nav" id="pk-nav" aria-label="الأقسام"><p>الأقسام</p></nav>
+
+<main>
+<section class="pk-intro">
+  <h1>اختار من كل قسم شكل واحد</h1>
+  <p>كل شكل هنا شغال بحركته الحقيقية. اللون والخط اللي تختارهم في أول قسمين بيتطبقوا على كل الأشكال اللي تحت، عشان تشوف الموقع كامل باختيارك.</p>
+  <ul>
+    <li>بدّل بين «ديسكتوب» و«موبايل» من الشريط اللي فوق.</li>
+    <li>الأشكال اللي عليها علامة «رسمة AI» فيها رسومات معمولة بالذكاء الاصطناعي، والباقي صور المحل الحقيقية.</li>
+    <li>ممكن تختار من كل قسم حاجة، أو تسيب القسم فاضي لو مش فارق معاك. ولو عايز تخلط شكلين اكتب ده في الملاحظات تحت.</li>
+    <li>لما تخلص اضغط «انسخ اختياراتي» وابعتها في الشات، وأنا أنفّذها في الموقع.</li>
+  </ul>
+</section>
+
+<section class="pk-group" id="g-colors" data-key="colors" data-label="الألوان">
+  <div class="pk-gh"><span class="pk-gh__n">١</span><h2>الألوان</h2><p>كل الألوان طالعة من لوجو المحل (الكحلي المخضر والنحاسي والخشبي). اللي تختاره هنا بيتطبق على كل الأشكال اللي تحت.</p></div>
+  <div class="pk-opts">
+    <article class="pk-opt" data-value="a" data-label="أ تيل ونحاسي">
+      <div class="pk-opt-head"><h3><b>أ</b>تيل ونحاسي</h3><span class="pk-tag">الشكل الحالي</span><p>الشكل الحالي: كحلي مخضر من كلمة «السريع» في اللوجو، ونحاسي من الحرف الخشب، على أرضية كريمي.</p><button type="button" class="pk-pick">اختار ده</button></div>
+      <div class="frame"><div class="site" data-c="a" data-fixed="c">
+        <div class="bar"><img class="logo logo-l" src="../../public/brand/logo-lockup.webp" alt=""><img class="logo logo-d" src="../../public/brand/logo-lockup-inverse.webp" alt=""><nav><span>الموكيت</span><span>الباركيه</span><span>الربل</span><span>المحل</span></nav><a class="btn btn--wa btn--sm" href="#"><svg class="i"><use href="#i-wa"/></svg><span>واتساب</span></a></div>
+        <div class="pl-body">
+          <div class="pl-hero"><span class="eyebrow">حراج بن قاسم، الرياض</span><h4 class="d">موكيت ومفروشات <em>السريع</em></h4><p>نقيس مكانك مجانًا ونجيب لك العينة قبل ما تطلب.</p><div class="pl-btns"><a class="btn" href="#">اطلب معاينة</a><a class="btn btn--ghost" href="#">الأرضيات</a></div></div>
+          <div class="pl-cards">
+            <div class="pl-card"><img class="ph" src="../../public/media/mosque-12-480.webp" alt=""><div><b>موكيت مساجد</b><span class="price">من 40 ريال/م²</span></div></div>
+            <div class="pl-card"><img class="ph" src="../../public/media/gym-06-480.webp" alt=""><div><b>ربل جيم</b><span class="price">من 65 ريال/م²</span></div></div>
+          </div>
+          <div class="pl-dark"><img src="../../public/brand/logo-lockup-inverse.webp" alt=""><div><b>تعال شوف العينات على الطبيعة</b><small>يوميًا من 9 صباحًا حتى 10 مساءً</small></div><a class="btn btn--light btn--sm" href="#">الموقع على الخريطة</a></div>
+        </div>
+        <div class="pl-sw"><span style="background:#0F2C33;color:#fff">تيل غامق <i dir="ltr">#0F2C33</i></span><span style="background:#9A5124;color:#fff">نحاسي <i dir="ltr">#9A5124</i></span><span style="background:#E0A577;color:#091F24">نحاسي فاتح <i dir="ltr">#E0A577</i></span><span style="background:#F5EFE4;color:#091F24">كريمي <i dir="ltr">#F5EFE4</i></span></div>
+      </div></div>
+    </article>
+    <article class="pk-opt" data-value="b" data-label="ب ليلي فاخر">
+      <div class="pk-opt-head"><h3><b>ب</b>ليلي فاخر</h3><p>الموقع كله غامق زي صالة عرض بالليل: تيل شبه أسود، والنحاسي هو اللي بيلمع.</p><button type="button" class="pk-pick">اختار ده</button></div>
+      <div class="frame"><div class="site" data-c="b" data-fixed="c">
+        <div class="bar"><img class="logo logo-l" src="../../public/brand/logo-lockup.webp" alt=""><img class="logo logo-d" src="../../public/brand/logo-lockup-inverse.webp" alt=""><nav><span>الموكيت</span><span>الباركيه</span><span>الربل</span><span>المحل</span></nav><a class="btn btn--wa btn--sm" href="#"><svg class="i"><use href="#i-wa"/></svg><span>واتساب</span></a></div>
+        <div class="pl-body">
+          <div class="pl-hero"><span class="eyebrow">حراج بن قاسم، الرياض</span><h4 class="d">موكيت ومفروشات <em>السريع</em></h4><p>نقيس مكانك مجانًا ونجيب لك العينة قبل ما تطلب.</p><div class="pl-btns"><a class="btn" href="#">اطلب معاينة</a><a class="btn btn--ghost" href="#">الأرضيات</a></div></div>
+          <div class="pl-cards">
+            <div class="pl-card"><img class="ph" src="../../public/media/mosque-12-480.webp" alt=""><div><b>موكيت مساجد</b><span class="price">من 40 ريال/م²</span></div></div>
+            <div class="pl-card"><img class="ph" src="../../public/media/gym-06-480.webp" alt=""><div><b>ربل جيم</b><span class="price">من 65 ريال/م²</span></div></div>
+          </div>
+          <div class="pl-dark"><img src="../../public/brand/logo-lockup-inverse.webp" alt=""><div><b>تعال شوف العينات على الطبيعة</b><small>يوميًا من 9 صباحًا حتى 10 مساءً</small></div><a class="btn btn--light btn--sm" href="#">الموقع على الخريطة</a></div>
+        </div>
+        <div class="pl-sw"><span style="background:#0C1F24;color:#fff">تيل ليلي <i dir="ltr">#0C1F24</i></span><span style="background:#132D34;color:#fff">كروت <i dir="ltr">#132D34</i></span><span style="background:#D08A4E;color:#091F24">نحاسي لامع <i dir="ltr">#D08A4E</i></span><span style="background:#F3EDE3;color:#091F24">كتابة <i dir="ltr">#F3EDE3</i></span></div>
+      </div></div>
+    </article>
+    <article class="pk-opt" data-value="c" data-label="ج رملي وخشبي">
+      <div class="pk-opt-head"><h3><b>ج</b>رملي وخشبي</h3><p>دافي زي الخشب والسجاد: بني جوزي للأجزاء الغامقة، وتيل اللوجو للزراير.</p><button type="button" class="pk-pick">اختار ده</button></div>
+      <div class="frame"><div class="site" data-c="c" data-fixed="c">
+        <div class="bar"><img class="logo logo-l" src="../../public/brand/logo-lockup.webp" alt=""><img class="logo logo-d" src="../../public/brand/logo-lockup-inverse.webp" alt=""><nav><span>الموكيت</span><span>الباركيه</span><span>الربل</span><span>المحل</span></nav><a class="btn btn--wa btn--sm" href="#"><svg class="i"><use href="#i-wa"/></svg><span>واتساب</span></a></div>
+        <div class="pl-body">
+          <div class="pl-hero"><span class="eyebrow">حراج بن قاسم، الرياض</span><h4 class="d">موكيت ومفروشات <em>السريع</em></h4><p>نقيس مكانك مجانًا ونجيب لك العينة قبل ما تطلب.</p><div class="pl-btns"><a class="btn" href="#">اطلب معاينة</a><a class="btn btn--ghost" href="#">الأرضيات</a></div></div>
+          <div class="pl-cards">
+            <div class="pl-card"><img class="ph" src="../../public/media/mosque-12-480.webp" alt=""><div><b>موكيت مساجد</b><span class="price">من 40 ريال/م²</span></div></div>
+            <div class="pl-card"><img class="ph" src="../../public/media/gym-06-480.webp" alt=""><div><b>ربل جيم</b><span class="price">من 65 ريال/م²</span></div></div>
+          </div>
+          <div class="pl-dark"><img src="../../public/brand/logo-lockup-inverse.webp" alt=""><div><b>تعال شوف العينات على الطبيعة</b><small>يوميًا من 9 صباحًا حتى 10 مساءً</small></div><a class="btn btn--light btn--sm" href="#">الموقع على الخريطة</a></div>
+        </div>
+        <div class="pl-sw"><span style="background:#3A2618;color:#fff">بني جوزي <i dir="ltr">#3A2618</i></span><span style="background:#214953;color:#fff">تيل اللوجو <i dir="ltr">#214953</i></span><span style="background:#E7B98C;color:#2A1C12">خشبي فاتح <i dir="ltr">#E7B98C</i></span><span style="background:#F0E5D4;color:#2A1C12">رملي <i dir="ltr">#F0E5D4</i></span></div>
+      </div></div>
+    </article>
+    <article class="pk-opt" data-value="d" data-label="د أبيض وتيل اللوجو">
+      <div class="pk-opt-head"><h3><b>د</b>أبيض وتيل اللوجو</h3><p>أبيض ونضيف، وتيل اللوجو نفسه للأجزاء الغامقة والزراير، والنحاسي للتفاصيل الصغيرة بس.</p><button type="button" class="pk-pick">اختار ده</button></div>
+      <div class="frame"><div class="site" data-c="d" data-fixed="c">
+        <div class="bar"><img class="logo logo-l" src="../../public/brand/logo-lockup.webp" alt=""><img class="logo logo-d" src="../../public/brand/logo-lockup-inverse.webp" alt=""><nav><span>الموكيت</span><span>الباركيه</span><span>الربل</span><span>المحل</span></nav><a class="btn btn--wa btn--sm" href="#"><svg class="i"><use href="#i-wa"/></svg><span>واتساب</span></a></div>
+        <div class="pl-body">
+          <div class="pl-hero"><span class="eyebrow">حراج بن قاسم، الرياض</span><h4 class="d">موكيت ومفروشات <em>السريع</em></h4><p>نقيس مكانك مجانًا ونجيب لك العينة قبل ما تطلب.</p><div class="pl-btns"><a class="btn" href="#">اطلب معاينة</a><a class="btn btn--ghost" href="#">الأرضيات</a></div></div>
+          <div class="pl-cards">
+            <div class="pl-card"><img class="ph" src="../../public/media/mosque-12-480.webp" alt=""><div><b>موكيت مساجد</b><span class="price">من 40 ريال/م²</span></div></div>
+            <div class="pl-card"><img class="ph" src="../../public/media/gym-06-480.webp" alt=""><div><b>ربل جيم</b><span class="price">من 65 ريال/م²</span></div></div>
+          </div>
+          <div class="pl-dark"><img src="../../public/brand/logo-lockup-inverse.webp" alt=""><div><b>تعال شوف العينات على الطبيعة</b><small>يوميًا من 9 صباحًا حتى 10 مساءً</small></div><a class="btn btn--light btn--sm" href="#">الموقع على الخريطة</a></div>
+        </div>
+        <div class="pl-sw"><span style="background:#214953;color:#fff">تيل اللوجو <i dir="ltr">#214953</i></span><span style="background:#FFFFFF;color:#0B2329">أبيض <i dir="ltr">#FFFFFF</i></span><span style="background:#9A5124;color:#fff">نحاسي للتفاصيل <i dir="ltr">#9A5124</i></span><span style="background:#F1F6F6;color:#0B2329">رمادي مخضر فاتح <i dir="ltr">#F1F6F6</i></span></div>
+      </div></div>
+    </article>
+    <article class="pk-opt" data-value="e" data-label="هـ نحاسي جريء">
+      <div class="pk-opt-head"><h3><b>هـ</b>نحاسي جريء</h3><p>النحاسي هو البطل: أقسام بني نحاسي غامق، والزراير تيل.</p><button type="button" class="pk-pick">اختار ده</button></div>
+      <div class="frame"><div class="site" data-c="e" data-fixed="c">
+        <div class="bar"><img class="logo logo-l" src="../../public/brand/logo-lockup.webp" alt=""><img class="logo logo-d" src="../../public/brand/logo-lockup-inverse.webp" alt=""><nav><span>الموكيت</span><span>الباركيه</span><span>الربل</span><span>المحل</span></nav><a class="btn btn--wa btn--sm" href="#"><svg class="i"><use href="#i-wa"/></svg><span>واتساب</span></a></div>
+        <div class="pl-body">
+          <div class="pl-hero"><span class="eyebrow">حراج بن قاسم، الرياض</span><h4 class="d">موكيت ومفروشات <em>السريع</em></h4><p>نقيس مكانك مجانًا ونجيب لك العينة قبل ما تطلب.</p><div class="pl-btns"><a class="btn" href="#">اطلب معاينة</a><a class="btn btn--ghost" href="#">الأرضيات</a></div></div>
+          <div class="pl-cards">
+            <div class="pl-card"><img class="ph" src="../../public/media/mosque-12-480.webp" alt=""><div><b>موكيت مساجد</b><span class="price">من 40 ريال/م²</span></div></div>
+            <div class="pl-card"><img class="ph" src="../../public/media/gym-06-480.webp" alt=""><div><b>ربل جيم</b><span class="price">من 65 ريال/م²</span></div></div>
+          </div>
+          <div class="pl-dark"><img src="../../public/brand/logo-lockup-inverse.webp" alt=""><div><b>تعال شوف العينات على الطبيعة</b><small>يوميًا من 9 صباحًا حتى 10 مساءً</small></div><a class="btn btn--light btn--sm" href="#">الموقع على الخريطة</a></div>
+        </div>
+        <div class="pl-sw"><span style="background:#6E3A1A;color:#fff">نحاسي غامق <i dir="ltr">#6E3A1A</i></span><span style="background:#214953;color:#fff">تيل للزراير <i dir="ltr">#214953</i></span><span style="background:#FFD2A8;color:#1E140D">مشمشي <i dir="ltr">#FFD2A8</i></span><span style="background:#F8EBDD;color:#1E140D">كريمي دافي <i dir="ltr">#F8EBDD</i></span></div>
+      </div></div>
+    </article>
+  </div>
+</section>
+
+<section class="pk-group" id="g-font" data-key="font" data-label="خط العناوين">
+  <div class="pk-gh"><span class="pk-gh__n">٢</span><h2>خط العناوين</h2><p>ده خط العناوين الكبيرة بس. الكلام العادي هيفضل بخط واحد مريح للقراية.</p></div>
+  <div class="pk-opts pk-opts--2">
+    <article class="pk-opt" data-value="a" data-label="أ المسيري">
+      <div class="pk-opt-head"><h3><b>أ</b>المسيري</h3><span class="pk-tag">الشكل الحالي</span><p>الحالي: عربي ناعم فيه انحناءات، قريب من كتابة اللوجو.</p><button type="button" class="pk-pick">اختار ده</button></div>
+      <div class="frame"><div class="site" data-f="a" data-fixed="f">
+        <div class="fn-body">
+          <span class="eyebrow">موكيت وباركيه وربل</span>
+          <h4 class="d">موكيت ومفروشات <em>السريع</em></h4>
+          <p class="fn-sub d">نفرش المساجد والمكاتب والبيوت</p>
+          <ul class="fn-list"><li><span class="d">موكيت مساجد</span><b class="d">40</b></li><li><span class="d">باركيه SPC ضد الماء</span><b class="d">75</b></li><li><span class="d">ربل حمامات</span><b class="d">90</b></li></ul>
+          <p class="fn-text">نص عادي: أرسل صورة المكان ومقاسه على واتساب، ونرتّب لك معاينة وقياسًا مجانًا.</p>
+        </div>
+      </div></div>
+    </article>
+    <article class="pk-opt" data-value="b" data-label="ب ريم كوفي">
+      <div class="pk-opt-head"><h3><b>ب</b>ريم كوفي</h3><p>كوفي هندسي مرتب، شكله حديث وجاد.</p><button type="button" class="pk-pick">اختار ده</button></div>
+      <div class="frame"><div class="site" data-f="b" data-fixed="f">
+        <div class="fn-body">
+          <span class="eyebrow">موكيت وباركيه وربل</span>
+          <h4 class="d">موكيت ومفروشات <em>السريع</em></h4>
+          <p class="fn-sub d">نفرش المساجد والمكاتب والبيوت</p>
+          <ul class="fn-list"><li><span class="d">موكيت مساجد</span><b class="d">40</b></li><li><span class="d">باركيه SPC ضد الماء</span><b class="d">75</b></li><li><span class="d">ربل حمامات</span><b class="d">90</b></li></ul>
+          <p class="fn-text">نص عادي: أرسل صورة المكان ومقاسه على واتساب، ونرتّب لك معاينة وقياسًا مجانًا.</p>
+        </div>
+      </div></div>
+    </article>
+    <article class="pk-opt" data-value="c" data-label="ج لاله زار">
+      <div class="pk-opt-head"><h3><b>ج</b>لاله زار</h3><p>خط عريض وتقيل زي اليفط، بيلفت النظر من بعيد.</p><button type="button" class="pk-pick">اختار ده</button></div>
+      <div class="frame"><div class="site" data-f="c" data-fixed="f">
+        <div class="fn-body">
+          <span class="eyebrow">موكيت وباركيه وربل</span>
+          <h4 class="d">موكيت ومفروشات <em>السريع</em></h4>
+          <p class="fn-sub d">نفرش المساجد والمكاتب والبيوت</p>
+          <ul class="fn-list"><li><span class="d">موكيت مساجد</span><b class="d">40</b></li><li><span class="d">باركيه SPC ضد الماء</span><b class="d">75</b></li><li><span class="d">ربل حمامات</span><b class="d">90</b></li></ul>
+          <p class="fn-text">نص عادي: أرسل صورة المكان ومقاسه على واتساب، ونرتّب لك معاينة وقياسًا مجانًا.</p>
+        </div>
+      </div></div>
+    </article>
+    <article class="pk-opt" data-value="d" data-label="د ريدكس برو">
+      <div class="pk-opt-head"><h3><b>د</b>ريدكس برو</h3><p>بسيط وعصري، أنضف شكل في الأرقام والأسعار.</p><button type="button" class="pk-pick">اختار ده</button></div>
+      <div class="frame"><div class="site" data-f="d" data-fixed="f">
+        <div class="fn-body">
+          <span class="eyebrow">موكيت وباركيه وربل</span>
+          <h4 class="d">موكيت ومفروشات <em>السريع</em></h4>
+          <p class="fn-sub d">نفرش المساجد والمكاتب والبيوت</p>
+          <ul class="fn-list"><li><span class="d">موكيت مساجد</span><b class="d">40</b></li><li><span class="d">باركيه SPC ضد الماء</span><b class="d">75</b></li><li><span class="d">ربل حمامات</span><b class="d">90</b></li></ul>
+          <p class="fn-text">نص عادي: أرسل صورة المكان ومقاسه على واتساب، ونرتّب لك معاينة وقياسًا مجانًا.</p>
+        </div>
+      </div></div>
+    </article>
+  </div>
+</section>
+
+<section class="pk-group" id="g-header" data-key="header" data-label="الهيدر">
+  <div class="pk-gh"><span class="pk-gh__n">٣</span><h2>الهيدر</h2><p>الشريط اللي فوق في كل صفحة: اللوجو والقايمة وزرار الواتساب. جرّب تعدّي بالماوس أو تضغط على القايمة.</p></div>
+  <div class="pk-opts">
+
+    <article class="pk-opt" data-value="a" data-label="أ القايمة بالصور">
+      <div class="pk-opt-head"><h3><b>أ</b>القايمة بالصور</h3><span class="pk-tag">الشكل الحالي</span><p>سطر صغير فيه العنوان والمواعيد، وتحته أربع مجموعات؛ كل مجموعة بتفتح لوحة فيها صور الأصناف وأسعارها.</p><button type="button" class="pk-pick">اختار ده</button></div>
+      <div class="frame"><div class="site">
+        <div class="hd-a">
+          <div class="hd-a__info"><span><svg class="i"><use href="#i-pin"/></svg>حراج بن قاسم، الرياض</span><span><svg class="i"><use href="#i-clock"/></svg>يوميًا 9 ص – 10 م</span><span dir="ltr">055 010 1867</span></div>
+          <div class="bar hd-a__bar">
+            <img class="logo logo-l" src="../../public/brand/logo-lockup.webp" alt=""><img class="logo logo-d" src="../../public/brand/logo-lockup-inverse.webp" alt="">
+            <nav class="hd-a__nav">
+              <button type="button" class="is-open" data-hd-a="0">الموكيت<svg class="i"><use href="#i-chev"/></svg></button>
+              <button type="button" data-hd-a="1">الباركيه والفينيل<svg class="i"><use href="#i-chev"/></svg></button>
+              <button type="button" data-hd-a="2">الربل<svg class="i"><use href="#i-chev"/></svg></button>
+              <span>المحل</span><span>تواصل</span>
+            </nav>
+            <a class="btn btn--wa btn--sm" href="#"><svg class="i"><use href="#i-wa"/></svg><span>واتساب</span></a>
+            <button type="button" class="hd-burger" aria-label="القايمة"><svg class="i"><use href="#i-menu"/></svg></button>
+          </div>
+          <div class="hd-a__panels">
+            <ul class="hd-a__panel is-open">
+              <li><img src="../../public/media/mosque-12-480.webp" alt=""><b>موكيت مساجد</b><span class="price">من 40 ريال/م²</span></li>
+              <li><img src="../../public/media/office-08-480.webp" alt=""><b>موكيت مكاتب</b><span class="price">من 45 ريال/م²</span></li>
+              <li><img src="../../public/media/art-carpet-480.webp" alt=""><b>موكيت منازل</b><span class="price">من 15 ريال/م²</span></li>
+            </ul>
+            <ul class="hd-a__panel">
+              <li><img src="../../public/media/parquet-cat-01-480.webp" alt=""><b>باركيه خشب</b><span class="price">من 65 ريال/م²</span></li>
+              <li><img src="../../public/media/spc-cat-01-480.webp" alt=""><b>باركيه SPC</b><span class="price">من 75 ريال/م²</span></li>
+              <li><img src="../../public/media/vinyl-12-480.webp" alt=""><b>مشمع باركيه</b><span class="price">من 19 ريال/م²</span></li>
+            </ul>
+            <ul class="hd-a__panel">
+              <li><img src="../../public/media/gym-06-480.webp" alt=""><b>ربل جيم</b><span class="price">من 65 ريال/م²</span></li>
+              <li><img src="../../public/media/bath-01-480.webp" alt=""><b>ربل حمامات</b><span class="price">من 90 ريال/م²</span></li>
+              <li><img src="../../public/media/art-foam-480.webp" alt=""><b>فوم وبازل</b><span class="price">السعر بعد القياس</span></li>
+            </ul>
+          </div>
+          <div class="hd-page"><img class="ph" src="../../public/media/mosque-06-828.webp" alt=""></div>
+        </div>
+      </div></div>
+    </article>
+
+    <article class="pk-opt" data-value="b" data-label="ب شفاف فوق الصورة">
+      <div class="pk-opt-head"><h3><b>ب</b>شفاف فوق الصورة</h3><p>الهيدر بيبدأ شفاف ولونه أبيض فوق صورة الهيرو، ولما الزبون ينزل في الصفحة بيصغر ويبقى له خلفية. الحركة هنا بتعيد نفسها لوحدها.</p><button type="button" class="pk-pick">اختار ده</button></div>
+      <div class="frame"><div class="site">
+        <div class="hd-b">
+          <div class="hd-b__page">
+            <div class="hd-b__hero"><img class="ph" src="../../public/media/mosque-12-1200.webp" alt=""><div><span class="eyebrow eyebrow--d">حراج بن قاسم، الرياض</span><h4 class="d">موكيت ومفروشات السريع</h4></div></div>
+            <div class="hd-b__rest"><span></span><span></span><span></span></div>
+          </div>
+          <div class="hd-b__bar">
+            <span class="hd-b__logos"><img class="hd-b__inv" src="../../public/brand/logo-lockup-inverse.webp" alt=""><img class="hd-b__norm logo-l" src="../../public/brand/logo-lockup.webp" alt=""><img class="hd-b__norm logo-d" src="../../public/brand/logo-lockup-inverse.webp" alt=""></span>
+            <nav><span>الموكيت</span><span>الباركيه</span><span>الربل</span><span>المحل</span><span>تواصل</span></nav>
+            <a class="btn btn--wa btn--sm" href="#"><svg class="i"><use href="#i-wa"/></svg><span>واتساب</span></a>
+            <button type="button" class="hd-burger" aria-label="القايمة"><svg class="i"><use href="#i-menu"/></svg></button>
+          </div>
+        </div>
+      </div></div>
+    </article>
+
+    <article class="pk-opt" data-value="c" data-label="ج اللوجو في النص">
+      <div class="pk-opt-head"><h3><b>ج</b>اللوجو في النص</h3><span class="pk-tag pk-tag--ai">رسمة AI</span><p>اللوجو في النص والروابط على الجانبين، وتحته شريط بقطع من الخامات نفسها (موكيت، باركيه، ربل، فينيل) بتطلع واحدة ورا التانية.</p><button type="button" class="pk-replay" data-replay>شغّل الحركة تاني</button><button type="button" class="pk-pick">اختار ده</button></div>
+      <div class="frame"><div class="site">
+        <div class="hd-c">
+          <div class="hd-c__bar">
+            <nav class="hd-c__side"><span>الموكيت</span><span>الباركيه</span><span>الربل</span></nav>
+            <img class="hd-c__logo logo-l" src="../../public/brand/logo-lockup.webp" alt=""><img class="hd-c__logo logo-d" src="../../public/brand/logo-lockup-inverse.webp" alt="">
+            <nav class="hd-c__side hd-c__side--end"><span>المحل</span><span>تواصل</span><a class="btn btn--wa btn--sm" href="#"><svg class="i"><use href="#i-wa"/></svg><span>واتساب</span></a></nav>
+            <button type="button" class="hd-burger" aria-label="القايمة"><svg class="i"><use href="#i-menu"/></svg></button>
+          </div>
+          <ul class="hd-c__mats" data-play>
+            <li style="--t:url(ai/tex-mosque.webp)"><i></i>موكيت مساجد</li>
+            <li style="--t:url(ai/tex-office.webp)"><i></i>موكيت مكاتب</li>
+            <li style="--t:url(ai/tex-parquet.webp)"><i></i>باركيه</li>
+            <li style="--t:url(ai/tex-vinyl.webp)"><i></i>فينيل ومشمع</li>
+            <li style="--t:url(ai/tex-rubber.webp)"><i></i>ربل</li>
+            <li style="--t:url(../../public/media/art-grass-160.webp)"><i></i>عشب وفوم</li>
+          </ul>
+          <div class="hd-page hd-page--short"><img class="ph" src="../../public/media/office-08-828.webp" alt=""></div>
+        </div>
+      </div></div>
+    </article>
+
+    <article class="pk-opt" data-value="d" data-label="د القايمة بتغطي الشاشة">
+      <div class="pk-opt-head"><h3><b>د</b>القايمة بتغطي الشاشة</h3><p>شريط بسيط جدًا (اللوجو، «القايمة»، واتساب). لما تضغط «القايمة» بتفتح شاشة كاملة فيها المجموعات بصور كبيرة بتطلع واحدة ورا التانية. اضغطها هنا.</p><button type="button" class="pk-pick">اختار ده</button></div>
+      <div class="frame"><div class="site">
+        <div class="hd-d" data-hd-d>
+          <div class="hd-d__bar">
+            <img class="logo logo-l" src="../../public/brand/logo-lockup.webp" alt=""><img class="logo logo-d" src="../../public/brand/logo-lockup-inverse.webp" alt="">
+            <button type="button" class="hd-d__toggle" data-hd-d-toggle><span class="hd-d__lines"><i></i><i></i><i></i></span><b>القايمة</b></button>
+            <a class="btn btn--wa btn--sm" href="#"><svg class="i"><use href="#i-wa"/></svg><span>واتساب</span></a>
+          </div>
+          <div class="hd-d__menu">
+            <a href="#" style="--d:0"><img class="ph" src="../../public/media/mosque-13-828.webp" alt=""><span><b class="d">الموكيت</b><small>مساجد · مكاتب · منازل</small></span></a>
+            <a href="#" style="--d:1"><img class="ph" src="../../public/media/parquet-cat-02-828.webp" alt=""><span><b class="d">الباركيه والفينيل</b><small>خشب · SPC · مشمع · طبي</small></span></a>
+            <a href="#" style="--d:2"><img class="ph" src="../../public/media/gym-01-828.webp" alt=""><span><b class="d">الربل</b><small>جيم · حمامات</small></span></a>
+            <a href="#" style="--d:3"><img class="ph" src="../../public/media/art-grass-828.webp" alt=""><span><b class="d">أرضيات خاصة</b><small>فوم وبازل · عشب صناعي</small></span></a>
+            <p class="hd-d__foot"><span>حراج بن قاسم، الرياض</span><span dir="ltr">055 010 1867</span><span>يوميًا 9 ص – 10 م</span></p>
+          </div>
+          <div class="hd-page"><img class="ph" src="../../public/media/gym-06-828.webp" alt=""></div>
+        </div>
+      </div></div>
+    </article>
+
+  </div>
+</section>
+
+<section class="pk-group" id="g-hero" data-key="hero" data-label="الهيرو">
+  <div class="pk-gh"><span class="pk-gh__n">٤</span><h2>الهيرو (أول شاشة)</h2><p>أول حاجة الزبون بيشوفها. كل شكل هنا فيه صور ورسومات وحركة، والكلام قليل: الاسم وسطر واحد وزرارين بس.</p></div>
+  <div class="pk-opts">
+
+    <!-- a: the room that gets floored -->
+    <article class="pk-opt" data-value="a" data-label="أ الأوضة بتتفرش">
+      <div class="pk-opt-head"><h3><b>أ</b>الأوضة بتتفرش</h3><span class="pk-tag pk-tag--ai">رسمة AI</span><p>أوضة فاضية مرسومة بالذكاء الاصطناعي، وأرضيتها بتتفرش قدامك بالموكيت وبعدين الباركيه والفينيل والربل، واحدة ورا التانية. الزبون يقدر يدوس على أي أرضية ويشوفها في الأوضة.</p><button type="button" class="pk-pick">اختار ده</button></div>
+      <div class="frame"><div class="site">
+        <div class="hr-a" data-hr-a>
+          <div class="hr-a__copy">
+            <span class="eyebrow">حراج بن قاسم، الرياض</span>
+            <h4 class="d">موكيت ومفروشات <em>السريع</em></h4>
+            <p>اختار الأرضية وشوفها في المكان.</p>
+            <div class="hr-a__chips" role="group" aria-label="الأرضيات">
+              <button type="button" class="is-on" data-i="0"><i style="--t:url(ai/tex-mosque.webp)"></i>موكيت مساجد</button>
+              <button type="button" data-i="1"><i style="--t:url(ai/tex-parquet.webp)"></i>باركيه خشب</button>
+              <button type="button" data-i="2"><i style="--t:url(ai/tex-vinyl.webp)"></i>مشمع وفينيل</button>
+              <button type="button" data-i="3"><i style="--t:url(ai/tex-office.webp)"></i>موكيت مكاتب</button>
+              <button type="button" data-i="4"><i style="--t:url(ai/tex-rubber.webp)"></i>ربل</button>
+            </div>
+            <div class="hr-btns"><a class="btn btn--wa" href="#"><svg class="i"><use href="#i-wa"/></svg>اطلب معاينة مجانية</a><a class="btn btn--ghost" href="#">كل الأرضيات</a></div>
+          </div>
+          <div class="hr-a__scene">
+            <img class="hr-a__room" src="ai/room.webp" alt="">
+            <div class="hr-a__floor">
+              <div class="hr-a__plane is-on" style="--t:url(ai/tex-mosque.webp);--s:9cqw"></div>
+              <div class="hr-a__plane" style="--t:url(ai/tex-parquet.webp);--s:16cqw"></div>
+              <div class="hr-a__plane" style="--t:url(ai/tex-vinyl.webp);--s:22cqw"></div>
+              <div class="hr-a__plane" style="--t:url(ai/tex-office.webp);--s:14cqw"></div>
+              <div class="hr-a__plane" style="--t:url(ai/tex-rubber.webp);--s:16cqw"></div>
+              <img class="hr-a__light" src="ai/room-light.webp" alt="">
+            </div>
+            <p class="hr-a__tag" aria-live="polite"><b>موكيت مساجد</b><span>من 40 ريال/م²</span></p>
+            <span class="ai-note">رسمة توضيحية</span>
+          </div>
+        </div>
+      </div></div>
+    </article>
+
+    <!-- b: dark, floating samples -->
+    <article class="pk-opt" data-value="b" data-label="ب العينات الطايرة">
+      <div class="pk-opt-head"><h3><b>ب</b>العينات الطايرة</h3><span class="pk-tag pk-tag--ai">رسمة AI</span><p>شاشة غامقة فخمة: عينات أرضيات طايرة في الهوا (رسمة ذكاء اصطناعي) بتقرّب ببطء، وذرات نور بتطلع، والكلمة بتتغير لوحدها: المساجد، المكاتب، البيوت، الصالات.</p><button type="button" class="pk-replay" data-replay>شغّل الحركة تاني</button><button type="button" class="pk-pick">اختار ده</button></div>
+      <div class="frame"><div class="site">
+        <div class="hr-b" data-play>
+          <img class="hr-b__bg" src="ai/float-dark.webp" alt="">
+          <div class="hr-b__dust"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="hr-b__shine"></div>
+          <div class="hr-b__copy">
+            <span class="eyebrow eyebrow--d">موكيت · باركيه · ربل · فينيل</span>
+            <h4 class="d"><span class="hr-b__l1">موكيت ومفروشات</span><span class="hr-b__l2">السريع</span></h4>
+            <p class="hr-b__rot">نفرش <span class="hr-b__slot"><span>المساجد</span><span>المكاتب</span><span>البيوت</span><span>الصالات الرياضية</span><span>المساجد</span></span></p>
+            <div class="hr-btns"><a class="btn btn--wa" href="#"><svg class="i"><use href="#i-wa"/></svg>اطلب معاينة مجانية</a><a class="btn btn--ghost" href="#">شوف الأرضيات</a></div>
+            <ul class="hr-b__facts"><li>معاينة وقياس مجانًا</li><li>عينة قبل الطلب</li><li>توريد لكل المملكة</li></ul>
+          </div>
+          <span class="ai-note">رسمة توضيحية</span>
+        </div>
+      </div></div>
+    </article>
+
+    <!-- c: the floor assembles in 3D -->
+    <article class="pk-opt" data-value="c" data-label="ج الأرضية بتتركب">
+      <div class="pk-opt-head"><h3><b>ج</b>الأرضية بتتركب</h3><span class="pk-tag pk-tag--ai">رسمة AI</span><p>قطعة أرضية ثلاثية الأبعاد بتتركب قدامك بلاطة بلاطة من الخامات (خامات مرسومة بالذكاء الاصطناعي)، وعليها أسامي الأصناف وأسعارها، وبعدين بتلف لوحدها ببطء. عدّي بالماوس على أي بلاطة ترفعها.</p><button type="button" class="pk-replay" data-replay>شغّل الحركة تاني</button><button type="button" class="pk-pick">اختار ده</button></div>
+      <div class="frame"><div class="site">
+        <div class="hr-c" data-play>
+          <div class="hr-c__copy">
+            <span class="eyebrow">حراج بن قاسم، الرياض</span>
+            <h4 class="d">كل الأرضيات<br>من <em>محل واحد</em></h4>
+            <p>موكيت وباركيه وفينيل وربل، بالقياس والتركيب.</p>
+            <div class="hr-btns"><a class="btn" href="#">اطلب معاينة مجانية</a><a class="btn btn--wa" href="#"><svg class="i"><use href="#i-wa"/></svg>واتساب</a></div>
+          </div>
+          <div class="hr-c__stage">
+            <div class="hr-c__iso">
+              <div class="hr-c__tile" style="--t:url(ai/tex-mosque.webp);--n:0;--x:0;--y:0"><span>موكيت مساجد <b>40</b></span></div>
+              <div class="hr-c__tile" style="--t:url(ai/tex-parquet.webp);--n:1;--x:1;--y:0"><span>باركيه خشب <b>65</b></span></div>
+              <div class="hr-c__tile" style="--t:url(ai/tex-office.webp);--n:2;--x:2;--y:0"><span>موكيت مكاتب <b>45</b></span></div>
+              <div class="hr-c__tile" style="--t:url(ai/tex-vinyl.webp);--n:3;--x:0;--y:1"><span>مشمع باركيه <b>19</b></span></div>
+              <div class="hr-c__tile" style="--t:url(ai/tex-rubber.webp);--n:4;--x:1;--y:1"><span>ربل جيم <b>65</b></span></div>
+              <div class="hr-c__tile" style="--t:url(../../public/media/art-grass-480.webp);--n:5;--x:2;--y:1"><span>عشب صناعي <b>10</b></span></div>
+            </div>
+            <p class="hr-c__unit">الأسعار تبدأ من، بالريال للمتر المربع</p>
+          </div>
+          <span class="ai-note">خامات مرسومة</span>
+        </div>
+      </div></div>
+    </article>
+
+    <!-- d: collage of the shop's photo and floating products -->
+    <article class="pk-opt" data-value="d" data-label="د كولاج المنتجات">
+      <div class="pk-opt-head"><h3><b>د</b>كولاج المنتجات</h3><span class="pk-tag pk-tag--ai">رسمة AI</span><p>صورة حقيقية من شغل المحل في النص، وحواليها منتجات طايرة مرسومة بالذكاء الاصطناعي (رول موكيت، ألواح باركيه، بلاط ربل، رول فينيل) بتدخل من برا وتفضل تتهز بهدوء، وعلى كل واحدة سعرها.</p><button type="button" class="pk-replay" data-replay>شغّل الحركة تاني</button><button type="button" class="pk-pick">اختار ده</button></div>
+      <div class="frame"><div class="site">
+        <div class="hr-d" data-play>
+          <div class="hr-d__copy">
+            <span class="eyebrow">موكيت · باركيه · ربل · فينيل</span>
+            <h4 class="d">موكيت ومفروشات <em>السريع</em></h4>
+            <p>نقيس مكانك مجانًا، ونجيب لك العينة قبل ما تطلب.</p>
+            <div class="hr-btns"><a class="btn btn--wa" href="#"><svg class="i"><use href="#i-wa"/></svg>اطلب معاينة</a><a class="btn btn--ghost" href="#">الأرضيات</a></div>
+            <svg class="hr-d__tape" viewBox="0 0 320 40" aria-hidden="true"><path pathLength="1" d="M2 30 C 70 6, 150 6, 318 22"/><path class="hr-d__ticks" pathLength="1" d="M20 22v8M60 14v8M100 10v8M140 9v8M180 10v8M220 12v8M260 15v8M300 19v8"/></svg>
+          </div>
+          <div class="hr-d__stage">
+            <figure class="hr-d__photo"><img class="ph" src="../../public/media/mosque-12-828.webp" alt=""><figcaption>من تركيباتنا: موكيت مسجد</figcaption></figure>
+            <figure class="hr-d__obj hr-d__obj--carpet" style="--n:0"><img src="ai/cut-carpet.webp" alt=""><figcaption>موكيت مساجد <b>من 40</b></figcaption></figure>
+            <figure class="hr-d__obj hr-d__obj--planks" style="--n:1"><img src="ai/cut-planks.webp" alt=""><figcaption>باركيه خشب <b>من 65</b></figcaption></figure>
+            <figure class="hr-d__obj hr-d__obj--rubber" style="--n:2"><img src="ai/cut-rubber.webp" alt=""><figcaption>ربل جيم <b>من 65</b></figcaption></figure>
+            <figure class="hr-d__obj hr-d__obj--vinyl" style="--n:3"><img src="ai/cut-vinyl.webp" alt=""><figcaption>مشمع باركيه <b>من 19</b></figcaption></figure>
+          </div>
+        </div>
+      </div></div>
+    </article>
+
+    <!-- e: cinema of the shop's own installs -->
+    <article class="pk-opt" data-value="e" data-label="هـ سينما الشغل">
+      <div class="pk-opt-head"><h3><b>هـ</b>سينما الشغل</h3><p>صور حقيقية من تركيبات المحل على الشاشة كلها، بتقرّب ببطء زي الفيلم، وكل صورة بتدخل على شكل ألواح بتترص جنب بعض. تحت فيه اسم الأرضية وعدّاد وخط تقدّم.</p><button type="button" class="pk-pick">اختار ده</button></div>
+      <div class="frame"><div class="site">
+        <div class="hr-e" data-hr-e>
+          <div class="hr-e__slides">
+            <div class="hr-e__slide is-on" data-name="موكيت مساجد" data-price="من 40 ريال/م²" style="--img:url(../../public/media/mosque-12-1200.webp)"></div>
+            <div class="hr-e__slide" data-name="موكيت مكاتب" data-price="من 45 ريال/م²" style="--img:url(../../public/media/office-08-828.webp)"></div>
+            <div class="hr-e__slide" data-name="ربل جيم" data-price="من 65 ريال/م²" style="--img:url(../../public/media/gym-06-1200.webp)"></div>
+            <div class="hr-e__slide" data-name="موكيت مساجد" data-price="من 40 ريال/م²" style="--img:url(../../public/media/mosque-13-828.webp)"></div>
+            <div class="hr-e__slide" data-name="ربل حمامات" data-price="من 90 ريال/م²" style="--img:url(../../public/media/bath-01-828.webp)"></div>
+          </div>
+          <div class="hr-e__shade"></div>
+          <div class="hr-e__copy">
+            <span class="eyebrow eyebrow--d">من شغلنا في الرياض</span>
+            <h4 class="d">موكيت ومفروشات السريع</h4>
+            <p>نفرش المساجد والمكاتب والصالات والبيوت.</p>
+            <div class="hr-btns"><a class="btn btn--wa" href="#"><svg class="i"><use href="#i-wa"/></svg>اطلب معاينة مجانية</a><a class="btn btn--ghost" href="#">شوف شغلنا</a></div>
+          </div>
+          <div class="hr-e__now">
+            <span class="hr-e__count"><b>٠١</b> / ٠٥</span>
+            <span class="hr-e__name"><b>موكيت مساجد</b><small>من 40 ريال/م²</small></span>
+            <span class="hr-e__bar"><i></i></span>
+          </div>
+        </div>
+      </div></div>
+    </article>
+
+    <!-- f: 3D ring of samples -->
+    <article class="pk-opt" data-value="f" data-label="و حلقة العينات">
+      <div class="pk-opt-head"><h3><b>و</b>حلقة العينات</h3><span class="pk-tag pk-tag--ai">رسمة AI</span><p>عينات الأرضيات (صور المحل وخامات مرسومة) مترصوصة في دايرة ثلاثية الأبعاد بتلف حوالين الاسم بهدوء، ولها انعكاس على الأرض. لو وقفت بالماوس عليها بتقف.</p><button type="button" class="pk-pick">اختار ده</button></div>
+      <div class="frame"><div class="site">
+        <div class="hr-f">
+          <div class="hr-f__copy">
+            <span class="eyebrow">حراج بن قاسم، الرياض</span>
+            <h4 class="d">موكيت ومفروشات <em>السريع</em></h4>
+            <div class="hr-btns"><a class="btn btn--wa" href="#"><svg class="i"><use href="#i-wa"/></svg>اطلب معاينة مجانية</a><a class="btn btn--ghost" href="#">الأرضيات</a></div>
+          </div>
+          <div class="hr-f__stage">
+            <div class="hr-f__ring">
+              <figure style="--n:0"><img src="ai/tex-mosque.webp" alt=""><figcaption>موكيت مساجد</figcaption></figure>
+              <figure style="--n:1"><img src="../../public/media/parquet-cat-02-480.webp" alt=""><figcaption>باركيه خشب</figcaption></figure>
+              <figure style="--n:2"><img src="../../public/media/office-swatch-02-480.webp" alt=""><figcaption>موكيت مكاتب</figcaption></figure>
+              <figure style="--n:3"><img src="ai/tex-rubber.webp" alt=""><figcaption>ربل جيم</figcaption></figure>
+              <figure style="--n:4"><img src="../../public/media/mosque-swatch-04-480.webp" alt=""><figcaption>موكيت مساجد</figcaption></figure>
+              <figure style="--n:5"><img src="ai/tex-vinyl.webp" alt=""><figcaption>مشمع باركيه</figcaption></figure>
+              <figure style="--n:6"><img src="../../public/media/spc-cat-03-480.webp" alt=""><figcaption>باركيه SPC</figcaption></figure>
+              <figure style="--n:7"><img src="../../public/media/art-grass-480.webp" alt=""><figcaption>عشب صناعي</figcaption></figure>
+              <figure style="--n:8"><img src="ai/tex-parquet.webp" alt=""><figcaption>باركيه خشب</figcaption></figure>
+              <figure style="--n:9"><img src="../../public/media/bath-01-480.webp" alt=""><figcaption>ربل حمامات</figcaption></figure>
+            </div>
+          </div>
+          <span class="ai-note">بعض العينات مرسومة</span>
+        </div>
+      </div></div>
+    </article>
+
+  </div>
+</section>
+
+
+<!-- 5 strip under the hero -->
+<section class="pk-group" id="g-strip" data-key="strip" data-label="الشريط تحت الهيرو">
+  <div class="pk-gh"><span class="pk-gh__n">٥</span><h2>الشريط تحت الهيرو</h2><p>الشريط الصغير اللي بيقول للزبون الخدمات (معاينة مجانًا، عينة، تركيب، توصيل) أول ما ينزل من الهيرو.</p></div>
+  <div class="pk-opts">
+
+    <article class="pk-opt" data-value="a" data-label="أ شريطين متعاكسين">
+      <div class="pk-opt-head"><h3><b>أ</b>شريطين متعاكسين</h3><p>شريطين زي شريط القياس متقاطعين، واحد فيه الخدمات والتاني فيه أسماء الأرضيات، وكل واحد ماشي في اتجاه.</p><button type="button" class="pk-pick">اختار ده</button></div>
+      <div class="frame"><div class="site">
+        <div class="st-cross">
+          <div class="st-cross__photo"><img class="ph" src="../../public/media/mosque-12-1200.webp" alt="" loading="lazy"></div>
+          <div class="st-band st-band--a">
+            <div class="st-band__track">
+              <ul class="st-band__set">
+                <li><svg class="i"><use href="#i-ruler"/></svg>معاينة وقياس مجانًا</li>
+                <li><svg class="i"><use href="#i-sample"/></svg>عينة مجانية قبل الطلب</li>
+                <li><svg class="i"><use href="#i-tools"/></svg>توريد وتركيب</li>
+                <li><svg class="i"><use href="#i-truck"/></svg>توريد لكل مدن المملكة</li>
+                <li><svg class="i"><use href="#i-ruler"/></svg>معاينة وقياس مجانًا</li>
+                <li><svg class="i"><use href="#i-sample"/></svg>عينة مجانية قبل الطلب</li>
+                <li><svg class="i"><use href="#i-tools"/></svg>توريد وتركيب</li>
+                <li><svg class="i"><use href="#i-truck"/></svg>توريد لكل مدن المملكة</li>
+              </ul>
+              <ul class="st-band__set" aria-hidden="true">
+                <li><svg class="i"><use href="#i-ruler"/></svg>معاينة وقياس مجانًا</li>
+                <li><svg class="i"><use href="#i-sample"/></svg>عينة مجانية قبل الطلب</li>
+                <li><svg class="i"><use href="#i-tools"/></svg>توريد وتركيب</li>
+                <li><svg class="i"><use href="#i-truck"/></svg>توريد لكل مدن المملكة</li>
+                <li><svg class="i"><use href="#i-ruler"/></svg>معاينة وقياس مجانًا</li>
+                <li><svg class="i"><use href="#i-sample"/></svg>عينة مجانية قبل الطلب</li>
+                <li><svg class="i"><use href="#i-tools"/></svg>توريد وتركيب</li>
+                <li><svg class="i"><use href="#i-truck"/></svg>توريد لكل مدن المملكة</li>
+              </ul>
+            </div>
+          </div>
+          <div class="st-band st-band--b" aria-hidden="true">
+            <div class="st-band__track">
+              <ul class="st-band__set">
+                <li>موكيت مساجد</li><li>موكيت مكاتب</li><li>باركيه خشب</li><li>باركيه SPC</li><li>مشمع باركيه</li><li>ربل جيم</li><li>ربل حمامات</li><li>فينيل طبي</li><li>فوم وبازل</li><li>عشب صناعي</li>
+              </ul>
+              <ul class="st-band__set">
+                <li>موكيت مساجد</li><li>موكيت مكاتب</li><li>باركيه خشب</li><li>باركيه SPC</li><li>مشمع باركيه</li><li>ربل جيم</li><li>ربل حمامات</li><li>فينيل طبي</li><li>فوم وبازل</li><li>عشب صناعي</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div></div>
+    </article>
+
+    <article class="pk-opt" data-value="b" data-label="ب أختام بتلف">
+      <div class="pk-opt-head"><h3><b>ب</b>أختام بتلف</h3><p>أربع أختام مدورة، الكلام بيلف حوالين كل ختم ببطء والأيقونة ثابتة في النص.</p><button type="button" class="pk-pick">اختار ده</button></div>
+      <div class="frame"><div class="site">
+        <div class="st-stamps">
+          <ul class="st-stamps__list">
+            <li class="st-stamp">
+              <div class="st-stamp__disc">
+                <svg class="st-stamp__ring" viewBox="0 0 160 160" aria-hidden="true"><defs><path id="st-c1" d="M80,80 m-62,0 a62,62 0 1,1 124,0 a62,62 0 1,1 -124,0"/></defs><text><textPath href="#st-c1">معاينة وقياس مجانًا ✦ معاينة وقياس مجانًا ✦</textPath></text></svg>
+                <span class="st-stamp__core"><svg class="i"><use href="#i-ruler"/></svg></span>
+              </div>
+              <p>معاينة وقياس مجانًا</p>
+            </li>
+            <li class="st-stamp">
+              <div class="st-stamp__disc">
+                <svg class="st-stamp__ring" viewBox="0 0 160 160" aria-hidden="true"><defs><path id="st-c2" d="M80,80 m-62,0 a62,62 0 1,1 124,0 a62,62 0 1,1 -124,0"/></defs><text><textPath href="#st-c2">عينة مجانية قبل الطلب ✦ عينة مجانية قبل الطلب ✦</textPath></text></svg>
+                <span class="st-stamp__core"><svg class="i"><use href="#i-sample"/></svg></span>
+              </div>
+              <p>عينة مجانية قبل الطلب</p>
+            </li>
+            <li class="st-stamp">
+              <div class="st-stamp__disc">
+                <svg class="st-stamp__ring" viewBox="0 0 160 160" aria-hidden="true"><defs><path id="st-c3" d="M80,80 m-62,0 a62,62 0 1,1 124,0 a62,62 0 1,1 -124,0"/></defs><text><textPath href="#st-c3">توريد وتركيب ✦ توريد وتركيب ✦ توريد وتركيب ✦</textPath></text></svg>
+                <span class="st-stamp__core"><svg class="i"><use href="#i-tools"/></svg></span>
+              </div>
+              <p>توريد وتركيب</p>
+            </li>
+            <li class="st-stamp">
+              <div class="st-stamp__disc">
+                <svg class="st-stamp__ring" viewBox="0 0 160 160" aria-hidden="true"><defs><path id="st-c4" d="M80,80 m-62,0 a62,62 0 1,1 124,0 a62,62 0 1,1 -124,0"/></defs><text><textPath href="#st-c4">توريد لكل مدن المملكة ✦ توريد لكل المدن ✦</textPath></text></svg>
+                <span class="st-stamp__core"><svg class="i"><use href="#i-truck"/></svg></span>
+              </div>
+              <p>توريد لكل مدن المملكة</p>
+            </li>
+          </ul>
+        </div>
+      </div></div>
+    </article>
+
+    <article class="pk-opt" data-value="c" data-label="ج خط بيتمد بين الخدمات">
+      <div class="pk-opt-head"><h3><b>ج</b>خط بيتمد بين الخدمات</h3><p>صف هادي فيه الأربع خدمات، وأول ما يظهر بيترسم خط نحاسي يوصل بينهم والأيقونات تطلع ورا بعض.</p><button type="button" class="pk-replay" data-replay>شغّل الحركة تاني</button><button type="button" class="pk-pick">اختار ده</button></div>
+      <div class="frame"><div class="site">
+        <div class="st-line" data-play>
+          <span class="st-line__rule" aria-hidden="true"></span>
+          <ol class="st-line__list">
+            <li style="--i:0"><span class="st-line__ic"><svg class="i"><use href="#i-ruler"/></svg></span><b>معاينة وقياس مجانًا</b><small>نجي مكانك في الرياض</small></li>
+            <li style="--i:1"><span class="st-line__ic"><svg class="i"><use href="#i-sample"/></svg></span><b>عينة مجانية</b><small>تشوفها وتلمسها قبل ما تقرر</small></li>
+            <li style="--i:2"><span class="st-line__ic"><svg class="i"><use href="#i-tools"/></svg></span><b>توريد وتركيب</b><small>نورّد ونركّب في الرياض</small></li>
+            <li style="--i:3"><span class="st-line__ic"><svg class="i"><use href="#i-truck"/></svg></span><b>لكل مدن المملكة</b><small>نورّد خارج الرياض</small></li>
+          </ol>
+        </div>
+      </div></div>
+    </article>
+
+  </div>
+</section>
+
+
+<!-- 6 how the floors are shown on the home page -->
+<section class="pk-group" id="g-showcase" data-key="showcase" data-label="عرض الأصناف في الرئيسية">
+  <div class="pk-gh"><span class="pk-gh__n">٦</span><h2>عرض الأصناف في الرئيسية</h2><p>إزاي الـ١١ صنف يظهروا في الصفحة الرئيسية تحت الهيرو.</p></div>
+  <div class="pk-opts">
+
+    <article class="pk-opt" data-value="a" data-label="أ شبكة بمقاسات مختلفة">
+      <div class="pk-opt-head"><h3><b>أ</b>شبكة بمقاسات مختلفة</h3><p>مربعات كبيرة وصغيرة، موكيت المساجد أكبر واحد، والصورة بتقرّب لما تقف عليها ويظهر خط تحت الاسم.</p><button type="button" class="pk-replay" data-replay>شغّل الحركة تاني</button><button type="button" class="pk-pick">اختار ده</button></div>
+      <div class="frame"><div class="site">
+        <div class="wrap">
+          <div class="sec-h"><span class="eyebrow">الأرضيات</span><h4 class="d">أحد عشر صنفًا من محل واحد</h4></div>
+          <ul class="sh-bento" data-play>
+            <li class="sh-b sh-b--m" style="--i:0"><a href="#"><img class="ph" src="../../public/media/mosque-12-1200.webp" alt="" loading="lazy"><span class="sh-b__t"><b class="d">موكيت مساجد</b><span>من 40 ريال/م²</span></span></a></li>
+            <li class="sh-b sh-b--p" style="--i:1"><a href="#"><img class="ph" src="../../public/media/parquet-cat-01-828.webp" alt="" loading="lazy"><span class="sh-b__note">من الكتالوج</span><span class="sh-b__t"><b class="d">باركيه خشب</b><span>من 65 ريال/م²</span></span></a></li>
+            <li class="sh-b sh-b--g" style="--i:2"><a href="#"><img class="ph" src="../../public/media/gym-06-828.webp" alt="" loading="lazy"><span class="sh-b__t"><b class="d">ربل جيم</b><span>من 65 ريال/م²</span></span></a></li>
+            <li class="sh-b sh-b--s" style="--i:3"><a href="#"><img class="ph" src="../../public/media/spc-cat-01-828.webp" alt="" loading="lazy"><span class="sh-b__note">من الكتالوج</span><span class="sh-b__t"><b class="d">باركيه SPC</b><span>من 75 ريال/م²</span></span></a></li>
+            <li class="sh-b sh-b--o" style="--i:4"><a href="#"><img class="ph" src="../../public/media/office-08-828.webp" alt="" loading="lazy"><span class="sh-b__t"><b class="d">موكيت مكاتب</b><span>من 45 ريال/م²</span></span></a></li>
+            <li class="sh-b sh-b--v" style="--i:5"><a href="#"><img class="ph" src="../../public/media/vinyl-12-1200.webp" alt="" loading="lazy"><span class="sh-b__t"><b class="d">مشمع باركيه وفينيل رول</b><span>من 19 ريال/م²</span></span></a></li>
+            <li class="sh-b sh-b--b" style="--i:6"><a href="#"><img class="ph" src="../../public/media/bath-08-480.webp" alt="" loading="lazy"><span class="sh-b__t"><b class="d">ربل حمامات</b><span>من 90 ريال/م²</span></span></a></li>
+            <li class="sh-b sh-b--a" style="--i:7"><a href="#"><span class="sh-b__more"><b class="d">وكمان</b><span>موكيت منازل · فينيل طبي · فوم وبازل · عشب صناعي</span><span class="sh-b__go">كل الأرضيات <svg class="i"><use href="#i-arrow"/></svg></span></span></a></li>
+          </ul>
+        </div>
+      </div></div>
+    </article>
+
+    <article class="pk-opt" data-value="b" data-label="ب شريط بيتسحب">
+      <div class="pk-opt-head"><h3><b>ب</b>شريط بيتسحب</h3><p>كل الأصناف في صف واحد بيتسحب بالصباع أو بالأسهم، وتحته خط بيوضح انت فين في الشريط.</p><button type="button" class="pk-pick">اختار ده</button></div>
+      <div class="frame"><div class="site">
+        <div class="wrap sh-railwrap">
+          <div class="sh-rail__head">
+            <div class="sec-h"><span class="eyebrow">الأرضيات</span><h4 class="d">اسحب وشوف كل الأصناف</h4></div>
+            <div class="sh-rail__arrows"><button type="button" class="sh-rail__btn" data-dir="prev" aria-label="السابق"><svg class="i"><use href="#i-arrow-r"/></svg></button><button type="button" class="sh-rail__btn" data-dir="next" aria-label="التالي"><svg class="i"><use href="#i-arrow"/></svg></button></div>
+          </div>
+          <ul class="sh-rail">
+            <li class="sh-r"><a href="#"><span class="sh-r__img"><img class="ph" src="../../public/media/mosque-12-828.webp" alt="" loading="lazy"></span><span class="sh-r__n d">٠١</span><b class="d">موكيت مساجد</b><span class="price">من 40 ريال/م²</span></a></li>
+            <li class="sh-r"><a href="#"><span class="sh-r__img"><img class="ph" src="../../public/media/office-14-828.webp" alt="" loading="lazy"></span><span class="sh-r__n d">٠٢</span><b class="d">موكيت مكاتب</b><span class="price">من 45 ريال/م²</span></a></li>
+            <li class="sh-r"><a href="#"><span class="sh-r__img"><img class="ph" src="../../public/media/art-carpet-828.webp" alt="" loading="lazy"><span class="sh-r__note">رسم توضيحي</span></span><span class="sh-r__n d">٠٣</span><b class="d">موكيت منازل</b><span class="price">من 15 ريال/م²</span></a></li>
+            <li class="sh-r"><a href="#"><span class="sh-r__img"><img class="ph" src="../../public/media/parquet-cat-02-828.webp" alt="" loading="lazy"><span class="sh-r__note">من الكتالوج</span></span><span class="sh-r__n d">٠٤</span><b class="d">باركيه خشب</b><span class="price">من 65 ريال/م²</span></a></li>
+            <li class="sh-r"><a href="#"><span class="sh-r__img"><img class="ph" src="../../public/media/spc-cat-03-828.webp" alt="" loading="lazy"><span class="sh-r__note">من الكتالوج</span></span><span class="sh-r__n d">٠٥</span><b class="d">باركيه SPC ضد الماء</b><span class="price">من 75 ريال/م²</span></a></li>
+            <li class="sh-r"><a href="#"><span class="sh-r__img"><img class="ph" src="../../public/media/vinyl-03-828.webp" alt="" loading="lazy"></span><span class="sh-r__n d">٠٦</span><b class="d">مشمع باركيه وفينيل رول</b><span class="price">من 19 ريال/م²</span></a></li>
+            <li class="sh-r"><a href="#"><span class="sh-r__img"><img class="ph" src="../../public/media/art-medical-828.webp" alt="" loading="lazy"><span class="sh-r__note">رسم توضيحي</span></span><span class="sh-r__n d">٠٧</span><b class="d">فينيل طبي</b><span class="price">من 60 ريال/م²</span></a></li>
+            <li class="sh-r"><a href="#"><span class="sh-r__img"><img class="ph" src="../../public/media/gym-01-828.webp" alt="" loading="lazy"></span><span class="sh-r__n d">٠٨</span><b class="d">ربل جيم</b><span class="price">من 65 ريال/م²</span></a></li>
+            <li class="sh-r"><a href="#"><span class="sh-r__img"><img class="ph" src="../../public/media/bath-01-828.webp" alt="" loading="lazy"></span><span class="sh-r__n d">٠٩</span><b class="d">ربل حمامات</b><span class="price">من 90 ريال/م²</span></a></li>
+            <li class="sh-r"><a href="#"><span class="sh-r__img"><img class="ph" src="../../public/media/art-foam-828.webp" alt="" loading="lazy"><span class="sh-r__note">رسم توضيحي</span></span><span class="sh-r__n d">١٠</span><b class="d">أرضيات فوم وبازل</b><span class="price">السعر بعد القياس</span></a></li>
+            <li class="sh-r"><a href="#"><span class="sh-r__img"><img class="ph" src="../../public/media/art-grass-828.webp" alt="" loading="lazy"><span class="sh-r__note">رسم توضيحي</span></span><span class="sh-r__n d">١١</span><b class="d">عشب صناعي</b><span class="price">من 10 ريال/م²</span></a></li>
+          </ul>
+          <div class="sh-rail__bar" aria-hidden="true"><span></span></div>
+        </div>
+      </div></div>
+    </article>
+
+    <article class="pk-opt" data-value="c" data-label="ج قايمة كبيرة والصورة ماشية مع الماوس">
+      <div class="pk-opt-head"><h3><b>ج</b>قايمة كبيرة والصورة ماشية مع الماوس</h3><p>أسامي الأصناف بخط كبير، ولما تعدّي عليها بالماوس صورة الصنف بتطلع وتمشي مع الماوس. على الموبايل الصورة بتفتح تحت الاسم لما تدوس.</p><button type="button" class="pk-pick">اختار ده</button></div>
+      <div class="frame"><div class="site">
+        <div class="wrap sh-list">
+          <div class="sec-h"><span class="eyebrow">الأرضيات</span><h4 class="d">اختار أرضيتك</h4></div>
+          <ul class="sh-list__rows">
+            <li class="sh-li" data-img="../../public/media/mosque-12-828.webp"><button type="button"><span class="sh-li__n">٠١</span><b class="d">موكيت مساجد</b><span class="sh-li__p">من 40 ريال/م²</span><svg class="i"><use href="#i-arrow"/></svg></button><span class="sh-li__img"><img class="ph" src="../../public/media/mosque-12-828.webp" alt="" loading="lazy"></span></li>
+            <li class="sh-li" data-img="../../public/media/office-08-828.webp"><button type="button"><span class="sh-li__n">٠٢</span><b class="d">موكيت مكاتب</b><span class="sh-li__p">من 45 ريال/م²</span><svg class="i"><use href="#i-arrow"/></svg></button><span class="sh-li__img"><img class="ph" src="../../public/media/office-08-828.webp" alt="" loading="lazy"></span></li>
+            <li class="sh-li" data-img="../../public/media/parquet-cat-01-828.webp" data-note="من الكتالوج"><button type="button"><span class="sh-li__n">٠٣</span><b class="d">باركيه خشب</b><span class="sh-li__p">من 65 ريال/م²</span><svg class="i"><use href="#i-arrow"/></svg></button><span class="sh-li__img"><img class="ph" src="../../public/media/parquet-cat-01-828.webp" alt="" loading="lazy"></span></li>
+            <li class="sh-li" data-img="../../public/media/spc-cat-01-828.webp" data-note="من الكتالوج"><button type="button"><span class="sh-li__n">٠٤</span><b class="d">باركيه SPC</b><span class="sh-li__p">من 75 ريال/م²</span><svg class="i"><use href="#i-arrow"/></svg></button><span class="sh-li__img"><img class="ph" src="../../public/media/spc-cat-01-828.webp" alt="" loading="lazy"></span></li>
+            <li class="sh-li" data-img="../../public/media/vinyl-12-828.webp"><button type="button"><span class="sh-li__n">٠٥</span><b class="d">مشمع باركيه وفينيل</b><span class="sh-li__p">من 19 ريال/م²</span><svg class="i"><use href="#i-arrow"/></svg></button><span class="sh-li__img"><img class="ph" src="../../public/media/vinyl-12-828.webp" alt="" loading="lazy"></span></li>
+            <li class="sh-li" data-img="../../public/media/gym-06-828.webp"><button type="button"><span class="sh-li__n">٠٦</span><b class="d">ربل جيم</b><span class="sh-li__p">من 65 ريال/م²</span><svg class="i"><use href="#i-arrow"/></svg></button><span class="sh-li__img"><img class="ph" src="../../public/media/gym-06-828.webp" alt="" loading="lazy"></span></li>
+            <li class="sh-li" data-img="../../public/media/bath-08-480.webp"><button type="button"><span class="sh-li__n">٠٧</span><b class="d">ربل حمامات</b><span class="sh-li__p">من 90 ريال/م²</span><svg class="i"><use href="#i-arrow"/></svg></button><span class="sh-li__img"><img class="ph" src="../../public/media/bath-08-480.webp" alt="" loading="lazy"></span></li>
+          </ul>
+          <a class="sh-list__all" href="#">وأربعة أصناف ثانية: موكيت منازل، فينيل طبي، فوم وبازل، عشب صناعي <svg class="i"><use href="#i-arrow"/></svg></a>
+          <div class="sh-float" aria-hidden="true"><img alt="" src="../../public/media/mosque-12-828.webp"><span class="sh-float__note"></span></div>
+        </div>
+      </div></div>
+    </article>
+
+    <article class="pk-opt" data-value="d" data-label="د تبويبات المجموعات">
+      <div class="pk-opt-head"><h3><b>د</b>تبويبات المجموعات</h3><p>أربع تبويبات (الموكيت، الباركيه، الربل، أرضيات خاصة)، كل تبويبة بتغيّر الصورة الكبيرة بمسحة والقايمة بتدخل صنف ورا صنف. بتتقلب لوحدها لحد ما تدوس.</p><button type="button" class="pk-pick">اختار ده</button></div>
+      <div class="frame"><div class="site">
+        <div class="wrap sh-tabs">
+          <div class="sec-h"><span class="eyebrow">الأرضيات</span><h4 class="d">أربع مجموعات، أحد عشر صنفًا</h4></div>
+          <div class="sh-tabs__bar" role="tablist">
+            <button type="button" role="tab" aria-selected="true" data-tab="0"><svg class="i"><use href="#i-mosque"/></svg>الموكيت</button>
+            <button type="button" role="tab" aria-selected="false" data-tab="1"><svg class="i"><use href="#i-home"/></svg>الباركيه</button>
+            <button type="button" role="tab" aria-selected="false" data-tab="2"><svg class="i"><use href="#i-gym"/></svg>الربل</button>
+            <button type="button" role="tab" aria-selected="false" data-tab="3"><svg class="i"><use href="#i-layers"/></svg>أرضيات خاصة</button>
+          </div>
+          <div class="sh-tabs__panels">
+            <div class="sh-tp is-on" data-panel="0">
+              <div class="sh-tp__img"><img class="ph" src="../../public/media/mosque-12-1200.webp" alt="" loading="lazy"></div>
+              <ul class="sh-tp__list">
+                <li style="--i:0"><a href="#"><img src="../../public/media/mosque-06-480.webp" alt="" loading="lazy"><span><b>موكيت مساجد</b><small>فرش يحدد الصف ويريح الركبة</small></span><span class="price">من 40 ريال/م²</span></a></li>
+                <li style="--i:1"><a href="#"><img src="../../public/media/office-swatch-02-480.webp" alt="" loading="lazy"><span><b>موكيت مكاتب</b><small>مربعات تُبدَّل التالفة منها وحدها</small></span><span class="price">من 45 ريال/م²</span></a></li>
+                <li style="--i:2"><a href="#"><img src="../../public/media/art-carpet-480.webp" alt="" loading="lazy"><span><b>موكيت منازل</b><small>من الجدار إلى الجدار</small></span><span class="price">من 15 ريال/م²</span></a></li>
+              </ul>
+            </div>
+            <div class="sh-tp" data-panel="1">
+              <div class="sh-tp__img"><img class="ph" src="../../public/media/parquet-cat-01-1417.webp" alt="" loading="lazy"><span class="sh-tp__note">من الكتالوج</span></div>
+              <ul class="sh-tp__list">
+                <li style="--i:0"><a href="#"><img src="../../public/media/parquet-cat-02-480.webp" alt="" loading="lazy"><span><b>باركيه خشب</b><small>للغرف التي لا يصلها الماء</small></span><span class="price">من 65 ريال/م²</span></a></li>
+                <li style="--i:1"><a href="#"><img src="../../public/media/spc-cat-01-480.webp" alt="" loading="lazy"><span><b>باركيه SPC ضد الماء</b><small>للمطبخ والملحق</small></span><span class="price">من 75 ريال/م²</span></a></li>
+                <li style="--i:2"><a href="#"><img src="../../public/media/vinyl-12-480.webp" alt="" loading="lazy"><span><b>مشمع باركيه وفينيل رول</b><small>لفّة تُقص على المقاس</small></span><span class="price">من 19 ريال/م²</span></a></li>
+              </ul>
+            </div>
+            <div class="sh-tp" data-panel="2">
+              <div class="sh-tp__img"><img class="ph" src="../../public/media/gym-06-1200.webp" alt="" loading="lazy"></div>
+              <ul class="sh-tp__list">
+                <li style="--i:0"><a href="#"><img src="../../public/media/gym-01-480.webp" alt="" loading="lazy"><span><b>ربل جيم</b><small>تحت الأجهزة والأوزان</small></span><span class="price">من 65 ريال/م²</span></a></li>
+                <li style="--i:1"><a href="#"><img src="../../public/media/bath-01-480.webp" alt="" loading="lazy"><span><b>ربل حمامات</b><small>ضد الانزلاق للأرضية المبللة</small></span><span class="price">من 90 ريال/م²</span></a></li>
+                <li style="--i:2"><a href="#"><img src="../../public/media/art-foam-480.webp" alt="" loading="lazy"><span><b>أرضيات فوم وبازل</b><small>تُفك وتُركّب مثل اللعبة</small></span><span class="price">السعر بعد القياس</span></a></li>
+              </ul>
+            </div>
+            <div class="sh-tp" data-panel="3">
+              <div class="sh-tp__img"><img class="ph" src="../../public/media/art-medical-1200.webp" alt="" loading="lazy"><span class="sh-tp__note">رسم توضيحي</span></div>
+              <ul class="sh-tp__list">
+                <li style="--i:0"><a href="#"><img src="../../public/media/art-medical-480.webp" alt="" loading="lazy"><span><b>فينيل طبي</b><small>رولات للعيادات والمستشفيات</small></span><span class="price">من 60 ريال/م²</span></a></li>
+                <li style="--i:1"><a href="#"><img src="../../public/media/art-grass-480.webp" alt="" loading="lazy"><span><b>عشب صناعي</b><small>للسطح والحوش بلا سقي</small></span><span class="price">من 10 ريال/م²</span></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div></div>
+    </article>
+
+  </div>
+</section>
+
+
+<!-- 7 product card -->
+<section class="pk-group" id="g-card" data-key="card" data-label="كارت المنتج">
+  <div class="pk-gh"><span class="pk-gh__n">٧</span><h2>كارت المنتج</h2><p>شكل الكارت اللي بيظهر فيه كل صنف في صفحة الأرضيات وفي الرئيسية. عدّي بالماوس على الكروت عشان تشوف حركتها.</p></div>
+  <div class="pk-opts">
+
+    <article class="pk-opt" data-value="a" data-label="أ الركن المقصوص (الحالي)">
+      <div class="pk-opt-head"><h3><b>أ</b>الركن المقصوص</h3><span class="pk-tag">الشكل الحالي</span><p>صورة بركن مقصوص زي لسان الباركيه، وتحتها علامات شريط قياس، والسعر في بطاقة سعر مخرومة.</p><button type="button" class="pk-pick">اختار ده</button></div>
+      <div class="frame"><div class="site">
+        <div class="wrap"><ul class="cd-row">
+          <li><a class="cd-a" href="#"><span class="cd-a__media"><img class="ph" src="../../public/media/mosque-12-828.webp" alt="" loading="lazy"><span class="cd-a__label">الموكيت</span></span><span class="cd-a__body"><b class="cd-a__name d">موكيت مساجد</b><span class="cd-a__line">فرش يحدد الصف ويريح الركبة عند السجود</span><span class="cd-a__foot"><span class="cd-a__price">من 40 ريال/م²</span><span class="cd-a__go"><svg class="i"><use href="#i-arrow"/></svg></span></span></span></a></li>
+          <li><a class="cd-a" href="#"><span class="cd-a__media"><img class="ph" src="../../public/media/parquet-cat-01-828.webp" alt="" loading="lazy"><span class="cd-a__label">الباركيه</span><span class="cd-a__note">من الكتالوج</span></span><span class="cd-a__body"><b class="cd-a__name d">باركيه خشب</b><span class="cd-a__line">شكل الخشب ودفؤه في الغرف التي لا يصلها الماء</span><span class="cd-a__foot"><span class="cd-a__price">من 65 ريال/م²</span><span class="cd-a__go"><svg class="i"><use href="#i-arrow"/></svg></span></span></span></a></li>
+          <li><a class="cd-a" href="#"><span class="cd-a__media"><img class="ph" src="../../public/media/gym-06-828.webp" alt="" loading="lazy"><span class="cd-a__label">الربل</span></span><span class="cd-a__body"><b class="cd-a__name d">ربل جيم</b><span class="cd-a__line">طبقة مطاط تستقبل الأوزان بدل البلاط</span><span class="cd-a__foot"><span class="cd-a__price">من 65 ريال/م²</span><span class="cd-a__go"><svg class="i"><use href="#i-arrow"/></svg></span></span></span></a></li>
+        </ul></div>
+      </div></div>
+    </article>
+
+    <article class="pk-opt" data-value="b" data-label="ب بطاقة العينة المتعلقة">
+      <div class="pk-opt-head"><h3><b>ب</b>بطاقة العينة المتعلقة</h3><p>كل صنف معلّق زي بطاقة العينة في المحل: خرم وخيط على شماعة، والكارت بيتمرجح لما تعدّي عليه.</p><button type="button" class="pk-replay" data-replay>شغّل الحركة تاني</button><button type="button" class="pk-pick">اختار ده</button></div>
+      <div class="frame"><div class="site">
+        <div class="wrap cd-b-wrap"><div class="cd-rack" data-play>
+          <span class="cd-rack__bar" aria-hidden="true"></span>
+          <ul class="cd-row cd-row--tags">
+            <li class="cd-tag" style="--i:0"><span class="cd-tag__string" aria-hidden="true"></span><a href="#" class="cd-tag__card"><span class="cd-tag__hole" aria-hidden="true"></span><span class="cd-tag__brand">السريع · عينة</span><span class="cd-tag__swatch"><img class="ph" src="../../public/media/mosque-06-828.webp" alt="" loading="lazy"></span><b class="d">موكيت مساجد</b><span class="cd-tag__meta"><span class="price">من 40 ريال/م²</span><span class="cd-tag__ask">اطلب العينة <svg class="i"><use href="#i-arrow"/></svg></span></span></a></li>
+            <li class="cd-tag" style="--i:1"><span class="cd-tag__string" aria-hidden="true"></span><a href="#" class="cd-tag__card"><span class="cd-tag__hole" aria-hidden="true"></span><span class="cd-tag__brand">السريع · عينة</span><span class="cd-tag__swatch"><img class="ph" src="../../public/media/parquet-cat-02-828.webp" alt="" loading="lazy"><span class="cd-tag__note">من الكتالوج</span></span><b class="d">باركيه خشب</b><span class="cd-tag__meta"><span class="price">من 65 ريال/م²</span><span class="cd-tag__ask">اطلب العينة <svg class="i"><use href="#i-arrow"/></svg></span></span></a></li>
+            <li class="cd-tag" style="--i:2"><span class="cd-tag__string" aria-hidden="true"></span><a href="#" class="cd-tag__card"><span class="cd-tag__hole" aria-hidden="true"></span><span class="cd-tag__brand">السريع · عينة</span><span class="cd-tag__swatch"><img class="ph" src="../../public/media/gym-01-828.webp" alt="" loading="lazy"></span><b class="d">ربل جيم</b><span class="cd-tag__meta"><span class="price">من 65 ريال/م²</span><span class="cd-tag__ask">اطلب العينة <svg class="i"><use href="#i-arrow"/></svg></span></span></a></li>
+          </ul>
+        </div></div>
+      </div></div>
+    </article>
+
+    <article class="pk-opt" data-value="c" data-label="ج الصورة التانية بتدخل بالميل">
+      <div class="pk-opt-head"><h3><b>ج</b>الصورة التانية بتدخل بالميل</h3><p>لما تعدّي على الكارت صورة تانية للصنف بتدخل بمسحة مايلة، وختم السعر بيلف ويظهر على الركن.</p><button type="button" class="pk-pick">اختار ده</button></div>
+      <div class="frame"><div class="site">
+        <div class="wrap"><ul class="cd-row">
+          <li><a class="cd-c" href="#"><span class="cd-c__media"><img class="ph" src="../../public/media/mosque-12-828.webp" alt="" loading="lazy"><img class="ph cd-c__alt" src="../../public/media/mosque-13-828.webp" alt="" loading="lazy"><span class="cd-c__badge"><b>40</b><small>ريال/م²</small></span><span class="cd-c__dots" aria-hidden="true"><i></i><i></i></span></span><span class="cd-c__body"><span class="cd-c__kicker">الموكيت · من 40 ريال/م²</span><b class="d">موكيت مساجد</b><span class="cd-c__more">شوف الأنواع <svg class="i"><use href="#i-arrow"/></svg></span></span></a></li>
+          <li><a class="cd-c" href="#"><span class="cd-c__media"><img class="ph" src="../../public/media/parquet-cat-01-828.webp" alt="" loading="lazy"><img class="ph cd-c__alt" src="../../public/media/parquet-cat-02-828.webp" alt="" loading="lazy"><span class="cd-c__note">من الكتالوج</span><span class="cd-c__badge"><b>65</b><small>ريال/م²</small></span><span class="cd-c__dots" aria-hidden="true"><i></i><i></i></span></span><span class="cd-c__body"><span class="cd-c__kicker">الباركيه · من 65 ريال/م²</span><b class="d">باركيه خشب</b><span class="cd-c__more">شوف الأنواع <svg class="i"><use href="#i-arrow"/></svg></span></span></a></li>
+          <li><a class="cd-c" href="#"><span class="cd-c__media"><img class="ph" src="../../public/media/gym-06-828.webp" alt="" loading="lazy"><img class="ph cd-c__alt" src="../../public/media/gym-03-828.webp" alt="" loading="lazy"><span class="cd-c__badge"><b>65</b><small>ريال/م²</small></span><span class="cd-c__dots" aria-hidden="true"><i></i><i></i></span></span><span class="cd-c__body"><span class="cd-c__kicker">الربل · من 65 ريال/م²</span><b class="d">ربل جيم</b><span class="cd-c__more">شوف الأنواع <svg class="i"><use href="#i-arrow"/></svg></span></span></a></li>
+        </ul></div>
+      </div></div>
+    </article>
+
+    <article class="pk-opt" data-value="d" data-label="د الصورة كاملة وشريط زجاج">
+      <div class="pk-opt-head"><h3><b>د</b>الصورة كاملة وشريط زجاج</h3><p>الصورة مالية الكارت، وتحت شريط زي الزجاج المطفي فيه الاسم والسعر، ولما تعدّي عليه بيطلع ويكشف ٣ نقط عن الصنف.</p><button type="button" class="pk-pick">اختار ده</button></div>
+      <div class="frame"><div class="site">
+        <div class="wrap"><ul class="cd-row">
+          <li><a class="cd-d" href="#"><img class="ph" src="../../public/media/mosque-06-828.webp" alt="" loading="lazy"><span class="cd-d__glass"><span class="cd-d__top"><b class="d">موكيت مساجد</b><span class="cd-d__price">من 40 ريال/م²</span></span><span class="cd-d__more"><span><span class="cd-d__facts"><span><svg class="i"><use href="#i-check"/></svg>بخطوط صفوف أو سادة</span><span><svg class="i"><use href="#i-check"/></svg>قياس المصلى مع الأعمدة والمحراب</span><span><svg class="i"><use href="#i-check"/></svg>عينة مجانية قبل الطلب</span></span></span></span></span></a></li>
+          <li><a class="cd-d" href="#"><img class="ph" src="../../public/media/parquet-cat-02-828.webp" alt="" loading="lazy"><span class="cd-d__note">من الكتالوج</span><span class="cd-d__glass"><span class="cd-d__top"><b class="d">باركيه خشب</b><span class="cd-d__price">من 65 ريال/م²</span></span><span class="cd-d__more"><span><span class="cd-d__facts"><span><svg class="i"><use href="#i-check"/></svg>للغرف الجافة: النوم والمجالس</span><span><svg class="i"><use href="#i-check"/></svg>شكل الخشب ودفؤه</span><span><svg class="i"><use href="#i-check"/></svg>عينة مجانية قبل الطلب</span></span></span></span></span></a></li>
+          <li><a class="cd-d" href="#"><img class="ph" src="../../public/media/gym-01-828.webp" alt="" loading="lazy"><span class="cd-d__glass"><span class="cd-d__top"><b class="d">ربل جيم</b><span class="cd-d__price">من 65 ريال/م²</span></span><span class="cd-d__more"><span><span class="cd-d__facts"><span><svg class="i"><use href="#i-check"/></svg>رولات وبلاط بسماكات مختلفة</span><span><svg class="i"><use href="#i-check"/></svg>يمتص الصدمة ويحمي الأرضية</span><span><svg class="i"><use href="#i-check"/></svg>يُقص على مقاس الصالة</span></span></span></span></span></a></li>
+        </ul></div>
+      </div></div>
+    </article>
+
+  </div>
+</section>
+
+
+<!-- 8 our work -->
+<section class="pk-group" id="g-projects" data-key="projects" data-label="قسم شغلنا">
+  <div class="pk-gh"><span class="pk-gh__n">٨</span><h2>قسم شغلنا</h2><p>القسم اللي بيعرض صور التركيبات الحقيقية من المحل (مساجد، مكاتب، نوادي، دورات مياه).</p></div>
+  <div class="pk-opts">
+
+    <article class="pk-opt" data-value="a" data-label="أ موزاييك حسب المكان (الحالي)">
+      <div class="pk-opt-head"><h3><b>أ</b>موزاييك حسب المكان</h3><span class="pk-tag">الشكل الحالي</span><p>مربعات بالصور، المسجد أكبر واحد، وكل مربع مكتوب عليه نوع المكان والأرضيات اللي تناسبه. الصور بتتفرد من الجنب وهي داخلة.</p><button type="button" class="pk-replay" data-replay>شغّل الحركة تاني</button><button type="button" class="pk-pick">اختار ده</button></div>
+      <div class="frame"><div class="site">
+        <div class="wrap pj-a-wrap">
+          <div class="sec-h"><span class="eyebrow">حسب المشروع</span><h4 class="d">مسجد، مكتب، نادي، أو بيت؟</h4></div>
+          <ul class="pj-mosaic" data-play>
+            <li class="pj-t pj-t--big" style="--i:0"><img class="ph" src="../../public/media/mosque-06-828.webp" alt="" loading="lazy"><div class="pj-t__body"><span class="pj-t__label">المساجد</span><b class="d">فرش المساجد والمصليات</b><span class="pj-t__links"><a href="#">موكيت مساجد</a><a href="#">ربل حمامات</a></span></div></li>
+            <li class="pj-t" style="--i:1"><img class="ph" src="../../public/media/office-08-828.webp" alt="" loading="lazy"><div class="pj-t__body"><span class="pj-t__label">المكاتب</span><b class="d">أرضيات المكاتب والشركات</b><span class="pj-t__links"><a href="#">موكيت مكاتب</a></span></div></li>
+            <li class="pj-t" style="--i:2"><img class="ph" src="../../public/media/gym-06-828.webp" alt="" loading="lazy"><div class="pj-t__body"><span class="pj-t__label">النوادي</span><b class="d">صالات الحديد والنوادي</b><span class="pj-t__links"><a href="#">ربل جيم</a></span></div></li>
+            <li class="pj-t" style="--i:3"><img class="ph" src="../../public/media/bath-01-828.webp" alt="" loading="lazy"><div class="pj-t__body"><span class="pj-t__label">دورات المياه</span><b class="d">أرضية لا تنزلق</b><span class="pj-t__links"><a href="#">ربل حمامات</a></span></div></li>
+            <li class="pj-t" style="--i:4"><img class="ph" src="../../public/media/vinyl-12-828.webp" alt="" loading="lazy"><div class="pj-t__body"><span class="pj-t__label">البيوت</span><b class="d">غرف ومجالس ومطابخ</b><span class="pj-t__links"><a href="#">مشمع باركيه</a><a href="#">باركيه</a></span></div></li>
+          </ul>
+        </div>
+      </div></div>
+    </article>
+
+    <article class="pk-opt" data-value="b" data-label="ب أعمدة صور بتجري">
+      <div class="pk-opt-head"><h3><b>ب</b>أعمدة صور بتجري</h3><p>تلات أعمدة من صور التركيبات بتتحرك لوحدها لفوق وتحت من غير ما تقف، والعمود اللي في النص عكسهم، والصور بتختفي بنعومة عند الطرفين.</p><button type="button" class="pk-pick">اختار ده</button></div>
+      <div class="frame"><div class="site">
+        <div class="pj-cols">
+          <div class="pj-cols__text">
+            <span class="eyebrow eyebrow--d">من شغلنا</span>
+            <h4 class="d">صور من تركيباتنا</h4>
+            <p>مساجد ومكاتب ونوادي ودورات مياه فرشناها. كل الصور من شغل المحل نفسه.</p>
+            <a class="btn btn--wa" href="#"><svg class="i"><use href="#i-wa"/></svg>أرسل صورة مكانك</a>
+          </div>
+          <div class="pj-cols__grid" aria-hidden="true">
+            <div class="pj-col"><div class="pj-col__track">
+              <img src="../../public/media/mosque-01-480.webp" alt="" loading="lazy"><img src="../../public/media/office-12-480.webp" alt="" loading="lazy"><img src="../../public/media/gym-04-480.webp" alt="" loading="lazy"><img src="../../public/media/mosque-14-480.webp" alt="" loading="lazy"><img src="../../public/media/bath-03-480.webp" alt="" loading="lazy">
+              <img src="../../public/media/mosque-01-480.webp" alt="" loading="lazy"><img src="../../public/media/office-12-480.webp" alt="" loading="lazy"><img src="../../public/media/gym-04-480.webp" alt="" loading="lazy"><img src="../../public/media/mosque-14-480.webp" alt="" loading="lazy"><img src="../../public/media/bath-03-480.webp" alt="" loading="lazy">
+            </div></div>
+            <div class="pj-col pj-col--rev"><div class="pj-col__track">
+              <img src="../../public/media/mosque-16-480.webp" alt="" loading="lazy"><img src="../../public/media/gym-08-480.webp" alt="" loading="lazy"><img src="../../public/media/office-13-480.webp" alt="" loading="lazy"><img src="../../public/media/mosque-08-480.webp" alt="" loading="lazy"><img src="../../public/media/showroom-rubber-01-480.webp" alt="" loading="lazy">
+              <img src="../../public/media/mosque-16-480.webp" alt="" loading="lazy"><img src="../../public/media/gym-08-480.webp" alt="" loading="lazy"><img src="../../public/media/office-13-480.webp" alt="" loading="lazy"><img src="../../public/media/mosque-08-480.webp" alt="" loading="lazy"><img src="../../public/media/showroom-rubber-01-480.webp" alt="" loading="lazy">
+            </div></div>
+            <div class="pj-col pj-col--slow"><div class="pj-col__track">
+              <img src="../../public/media/office-15-480.webp" alt="" loading="lazy"><img src="../../public/media/mosque-09-480.webp" alt="" loading="lazy"><img src="../../public/media/bath-06-480.webp" alt="" loading="lazy"><img src="../../public/media/gym-05-480.webp" alt="" loading="lazy"><img src="../../public/media/mosque-17-480.webp" alt="" loading="lazy">
+              <img src="../../public/media/office-15-480.webp" alt="" loading="lazy"><img src="../../public/media/mosque-09-480.webp" alt="" loading="lazy"><img src="../../public/media/bath-06-480.webp" alt="" loading="lazy"><img src="../../public/media/gym-05-480.webp" alt="" loading="lazy"><img src="../../public/media/mosque-17-480.webp" alt="" loading="lazy">
+            </div></div>
+          </div>
+        </div>
+      </div></div>
+    </article>
+
+    <article class="pk-opt" data-value="c" data-label="ج سلايدر كبير بالأرقام">
+      <div class="pk-opt-head"><h3><b>ج</b>سلايدر كبير بالأرقام</h3><p>صورة كبيرة بتتغير لوحدها كل كام ثانية، فيها رقم الصورة وخط بيتملي لحد الصورة الجاية، وتحتها صور صغيرة تدوس عليها.</p><button type="button" class="pk-pick">اختار ده</button></div>
+      <div class="frame"><div class="site">
+        <div class="wrap pj-slider">
+          <div class="pj-s__stage">
+            <figure class="pj-s__slide is-on"><img class="ph" src="../../public/media/mosque-13-1033.webp" alt="" loading="lazy"><figcaption><span>مسجد</span><b class="d">موكيت مساجد</b></figcaption></figure>
+            <figure class="pj-s__slide"><img class="ph" src="../../public/media/office-14-828.webp" alt="" loading="lazy"><figcaption><span>مكتب</span><b class="d">موكيت مكاتب</b></figcaption></figure>
+            <figure class="pj-s__slide"><img class="ph" src="../../public/media/gym-06-1200.webp" alt="" loading="lazy"><figcaption><span>نادي</span><b class="d">ربل جيم تحت الأوزان</b></figcaption></figure>
+            <figure class="pj-s__slide"><img class="ph" src="../../public/media/mosque-07-1200.webp" alt="" loading="lazy"><figcaption><span>مسجد</span><b class="d">فرش المصلى على اتجاه القبلة</b></figcaption></figure>
+            <figure class="pj-s__slide"><img class="ph" src="../../public/media/bath-01-828.webp" alt="" loading="lazy"><figcaption><span>دورات مياه</span><b class="d">ربل حمامات ضد الانزلاق</b></figcaption></figure>
+            <figure class="pj-s__slide"><img class="ph" src="../../public/media/office-11-1200.webp" alt="" loading="lazy"><figcaption><span>مكتب</span><b class="d">موكيت مكاتب لصالة العمل</b></figcaption></figure>
+            <div class="pj-s__count d"><b>٠١</b><span>/ ٠٦</span></div>
+            <div class="pj-s__nav"><button type="button" data-go="prev" aria-label="السابق"><svg class="i"><use href="#i-arrow-r"/></svg></button><button type="button" data-go="next" aria-label="التالي"><svg class="i"><use href="#i-arrow"/></svg></button></div>
+            <div class="pj-s__progress" aria-hidden="true"><span></span></div>
+          </div>
+          <div class="pj-s__thumbs">
+            <button type="button" class="is-on"><img src="../../public/media/mosque-13-480.webp" alt="" loading="lazy"></button>
+            <button type="button"><img src="../../public/media/office-14-480.webp" alt="" loading="lazy"></button>
+            <button type="button"><img src="../../public/media/gym-06-480.webp" alt="" loading="lazy"></button>
+            <button type="button"><img src="../../public/media/mosque-07-480.webp" alt="" loading="lazy"></button>
+            <button type="button"><img src="../../public/media/bath-01-480.webp" alt="" loading="lazy"></button>
+            <button type="button"><img src="../../public/media/office-11-480.webp" alt="" loading="lazy"></button>
+          </div>
+        </div>
+      </div></div>
+    </article>
+
+  </div>
+</section>
+
+<!-- 9 how to order -->
+<section class="pk-group" id="g-steps" data-key="steps" data-label="طريقة الطلب">
+  <div class="pk-gh"><span class="pk-gh__n">٩</span><h2>طريقة الطلب</h2><p>القسم اللي بيشرح للعميل يطلب إزاي في أربع خطوات: يبعت صورة، معاينة، عينة، تركيب.</p></div>
+  <div class="pk-opts">
+
+    <!-- أ ruler -->
+    <article class="pk-opt" data-value="a" data-label="أ المسطرة">
+      <div class="pk-opt-head"><h3><b>أ</b>المسطرة</h3><span class="pk-tag">الشكل الحالي</span><p>شريط قياس بيتفرد من اليمين بعلاماته، والخطوات الأربعة بتنزل عليه زي البلاط واحدة ورا التانية.</p><button type="button" class="pk-replay" data-replay>شغّل الحركة تاني</button><button type="button" class="pk-pick">اختار ده</button></div>
+      <div class="frame"><div class="site">
+        <div class="wrap sp-a" data-play>
+          <div class="sec-h sp-center"><span class="eyebrow">طريقة الطلب</span><h4 class="d">من المعاينة إلى التركيب</h4></div>
+          <div class="sp-ruler">
+            <svg class="sp-ruler__tape" viewBox="0 0 1000 40" preserveAspectRatio="none" aria-hidden="true"><path d="M0 20H1000" pathLength="1"/><path d="M0 20V4M20 20V12M40 20V12M60 20V12M80 20V12M100 20V4M120 20V12M140 20V12M160 20V12M180 20V12M200 20V4M220 20V12M240 20V12M260 20V12M280 20V12M300 20V4M320 20V12M340 20V12M360 20V12M380 20V12M400 20V4M420 20V12M440 20V12M460 20V12M480 20V12M500 20V4M520 20V12M540 20V12M560 20V12M580 20V12M600 20V4M620 20V12M640 20V12M660 20V12M680 20V12M700 20V4M720 20V12M740 20V12M760 20V12M780 20V12M800 20V4M820 20V12M840 20V12M860 20V12M880 20V12M900 20V4M920 20V12M940 20V12M960 20V12M980 20V12M1000 20V4" pathLength="1"/></svg>
+            <ol class="sp-ruler__steps">
+              <li style="--i:1"><span class="sp-ruler__mark d">١</span><h5 class="d">أرسل صورة المكان</h5><p>على واتساب، مع الطول والعرض بالتقريب.</p></li>
+              <li style="--i:2"><span class="sp-ruler__mark d">٢</span><h5 class="d">معاينة وقياس مجانًا</h5><p>نرتّب موعدًا في الرياض ونأخذ المقاسات.</p></li>
+              <li style="--i:3"><span class="sp-ruler__mark d">٣</span><h5 class="d">عينة قبل الطلب</h5><p>تشوف العينة وتلمسها قبل ما تقرر، مجانًا.</p></li>
+              <li style="--i:4"><span class="sp-ruler__mark d">٤</span><h5 class="d">توريد وتركيب</h5><p>نورّد ونركّب في الرياض، ونورّد لكل مدن المملكة.</p></li>
+            </ol>
+          </div>
+        </div>
+      </div></div>
+    </article>
+
+    <!-- ب WhatsApp chat -->
+    <article class="pk-opt" data-value="b" data-label="ب محادثة واتساب">
+      <div class="pk-opt-head"><h3><b>ب</b>محادثة واتساب</h3><span class="pk-tag pk-tag--ai">رسمة AI</span><p>محادثة واتساب بتكتب نفسها: العميل يبعت صورة مكانه، والمحل يرد بالمعاينة والعينة والتركيب، والخطوات جنبها بتتعلّم واحدة واحدة.</p><button type="button" class="pk-replay" data-replay>شغّل الحركة تاني</button><button type="button" class="pk-pick">اختار ده</button></div>
+      <div class="frame"><div class="site">
+        <div class="wrap sp-b">
+          <div class="sp-b__copy">
+            <div class="sec-h"><span class="eyebrow">طريقة الطلب</span><h4 class="d">كله يبدأ برسالة واتساب</h4><p>أرسل صورة مكانك، والباقي علينا.</p></div>
+            <ol class="sp-b__list">
+              <li data-step="1"><span class="sp-b__tick"><svg class="i"><use href="#i-check"/></svg></span>أرسل صورة المكان</li>
+              <li data-step="2"><span class="sp-b__tick"><svg class="i"><use href="#i-check"/></svg></span>معاينة وقياس مجانًا</li>
+              <li data-step="3"><span class="sp-b__tick"><svg class="i"><use href="#i-check"/></svg></span>عينة قبل الطلب</li>
+              <li data-step="4"><span class="sp-b__tick"><svg class="i"><use href="#i-check"/></svg></span>توريد وتركيب</li>
+            </ol>
+            <a class="btn btn--wa sp-b__cta" href="#"><svg class="i"><use href="#i-wa"/></svg><span>ابدأ المحادثة</span></a>
+          </div>
+          <div class="sp-phone" data-play data-chat>
+            <div class="sp-phone__top">
+              <span class="sp-phone__av"><img src="../../public/brand/emblem.webp" alt=""></span>
+              <span class="sp-phone__who"><b>موكيت السريع</b><small>متصل الآن</small></span>
+              <svg class="i"><use href="#i-phone"/></svg>
+            </div>
+            <div class="sp-phone__body">
+              <div class="sp-msg sp-msg--me sp-msg--photo" data-step="1"><img src="ai/room.webp" alt="" loading="lazy"><p>السلام عليكم، هذي صورة المجلس. الطول ٦ والعرض ٥ تقريبًا.</p><time>✓✓</time></div>
+              <div class="sp-msg sp-msg--shop" data-step="2"><p>وعليكم السلام، حيّاك. نرتّب موعد ونجي نقيس مجانًا داخل الرياض.</p></div>
+              <div class="sp-msg sp-msg--me" data-step="2"><p>تمام، وأبغى أشوف الموكيت قبل.</p><time>✓✓</time></div>
+              <div class="sp-msg sp-msg--shop sp-msg--card" data-step="3"><span class="sp-msg__swatch"><img src="ai/tex-mosque.webp" alt="" loading="lazy"></span><p><b>العينة مجانًا قبل الطلب</b>تشوفها وتلمسها وبعدين تقرر.</p></div>
+              <div class="sp-msg sp-msg--shop" data-step="4"><p>وبعد ما تختار نورّد ونركّب، ونورّد لكل مدن المملكة.</p></div>
+              <div class="sp-msg sp-msg--me" data-step="4"><p>ممتاز، اتفقنا.</p><time>✓✓</time></div>
+              <div class="sp-typing" aria-hidden="true"><i></i><i></i><i></i></div>
+            </div>
+            <div class="sp-phone__input"><span>اكتب رسالة</span><span class="sp-phone__send"><svg class="i"><use href="#i-wa"/></svg></span></div>
+          </div>
+        </div>
+      </div></div>
+    </article>
+
+    <!-- ج drawn path -->
+    <article class="pk-opt" data-value="c" data-label="ج الطريق المرسوم">
+      <div class="pk-opt-head"><h3><b>ج</b>الطريق المرسوم</h3><p>خط متعرّج بيترسم قدامك ونقطة ماشية عليه، وكل ما توصل خطوة تنوّر وتظهر.</p><button type="button" class="pk-replay" data-replay>شغّل الحركة تاني</button><button type="button" class="pk-pick">اختار ده</button></div>
+      <div class="frame"><div class="site">
+        <div class="wrap sp-c" data-play data-path>
+          <div class="sec-h sp-center"><span class="eyebrow">طريقة الطلب</span><h4 class="d">أربع محطات وتفرش مكانك</h4></div>
+          <div class="sp-c__stage">
+            <ol class="sp-c__labels">
+              <li class="sp-c__l" style="--col:1;--row:1"><span class="d">١</span><h5 class="d">أرسل صورة المكان</h5><p>على واتساب مع الطول والعرض.</p></li>
+              <li class="sp-c__l" style="--col:2;--row:3"><span class="d">٢</span><h5 class="d">معاينة وقياس مجانًا</h5><p>موعد في الرياض ونأخذ المقاسات.</p></li>
+              <li class="sp-c__l" style="--col:3;--row:1"><span class="d">٣</span><h5 class="d">عينة قبل الطلب</h5><p>تشوفها وتلمسها، مجانًا.</p></li>
+              <li class="sp-c__l" style="--col:4;--row:3"><span class="d">٤</span><h5 class="d">توريد وتركيب</h5><p>في الرياض، وتوريد لكل المملكة.</p></li>
+            </ol>
+            <div class="sp-c__track sp-c__track--h">
+              <svg class="sp-c__ghost" viewBox="0 0 1000 300" preserveAspectRatio="none" aria-hidden="true"><path d="M1000 150 C 960 150, 920 80, 875 80 C 790 80, 720 220, 625 220 C 530 220, 470 80, 375 80 C 280 80, 220 220, 125 220 C 80 220, 40 150, 0 150"/></svg><div class="sp-c__reveal"><svg viewBox="0 0 1000 300" preserveAspectRatio="none" aria-hidden="true"><path class="sp-c__line" d="M1000 150 C 960 150, 920 80, 875 80 C 790 80, 720 220, 625 220 C 530 220, 470 80, 375 80 C 280 80, 220 220, 125 220 C 80 220, 40 150, 0 150"/></svg></div>
+              <span class="sp-c__stop" style="--x:87.5%;--y:26.67%"></span><span class="sp-c__stop" style="--x:62.5%;--y:73.33%"></span><span class="sp-c__stop" style="--x:37.5%;--y:26.67%"></span><span class="sp-c__stop" style="--x:12.5%;--y:73.33%"></span>
+              <span class="sp-c__dot"><svg class="i"><use href="#i-truck"/></svg></span>
+            </div>
+            <div class="sp-c__track sp-c__track--v">
+              <svg class="sp-c__ghost" viewBox="0 0 100 1000" preserveAspectRatio="none" aria-hidden="true"><path d="M50 0 C 50 40, 80 80, 80 125 C 80 220, 20 280, 20 375 C 20 470, 80 530, 80 625 C 80 720, 20 780, 20 875 C 20 920, 50 960, 50 1000"/></svg><div class="sp-c__reveal"><svg viewBox="0 0 100 1000" preserveAspectRatio="none" aria-hidden="true"><path class="sp-c__line" d="M50 0 C 50 40, 80 80, 80 125 C 80 220, 20 280, 20 375 C 20 470, 80 530, 80 625 C 80 720, 20 780, 20 875 C 20 920, 50 960, 50 1000"/></svg></div>
+              <span class="sp-c__stop" style="--x:80%;--y:12.5%"></span><span class="sp-c__stop" style="--x:20%;--y:37.5%"></span><span class="sp-c__stop" style="--x:80%;--y:62.5%"></span><span class="sp-c__stop" style="--x:20%;--y:87.5%"></span>
+              <span class="sp-c__dot"><svg class="i"><use href="#i-truck"/></svg></span>
+            </div>
+          </div>
+        </div>
+      </div></div>
+    </article>
+
+    <!-- د numbered cards -->
+    <article class="pk-opt" data-value="d" data-label="د الكروت المرقّمة">
+      <div class="pk-opt-head"><h3><b>د</b>الكروت المرقّمة</h3><p>أربع كروت بأرقام كبيرة بتطلع ورا بعض، وبينها خط بيكبر يوصّلها ببعض.</p><button type="button" class="pk-replay" data-replay>شغّل الحركة تاني</button><button type="button" class="pk-pick">اختار ده</button></div>
+      <div class="frame"><div class="site">
+        <div class="wrap sp-d" data-play>
+          <div class="sec-h"><span class="eyebrow">طريقة الطلب</span><h4 class="d">أربع خطوات بس</h4><p>من أول رسالة لحد ما تمشي على أرضيتك الجديدة.</p></div>
+          <ol class="sp-d__row">
+            <li style="--i:0"><span class="sp-d__n d">١</span><svg class="i"><use href="#i-camera"/></svg><h5 class="d">أرسل صورة المكان</h5><p>على واتساب، مع الطول والعرض بالتقريب.</p></li>
+            <li style="--i:1"><span class="sp-d__n d">٢</span><svg class="i"><use href="#i-ruler"/></svg><h5 class="d">معاينة وقياس مجانًا</h5><p>نرتّب موعدًا في الرياض ونأخذ المقاسات.</p></li>
+            <li style="--i:2"><span class="sp-d__n d">٣</span><svg class="i"><use href="#i-sample"/></svg><h5 class="d">عينة قبل الطلب</h5><p>تشوف العينة وتلمسها قبل ما تقرر، مجانًا.</p></li>
+            <li style="--i:3"><span class="sp-d__n d">٤</span><svg class="i"><use href="#i-tools"/></svg><h5 class="d">توريد وتركيب</h5><p>نورّد ونركّب في الرياض، ونورّد لكل مدن المملكة.</p></li>
+          </ol>
+        </div>
+      </div></div>
+    </article>
+
+  </div>
+</section>
+
+<!-- 10 contact band -->
+<section class="pk-group" id="g-cta" data-key="cta" data-label="شريط التواصل">
+  <div class="pk-gh"><span class="pk-gh__n">١٠</span><h2>شريط التواصل</h2><p>الشريط اللي في آخر كل صفحة بيقول للعميل «ابعت صورة مكانك»، وفيه زرار الواتساب والرقمين.</p></div>
+  <div class="pk-opts">
+
+    <!-- أ copper band -->
+    <article class="pk-opt" data-value="a" data-label="أ الشريط النحاسي">
+      <div class="pk-opt-head"><h3><b>أ</b>الشريط النحاسي</h3><span class="pk-tag">الشكل الحالي</span><p>شريط بلون النحاس عليه نقشة باركيه خفيفة، الكلام على جنب والزرار والرقمين على الجنب التاني، وبيطلعوا لفوق بهدوء.</p><button type="button" class="pk-replay" data-replay>شغّل الحركة تاني</button><button type="button" class="pk-pick">اختار ده</button></div>
+      <div class="frame"><div class="site">
+        <div class="ct-a" data-play>
+          <div class="ct-a__copy">
+            <h4 class="d">عندك مكان تبغى تفرشه؟</h4>
+            <p>أرسل صورته ومقاسه على واتساب، ونرتّب لك معاينة وقياسًا مجانًا ونرد عليك بالخيارات والسعر.</p>
+          </div>
+          <div class="ct-a__actions">
+            <a class="btn ct-a__btn" href="#"><svg class="i"><use href="#i-wa"/></svg><span>أرسل صورة المكان</span></a>
+            <p class="ct-a__phones"><svg class="i"><use href="#i-phone"/></svg><a href="#" dir="ltr">055 010 1867</a><span aria-hidden="true">·</span><a href="#" dir="ltr">055 968 6290</a></p>
+          </div>
+        </div>
+      </div></div>
+    </article>
+
+    <!-- ب giant marquee -->
+    <article class="pk-opt" data-value="b" data-label="ب الكلام الكبير الماشي">
+      <div class="pk-opt-head"><h3><b>ب</b>الكلام الكبير الماشي</h3><p>جملة «أرسل صورة مكانك» بخط ضخم ماشية في سطرين عكس بعض، وفي النص كارت فيه الزرار والرقمين.</p><button type="button" class="pk-pick">اختار ده</button></div>
+      <div class="frame"><div class="site">
+        <div class="ct-b">
+          <div class="ct-b__rows" aria-hidden="true">
+            <div class="ct-b__row"><div class="ct-b__track d"><span>أرسل صورة مكانك</span><i></i><span>أرسل صورة مكانك</span><i></i><span>أرسل صورة مكانك</span><i></i><span>أرسل صورة مكانك</span><i></i><span>أرسل صورة مكانك</span><i></i><span>أرسل صورة مكانك</span><i></i></div></div>
+            <div class="ct-b__row ct-b__row--out"><div class="ct-b__track d"><span>معاينة وقياس مجانًا</span><i></i><span>عينة قبل الطلب</span><i></i><span>توريد وتركيب</span><i></i><span>معاينة وقياس مجانًا</span><i></i><span>عينة قبل الطلب</span><i></i><span>توريد وتركيب</span><i></i></div></div>
+          </div>
+          <div class="ct-b__card">
+            <span class="eyebrow">واتساب أو اتصال</span>
+            <p class="ct-b__lead">صوّر المكان وأرسله لنا، ونرد عليك بالخيارات والسعر.</p>
+            <a class="btn btn--wa" href="#"><svg class="i"><use href="#i-wa"/></svg><span>أرسل الصورة على واتساب</span></a>
+            <p class="ct-b__phones"><a href="#" dir="ltr">055 010 1867</a><a href="#" dir="ltr">055 968 6290</a></p>
+          </div>
+        </div>
+      </div></div>
+    </article>
+
+    <!-- ج dark card with AI image -->
+    <article class="pk-opt" data-value="c" data-label="ج الكارت الغامق بالرسمة">
+      <div class="pk-opt-head"><h3><b>ج</b>الكارت الغامق بالرسمة</h3><span class="pk-tag pk-tag--ai">رسمة AI</span><p>كارت غامق جواه رسمة عينات طايرة بتقرّب ببطء، وجنبها العنوان والرقمين بخط كبير وزرار الواتساب.</p><button type="button" class="pk-pick">اختار ده</button></div>
+      <div class="frame"><div class="site">
+        <div class="wrap ct-c-wrap">
+          <div class="ct-c">
+            <div class="ct-c__art"><img src="ai/float-dark.webp" alt="" loading="lazy"><span class="ai-note">رسمة توضيحية</span></div>
+            <div class="ct-c__copy">
+              <span class="eyebrow eyebrow--d">جاهزين نقيس مكانك</span>
+              <h4 class="d">المعاينة والقياس علينا، مجانًا</h4>
+              <p>أرسل صورة مكانك ومقاسه بالتقريب، ونرتّب معك موعد في الرياض.</p>
+              <ul class="ct-c__phones">
+                <li><svg class="i"><use href="#i-phone"/></svg><a href="#" dir="ltr">055 010 1867</a><small>اتصال وواتساب</small></li>
+                <li><svg class="i"><use href="#i-phone"/></svg><a href="#" dir="ltr">055 968 6290</a><small>اتصال</small></li>
+              </ul>
+              <a class="btn btn--wa" href="#"><svg class="i"><use href="#i-wa"/></svg><span>راسلنا على واتساب</span></a>
+            </div>
+          </div>
+        </div>
+      </div></div>
+    </article>
+
+  </div>
+</section>
+
+<!-- 11 scroll motion -->
+<section class="pk-group" id="g-motion" data-key="motion" data-label="الحركة وانت بتنزل في الصفحة">
+  <div class="pk-gh"><span class="pk-gh__n">١١</span><h2>الحركة وانت بتنزل في الصفحة</h2><p>الطريقة اللي الأقسام والكروت بتظهر بيها وانت بتنزل في الموقع. اضغط «شغّل الحركة تاني» عشان تشوفها من الأول.</p></div>
+  <div class="pk-opts">
+
+    <article class="pk-opt" data-value="a" data-label="أ شرائح الخشب">
+      <div class="pk-opt-head"><h3><b>أ</b>شرائح الخشب</h3><span class="pk-tag">الشكل الحالي</span><p>العنوان والكروت بيدخلوا من اليمين زي ألواح الباركيه وهي بتتركب، واحد ورا التاني.</p><button type="button" class="pk-replay" data-replay>شغّل الحركة تاني</button><button type="button" class="pk-pick">اختار ده</button></div>
+      <div class="frame"><div class="site">
+        <div class="wrap mo mo-a" data-play>
+          <div class="sec-h"><span class="eyebrow">الأرضيات</span><h4 class="d">أرضيات تتركّب قدامك</h4></div>
+          <div class="mo-grid">
+            <figure class="mo-card" style="--i:0"><div class="mo-card__img"><img class="ph" src="../../public/media/mosque-12-828.webp" alt="" loading="lazy"></div><figcaption><b>موكيت مساجد</b><span class="price">من 40 ريال/م²</span></figcaption></figure>
+            <figure class="mo-card" style="--i:1"><div class="mo-card__img"><img class="ph" src="../../public/media/office-08-828.webp" alt="" loading="lazy"></div><figcaption><b>موكيت مكاتب</b><span class="price">من 45 ريال/م²</span></figcaption></figure>
+            <figure class="mo-card" style="--i:2"><div class="mo-card__img"><img class="ph" src="../../public/media/gym-06-828.webp" alt="" loading="lazy"></div><figcaption><b>ربل جيم</b><span class="price">من 65 ريال/م²</span></figcaption></figure>
+          </div>
+        </div>
+      </div></div>
+    </article>
+
+    <article class="pk-opt" data-value="b" data-label="ب الطلوع الهادي">
+      <div class="pk-opt-head"><h3><b>ب</b>الطلوع الهادي</h3><p>كل حاجة بتطلع لفوق بهدوء وهي بتظهر، بفرق بسيط بين الكروت. أبسط وأهدى شكل.</p><button type="button" class="pk-replay" data-replay>شغّل الحركة تاني</button><button type="button" class="pk-pick">اختار ده</button></div>
+      <div class="frame"><div class="site">
+        <div class="wrap mo mo-b" data-play>
+          <div class="sec-h"><span class="eyebrow">الأرضيات</span><h4 class="d">اختار أرضيتك بهدوء</h4></div>
+          <div class="mo-grid">
+            <figure class="mo-card" style="--i:0"><div class="mo-card__img"><img class="ph" src="../../public/media/mosque-06-828.webp" alt="" loading="lazy"></div><figcaption><b>موكيت مساجد</b><span class="price">من 40 ريال/م²</span></figcaption></figure>
+            <figure class="mo-card" style="--i:1"><div class="mo-card__img"><img class="ph" src="../../public/media/office-14-828.webp" alt="" loading="lazy"></div><figcaption><b>موكيت مكاتب</b><span class="price">من 45 ريال/م²</span></figcaption></figure>
+            <figure class="mo-card" style="--i:2"><div class="mo-card__img"><img class="ph" src="../../public/media/bath-01-828.webp" alt="" loading="lazy"></div><figcaption><b>ربل حمامات</b><span class="price">من 90 ريال/م²</span></figcaption></figure>
+          </div>
+        </div>
+      </div></div>
+    </article>
+
+    <article class="pk-opt" data-value="c" data-label="ج تتفرد من النص">
+      <div class="pk-opt-head"><h3><b>ج</b>تتفرد من النص</h3><p>الصورة بتتفتح من نصها للجنبين زي السجادة لما تتفرد، والصورة جواها بتصغر لمكانها.</p><button type="button" class="pk-replay" data-replay>شغّل الحركة تاني</button><button type="button" class="pk-pick">اختار ده</button></div>
+      <div class="frame"><div class="site">
+        <div class="wrap mo mo-c" data-play>
+          <div class="sec-h"><span class="eyebrow">الأرضيات</span><h4 class="d">تتفرد قدامك زي السجادة</h4></div>
+          <div class="mo-grid">
+            <figure class="mo-card" style="--i:0"><div class="mo-card__img"><img class="ph" src="../../public/media/mosque-13-828.webp" alt="" loading="lazy"></div><figcaption><b>موكيت مساجد</b><span class="price">من 40 ريال/م²</span></figcaption></figure>
+            <figure class="mo-card" style="--i:1"><div class="mo-card__img"><img class="ph" src="../../public/media/gym-01-828.webp" alt="" loading="lazy"></div><figcaption><b>ربل جيم</b><span class="price">من 65 ريال/م²</span></figcaption></figure>
+            <figure class="mo-card" style="--i:2"><div class="mo-card__img"><img class="ph" src="../../public/media/vinyl-12-828.webp" alt="" loading="lazy"></div><figcaption><b>مشمع باركيه وفينيل رول</b><span class="price">من 19 ريال/م²</span></figcaption></figure>
+          </div>
+        </div>
+      </div></div>
+    </article>
+
+    <article class="pk-opt" data-value="d" data-label="د بلاط بيتقلب">
+      <div class="pk-opt-head"><h3><b>د</b>بلاط بيتقلب</h3><p>كل كارت بيتقلب لتحت زي بلاطة بتتحط في مكانها، واحد ورا التاني.</p><button type="button" class="pk-replay" data-replay>شغّل الحركة تاني</button><button type="button" class="pk-pick">اختار ده</button></div>
+      <div class="frame"><div class="site">
+        <div class="wrap mo mo-d" data-play>
+          <div class="sec-h"><span class="eyebrow">الأرضيات</span><h4 class="d">بلاطة بلاطة</h4></div>
+          <div class="mo-grid">
+            <figure class="mo-card" style="--i:0"><div class="mo-card__img"><img class="ph" src="../../public/media/parquet-cat-01-828.webp" alt="" loading="lazy"></div><figcaption><b>باركيه خشب</b><span class="price">من 65 ريال/م²</span></figcaption></figure>
+            <figure class="mo-card" style="--i:1"><div class="mo-card__img"><img class="ph" src="../../public/media/office-08-828.webp" alt="" loading="lazy"></div><figcaption><b>موكيت مكاتب</b><span class="price">من 45 ريال/م²</span></figcaption></figure>
+            <figure class="mo-card" style="--i:2"><div class="mo-card__img"><img class="ph" src="../../public/media/mosque-12-828.webp" alt="" loading="lazy"></div><figcaption><b>موكيت مساجد</b><span class="price">من 40 ريال/م²</span></figcaption></figure>
+          </div>
+        </div>
+      </div></div>
+    </article>
+
+  </div>
+</section>
+
+<!-- 12 footer -->
+<section class="pk-group" id="g-footer" data-key="footer" data-label="الفوتر">
+  <div class="pk-gh"><span class="pk-gh__n">١٢</span><h2>الفوتر</h2><p>آخر جزء في كل صفحة: روابط الأصناف، العنوان والمواعيد، الأرقام، وبيانات المؤسسة.</p></div>
+  <div class="pk-opts">
+
+    <!-- أ dark with herringbone stripe -->
+    <article class="pk-opt" data-value="a" data-label="أ الغامق بشريط الباركيه">
+      <div class="pk-opt-head"><h3><b>أ</b>الغامق بشريط الباركيه</h3><span class="pk-tag">الشكل الحالي</span><p>فوتر غامق فوقه شريط بنقشة الباركيه، وتحته الخدمات الأربعة في مربعات، وبعدين اللوجو والروابط والعنوان.</p><button type="button" class="pk-pick">اختار ده</button></div>
+      <div class="frame"><div class="site">
+        <footer class="ft-a">
+          <ul class="ft-a__promises">
+            <li><svg class="i"><use href="#i-ruler"/></svg>معاينة وقياس مجانًا</li>
+            <li><svg class="i"><use href="#i-sample"/></svg>عينة مجانية قبل الطلب</li>
+            <li><svg class="i"><use href="#i-tools"/></svg>توريد وتركيب</li>
+            <li><svg class="i"><use href="#i-truck"/></svg>توريد لكل مدن المملكة</li>
+          </ul>
+          <div class="ft-a__grid">
+            <div class="ft-a__brand">
+              <img src="../../public/brand/logo-lockup-inverse.webp" alt="" width="640" height="304" loading="lazy">
+              <p>محل موكيت وأرضيات في حراج بن قاسم بالرياض.</p>
+              <a class="btn btn--sm ft-a__wa" href="#"><svg class="i"><use href="#i-wa"/></svg><span>راسلنا على واتساب</span></a>
+            </div>
+            <nav class="ft-cols">
+              <div><p class="ft-t">الموكيت</p><ul><li><a href="#">موكيت مساجد</a></li><li><a href="#">موكيت مكاتب</a></li><li><a href="#">موكيت منازل</a></li></ul></div>
+              <div><p class="ft-t">الباركيه والفينيل</p><ul><li><a href="#">باركيه خشب</a></li><li><a href="#">باركيه SPC</a></li><li><a href="#">مشمع باركيه وفينيل رول</a></li><li><a href="#">فينيل طبي</a></li></ul></div>
+              <div><p class="ft-t">الربل والخاص</p><ul><li><a href="#">ربل جيم</a></li><li><a href="#">ربل حمامات</a></li><li><a href="#">أرضيات فوم وبازل</a></li><li><a href="#">عشب صناعي</a></li></ul></div>
+              <div><p class="ft-t">المحل</p><ul class="ft-a__facts"><li><svg class="i"><use href="#i-pin"/></svg>حراج بن قاسم القديم، سوق العرب الدولي، حي المنفوحة، الرياض</li><li><svg class="i"><use href="#i-clock"/></svg>يوميًا من 9 صباحًا حتى 10 مساءً</li><li><svg class="i"><use href="#i-phone"/></svg><a href="#" dir="ltr">055 010 1867</a></li><li><svg class="i"><use href="#i-phone"/></svg><a href="#" dir="ltr">055 968 6290</a></li></ul></div>
+            </nav>
+          </div>
+          <div class="ft-legal"><p>© 2026 مؤسسة فنون العاديات لديكورات والارضيات العالميه — الرقم الموحد 7054751560 — الرقم الضريبي 314892165400003</p><p><a href="#">سياسة الخصوصية</a><a href="#" dir="ltr">Powered by Digitalizing Tech</a></p></div>
+        </footer>
+      </div></div>
+    </article>
+
+    <!-- ب light with showroom strip -->
+    <article class="pk-opt" data-value="b" data-label="ب الفاتح بصورة المحل">
+      <div class="pk-opt-head"><h3><b>ب</b>الفاتح بصورة المحل</h3><p>فوتر فاتح فيه اللوجو كبير، وشريط عريض بصورة المحل من جوه، وتحته الروابط وسطر التواصل.</p><button type="button" class="pk-pick">اختار ده</button></div>
+      <div class="frame"><div class="site">
+        <footer class="ft-b">
+          <div class="ft-b__top">
+            <img class="logo-l ft-b__logo" src="../../public/brand/logo-lockup.webp" alt="" width="640" height="304" loading="lazy"><img class="logo-d ft-b__logo" src="../../public/brand/logo-lockup-inverse.webp" alt="" width="640" height="304" loading="lazy">
+            <p class="ft-b__line d">تعال شوف العينات على الطبيعة في حراج بن قاسم.</p>
+          </div>
+          <figure class="ft-b__strip"><img class="ph" src="../../public/media/showroom-828.webp" alt="" loading="lazy"><figcaption><svg class="i"><use href="#i-pin"/></svg>حراج بن قاسم القديم، سوق العرب الدولي، حي المنفوحة</figcaption></figure>
+          <nav class="ft-cols ft-b__cols">
+            <div><p class="ft-t">الموكيت</p><ul><li><a href="#">موكيت مساجد</a></li><li><a href="#">موكيت مكاتب</a></li><li><a href="#">موكيت منازل</a></li></ul></div>
+            <div><p class="ft-t">الباركيه والفينيل</p><ul><li><a href="#">باركيه خشب</a></li><li><a href="#">باركيه SPC</a></li><li><a href="#">مشمع باركيه وفينيل رول</a></li><li><a href="#">فينيل طبي</a></li></ul></div>
+            <div><p class="ft-t">الربل والخاص</p><ul><li><a href="#">ربل جيم</a></li><li><a href="#">ربل حمامات</a></li><li><a href="#">أرضيات فوم وبازل</a></li><li><a href="#">عشب صناعي</a></li></ul></div>
+            <div><p class="ft-t">الموقع</p><ul><li><a href="#">عن المحل</a></li><li><a href="#">الكتالوجات</a></li><li><a href="#">أدلة الشراء</a></li><li><a href="#">الأسئلة الشائعة</a></li></ul></div>
+          </nav>
+          <div class="ft-b__contact">
+            <span><svg class="i"><use href="#i-clock"/></svg>يوميًا من 9 صباحًا حتى 10 مساءً</span>
+            <a href="#" dir="ltr"><svg class="i"><use href="#i-phone"/></svg>055 010 1867</a>
+            <a href="#" dir="ltr"><svg class="i"><use href="#i-phone"/></svg>055 968 6290</a>
+            <a class="btn btn--wa btn--sm" href="#"><svg class="i"><use href="#i-wa"/></svg><span>واتساب</span></a>
+          </div>
+          <div class="ft-legal"><p>© 2026 مؤسسة فنون العاديات لديكورات والارضيات العالميه — الرقم الموحد 7054751560 — الرقم الضريبي 314892165400003</p><p><a href="#">سياسة الخصوصية</a><a href="#" dir="ltr">Powered by Digitalizing Tech</a></p></div>
+        </footer>
+      </div></div>
+    </article>
+
+    <!-- ج giant outlined word -->
+    <article class="pk-opt" data-value="c" data-label="ج كلمة السريع الضخمة">
+      <div class="pk-opt-head"><h3><b>ج</b>كلمة «السريع» الضخمة</h3><p>فوتر غامق قليل الروابط، وتحته كلمة «السريع» بعرض الشاشة بخط محدّد، وبتتملي بلون النحاس لما الماوس يعدّي عليها.</p><button type="button" class="pk-replay" data-replay>شغّل الحركة تاني</button><button type="button" class="pk-pick">اختار ده</button></div>
+      <div class="frame"><div class="site">
+        <footer class="ft-c" data-play>
+          <div class="ft-c__top">
+            <div class="ft-c__lead">
+              <p class="d">موكيت وباركيه وربل وفينيل في الرياض.</p>
+              <a class="btn btn--wa" href="#"><svg class="i"><use href="#i-wa"/></svg><span>راسلنا على واتساب</span></a>
+            </div>
+            <ul class="ft-c__links"><li><a href="#">الموكيت</a></li><li><a href="#">الباركيه</a></li><li><a href="#">الربل</a></li><li><a href="#">الكتالوجات</a></li><li><a href="#">عن المحل</a></li><li><a href="#">تواصل</a></li></ul>
+            <ul class="ft-c__facts">
+              <li><svg class="i"><use href="#i-pin"/></svg>حراج بن قاسم القديم، سوق العرب الدولي، الرياض</li>
+              <li><svg class="i"><use href="#i-clock"/></svg>يوميًا 9 ص – 10 م</li>
+              <li><svg class="i"><use href="#i-phone"/></svg><a href="#" dir="ltr">055 010 1867</a> · <a href="#" dir="ltr">055 968 6290</a></li>
+            </ul>
+          </div>
+          <p class="ft-c__word d" data-word="السريع" aria-hidden="true">السريع</p>
+          <div class="ft-legal"><p>© 2026 مؤسسة فنون العاديات لديكورات والارضيات العالميه — الرقم الموحد 7054751560 — الرقم الضريبي 314892165400003</p><p><a href="#">سياسة الخصوصية</a><a href="#" dir="ltr">Powered by Digitalizing Tech</a></p></div>
+        </footer>
+      </div></div>
+    </article>
+
+  </div>
+</section>
+
+<section class="pk-group" id="g-pay" data-key="pay" data-label="تابي وتمارا">
+  <div class="pk-gh"><span class="pk-gh__n">١٣</span><h2>تابي وتمارا (التقسيط)</h2><p>إزاي نقول للزبون إنه يقدر يقسّط مع تابي وتمارا. اللوجوهات هي الرسمية زي ما هي (ممنوع نغير لونها)، فبتتحط على خلفية بيضا. المبلغ في الأمثلة حساب من سعر المتر المكتوب، ومكتوب عليه «مثال».</p></div>
+  <div class="pk-opts">
+
+    <article class="pk-opt" data-value="a" data-label="أ تحت كل سعر">
+      <div class="pk-opt-head"><h3><b>أ</b>تحت كل سعر</h3><p>سطر صغير تحت السعر في صفحة المنتج وفي الكروت: «أو قسّمها على 4 دفعات» واللوجوهين، وتحته شريط بيتقسم 4 حتت قدام الزبون.</p><button type="button" class="pk-replay" data-replay>شغّل الحركة تاني</button><button type="button" class="pk-pick">اختار ده</button></div>
+      <div class="frame"><div class="site">
+        <div class="py-a wrap">
+          <div class="py-a__box" data-play>
+            <img class="py-a__img" src="../../public/media/mosque-12-828.webp" alt="" loading="lazy">
+            <div class="py-a__info">
+              <span class="eyebrow">موكيت مساجد</span>
+              <h4 class="d">موكيت مساجد بخطوط الصفوف</h4>
+              <p class="py-a__price"><b>من 40</b> ريال/م²</p>
+              <div class="py-a__split">
+                <p>أو قسّم المبلغ على <b>4 دفعات</b> مع</p>
+                <span class="py-logos"><img src="../../public/brand/tabby.svg" alt="تابي"><img src="../../public/brand/tamara-tight.svg" alt="تمارا"></span>
+                <div class="py-a__bar"><i></i><i></i><i></i><i></i></div>
+                <small>مثال: مصلى 100 م² × 40 = 4,000 ريال ← 4 دفعات كل وحدة 1,000 ريال</small>
+              </div>
+              <a class="btn btn--wa" href="#"><svg class="i"><use href="#i-wa"/></svg>اطلب معاينة مجانية</a>
+            </div>
+          </div>
+        </div>
+      </div></div>
+    </article>
+
+    <article class="pk-opt" data-value="b" data-label="ب البلاطات الأربعة">
+      <div class="pk-opt-head"><h3><b>ب</b>البلاطات الأربعة</h3><p>قسم كامل في الرئيسية: 4 بلاطات بتتقلب واحدة ورا التانية (نفس حركة البلاط اللي اخترتها)، كل بلاطة دفعة: اليوم، بعد شهر، بعد شهرين، بعد 3 شهور.</p><button type="button" class="pk-replay" data-replay>شغّل الحركة تاني</button><button type="button" class="pk-pick">اختار ده</button></div>
+      <div class="frame"><div class="site">
+        <div class="py-b">
+          <div class="py-b__copy">
+            <span class="eyebrow eyebrow--d">تقسيط</span>
+            <h4 class="d">افرش دلوقتي<br>وادفع على 4 دفعات</h4>
+            <p>مع تابي أو تمارا، حسب شروطهم.</p>
+            <span class="py-logos py-logos--lg"><img src="../../public/brand/tabby.svg" alt="تابي"><img src="../../public/brand/tamara-tight.svg" alt="تمارا"></span>
+          </div>
+          <div class="py-b__tiles" data-play>
+            <div style="--n:0"><small>الدفعة ١</small><b class="d">1,000</b><span>اليوم</span></div>
+            <div style="--n:1"><small>الدفعة ٢</small><b class="d">1,000</b><span>بعد شهر</span></div>
+            <div style="--n:2"><small>الدفعة ٣</small><b class="d">1,000</b><span>بعد شهرين</span></div>
+            <div style="--n:3"><small>الدفعة ٤</small><b class="d">1,000</b><span>بعد 3 شهور</span></div>
+            <p class="py-b__note">مثال بالريال: مصلى 100 م² من موكيت المساجد (من 40 ريال/م²) = 4,000 ريال.</p>
+          </div>
+        </div>
+      </div></div>
+    </article>
+
+    <article class="pk-opt" data-value="c" data-label="ج شارة بتفتح">
+      <div class="pk-opt-head"><h3><b>ج</b>شارة بتفتح</h3><p>شارة صغيرة ثابتة في الهيرو وفي صفحة المنتج «قسّط مع تابي وتمارا»، لما الزبون يعدّي عليها أو يدوس بتفتح وتوريه الأربع دفعات. مش بتاخد مكان.</p><button type="button" class="pk-pick">اختار ده</button></div>
+      <div class="frame"><div class="site">
+        <div class="py-c">
+          <img class="py-c__bg" src="ai/float-dark.webp" alt="" loading="lazy">
+          <div class="py-c__copy">
+            <h4 class="d">موكيت ومفروشات <em>السريع</em></h4>
+            <button type="button" class="py-c__badge" data-py-c aria-expanded="false">
+              <span class="py-c__head"><span class="py-logos"><img src="../../public/brand/tabby.svg" alt="تابي"><img src="../../public/brand/tamara-tight.svg" alt="تمارا"></span>قسّط على 4 دفعات<svg class="i"><use href="#i-chev"/></svg></span>
+              <span class="py-c__body"><span><b>١</b>اليوم</span><span><b>٢</b>بعد شهر</span><span><b>٣</b>بعد شهرين</span><span><b>٤</b>بعد 3 شهور</span></span>
+            </button>
+          </div>
+          <span class="ai-note">رسمة توضيحية</span>
+        </div>
+      </div></div>
+    </article>
+
+  </div>
+</section>
+
+
+</main>
+</div>
+
+<details class="pk-sum" id="pk-sum">
+  <summary>اختياراتك لحد دلوقتي</summary>
+  <ul id="pk-sum-list"></ul>
+  <textarea id="pk-notes" placeholder="ملاحظات (اختياري): مثلًا عايز الهيرو أ بس بخط ج"></textarea>
+</details>
+<div class="pk-toast" id="pk-toast" role="status" aria-live="polite"></div>
+
+<script src="picker.js"></script>
+<script src="demos.js"></script>
+</body>
+</html>

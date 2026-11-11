@@ -1,0 +1,21 @@
+/* Group 1: palettes. Each frame is a small page in its own palette (data-fixed="c"). */
+.site .pl-body { display: grid; grid-template-columns: 1.2fr 1fr; gap: 18px; padding: 26px clamp(14px, 3cqi, 36px); }
+.site .pl-hero { display: grid; align-content: center; gap: 12px; padding: 28px; background: var(--sand); border-inline-start: 4px solid var(--acc); }
+.site .pl-hero h4 { font-size: clamp(28px, 4.4cqi, 46px); }
+.site .pl-hero em { font-style: normal; color: var(--acc-t); }
+.site .pl-hero p { color: var(--muted); }
+.site .pl-btns { display: flex; flex-wrap: wrap; gap: 10px; }
+.site .pl-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.site .pl-card { display: grid; grid-template-rows: 150px auto; background: var(--card); border: 1px solid var(--line); }
+.site .pl-card > div { display: grid; gap: 2px; padding: 10px 12px; }
+.site .pl-dark { grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: center; gap: 16px; padding: 18px 22px; background: var(--dark); color: var(--on-dark); }
+.site .pl-dark img { height: 44px; width: auto; }
+.site .pl-dark div { display: grid; flex: 1 1 200px; }
+.site .pl-dark small { color: var(--on-dark-muted); }
+.site .pl-sw { display: flex; flex-wrap: wrap; border-top: 1px solid var(--line); }
+.site .pl-sw span { flex: 1 1 120px; display: grid; padding: 10px 14px; font-size: 13px; font-weight: 700; }
+.site .pl-sw i { font-style: normal; font-weight: 400; opacity: .8; }
+@container (max-width: 700px) {
+  .site .pl-body { grid-template-columns: 1fr; }
+  .site .pl-card { grid-template-rows: 110px auto; }
+}

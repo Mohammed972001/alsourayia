@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>اختيارات تصميم موكيت السريع — الجولة الثالثة</title>
+<link rel="stylesheet" href="picker.css">
+<link rel="stylesheet" href="demos.css">
+</head>
+<body data-view="desktop">
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-wa" viewBox="0 0 24 24"><path d="M3.5 20.5l1.3-4.6A8.5 8.5 0 1112 20.5a8.4 8.4 0 01-4.1-1.1l-4.4 1.1z"/><path d="M9 8.5c.3 2.6 2.4 5.3 5.8 6.4l.9-1.3-1.8-1-.9.8a5 5 0 01-2.3-2.3l.8-.9-1-1.8z"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 3h3.5l1.5 4.5-2 1.5a12 12 0 006 6l1.5-2L20 14.5V18a2 2 0 01-2 2A15 15 0 013 5a2 2 0 012-2z"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></symbol>
+  <symbol id="i-arrow-r" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h10"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0119 9.5C19 14.8 12 21 12 21zM12 7a2.5 2.5 0 110 5 2.5 2.5 0 010-5z"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><path d="M12 3a9 9 0 110 18 9 9 0 010-18zM12 7v5l3 2"/></symbol>
+  <symbol id="i-ruler" viewBox="0 0 24 24"><path d="M3 16.5L16.5 3 21 7.5 7.5 21zM7 12.5l2 2M10 9.5l2 2M13 6.5l2 2"/></symbol>
+  <symbol id="i-sample" viewBox="0 0 24 24"><path d="M4 4h10l6 6v10H4zM14 4v6h6M8 14h8M8 17h5"/></symbol>
+  <symbol id="i-truck" viewBox="0 0 24 24"><path d="M2 6h12v10H2zM14 10h4l3 3v3h-7M6.5 19a1.5 1.5 0 100-3 1.5 1.5 0 000 3zM17.5 19a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"/></symbol>
+  <symbol id="i-tools" viewBox="0 0 24 24"><path d="M14 6a4 4 0 005 5l-8 8a2 2 0 01-3-3l8-8a4 4 0 01-2-2zM4 4l4 4M3 7l4-4"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+  <symbol id="i-camera" viewBox="0 0 24 24"><path d="M3 8h4l2-3h6l2 3h4v11H3zM12 10a3.5 3.5 0 110 7 3.5 3.5 0 010-7z"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5l11 7-11 7z"/></symbol>
+  <symbol id="i-mosque" viewBox="0 0 24 24"><path d="M12 3c2.5 2 5 3.5 5 6.5V20H7V9.5C7 6.5 9.5 5 12 3zM4 20V11M20 20V11M10 20v-4a2 2 0 014 0v4M3 20h18"/></symbol>
+  <symbol id="i-office" viewBox="0 0 24 24"><path d="M4 21V5l9-2v18M13 9h7v12M8 8h1M8 12h1M8 16h1M16 13h1M16 17h1M3 21h18"/></symbol>
+  <symbol id="i-gym" viewBox="0 0 24 24"><path d="M3 10v4M6 7v10M18 7v10M21 10v4M6 12h12"/></symbol>
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11l9-7 9 7M5 9.5V20h5v-6h4v6h5V9.5"/></symbol>
+  <symbol id="i-layers" viewBox="0 0 24 24"><path d="M12 3l9 5-9 5-9-5zM3 13l9 5 9-5M3 17l9 5 9-5"/></symbol>
+</svg>
+
+<header class="pk-top">
+  <div class="pk-top__brand"><img src="../../public/brand/logo-lockup-inverse.webp" alt="السريع"> <span>اختيارات التصميم — الجولة الثالثة</span></div>
+  <div class="pk-top__tools">
+    <div class="pk-seg" role="group" aria-label="العرض">
+      <button type="button" data-set-view="desktop" aria-pressed="true">ديسكتوب</button>
+      <button type="button" data-set-view="mobile" aria-pressed="false">موبايل</button>
+    </div>
+    <span class="pk-count" id="pk-count">0/0</span>
+    <button type="button" class="pk-copy" id="pk-copy">انسخ اختياراتي</button>
+  </div>
+</header>
+
+<div class="pk-layout">
+<nav class="pk-nav" id="pk-nav" aria-label="الأقسام"><p>الأقسام</p></nav>
+
+<main>
+<section class="pk-intro">
+  <h1>اختار من كل قسم شكل واحد</h1>
+  <p>كل شكل هنا شغال بحركته الحقيقية. اللون والخط اللي تختارهم في أول قسمين بيتطبقوا على كل الأشكال اللي تحت، عشان تشوف الموقع كامل باختيارك.</p>
+  <ul>
+    <li>بدّل بين «ديسكتوب» و«موبايل» من الشريط اللي فوق.</li>
+    <li>الأشكال اللي عليها علامة «رسمة AI» فيها رسومات معمولة بالذكاء الاصطناعي، والباقي صور المحل الحقيقية.</li>
+    <li>ممكن تختار من كل قسم حاجة، أو تسيب القسم فاضي لو مش فارق معاك. ولو عايز تخلط شكلين اكتب ده في الملاحظات تحت.</li>
+    <li>لما تخلص اضغط «انسخ اختياراتي» وابعتها في الشات، وأنا أنفّذها في الموقع.</li>
+  </ul>
+</section>
