@@ -1,6 +1,6 @@
 import media from "@/content/media.json";
 
-type Entry = { width: number; height: number; widths: number[]; temp: boolean; source: "owner" | "catalog" | "art" | "tmp" };
+type Entry = { width: number; height: number; widths: number[]; temp: boolean; source: "owner" | "catalog" | "art" | "ai" | "tmp" };
 const manifest = media as Record<string, Entry>;
 
 type Props = {
@@ -51,7 +51,7 @@ export function photoSize(name: string): { width: number; height: number } {
   return { width: entry.width, height: entry.height };
 }
 
-/** Where a picture comes from: the owner's camera, a supplier catalogue, or a drawn illustration. */
+/** Where a picture comes from: the owner's camera, a supplier catalogue, a drawn illustration, or AI art. */
 export function photoSource(name: string): Entry["source"] {
   return manifest[name]?.source ?? "owner";
 }

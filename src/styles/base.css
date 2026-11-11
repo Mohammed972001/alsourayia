@@ -8,6 +8,8 @@
 
 html {
   -webkit-text-size-adjust: 100%;
+  /* Lalezar has a single weight: never fake a bold from it. */
+  font-synthesis-weight: none;
   scroll-behavior: smooth;
   scroll-padding-top: calc(var(--header-h) + 1.5rem);
 }
@@ -60,7 +62,7 @@ h3,
 h4 {
   margin: 0;
   font-family: var(--font-display), var(--font-text), sans-serif;
-  font-weight: 600;
+  font-weight: 400;
   line-height: var(--leading-tight);
   text-wrap: balance;
 }

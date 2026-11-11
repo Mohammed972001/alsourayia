@@ -6,6 +6,7 @@
 // media-src/owner/    the owner's photos (committed, ship on the live site)
 // media-src/catalog/  pictures cut from the suppliers' catalogues the owner published (labelled on the site)
 // media-src/art/      flat material illustrations from scripts/art.mjs (labelled «رسم توضيحي»)
+// media-src/ai/       AI-generated scenes and product shots (Figma image generator, 2026-11-12; labelled «رسمة توضيحية»)
 // media-src/tmp/      temporary preview photos from other projects (git-ignored, blocked when live)
 
 import { existsSync, mkdirSync, readdirSync, writeFileSync } from "node:fs";
@@ -20,7 +21,7 @@ const out = join(root, "public/media");
 mkdirSync(out, { recursive: true });
 
 const manifest = {};
-for (const [folder, temp] of [["owner", false], ["catalog", false], ["art", false], ["tmp", true]]) {
+for (const [folder, temp] of [["owner", false], ["catalog", false], ["art", false], ["ai", false], ["tmp", true]]) {
   const dir = join(root, "media-src", folder);
   if (!existsSync(dir)) continue;
   for (const file of readdirSync(dir).filter((f) => /\.(jpe?g|png|webp)$/i.test(f)).sort()) {

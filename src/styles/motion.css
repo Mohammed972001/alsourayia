@@ -1,20 +1,21 @@
-/* Motion for «موكيت ومفروشات السريع»: the language of laying a floor. Pieces slide into place like planks,
-   grid tiles are set one by one, and the measuring tape and the badge's swoosh draw themselves. No parallax,
-   no tilt. Content is visible without JavaScript: hiding starts only once Motion.tsx adds .motion-ready,
+/* Motion for «موكيت ومفروشات السريع»: the language of laying a floor. Round 3 (user pick «د بلاط بيتقلب»,
+   2026-11-12): blocks flip down into place one after another like tiles being set; photos can still unroll
+   («lay») and lines still draw themselves. No parallax, no mouse tilt. Content is visible without JavaScript: hiding starts only once Motion.tsx adds .motion-ready,
    and everything is off under prefers-reduced-motion. */
 
 [data-reveal] {
+  transform-origin: 50% 0;
   transition:
-    opacity 0.7s var(--ease-out),
-    transform 0.9s var(--ease-out),
+    opacity 0.6s var(--ease-out),
+    transform 0.8s var(--ease-out),
     clip-path 0.9s var(--ease-in-out);
-  transition-delay: calc(var(--i, 0) * 90ms);
+  transition-delay: calc(var(--i, 0) * 110ms);
 }
 
-/* Default «plank»: slides in from the reading start (the right in RTL) and settles. */
+/* Default «flip»: a tile hinged on its top edge swings down into place. */
 .motion-ready [data-reveal]:not(.is-in) {
   opacity: 0;
-  transform: translateX(2.5rem);
+  transform: perspective(900px) rotateX(-75deg);
 }
 
 /* «lay»: a photo or card uncovered from the start edge, like a roll unrolled across the floor. */
@@ -28,10 +29,10 @@
   clip-path: inset(0 0 0 100% round var(--radius-lg));
 }
 
-/* «tile»: a square set down from above with a small turn, for grids placed tile by tile. */
+/* «tile»: the same flip, kept as a name for grids placed tile by tile. */
 .motion-ready [data-reveal="tile"]:not(.is-in) {
   opacity: 0;
-  transform: translateY(-1.25rem) rotate(-2.5deg) scale(0.94);
+  transform: perspective(900px) rotateX(-75deg);
 }
 
 /* «up»: a plain rise, for text blocks. */

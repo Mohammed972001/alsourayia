@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { El_Messiri, IBM_Plex_Sans_Arabic } from "next/font/google";
+import { IBM_Plex_Sans_Arabic, Lalezar } from "next/font/google";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { MobileBar } from "@/components/MobileBar";
@@ -9,9 +9,10 @@ import { Tags } from "@/components/Tags";
 import { site, siteUrl } from "@/content/site";
 import "./globals.css";
 
-// Self-hosted at build time by next/font (constitution III). El Messiri for display type (its calligraphic
-// curves echo the «السريع» wordmark), IBM Plex Sans Arabic for text.
-const display = El_Messiri({ subsets: ["arabic"], weight: ["500", "600", "700"], variable: "--font-display", display: "swap" });
+// Self-hosted at build time by next/font (constitution III). Lalezar for display type (round 3, user pick
+// 2026-11-12: heavy signboard letters that read from far), IBM Plex Sans Arabic for text. Lalezar has one
+// weight, so base.css turns weight synthesis off.
+const display = Lalezar({ subsets: ["arabic", "latin"], weight: "400", variable: "--font-display", display: "swap" });
 const text = IBM_Plex_Sans_Arabic({ subsets: ["arabic"], weight: ["400", "500", "700"], variable: "--font-text", display: "swap" });
 
 export const metadata: Metadata = {
@@ -23,7 +24,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#FCFAF5",
+  themeColor: "#FFFFFF",
   width: "device-width",
   initialScale: 1,
 };

@@ -1060,5 +1060,91 @@
     ],
     "temp": false,
     "source": "art"
+  },
+  "ai-cut-carpet": {
+    "width": 1024,
+    "height": 1024,
+    "widths": [
+      160,
+      480,
+      828,
+      1024
+    ],
+    "temp": false,
+    "source": "ai"
+  },
+  "ai-cut-planks": {
+    "width": 1024,
+    "height": 1024,
+    "widths": [
+      160,
+      480,
+      828,
+      1024
+    ],
+    "temp": false,
+    "source": "ai"
+  },
+  "ai-cut-rubber": {
+    "width": 1024,
+    "height": 1024,
+    "widths": [
+      160,
+      480,
+      828,
+      1024
+    ],
+    "temp": false,
+    "source": "ai"
+  },
+  "ai-cut-vinyl": {
+    "width": 1024,
+    "height": 1024,
+    "widths": [
+      160,
+      480,
+      828,
+      1024
+    ],
+    "temp": false,
+    "source": "ai"
+  },
+  "ai-float-dark": {
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      160,
+      480,
+      828,
+      1200,
+      1536
+    ],
+    "temp": false,
+    "source": "ai"
+  },
+  "ai-room": {
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      160,
+      480,
+      828,
+      1200,
+      1536
+    ],
+    "temp": false,
+    "source": "ai"
+  },
+  "ai-slab": {
+    "width": 1264,
+    "height": 848,
+    "widths": [
+      160,
+      480,
+      828,
+      1200
+    ],
+    "temp": false,
+    "source": "ai"
   }
 }
