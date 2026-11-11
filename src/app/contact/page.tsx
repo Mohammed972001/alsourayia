@@ -14,6 +14,14 @@ const description =
 
 export const metadata = pageMetadata({ title, description, path: "/contact", image: "showroom" });
 
+// The four steps (same wording as the home page's steps), kept here so this page stands on its own.
+const steps = [
+  { title: "أرسل صورة المكان", text: "على واتساب، مع الطول والعرض بالتقريب ونوع المكان." },
+  { title: "معاينة وقياس مجانًا", text: "نرتّب موعدًا في الرياض لنأخذ المقاسات ونشوف حالة الأرضية." },
+  { title: "عينة قبل الطلب", text: "تشوف العينة وتلمسها قبل ما تقرر، مجانًا." },
+  { title: "توريد وتركيب", text: "نورّد ونركّب في الرياض، ونورّد لكل مدن المملكة." },
+];
+
 const trail = [
   { name: "الرئيسية", path: "/" },
   { name: "تواصل وزيارة", path: "/contact" },
@@ -113,9 +121,31 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section className="section section--sand" aria-labelledby="ask-title">
+      <section className="section section--sand" aria-labelledby="steps-title">
         <div className="container">
-          <h2 id="ask-title" className="pdp-block__title" data-reveal>
+          <p className="eyebrow" data-reveal>
+            طريقة الطلب
+          </p>
+          <h2 id="steps-title" className="blk-title" data-reveal>
+            من المعاينة إلى التركيب
+          </h2>
+          <ol className="contact-steps">
+            {steps.map((s, i) => (
+              <li key={s.title} data-reveal style={{ "--i": i } as React.CSSProperties}>
+                <span className="contact-steps__num" aria-hidden="true">
+                  {"١٢٣٤"[i]}
+                </span>
+                <h3 className="contact-steps__title">{s.title}</h3>
+                <p className="contact-steps__text">{s.text}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      <section className="section" aria-labelledby="ask-title">
+        <div className="container">
+          <h2 id="ask-title" className="blk-title" data-reveal>
             اسأل عن صنف محدد
           </h2>
           <ul className="contact__products">

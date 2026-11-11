@@ -25,7 +25,7 @@ export default function CatalogsPage() {
       {catalogGroups.map((group, gi) => (
         <section key={group.title} className={`section catalogs${gi % 2 ? " section--sand" : ""}`} aria-labelledby={`cat-${gi}`}>
           <div className="container">
-            <h2 id={`cat-${gi}`} className="pdp-block__title" data-reveal>
+            <h2 id={`cat-${gi}`} className="blk-title" data-reveal>
               {group.title}
             </h2>
             <ul className="catalogs__grid">

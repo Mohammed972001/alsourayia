@@ -1,7 +1,7 @@
 import { telHref, whatsappHref } from "@/lib/contact";
 import { Icon } from "./Icon";
 
-/** Fixed contact bar on phones: WhatsApp and a call. */
+/** Fixed contact bar on phones: WhatsApp (its own green) and a call (the logo teal). */
 export function MobileBar() {
   return (
     <div className="mobile-bar" role="region" aria-label="تواصل سريع">

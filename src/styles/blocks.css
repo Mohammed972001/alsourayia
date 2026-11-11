@@ -1,5 +1,5 @@
-/* Blocks added for «موكيت ومفروشات السريع» (spec 002): the services strip, prices, the «prepare» list,
-   comparison tables, guides, catalogues and the footer groups. Tokens only. */
+/* Blocks added for «موكيت ومفروشات السريع» (spec 002, round 3): prices, the «prepare» list, comparison
+   tables, guides and catalogues. Tokens only; square-ish corners. */
 
 /* ---- Light copper button for dark sections ------------------------------------------------------ */
 
@@ -18,63 +18,6 @@
 
 .btn--inverse:focus-visible {
   outline-color: var(--focus-ring-inverse);
-}
-
-/* ---- Services strip (first on every page): four still tiles, 2 x 2 on phones, a row on wide screens */
-
-.services-strip {
-  border-bottom: 1px solid var(--border-subtle);
-  background: var(--surface-accent-soft);
-  color: var(--text-accent);
-  font-size: var(--size-xs);
-  font-weight: 700;
-}
-
-.services-strip__track {
-  display: block;
-  max-width: var(--container);
-  margin-inline: auto;
-  padding-inline: var(--gutter);
-}
-
-.services-strip__group {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.services-strip__group[aria-hidden="true"] {
-  display: none;
-}
-
-.services-strip__item {
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-  padding-block: var(--space-2);
-  white-space: nowrap;
-}
-
-.services-strip__item svg:first-child {
-  flex: none;
-  color: var(--text-accent-display);
-}
-
-.services-strip__sep {
-  display: none;
-}
-
-@media (min-width: 48rem) {
-  .services-strip {
-    font-size: var(--size-sm);
-  }
-
-  .services-strip__group {
-    display: flex;
-    justify-content: space-between;
-  }
 }
 
 /* ---- Prices --------------------------------------------------------------------------------------- */
@@ -97,7 +40,7 @@
   margin: var(--space-5) 0 0;
   padding: var(--space-3) var(--space-5);
   border: 1px solid var(--border-accent);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-sm);
   background: var(--surface-accent-soft);
   color: var(--text-secondary);
   font-size: var(--size-sm);
@@ -171,7 +114,7 @@
   margin-top: var(--space-8);
   padding: var(--space-6);
   border: 1px dashed var(--border-default);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-sm);
   background: var(--surface-card);
 }
 
@@ -254,7 +197,7 @@
 .ctable {
   overflow-x: auto;
   border: 1px solid var(--border-default);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-sm);
   background: var(--surface-card);
   box-shadow: var(--shadow-sm);
 }
@@ -327,7 +270,7 @@
   height: 100%;
   padding: var(--space-6) var(--space-6) var(--space-6) var(--space-12);
   border: 1px solid var(--border-default);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-sm);
   background: var(--surface-card);
   color: inherit;
   transition:
@@ -394,7 +337,7 @@
   flex-direction: column;
   overflow: hidden;
   border: 1px solid var(--border-default);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-sm);
   background: var(--surface-card);
 }
 
@@ -449,7 +392,7 @@
   width: 2.75rem;
   height: 2.75rem;
   margin-inline-start: auto;
-  border-radius: 50%;
+  border-radius: var(--radius-sm);
   background: var(--surface-teal-soft);
   color: var(--text-teal);
   transition: background-color var(--duration-fast) var(--ease-out);
@@ -457,32 +400,4 @@
 
 .catalog__ask:hover {
   background: var(--teal-100);
-}
-
-/* ---- Footer product groups and links ------------------------------------------------------------- */
-
-.site-footer__groups {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-2) var(--space-6);
-}
-
-.site-footer__groups ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.site-footer__links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-6);
-}
-
-.site-footer__links a[data-credit] {
-  opacity: 0.7;
-}
-
-.site-footer__links a[data-credit]:hover {
-  opacity: 1;
 }

@@ -62,13 +62,13 @@ export default async function HubPage({ params }: PageProps<"/products/category/
 
       <section className="section hub-group" aria-labelledby="hub-items-title">
         <div className="container">
-          <h2 id="hub-items-title" className="pdp-block__title" data-reveal>
+          <h2 id="hub-items-title" className="blk-title" data-reveal>
             الأنواع في المحل
           </h2>
-          <p className="pdp-block__intro" data-reveal>
+          <p className="blk-intro" data-reveal>
             {hub.lead}
           </p>
-          <ul className="pgrid pgrid--three">
+          <ul className="hub-grid">
             {items.map((p, i) => (
               <li key={p.slug} data-reveal style={{ "--i": i } as React.CSSProperties}>
                 <ProductCard product={p} sizes="(min-width: 64rem) 28vw, 88vw" />
@@ -80,7 +80,7 @@ export default async function HubPage({ params }: PageProps<"/products/category/
 
       <section className="section section--sand" aria-labelledby="hub-compare-title">
         <div className="container">
-          <h2 id="hub-compare-title" className="pdp-block__title" data-reveal>
+          <h2 id="hub-compare-title" className="blk-title" data-reveal>
             المقارنة في جدول
           </h2>
           <CompareTable {...hub.compare} />
@@ -90,7 +90,7 @@ export default async function HubPage({ params }: PageProps<"/products/category/
       {guides.length > 0 && (
         <section className="section" aria-labelledby="hub-guides-title">
           <div className="container">
-            <h2 id="hub-guides-title" className="pdp-block__title" data-reveal>
+            <h2 id="hub-guides-title" className="blk-title" data-reveal>
               أدلة تساعدك تختار
             </h2>
             <ul className="guide-list">
@@ -108,9 +108,9 @@ export default async function HubPage({ params }: PageProps<"/products/category/
         </section>
       )}
 
-      <section className="section section--sand faq-section" aria-labelledby="hub-faq-title">
-        <div className="container faq-section__inner">
-          <h2 id="hub-faq-title" className="pdp-block__title" data-reveal>
+      <section className="section section--sand qa-section" aria-labelledby="hub-faq-title">
+        <div className="container qa-section__inner">
+          <h2 id="hub-faq-title" className="blk-title" data-reveal>
             أسئلة عن {hub.h1}
           </h2>
           <FaqList items={hub.faq} />
