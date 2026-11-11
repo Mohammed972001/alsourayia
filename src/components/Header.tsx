@@ -27,6 +27,9 @@ export function Header() {
   const [open, setOpen] = useState<CollectionId | null>(null);
   const [sheet, setSheet] = useState(false);
   const navRef = useRef<HTMLElement>(null);
+  const headerRef = useRef<HTMLElement>(null);
+  // The sheet starts at the bar's bottom edge, wherever the bar is (the info line above it scrolls away).
+  const [sheetTop, setSheetTop] = useState(0);
 
   // Close everything on navigation.
   const [lastPath, setLastPath] = useState(pathname);
@@ -59,6 +62,11 @@ export function Header() {
     document.documentElement.classList.toggle("sheet-open", sheet);
   }, [sheet]);
 
+  const toggleSheet = () => {
+    if (!sheet && headerRef.current) setSheetTop(Math.round(headerRef.current.getBoundingClientRect().bottom));
+    setSheet((v) => !v);
+  };
+
   const isActive = (href: string) => pathname === href || pathname.startsWith(`${href}/`);
   const groupActive = (id: CollectionId) => productsIn(id).some((p) => isActive(`/products/${p.slug}`)) || (collections[id].hub ? isActive(collections[id].hub!) : false);
 
@@ -81,7 +89,7 @@ export function Header() {
         </div>
       </div>
 
-      <header className={`site-header${sheet ? " is-sheet-open" : ""}`}>
+      <header ref={headerRef} className={`site-header${sheet ? " is-sheet-open" : ""}`}>
         <div className="container header__bar">
           <Logo />
 
@@ -148,14 +156,14 @@ export function Header() {
               aria-expanded={sheet}
               aria-controls="sheet"
               aria-label={sheet ? "إغلاق القائمة" : "فتح القائمة"}
-              onClick={() => setSheet((v) => !v)}
+              onClick={toggleSheet}
             >
               <Icon name={sheet ? "close" : "menu"} size={24} />
             </button>
           </div>
         </div>
 
-        <div id="sheet" className={`sheet${sheet ? " is-open" : ""}`} hidden={!sheet}>
+        <div id="sheet" className={`sheet${sheet ? " is-open" : ""}`} hidden={!sheet} style={{ top: sheetTop || undefined }}>
           <div className="container sheet__inner">
             {GROUPS.map((id) => (
               <div key={id} className="sheet__group">
