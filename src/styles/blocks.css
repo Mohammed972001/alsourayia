@@ -1,0 +1,501 @@
+/* Blocks added for «موكيت ومفروشات السريع» (spec 002): the services strip, prices, the «prepare» list,
+   comparison tables, guides, catalogues and the footer groups. Tokens only. */
+
+/* ---- Light copper button for dark sections ------------------------------------------------------ */
+
+.btn--inverse {
+  background: var(--action-inverse);
+  color: var(--text-on-inverse-action);
+}
+
+.btn--inverse:hover {
+  background: var(--action-inverse-hover);
+}
+
+.btn--inverse:active {
+  background: var(--copper-400);
+}
+
+.btn--inverse:focus-visible {
+  outline-color: var(--focus-ring-inverse);
+}
+
+/* ---- Services strip (first on every page) ------------------------------------------------------- */
+
+.services-strip {
+  overflow: hidden;
+  border-bottom: 1px solid var(--border-subtle);
+  background: var(--surface-accent-soft);
+  color: var(--text-accent);
+  font-size: var(--size-sm);
+  font-weight: 700;
+}
+
+.services-strip__track {
+  display: flex;
+  width: max-content;
+  animation: marquee 30s linear infinite;
+}
+
+.services-strip__group {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.services-strip__item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding-block: var(--space-3);
+  padding-inline-end: var(--space-6);
+  white-space: nowrap;
+}
+
+.services-strip__item svg:first-child {
+  color: var(--text-accent-display);
+}
+
+.services-strip__sep {
+  width: 0.75rem;
+  height: 0.75rem;
+  margin-inline-start: var(--space-4);
+  color: var(--bronze-400);
+}
+
+/* Wide screens: the four promises sit still, side by side. */
+@media (min-width: 64rem) {
+  .services-strip__track {
+    width: auto;
+    justify-content: center;
+    animation: none;
+  }
+
+  .services-strip__group[aria-hidden="true"] {
+    display: none;
+  }
+
+  .services-strip__group .services-strip__item:last-child .services-strip__sep {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .services-strip__track {
+    width: auto;
+    flex-wrap: wrap;
+    justify-content: center;
+    animation: none;
+  }
+
+  .services-strip__group[aria-hidden="true"] {
+    display: none;
+  }
+}
+
+/* ---- Prices --------------------------------------------------------------------------------------- */
+
+.pcard__price {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.3em;
+  margin-top: var(--space-1);
+  color: var(--text-accent);
+  font-size: var(--size-sm);
+  font-weight: 700;
+}
+
+.pdp-hero__price {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-2);
+  margin: var(--space-5) 0 0;
+  padding: var(--space-3) var(--space-5);
+  border: 1px solid var(--border-accent);
+  border-radius: var(--radius-lg);
+  background: var(--surface-accent-soft);
+  color: var(--text-secondary);
+  font-size: var(--size-sm);
+}
+
+.pdp-hero__price strong {
+  color: var(--text-accent);
+  font-family: var(--font-display), sans-serif;
+  font-size: var(--size-2xl);
+  line-height: 1;
+}
+
+.buybox__price {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: var(--size-sm);
+}
+
+.buybox__price strong {
+  color: var(--text-accent);
+  font-family: var(--font-display), sans-serif;
+  font-size: var(--size-3xl);
+  line-height: 1;
+}
+
+.buybox__services {
+  display: grid;
+  gap: var(--space-2);
+  margin: var(--space-2) 0 0;
+  padding: var(--space-4) 0 0;
+  border-top: 1px solid var(--border-subtle);
+  list-style: none;
+  color: var(--text-secondary);
+  font-size: var(--size-sm);
+}
+
+.buybox__services li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.buybox__services svg {
+  flex: none;
+  color: var(--text-teal);
+}
+
+/* ---- Product page extras ------------------------------------------------------------------------- */
+
+.pdp-intro__lead {
+  max-width: var(--measure);
+  margin: 0;
+  padding-inline-start: var(--space-5);
+  border-inline-start: 3px solid var(--border-accent);
+  color: var(--text-secondary);
+  font-size: var(--size-lg);
+  line-height: var(--leading-body);
+}
+
+.pdp-block__cta {
+  margin: var(--space-8) 0 0;
+}
+
+.calc__tiles {
+  margin: var(--space-2) 0 0;
+  color: var(--text-accent);
+  font-weight: 700;
+}
+
+.prepare {
+  margin-top: var(--space-8);
+  padding: var(--space-6);
+  border: 1px dashed var(--border-default);
+  border-radius: var(--radius-lg);
+  background: var(--surface-card);
+}
+
+.prepare__title {
+  margin: 0 0 var(--space-4);
+  font-family: var(--font-display), sans-serif;
+  font-size: var(--size-xl);
+}
+
+.prepare__list {
+  display: grid;
+  gap: var(--space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.prepare__list li {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  color: var(--text-secondary);
+  line-height: var(--leading-snug);
+}
+
+.prepare__list svg {
+  flex: none;
+  margin-top: 0.15em;
+  color: var(--text-teal);
+}
+
+@media (min-width: 48rem) {
+  .prepare__list {
+    grid-template-columns: 1fr 1fr;
+    column-gap: var(--space-8);
+  }
+}
+
+/* ---- Chips that are links --------------------------------------------------------------------- */
+
+.chip--link {
+  transition:
+    background-color var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out);
+}
+
+.chip--link:hover {
+  border-color: var(--border-accent);
+  background: var(--surface-accent-soft);
+  color: var(--text-accent);
+}
+
+/* ---- Category hubs ------------------------------------------------------------------------------ */
+
+.hub-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-block: calc(var(--space-6) * -1) var(--space-6);
+}
+
+.hub-group__more {
+  margin-inline-start: auto;
+  align-self: center;
+}
+
+@media (min-width: 64rem) {
+  .pgrid.pgrid--three {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* ---- Comparison table -------------------------------------------------------------------------- */
+
+.ctable {
+  overflow-x: auto;
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  background: var(--surface-card);
+  box-shadow: var(--shadow-sm);
+}
+
+.ctable table {
+  width: 100%;
+  min-width: 36rem;
+  border-collapse: collapse;
+  font-size: var(--size-sm);
+  line-height: var(--leading-snug);
+}
+
+.ctable caption {
+  padding: var(--space-4) var(--space-5) 0;
+  color: var(--text-muted);
+  text-align: start;
+}
+
+.ctable th,
+.ctable td {
+  padding: var(--space-4) var(--space-5);
+  border-bottom: 1px solid var(--border-subtle);
+  text-align: start;
+  vertical-align: top;
+}
+
+.ctable thead th {
+  background: var(--surface-inverse);
+  color: var(--text-inverse);
+  font-family: var(--font-display), sans-serif;
+  font-size: var(--size-base);
+}
+
+.ctable tbody th {
+  width: 22%;
+  background: var(--surface-sunken);
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+.ctable td {
+  color: var(--text-secondary);
+}
+
+.ctable tbody tr:last-child th,
+.ctable tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+/* ---- Guides --------------------------------------------------------------------------------------- */
+
+.guide-list {
+  display: grid;
+  gap: var(--space-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 64rem) {
+  .guide-list {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.guide-link {
+  position: relative;
+  display: grid;
+  gap: var(--space-2);
+  height: 100%;
+  padding: var(--space-6) var(--space-6) var(--space-6) var(--space-12);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  background: var(--surface-card);
+  color: inherit;
+  transition:
+    border-color var(--duration-fast) var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-out),
+    transform var(--duration-base) var(--ease-out);
+}
+
+.guide-link:hover {
+  border-color: var(--border-accent);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.guide-link > svg {
+  position: absolute;
+  inset-inline-end: var(--space-5);
+  top: var(--space-6);
+  color: var(--text-accent);
+}
+
+.guide-link__title {
+  font-family: var(--font-display), sans-serif;
+  font-size: var(--size-xl);
+  font-weight: 700;
+  line-height: var(--leading-snug);
+}
+
+.guide-link__text {
+  color: var(--text-secondary);
+  font-size: var(--size-sm);
+  line-height: var(--leading-body);
+}
+
+.guide-body {
+  max-width: 56rem;
+  padding-block: var(--section-y);
+}
+
+.guide-body__hub {
+  margin: var(--space-8) 0 0;
+}
+
+/* ---- Catalogues --------------------------------------------------------------------------------- */
+
+.catalogs__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 64rem) {
+  .catalogs__grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--space-6);
+  }
+}
+
+.catalog {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  background: var(--surface-card);
+}
+
+.catalog__cover {
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background: var(--surface-sunken);
+}
+
+.catalog__cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--duration-slow) var(--ease-out);
+}
+
+.catalog:hover .catalog__cover img {
+  transform: scale(1.04);
+}
+
+.catalog__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-4);
+}
+
+.catalog__title {
+  font-family: var(--font-display), sans-serif;
+  font-size: var(--size-lg);
+  font-weight: 700;
+}
+
+.catalog__text {
+  flex: 1;
+  color: var(--text-secondary);
+  font-size: var(--size-sm);
+}
+
+.catalog__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+}
+
+.catalog__ask {
+  display: inline-grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  margin-inline-start: auto;
+  border-radius: 50%;
+  background: var(--surface-teal-soft);
+  color: var(--text-teal);
+  transition: background-color var(--duration-fast) var(--ease-out);
+}
+
+.catalog__ask:hover {
+  background: var(--teal-100);
+}
+
+/* ---- Footer product groups and links ------------------------------------------------------------- */
+
+.site-footer__groups {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-2) var(--space-6);
+}
+
+.site-footer__groups ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.site-footer__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-6);
+}
+
+.site-footer__links a[data-credit] {
+  opacity: 0.7;
+}
+
+.site-footer__links a[data-credit]:hover {
+  opacity: 1;
+}

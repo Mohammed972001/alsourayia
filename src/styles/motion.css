@@ -1,0 +1,115 @@
+/* Motion (FR-009). Content is visible without JavaScript: hiding starts only once Motion.tsx adds
+   .motion-ready. Parallax uses the `translate` property so it composes with reveal transforms. */
+
+[data-reveal] {
+  transition:
+    opacity var(--duration-reveal) var(--ease-out),
+    transform var(--duration-reveal) var(--ease-out),
+    clip-path 1.3s var(--ease-out);
+  transition-delay: calc(var(--i, 0) * 70ms);
+}
+
+.motion-ready [data-reveal]:not(.is-in) {
+  opacity: 0;
+  transform: translateY(1.75rem);
+}
+
+.motion-ready [data-reveal="rise"]:not(.is-in) {
+  transform: translateY(3rem) scale(0.94);
+}
+
+[data-reveal="wipe"] {
+  clip-path: inset(-12% -12% -12% -12%);
+}
+
+.motion-ready [data-reveal="wipe"]:not(.is-in) {
+  opacity: 1;
+  transform: none;
+  clip-path: inset(100% 0 0 0);
+}
+
+[data-reveal="wipe"] img {
+  transition: transform 1.8s var(--ease-out);
+}
+
+.motion-ready [data-reveal="wipe"]:not(.is-in) img {
+  transform: scale(1.18);
+}
+
+[data-parallax] {
+  translate: 0 var(--parallax, 0px);
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(50%);
+  }
+}
+
+@keyframes spin {
+  to {
+    rotate: 360deg;
+  }
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes shimmer {
+  0%,
+  100% {
+    background-position: 100% 0;
+  }
+  50% {
+    background-position: 0% 0;
+  }
+}
+
+@keyframes arch-in {
+  from {
+    clip-path: inset(100% 0 0 0 round 999px 999px 0.75rem 0.75rem);
+  }
+  to {
+    clip-path: inset(0 0 0 0 round 999px 999px 0.75rem 0.75rem);
+  }
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(1.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0s !important;
+    scroll-behavior: auto !important;
+  }
+
+  .motion-ready [data-reveal]:not(.is-in) {
+    opacity: 1;
+    transform: none;
+    clip-path: none;
+  }
+
+  [data-parallax] {
+    translate: none;
+  }
+
+  .hero__steps path {
+    stroke-dashoffset: 0;
+  }
+}

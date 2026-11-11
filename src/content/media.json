@@ -1,0 +1,1159 @@
+{
+  "bath-01": {
+    "width": 960,
+    "height": 719,
+    "widths": [
+      160,
+      480,
+      828,
+      960
+    ],
+    "temp": false,
+    "source": "owner"
+  },
+  "bath-02": {
+    "width": 720,
+    "height": 405,
+    "widths": [
+      160,
+      480,
+      720
+    ],
+    "temp": false,
+    "source": "owner"
+  },
+  "bath-03": {
+    "width": 960,
+    "height": 720,
+    "widths": [
+      160,
+      480,
+      828,
+      960
+    ],
+    "temp": false,
+    "source": "owner"
+  },
+  "bath-04": {
+    "width": 976,
+    "height": 1280,
+    "widths": [
+      160,
+      480,
+      828,
+      976
+    ],
+    "temp": false,
+    "source": "owner"
+  },
+  "bath-05": {
+    "width": 1000,
+    "height": 1000,
+    "widths": [
+      160,
+      480,
+      828,
+      1000
+    ],
+    "temp": false,
+    "source": "owner"
+  },
+  "bath-06": {
+    "width": 980,
+    "height": 1280,
+    "widths": [
+      160,
+      480,
+      828,
+      980
+    ],
+    "temp": false,
+    "source": "owner"
+  },
+  "bath-07": {
+    "width": 720,
+    "height": 492,
+    "widths": [
+      160,
+      480,
+      720
+    ],
+    "temp": false,
+    "source": "owner"
+  },
+  "bath-08": {
+    "width": 720,
+    "height": 492,
+    "widths": [
+      160,
+      480,
+      720
+    ],
+    "temp": false,
+    "source": "owner"
+  },
+  "gym-01": {
+    "width": 1280,
+    "height": 821,
+    "widths": [
+      160,
+      480,
+      828,
+      1200
+    ],
+    "temp": false,
+    "source": "owner"
+  },
+  "gym-02": {
+    "width": 719,
+    "height": 1280,
+    "widths": [
+      160,
+      480,
+      719
+    ],
+    "temp": false,
+    "source": "owner"
+  },
+  "gym-03": {
+    "width": 1200,
+    "height": 1600,
+    "widths": [
+      160,
+      480,
+      828,
+      1200
+    ],
+    "temp": false,
+    "source": "owner"
+  },
+  "gym-04": {
+    "width": 1200,
+    "height": 1600,
+    "widths": [
+      160,
+      480,
+      828,
+      1200
+    ],
+    "temp": false,
+    "source": "owner"
+  },
+  "gym-05": {
+    "width": 1600,
+    "height": 1200,
+    "widths": [
+      160,
+      480,
+      828,
+      1200,
+      1600
+    ],
+    "temp": false,
+    "source": "owner"
+  },
+  "gym-06": {
+    "width": 1200,
+    "height": 1600,
+    "widths": [
+      160,
+      480,
+      828,
+      1200
+    ],
+    "temp": false,
+    "source": "owner"
+  },
+  "gym-07": {
+    "width": 1200,
+    "height": 1600,
+    "widths": [
+      160,
+      480,
+      828,
+      1200
+    ],
+    "temp": false,
+    "source": "owner"
+  },
+  "gym-08": {
+    "width": 1600,
+    "height": 1200,
+    "widths": [
+      160,
+      480,
+      828,
+      1200,
+      1600
+    ],
+    "temp": false,
+    "source": "owner"
+  },
+  "gym-09": {
+    "width": 1200,
+    "height": 1600,
+    "widths": [
+      160,
+      480,
+      828,
+      1200
+    ],
+    "temp": false,
+    "source": "owner"
+  },
+  "mosque-01": {
+    "width": 1200,
+    "height": 1600,
+    "widths": [
+      160,
+      480,
+      828,
+      1200
+    ],
+    "temp": false,
+    "source": "owner"
+  },
+  "mosque-05": {
+    "width": 1290,
+    "height": 1600,
+    "widths": [
+      160,
+      480,
+      828,
+      1200
+    ],
+    "temp": false,
+    "source": "owner"
+  },
+  "mosque-06": {
+    "width": 993,
+    "height": 1600,
+    "widths": [
+      160,
+      480,
+      828,
+      993
+    ],
+    "temp": false,
+    "source": "owner"
+  },
+  "mosque-07": {
+    "width": 1290,
+    "height": 746,
+    "widths": [
+      160,
+      480,
+      828,
+      1200
+    ],
+    "temp": false,
+    "source": "owner"
+  },
+  "mosque-08": {
+    "width": 1080,
+    "height": 1388,
+    "widths": [
+      160,
+      480,
+      828,
+      1080
+    ],
+    "temp": false,
+    "source": "owner"
+  },
+  "mosque-09": {
+    "width": 933,
+    "height": 1600,
+    "widths": [
+      160,
+      480,
+      828
+    ],
+    "temp": false,
+    "source": "owner"
+  },
+  "mosque-12": {
+    "width": 1290,
+    "height": 1600,
+    "widths": [
+      160,
+      480,
+      828,
+      1200
+    ],
+    "temp": false,
+    "source": "owner"
+  },
+  "mosque-13": {
+    "width": 1033,
+    "height": 1600,
+    "widths": [
+      160,
+      480,
+      828,
+      1033
+    ],
+    "temp": false,
+    "source": "owner"
+  },
+  "mosque-14": {
+    "width": 1290,
+    "height": 962,
+    "widths": [
+      160,
+      480,
+      828,
+      1200
+    ],
+    "temp": false,
+    "source": "owner"
+  },
+  "mosque-15": {
+    "width": 1290,
+    "height": 698,
+    "widths": [
+      160,
+      480,
+      828,
+      1200
+    ],
+    "temp": false,
+    "source": "owner"
+  },
+  "mosque-16": {
+    "width": 1212,
+    "height": 1600,
+    "widths": [
+      160,
+      480,
+      828,
+      1200
+    ],
+    "temp": false,
+    "source": "owner"
+  },
+  "mosque-17": {
+    "width": 1290,
+    "height": 950,
+    "widths": [
+      160,
+      480,
+      828,
+      1200
+    ],
+    "temp": false,
+    "source": "owner"
+  },
+  "mosque-rolls": {
+    "width": 960,
+    "height": 1280,
+    "widths": [
+      160,
+      480,
+      828,
+      960
+    ],
+    "temp": false,
+    "source": "owner"
+  },
+  "mosque-swatch-01": {
+    "width": 720,
+    "height": 1280,
+    "widths": [
+      160,
+      480,
+      720
+    ],
+    "temp": false,
+    "source": "owner"
+  },
+  "mosque-swatch-02": {
+    "width": 1080,
+    "height": 1559,
+    "widths": [
+      160,
+      480,
+      828,
+      1080
+    ],
+    "temp": false,
+    "source": "owner"
+  },
+  "mosque-swatch-03": {
+    "width": 1080,
+    "height": 1567,
+    "widths": [
+      160,
+      480,
+      828,
+      1080
+    ],
+    "temp": false,
+    "source": "owner"
+  },
+  "mosque-swatch-04": {
+    "width": 1080,
+    "height": 1541,
+    "widths": [
+      160,
+      480,
+      828,
+      1080
+    ],
+    "temp": false,
+    "source": "owner"
+  },
+  "mosque-swatch-05": {
+    "width": 1080,
+    "height": 1563,
+    "widths": [
+      160,
+      480,
+      828,
+      1080
+    ],
+    "temp": false,
+    "source": "owner"
+  },
+  "mosque-swatch-06": {
+    "width": 1080,
+    "height": 1548,
+    "widths": [
+      160,
+      480,
+      828,
+      1080
+    ],
+    "temp": false,
+    "source": "owner"
+  },
+  "mosque-swatch-07": {
+    "width": 1080,
+    "height": 1567,
+    "widths": [
+      160,
+      480,
+      828,
+      1080
+    ],
+    "temp": false,
+    "source": "owner"
+  },
+  "mosque-swatch-08": {
+    "width": 1080,
+    "height": 1554,
+    "widths": [
+      160,
+      480,
+      828,
+      1080
+    ],
+    "temp": false,
+    "source": "owner"
+  },
+  "office-01": {
+    "width": 960,
+    "height": 1280,
+    "widths": [
+      160,
+      480,
+      828,
+      960
+    ],
+    "temp": false,
+    "source": "owner"
+  },
+  "office-02": {
+    "width": 640,
+    "height": 480,
+    "widths": [
+      160,
+      480,
+      640
+    ],
+    "temp": false,
+    "source": "owner"
+  },
+  "office-03": {
+    "width": 640,
+    "height": 480,
+    "widths": [
+      160,
+      480,
+      640
+    ],
+    "temp": false,
+    "source": "owner"
+  },
+  "office-04": {
+    "width": 540,
+    "height": 690,
+    "widths": [
+      160,
+      480
+    ],
+    "temp": false,
+    "source": "owner"
+  },
+  "office-05": {
+    "width": 950,
+    "height": 1267,
+    "widths": [
+      160,
+      480,
+      828,
+      950
+    ],
+    "temp": false,
+    "source": "owner"
+  },
+  "office-06": {
+    "width": 960,
+    "height": 1280,
+    "widths": [
+      160,
+      480,
+      828,
+      960
+    ],
+    "temp": false,
+    "source": "owner"
+  },
+  "office-07": {
+    "width": 958,
+    "height": 1280,
+    "widths": [
+      160,
+      480,
+      828,
+      958
+    ],
+    "temp": false,
+    "source": "owner"
+  },
+  "office-08": {
+    "width": 979,
+    "height": 1280,
+    "widths": [
+      160,
+      480,
+      828,
+      979
+    ],
+    "temp": false,
+    "source": "owner"
+  },
+  "office-09": {
+    "width": 974,
+    "height": 1280,
+    "widths": [
+      160,
+      480,
+      828,
+      974
+    ],
+    "temp": false,
+    "source": "owner"
+  },
+  "office-10": {
+    "width": 968,
+    "height": 1280,
+    "widths": [
+      160,
+      480,
+      828,
+      968
+    ],
+    "temp": false,
+    "source": "owner"
+  },
+  "office-11": {
+    "width": 1200,
+    "height": 1600,
+    "widths": [
+      160,
+      480,
+      828,
+      1200
+    ],
+    "temp": false,
+    "source": "owner"
+  },
+  "office-12": {
+    "width": 1200,
+    "height": 1600,
+    "widths": [
+      160,
+      480,
+      828,
+      1200
+    ],
+    "temp": false,
+    "source": "owner"
+  },
+  "office-13": {
+    "width": 1200,
+    "height": 1600,
+    "widths": [
+      160,
+      480,
+      828,
+      1200
+    ],
+    "temp": false,
+    "source": "owner"
+  },
+  "office-14": {
+    "width": 900,
+    "height": 1600,
+    "widths": [
+      160,
+      480,
+      828
+    ],
+    "temp": false,
+    "source": "owner"
+  },
+  "office-15": {
+    "width": 1200,
+    "height": 1600,
+    "widths": [
+      160,
+      480,
+      828,
+      1200
+    ],
+    "temp": false,
+    "source": "owner"
+  },
+  "office-16": {
+    "width": 1200,
+    "height": 1600,
+    "widths": [
+      160,
+      480,
+      828,
+      1200
+    ],
+    "temp": false,
+    "source": "owner"
+  },
+  "office-swatch-01": {
+    "width": 1200,
+    "height": 1216,
+    "widths": [
+      160,
+      480,
+      828,
+      1200
+    ],
+    "temp": false,
+    "source": "owner"
+  },
+  "office-swatch-02": {
+    "width": 1218,
+    "height": 1200,
+    "widths": [
+      160,
+      480,
+      828,
+      1200
+    ],
+    "temp": false,
+    "source": "owner"
+  },
+  "office-swatch-03": {
+    "width": 1209,
+    "height": 1200,
+    "widths": [
+      160,
+      480,
+      828,
+      1200
+    ],
+    "temp": false,
+    "source": "owner"
+  },
+  "office-swatch-04": {
+    "width": 1200,
+    "height": 1200,
+    "widths": [
+      160,
+      480,
+      828,
+      1200
+    ],
+    "temp": false,
+    "source": "owner"
+  },
+  "showroom-rubber-01": {
+    "width": 1200,
+    "height": 1600,
+    "widths": [
+      160,
+      480,
+      828,
+      1200
+    ],
+    "temp": false,
+    "source": "owner"
+  },
+  "showroom-rubber-02": {
+    "width": 1200,
+    "height": 1600,
+    "widths": [
+      160,
+      480,
+      828,
+      1200
+    ],
+    "temp": false,
+    "source": "owner"
+  },
+  "showroom": {
+    "width": 1280,
+    "height": 960,
+    "widths": [
+      160,
+      480,
+      828,
+      1200
+    ],
+    "temp": false,
+    "source": "owner"
+  },
+  "vinyl-01": {
+    "width": 1280,
+    "height": 1160,
+    "widths": [
+      160,
+      480,
+      828,
+      1200
+    ],
+    "temp": false,
+    "source": "owner"
+  },
+  "vinyl-02": {
+    "width": 1280,
+    "height": 1157,
+    "widths": [
+      160,
+      480,
+      828,
+      1200
+    ],
+    "temp": false,
+    "source": "owner"
+  },
+  "vinyl-03": {
+    "width": 1280,
+    "height": 1129,
+    "widths": [
+      160,
+      480,
+      828,
+      1200
+    ],
+    "temp": false,
+    "source": "owner"
+  },
+  "vinyl-04": {
+    "width": 1280,
+    "height": 1155,
+    "widths": [
+      160,
+      480,
+      828,
+      1200
+    ],
+    "temp": false,
+    "source": "owner"
+  },
+  "vinyl-05": {
+    "width": 1280,
+    "height": 1146,
+    "widths": [
+      160,
+      480,
+      828,
+      1200
+    ],
+    "temp": false,
+    "source": "owner"
+  },
+  "vinyl-06": {
+    "width": 1280,
+    "height": 1160,
+    "widths": [
+      160,
+      480,
+      828,
+      1200
+    ],
+    "temp": false,
+    "source": "owner"
+  },
+  "vinyl-07": {
+    "width": 1280,
+    "height": 1137,
+    "widths": [
+      160,
+      480,
+      828,
+      1200
+    ],
+    "temp": false,
+    "source": "owner"
+  },
+  "vinyl-08": {
+    "width": 1280,
+    "height": 1115,
+    "widths": [
+      160,
+      480,
+      828,
+      1200
+    ],
+    "temp": false,
+    "source": "owner"
+  },
+  "vinyl-09": {
+    "width": 1280,
+    "height": 1205,
+    "widths": [
+      160,
+      480,
+      828,
+      1200
+    ],
+    "temp": false,
+    "source": "owner"
+  },
+  "vinyl-10": {
+    "width": 1280,
+    "height": 1106,
+    "widths": [
+      160,
+      480,
+      828,
+      1200
+    ],
+    "temp": false,
+    "source": "owner"
+  },
+  "vinyl-11": {
+    "width": 1280,
+    "height": 1171,
+    "widths": [
+      160,
+      480,
+      828,
+      1200
+    ],
+    "temp": false,
+    "source": "owner"
+  },
+  "vinyl-12": {
+    "width": 1280,
+    "height": 1148,
+    "widths": [
+      160,
+      480,
+      828,
+      1200
+    ],
+    "temp": false,
+    "source": "owner"
+  },
+  "vinyl-13": {
+    "width": 1280,
+    "height": 1157,
+    "widths": [
+      160,
+      480,
+      828,
+      1200
+    ],
+    "temp": false,
+    "source": "owner"
+  },
+  "vinyl-14": {
+    "width": 1280,
+    "height": 1135,
+    "widths": [
+      160,
+      480,
+      828,
+      1200
+    ],
+    "temp": false,
+    "source": "owner"
+  },
+  "vinyl-15": {
+    "width": 1280,
+    "height": 1110,
+    "widths": [
+      160,
+      480,
+      828,
+      1200
+    ],
+    "temp": false,
+    "source": "owner"
+  },
+  "vinyl-16": {
+    "width": 1280,
+    "height": 1109,
+    "widths": [
+      160,
+      480,
+      828,
+      1200
+    ],
+    "temp": false,
+    "source": "owner"
+  },
+  "parquet-cat-01": {
+    "width": 1417,
+    "height": 1295,
+    "widths": [
+      160,
+      480,
+      828,
+      1200,
+      1417
+    ],
+    "temp": false,
+    "source": "catalog"
+  },
+  "parquet-cat-02": {
+    "width": 1417,
+    "height": 1295,
+    "widths": [
+      160,
+      480,
+      828,
+      1200,
+      1417
+    ],
+    "temp": false,
+    "source": "catalog"
+  },
+  "parquet-cat-03": {
+    "width": 1280,
+    "height": 1290,
+    "widths": [
+      160,
+      480,
+      828,
+      1200
+    ],
+    "temp": false,
+    "source": "catalog"
+  },
+  "parquet-cat-04": {
+    "width": 1417,
+    "height": 1290,
+    "widths": [
+      160,
+      480,
+      828,
+      1200,
+      1417
+    ],
+    "temp": false,
+    "source": "catalog"
+  },
+  "parquet-cat-05": {
+    "width": 1417,
+    "height": 1290,
+    "widths": [
+      160,
+      480,
+      828,
+      1200,
+      1417
+    ],
+    "temp": false,
+    "source": "catalog"
+  },
+  "parquet-cat-06": {
+    "width": 880,
+    "height": 575,
+    "widths": [
+      160,
+      480,
+      828
+    ],
+    "temp": false,
+    "source": "catalog"
+  },
+  "parquet-cat-07": {
+    "width": 1417,
+    "height": 535,
+    "widths": [
+      160,
+      480,
+      828,
+      1200,
+      1417
+    ],
+    "temp": false,
+    "source": "catalog"
+  },
+  "parquet-cat-08": {
+    "width": 1417,
+    "height": 495,
+    "widths": [
+      160,
+      480,
+      828,
+      1200,
+      1417
+    ],
+    "temp": false,
+    "source": "catalog"
+  },
+  "spc-cat-01": {
+    "width": 1230,
+    "height": 860,
+    "widths": [
+      160,
+      480,
+      828,
+      1200
+    ],
+    "temp": false,
+    "source": "catalog"
+  },
+  "spc-cat-02": {
+    "width": 1247,
+    "height": 1305,
+    "widths": [
+      160,
+      480,
+      828,
+      1200
+    ],
+    "temp": false,
+    "source": "catalog"
+  },
+  "spc-cat-03": {
+    "width": 1417,
+    "height": 1400,
+    "widths": [
+      160,
+      480,
+      828,
+      1200,
+      1417
+    ],
+    "temp": false,
+    "source": "catalog"
+  },
+  "spc-cat-04": {
+    "width": 1411,
+    "height": 1305,
+    "widths": [
+      160,
+      480,
+      828,
+      1200,
+      1411
+    ],
+    "temp": false,
+    "source": "catalog"
+  },
+  "spc-cat-05": {
+    "width": 1417,
+    "height": 1030,
+    "widths": [
+      160,
+      480,
+      828,
+      1200,
+      1417
+    ],
+    "temp": false,
+    "source": "catalog"
+  },
+  "spc-cat-06": {
+    "width": 1417,
+    "height": 690,
+    "widths": [
+      160,
+      480,
+      828,
+      1200,
+      1417
+    ],
+    "temp": false,
+    "source": "catalog"
+  },
+  "spc-cat-07": {
+    "width": 1417,
+    "height": 605,
+    "widths": [
+      160,
+      480,
+      828,
+      1200,
+      1417
+    ],
+    "temp": false,
+    "source": "catalog"
+  },
+  "art-carpet": {
+    "width": 1600,
+    "height": 1200,
+    "widths": [
+      160,
+      480,
+      828,
+      1200,
+      1600
+    ],
+    "temp": false,
+    "source": "art"
+  },
+  "art-foam": {
+    "width": 1600,
+    "height": 1200,
+    "widths": [
+      160,
+      480,
+      828,
+      1200,
+      1600
+    ],
+    "temp": false,
+    "source": "art"
+  },
+  "art-grass": {
+    "width": 1600,
+    "height": 1200,
+    "widths": [
+      160,
+      480,
+      828,
+      1200,
+      1600
+    ],
+    "temp": false,
+    "source": "art"
+  },
+  "art-medical": {
+    "width": 1600,
+    "height": 1200,
+    "widths": [
+      160,
+      480,
+      828,
+      1200,
+      1600
+    ],
+    "temp": false,
+    "source": "art"
+  }
+}

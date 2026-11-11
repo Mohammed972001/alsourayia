@@ -1,22 +1,18 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
+  // Production: the static export in ./out behind src/worker.ts (ADR-0001). Deployed by GitHub Actions on
+  // push to main. Previews use wrangler.preview.jsonc (another worker, workers.dev only).
   "name": "mokeet-elsuarye",
-  "main": ".open-next/worker.js",
-  "compatibility_date": "2026-10-01",
-  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  "main": "src/worker.ts",
+  "compatibility_date": "2026-11-10",
   "assets": {
-    "directory": ".open-next/assets",
-    "binding": "ASSETS"
+    "directory": "./out",
+    "binding": "ASSETS",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page",
+    // The worker redirects old URLs and the bare domain, and adds security headers: it must see requests first.
+    "run_worker_first": true
   },
-  "services": [{ "binding": "WORKER_SELF_REFERENCE", "service": "mokeet-elsuarye" }],
-  // next/image resizing through Cloudflare Images (replaces Vercel image optimization).
-  "images": { "binding": "IMAGES" },
-  // Chat assistant (lib/chat): Workers AI is the fallback when Gemini fails; the limiter
-  // caps each visitor at 15 questions a minute. GEMINI_API_KEY is a Worker secret.
-  "ai": { "binding": "AI" },
-  "ratelimits": [
-    { "name": "CHAT_LIMITER", "namespace_id": "1007", "simple": { "limit": 15, "period": 60 } }
-  ],
   "observability": { "enabled": true },
   "routes": [
     { "pattern": "www.mokeet-elsuarye.com", "custom_domain": true },

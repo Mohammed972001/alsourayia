@@ -1,71 +1,12 @@
-import { initOpenNextCloudflareForDev } from "@opennextjs/cloudflare";
-import type { NextConfig } from 'next';
-import { mergedCategories } from './lib/merged-categories';
+import type { NextConfig } from "next";
 
+// Static export for Cloudflare Workers static assets (ADR-0001). Photos are pre-sized WebP from
+// scripts/media.mjs and rendered by src/components/Photo.tsx, so next/image is not used.
 const nextConfig: NextConfig = {
-  // Enable gzip/brotli compression for all responses
-  compress: true,
-
-  // Serve optimized images in modern formats (AVIF ~50% smaller, WebP ~30% smaller than JPEG)
-  images: {
-    // Every quality used by <Image>: 85 for the hero and product detail, 75 elsewhere.
-    // Anything not listed answers 400 and the picture breaks.
-    qualities: [75, 85],
-    formats: ['image/avif', 'image/webp'],
-    // Limit image sizes to reduce bandwidth on mobile
-    deviceSizes: [640, 750, 828, 1080, 1200, 1920],
-    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'images.unsplash.com',
-      },
-    ],
-  },
-
-  async redirects() {
-    return [
-      // Plain http answered 200 on Cloudflare (no "Always Use HTTPS"): send it to
-      // the one https host. Cloudflare passes the visitor's scheme in x-forwarded-proto.
-      {
-        source: '/:path*',
-        has: [{ type: 'header', key: 'x-forwarded-proto', value: '^http$' }],
-        destination: 'https://www.mokeet-elsuarye.com/:path*',
-        permanent: true,
-      },
-      // One canonical host: the apex answers with a permanent redirect to www.
-      // On Vercel this was a (temporary 307) domain setting; on Cloudflare the app owns it.
-      {
-        source: '/:path*',
-        has: [{ type: 'host', value: 'mokeet-elsuarye.com' }],
-        destination: 'https://www.mokeet-elsuarye.com/:path*',
-        permanent: true,
-      },
-      // The three rubber categories each held a single product and duplicated
-      // its page; they are merged into one hub that explains which rubber fits where.
-      ...['rabal-gem', 'non-slip-rubber', 'horse-rubber'].map((slug) => ({
-        source: `/products/category/${slug}`,
-        destination: '/products/category/rubber-flooring',
-        permanent: true,
-      })),
-      // Every other single-product category merged into its product page.
-      ...Object.entries(mergedCategories).map(([slug, id]) => ({
-        source: `/products/category/${slug}`,
-        destination: `/products/${id}`,
-        permanent: true,
-      })),
-    ];
-  },
-
-  // Strip unused exports from server components to reduce bundle size
-  experimental: {
-    optimizePackageImports: ['@hugeicons/core-free-icons'],
-    // inlineCss stays off: it put the stylesheet in the page three times (once inline, twice in the page data). Measured
-    // 2026-11-02 on the home page, mobile Lighthouse: 66 with it, 74 without.
-  },
+  output: "export",
+  reactCompiler: true,
+  images: { unoptimized: true },
+  trailingSlash: false,
 };
 
 export default nextConfig;
-
-// Lets `next dev` reach the Cloudflare bindings declared in wrangler.jsonc.
-initOpenNextCloudflareForDev();
