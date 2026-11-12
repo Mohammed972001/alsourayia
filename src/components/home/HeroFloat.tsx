@@ -3,6 +3,7 @@ import { home } from "@/content/home";
 import { site } from "@/content/site";
 import { whatsappHref } from "@/lib/contact";
 import { Icon } from "../Icon";
+import { InstalmentBadge } from "../InstalmentBadge";
 import { Photo } from "../Photo";
 
 // Hero «العينات الطايرة» (round 3, user pick 2026-11-12). Floor samples float in a dark teal space (an AI
@@ -52,6 +53,7 @@ export function HeroFloat() {
               <Icon name="arrow" size={20} />
             </Link>
           </div>
+          <InstalmentBadge tone="dark" />
           <ul className="hm-hero__facts">
             {[site.services[0], site.services[1], site.services[3]].map((s) => (
               <li key={s}>{s}</li>

@@ -268,6 +268,10 @@
   100% { translate: 0 -400%; }
 }
 
+.hm-hero .ibadge {
+  margin-top: var(--space-2);
+}
+
 /* ---- Two tapes crossing under the hero ------------------------------------------------------------ */
 
 .hm-tapes {
@@ -1234,100 +1238,6 @@
 @keyframes hm-dots {
   0%, 60%, 100% { opacity: 0.35; transform: none; }
   30% { opacity: 1; transform: translateY(-3px); }
-}
-
-/* ---- Tabby and Tamara ------------------------------------------------------------------------------ */
-
-.hm-pay__inner {
-  display: grid;
-  gap: var(--space-8);
-  align-items: center;
-}
-
-.hm-pay__copy {
-  display: grid;
-  gap: var(--space-4);
-  justify-items: start;
-}
-
-.hm-pay .eyebrow {
-  color: var(--text-inverse-accent);
-}
-
-.hm-pay__title {
-  color: var(--text-inverse);
-  font-size: var(--size-4xl);
-}
-
-.hm-pay__text {
-  color: var(--text-inverse-muted);
-  font-size: var(--size-lg);
-}
-
-.hm-pay__logos {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-2);
-}
-
-/* Official partner logos: unaltered, always on white. */
-.hm-pay__logos img {
-  width: auto;
-  height: 2.75rem;
-  padding: 0.45rem 0.8rem;
-  border-radius: var(--radius-sm);
-  background: #fff;
-}
-
-.hm-pay__list {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--space-3);
-}
-
-.hm-pay__list li {
-  display: grid;
-  gap: var(--space-1);
-  justify-items: center;
-  padding: var(--space-5) var(--space-2);
-  border-top: 4px solid var(--action-inverse);
-  background: var(--surface-card);
-  color: var(--text-primary);
-  text-align: center;
-}
-
-.hm-pay__list small {
-  color: var(--text-muted);
-  font-weight: 700;
-}
-
-.hm-pay__list b {
-  color: var(--text-accent);
-  font-family: var(--font-display), sans-serif;
-  font-size: var(--size-3xl);
-  font-weight: 400;
-  line-height: 1.2;
-}
-
-.hm-pay__list span {
-  font-weight: 700;
-}
-
-.hm-pay__note {
-  margin-top: var(--space-3);
-  color: var(--text-inverse-muted);
-  font-size: var(--size-sm);
-}
-
-@media (min-width: 64rem) {
-  .hm-pay__inner {
-    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.4fr);
-    gap: var(--space-12);
-  }
-
-  .hm-pay__list {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
 }
 
 /* ---- Shop collage --------------------------------------------------------------------------------- */

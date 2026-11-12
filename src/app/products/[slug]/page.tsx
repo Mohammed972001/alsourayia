@@ -8,7 +8,7 @@ import { ProductCard } from "@/components/ProductCard";
 import { Photo, photoSource } from "@/components/Photo";
 import { SampleTag } from "@/components/cards/SampleTag";
 import { Gallery } from "@/components/product/Gallery";
-import { InstalmentLine } from "@/components/product/InstalmentLine";
+import { InstalmentBadge } from "@/components/InstalmentBadge";
 import { QuantityCalc } from "@/components/product/QuantityCalc";
 import { RoomFloor, type RoomFloorItem } from "@/components/product/RoomFloor";
 import { StepsPath } from "@/components/product/StepsPath";
@@ -94,7 +94,7 @@ export default async function ProductPage({ params }: PageProps<"/products/[slug
                 <span>للمتر المربع، والسعر النهائي حسب الموديل والكمية</span>
               </p>
             )}
-            <InstalmentLine price={p.priceFrom} />
+            <InstalmentBadge />
             <dl className="facts pdp-hero__facts" data-reveal>
               {p.facts.map((f) => (
                 <div key={f.label}>
@@ -321,7 +321,7 @@ export default async function ProductPage({ params }: PageProps<"/products/[slug
                 من <strong><bdi>{p.priceFrom}</bdi></strong> ريال للمتر
               </p>
             )}
-            <InstalmentLine price={p.priceFrom} compact />
+            <InstalmentBadge />
             <p className="buybox__line">أرسل المقاس وصورة المكان، ونرتّب معاينة وقياسًا مجانًا ونرد عليك بالسعر.</p>
             <a className="btn btn--primary" href={whatsappHref(p.name)} data-wa>
               <Icon name="whatsapp" size={20} />

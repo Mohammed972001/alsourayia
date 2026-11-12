@@ -112,7 +112,6 @@ const allGuides: Guide[] = [
     },
     {
         slug: 'gym-rubber-roll-vs-tiles',
-        draft: true,
         title: 'ربل جيم رول أم بلاط مطاط؟',
         metaDescription:
             'ربل جيم رول أم بلاط مطاط؟ مقارنة لصاحب النادي أو الجيم المنزلي في الرياض: أين يناسب كل نوع، وكيف تجهّز الأرضية، وما تسأل عنه قبل عرض السعر.',
@@ -187,7 +186,7 @@ const allGuides: Guide[] = [
         hubHref: '/products/category/rubber-flooring',
         hubLabel: 'كل أنواع ارضيات المطاط في الرياض',
         whatsappMessage: 'أريد المساعدة في الاختيار بين ربل جيم رول وبلاط مطاط لصالتي',
-        updatedAt: '2026-11-09',
+        updatedAt: '2026-11-12',
     },
     {
         slug: 'how-to-choose-mosque-carpet',
