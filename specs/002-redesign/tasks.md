@@ -25,8 +25,8 @@ with the shop photo), Tabby/Tamara section (style still to be picked). The other
 أ room floor swap on product pages, ج 3D slab and د collage on home, هـ cinema on «المحل», و ring on /products.
 
 - [x] R3-01 Foundation: tokens, Lalezar, flip motion, AI media folder, textures (commit a85047c)
-- [ ] R3-02 Shell: header ب, footer ب, CTA ج, about cinema, general pages (branch r3-shell)
-- [ ] R3-03 Home: hero ب, tapes, tabs + rail, 3D slab, projects slider, chat steps, Tabby/Tamara, collage (branch r3-home)
-- [ ] R3-04 Products: glass card, two-photo and sample-tag cards, room floor swap, ring listing, path steps,
+- [x] R3-02 Shell: header ب, footer ب, CTA ج, about cinema, general pages (branch r3-shell)
+- [x] R3-03 Home: hero ب, tapes, tabs + rail, 3D slab, projects slider, chat steps, Tabby/Tamara, collage (branch r3-home)
+- [x] R3-04 Products: glass card, two-photo and sample-tag cards, room floor swap, ring listing, path steps,
       instalment line (branch r3-product)
-- [ ] R3-05 Merge, full checks (lint, typecheck, build, site-check, widths 360–1440), preview deploy with the picker
+- [x] R3-05 Merge, full checks (lint, typecheck, build, site-check, widths 360–1440), preview deploy with the picker
