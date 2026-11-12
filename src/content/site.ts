@@ -31,7 +31,8 @@ export const site = {
   phone: "+966550101867",
   whatsapp: "966541540047",
   phone2: "+966559686290",
-  whatsapp2: "966559686290",
+  // WhatsApp on the second-line pages also moved to the new number (user, 2026-11-12); calls on 0559686290 stay.
+  whatsapp2: "966541540047",
   email: "info@mokeet-elsuarye.com",
   hours: [
     { days: "يوميًا", dayOfWeek: ["Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], opens: "09:00", closes: "22:00" },
