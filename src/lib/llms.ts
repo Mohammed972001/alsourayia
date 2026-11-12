@@ -14,7 +14,7 @@ function facts(): string[] {
     `- المنشأة: ${legalLine()}.`,
     `- العنوان: ${fullAddress}. الخريطة: ${site.mapUrl}`,
     `- المواعيد: ${site.hoursText}.`,
-    `- اتصال وواتساب: ${displayPhone(site.phone)}. خط ثانٍ: ${displayPhone(site.phone2)}.`,
+    `- اتصال: ${displayPhone(site.phone)}. خط ثانٍ: ${displayPhone(site.phone2)}. واتساب: ${displayPhone(`+${site.whatsapp}`)}.`,
     `- الخدمات: ${site.services.join("، ")}. ${site.areaServedText}.`,
     "- طريقة الطلب: رسالة واتساب بنوع المكان ومقاسه وصورته، أو زيارة المحل. لا يوجد دفع أونلاين.",
     "- تنبيه: «مفروشات موكيت السريع للسجاد» ونطاق moket-elsuarye.com محل آخر لا علاقة له بهذا المحل.",

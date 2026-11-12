@@ -25,10 +25,11 @@ export const site = {
   area: "حراج بن قاسم",
   geo: { lat: 24.596556, lng: 46.730583 },
   mapUrl: "https://www.google.com/maps?q=24.596556,46.730583",
-  // Main line: calls and WhatsApp. Second line: calls, and WhatsApp on the parquet, rubber and medical
-  // vinyl pages (owner, 2026-10-22), so the shop can tell those leads apart.
+  // Main line: calls. WhatsApp moved to 0541540047 on 2026-11-12 (the user: the old WhatsApp number is
+  // probably banned). Second line: calls, and WhatsApp on the parquet, rubber and medical vinyl pages
+  // (owner, 2026-10-22), so the shop can tell those leads apart.
   phone: "+966550101867",
-  whatsapp: "966550101867",
+  whatsapp: "966541540047",
   phone2: "+966559686290",
   whatsapp2: "966559686290",
   email: "info@mokeet-elsuarye.com",

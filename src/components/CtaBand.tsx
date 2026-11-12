@@ -33,7 +33,7 @@ export function CtaBand({ title = home.cta.title, text = home.cta.text, button =
                 <a href={telHref()} dir="ltr">
                   {displayPhone(site.phone)}
                 </a>
-                <small>اتصال وواتساب</small>
+                <small>اتصال</small>
               </li>
               <li>
                 <Icon name="phone" size={20} />
