@@ -97,7 +97,7 @@ export function Footer() {
           <p className="site-footer__links">
             <Link href="/privacy">سياسة الخصوصية</Link>
             {/* Agency credit. data-credit keeps the lead tracker off it. */}
-            <a href="https://wa.me/201003736539" target="_blank" rel="nofollow noopener" dir="ltr" data-credit>
+            <a href="https://www.digitalizing-tech.com" target="_blank" rel="nofollow noopener" dir="ltr" data-credit>
               Powered by Digitalizing Tech
             </a>
           </p>
