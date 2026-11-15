@@ -76,10 +76,27 @@ export function storeNode() {
   };
 }
 
-/** The product on its own page: what it is, a photo, and the owner's starting price per square metre when given. */
+/**
+ * The product on its own page: what it is, a photo, and the owner's starting price per square metre when given.
+ * Without an owner price there is no offer, and Google reports a `Product` with no offer, review or rating as an
+ * error; that page is described as the supply-and-fit `Service` it is, until the owner gives a price.
+ */
 export function productNode(p: Product) {
   const url = absoluteUrl(`/products/${p.slug}`);
   const image = (media as Record<string, { widths: number[] }>)[p.images[0]];
+  if (p.priceFrom === null) {
+    return {
+      "@type": "Service",
+      "@id": `${url}#service`,
+      name: p.name,
+      serviceType: p.name,
+      description: p.summary,
+      url,
+      ...(image ? { image: absoluteUrl(`/media/${p.images[0]}-${image.widths.at(-1)}.webp`) } : {}),
+      provider: { "@id": STORE_ID },
+      areaServed: { "@type": "City", name: site.city },
+    };
+  }
   return {
     "@type": "Product",
     "@id": `${url}#product`,
@@ -88,19 +105,15 @@ export function productNode(p: Product) {
     url,
     ...(image ? { image: absoluteUrl(`/media/${p.images[0]}-${image.widths.at(-1)}.webp`) } : {}),
     brand: { "@id": STORE_ID },
-    ...(p.priceFrom !== null
-      ? {
-          offers: {
-            "@type": "Offer",
-            url,
-            priceCurrency: "SAR",
-            price: p.priceFrom,
-            priceSpecification: { "@type": "UnitPriceSpecification", price: p.priceFrom, priceCurrency: "SAR", unitCode: "MTK", unitText: "متر مربع" },
-            availability: "https://schema.org/InStock",
-            seller: { "@id": STORE_ID },
-          },
-        }
-      : {}),
+    offers: {
+      "@type": "Offer",
+      url,
+      priceCurrency: "SAR",
+      price: p.priceFrom,
+      priceSpecification: { "@type": "UnitPriceSpecification", price: p.priceFrom, priceCurrency: "SAR", unitCode: "MTK", unitText: "متر مربع" },
+      availability: "https://schema.org/InStock",
+      seller: { "@id": STORE_ID },
+    },
   };
 }
 
