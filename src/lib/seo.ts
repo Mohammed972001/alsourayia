@@ -104,7 +104,8 @@ export function productNode(p: Product) {
     description: p.summary,
     url,
     ...(image ? { image: absoluteUrl(`/media/${p.images[0]}-${image.widths.at(-1)}.webp`) } : {}),
-    brand: { "@id": STORE_ID },
+    // A Brand object: Google's merchant listings reject the store node here ("Invalid object type for field brand").
+    brand: { "@type": "Brand", name: site.name },
     offers: {
       "@type": "Offer",
       url,
