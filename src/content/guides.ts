@@ -190,7 +190,6 @@ const allGuides: Guide[] = [
     },
     {
         slug: 'how-to-choose-mosque-carpet',
-        draft: true,
         title: 'كيف تختار موكيت المسجد؟',
         metaDescription:
             'كيف تختار موكيت المسجد: خطوط صفوف أم سادة، واللون والوبر واللباد، وما تقيسه قبل طلب عرض السعر، وما تراجعه يوم التركيب. دليل لمن يتولى فرش مسجد في الرياض.',
@@ -272,7 +271,7 @@ const allGuides: Guide[] = [
         hubHref: '/products/mosque-carpets',
         hubLabel: 'موكيت مساجد وسجاد مساجد في الرياض',
         whatsappMessage: 'أريد المساعدة في اختيار موكيت لمسجد',
-        updatedAt: '2026-11-16',
+        updatedAt: '2026-11-19',
     },
     {
         slug: 'medical-vinyl-for-clinics',
