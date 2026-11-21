@@ -13,6 +13,8 @@ import { QuantityCalc } from "@/components/product/QuantityCalc";
 import { RoomFloor, type RoomFloorItem } from "@/components/product/RoomFloor";
 import { StepsPath } from "@/components/product/StepsPath";
 import { Works } from "@/components/product/Works";
+import Link from "next/link";
+import { guidesForProduct } from "@/content/guides";
 import { home } from "@/content/home";
 import { collections, getProduct, productBySlug, products, rooms } from "@/content/products";
 import { site } from "@/content/site";
@@ -47,6 +49,7 @@ export default async function ProductPage({ params }: PageProps<"/products/[slug
   const source = photoSource(p.images[0]);
   const label = source === "art" ? "رسم توضيحي، وصور المحل قريبًا" : source === "catalog" ? "صور من كتالوج المورّد" : collections[p.collection].note;
   const related = p.related.map((s) => getProduct(s));
+  const productGuides = guidesForProduct(p.slug);
   // «شوفها في المكان»: only for products with a matching floor texture, this product first.
   const floors: RoomFloorItem[] = (roomCompare[p.slug] ?? []).map((s) => {
     const q = getProduct(s);
@@ -268,6 +271,14 @@ export default async function ProductPage({ params }: PageProps<"/products/[slug
                   </li>
                 ))}
               </ul>
+              {productGuides.map((g) => (
+                <p key={g.slug} className="prepare__guide">
+                  <Icon name="sample" size={18} />
+                  <span>
+                    دليل الشراء: <Link href={`/guides/${g.slug}`}>{g.heading}</Link>
+                  </span>
+                </p>
+              ))}
             </div>
           </section>
 

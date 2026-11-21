@@ -146,6 +146,29 @@
   color: var(--text-teal);
 }
 
+.prepare__guide {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  margin: var(--space-4) 0 0;
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--border-subtle);
+  font-weight: 600;
+  line-height: var(--leading-snug);
+}
+
+.prepare__guide svg {
+  flex: none;
+  margin-top: 0.15em;
+  color: var(--text-teal);
+}
+
+.prepare__guide a {
+  color: var(--text-teal);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
 @media (min-width: 48rem) {
   .prepare__list {
     grid-template-columns: 1fr 1fr;

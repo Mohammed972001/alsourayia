@@ -56,3 +56,4 @@ cloudflare-env.d.ts
 
 # AI originals (PNG, ~21 MB) live in D:/work/_design-reference/options-picker/ai-src; the WebP exports are committed.
 design/options/ai-src/*.png
+/media-src/incoming/
