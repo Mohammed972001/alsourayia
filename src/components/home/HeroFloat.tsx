@@ -26,7 +26,7 @@ export function HeroFloat() {
         <div className="hm-hero__copy">
           <p className="hm-hero__kicker">{h.kicker}</p>
           <h1 id="hero-title" className="hm-hero__title">
-            <span className="hm-hero__l1">{h.titleTop}</span>
+            <span className="hm-hero__l1">{h.titleTop}</span>{" "}
             <span className="hm-hero__l2">{h.titleWord}</span>
             <span className="visually-hidden"> — {h.subtitle}</span>
           </h1>

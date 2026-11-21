@@ -114,6 +114,13 @@ export function productNode(p: Product) {
       priceSpecification: { "@type": "UnitPriceSpecification", price: p.priceFrom, priceCurrency: "SAR", unitCode: "MTK", unitText: "متر مربع" },
       availability: "https://schema.org/InStock",
       seller: { "@id": STORE_ID },
+      // The owner's terms (2026-11-21): no returns. Delivery is priced by location, so there is no rate to state
+      // in shippingDetails.
+      hasMerchantReturnPolicy: {
+        "@type": "MerchantReturnPolicy",
+        applicableCountry: "SA",
+        returnPolicyCategory: "https://schema.org/MerchantReturnNotPermitted",
+      },
     },
   };
 }

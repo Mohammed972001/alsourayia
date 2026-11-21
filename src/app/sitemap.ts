@@ -14,6 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/products", priority: 0.9 },
     ...hubs.map((h) => ({ path: `/products/category/${h.slug}`, priority: 0.9 })),
     ...products.map((p) => ({ path: `/products/${p.slug}`, priority: 0.8 })),
+    { path: "/prices", priority: 0.8, lastModified: "2026-11-21" },
     { path: "/guides", priority: 0.5 },
     ...guides.map((g) => ({ path: `/guides/${g.slug}`, priority: 0.6 })),
     { path: "/catalogs", priority: 0.5 },
@@ -22,5 +23,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/faq", priority: 0.5 },
     { path: "/privacy", priority: 0.2 },
   ];
-  return pages.map((p) => ({ url: absoluteUrl(p.path), lastModified: REDESIGN, priority: p.priority }));
+  return pages.map((p) => ({ url: absoluteUrl(p.path), lastModified: ("lastModified" in p && p.lastModified) || REDESIGN, priority: p.priority }));
 }

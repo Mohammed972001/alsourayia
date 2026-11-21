@@ -40,6 +40,7 @@ export function llmsShort(): string {
     "## صفحات أخرى",
     ...hubs.map((h) => `- [${h.h1}](${absoluteUrl(`/products/category/${h.slug}`)})`),
     ...guides.map((g) => `- [${g.heading}](${absoluteUrl(`/guides/${g.slug}`)})`),
+    `- [الأسعار: سعر المتر لكل صنف](${absoluteUrl("/prices")})`,
     `- [الكتالوجات](${absoluteUrl("/catalogs")})`,
     `- [الأسئلة الشائعة](${absoluteUrl("/faq")})`,
     `- [تواصل وزيارة](${absoluteUrl("/contact")})`,

@@ -55,6 +55,7 @@ export function Footer() {
             <p className="site-footer__title">المحل</p>
             <ul>
               <li><Link href="/products">كل الأرضيات</Link></li>
+              <li><Link href="/prices">الأسعار</Link></li>
               <li><Link href="/about">عن المحل</Link></li>
               <li><Link href="/catalogs">الكتالوجات</Link></li>
               <li><Link href="/guides">أدلة الشراء</Link></li>
