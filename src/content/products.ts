@@ -17,13 +17,13 @@ export const collections: Record<CollectionId, { name: string; note: string; hub
 export const rooms: Record<string, { name: string; text: string; image: string; product: string }> = {
   mosque: { name: "المساجد والمصليات", text: "موكيت بخطوط الصفوف يُفرش على اتجاه القبلة.", image: "mosque-12", product: "mosque-carpets" },
   office: { name: "المكاتب والشركات", text: "بلاط موكيت 50 × 50 يهدّئ الصالات المفتوحة.", image: "office-08", product: "office-carpet" },
-  home: { name: "غرف النوم والمجالس", text: "موكيت من الجدار إلى الجدار، أو باركيه خشب للغرف الجافة.", image: "art-carpet", product: "mokite" },
-  kitchen: { name: "المطابخ والملاحق", text: "باركيه SPC بشكل الخشب يتحمل الماء المنسكب.", image: "spc-cat-01", product: "water-resistant-carpet" },
+  home: { name: "غرف النوم والمجالس", text: "موكيت من الجدار إلى الجدار، أو باركيه خشب للغرف الجافة.", image: "home-02", product: "mokite" },
+  kitchen: { name: "المطابخ والملاحق", text: "باركيه SPC بشكل الخشب يتحمل الماء المنسكب.", image: "spc-02", product: "water-resistant-carpet" },
   gym: { name: "الجيم والصالات الرياضية", text: "ربل رول أو بلاط يستقبل الأوزان بدل البلاط.", image: "gym-06", product: "rabal-gem" },
   bathroom: { name: "الحمامات وأماكن الوضوء", text: "ربل مثقّب أو شبكي يثبّت القدم على الأرض المبللة.", image: "bath-07", product: "non-slip-rubber" },
-  clinic: { name: "العيادات والمستشفيات", text: "فينيل طبي رولات، يُختار نوعه حسب استخدام كل غرفة.", image: "art-medical", product: "hospital-flooring" },
-  kids: { name: "غرف الأطفال وأماكن اللعب", text: "فوم بازل لين يُفك ويُركّب باليد.", image: "art-foam", product: "foam-flooring" },
-  outdoor: { name: "الأسطح والأحواش", text: "عشب صناعي أخضر طوال السنة بلا سقي ولا قص.", image: "art-grass", product: "artificial-grass" },
+  clinic: { name: "العيادات والمستشفيات", text: "فينيل طبي رولات، يُختار نوعه حسب استخدام كل غرفة.", image: "medical-02", product: "hospital-flooring" },
+  kids: { name: "غرف الأطفال وأماكن اللعب", text: "فوم بازل لين يُفك ويُركّب باليد.", image: "foam-01", product: "foam-flooring" },
+  outdoor: { name: "الأسطح والأحواش", text: "عشب صناعي أخضر طوال السنة بلا سقي ولا قص.", image: "grass-01", product: "artificial-grass" },
   shop: { name: "المحلات وصالات العرض", text: "مشمع باركيه يجدّد الأرضية دون تكسير البلاط.", image: "vinyl-03", product: "vinyl-roll" },
 };
 
@@ -89,7 +89,7 @@ export const products: Product[] = [
     related: ["non-slip-rubber", "office-carpet", "mokite"],
     works: {
       intro: "مساجد ومصليات من أعمالنا، بنقشات وألوان مختلفة.",
-      images: ["mosque-05", "mosque-07", "mosque-08", "mosque-09", "mosque-01", "mosque-14", "mosque-15", "mosque-16"],
+      images: ["mosque-20", "mosque-05", "mosque-07", "mosque-08", "mosque-09", "mosque-01", "mosque-14", "mosque-15", "mosque-16", "mosque-21", "mosque-22", "mosque-23", "mosque-24", "mosque-25", "mosque-26", "mosque-27", "mosque-28", "mosque-29", "mosque-30", "mosque-31", "mosque-32", "mosque-33", "mosque-34", "mosque-35", "mosque-36", "mosque-37", "mosque-38", "mosque-39", "mosque-40", "mosque-41", "mosque-42", "mosque-43", "mosque-44"],
     },
     samples: {
       intro: "رولات موكيت المساجد وعيناته كما تراها في المحل بحراج بن قاسم.",
@@ -103,6 +103,23 @@ export const products: Product[] = [
         "mosque-swatch-06",
         "mosque-swatch-07",
         "mosque-swatch-08",
+        "mosque-swatch-09",
+        "mosque-swatch-10",
+        "mosque-swatch-11",
+        "mosque-swatch-12",
+        "mosque-swatch-13",
+        "mosque-swatch-14",
+        "mosque-swatch-15",
+        "mosque-swatch-16",
+        "mosque-swatch-17",
+        "mosque-swatch-18",
+        "mosque-swatch-19",
+        "mosque-swatch-20",
+        "mosque-swatch-21",
+        "mosque-swatch-22",
+        "mosque-swatch-23",
+        "mosque-swatch-24",
+        "mosque-swatch-25",
         "showroom",
       ],
     },
@@ -167,11 +184,11 @@ export const products: Product[] = [
     related: ["mosque-carpets", "vinyl-roll", "parket"],
     works: {
       intro: "بلاط موكيت من أعمالنا في مكاتب وصالات عمل مفتوحة، ومنه ما فُرش فوق الأرضيات المرفوعة.",
-      images: ["office-13", "office-12", "office-09", "office-14", "office-11", "office-15"],
+      images: ["office-13", "office-12", "office-09", "office-14", "office-11", "office-15", "office-20", "office-21", "office-22", "office-23", "office-24", "office-25", "office-26", "office-27", "office-28"],
     },
     samples: {
       intro: "عينات بلاط الموكيت عن قرب، لترى الخطوط والألوان قبل أن تختار.",
-      images: ["office-swatch-01", "office-swatch-02", "office-swatch-03", "office-swatch-04", "office-04", "office-02"],
+      images: ["office-swatch-01", "office-swatch-02", "office-swatch-03", "office-swatch-04", "office-04", "office-02", "office-swatch-05", "office-swatch-06", "office-swatch-07", "office-swatch-08", "office-swatch-09", "office-swatch-10", "office-swatch-11", "office-swatch-12", "office-swatch-13", "office-swatch-14", "office-swatch-15", "office-swatch-16", "office-swatch-17", "office-swatch-18"],
     },
   },
   {
@@ -190,7 +207,7 @@ export const products: Product[] = [
     lead:
       "موكيت المنازل يُقص على مقاس الغرفة ويغطي أرضيتها كاملة، فيخفي البلاط القديم، ويجعل الغرفة أدفأ في ليالي الشتاء، ويقلل الصدى في المجالس الواسعة. اختر الوبرة واللون حسب استخدام الغرفة، ونحن نقيس ونفرش.",
     priceFrom: 15,
-    images: ["art-carpet"],
+    images: ["home-02", "home-swatch-01", "home-swatch-10", "home-03", "home-01"],
     facts: [
       { label: "يبدأ من", value: "15 ريال للمتر" },
       { label: "الفرش", value: "من الجدار إلى الجدار" },
@@ -229,6 +246,14 @@ export const products: Product[] = [
       { q: "كيف أحسب كمية الموكيت؟", a: "اضرب طول الغرفة في عرضها، وأضف هامشًا للقص لأن الموكيت يأتي رولات بعرض محدد. حاسبة المساحة في الصفحة تعطيك رقمًا تقريبيًا، ونحدد الكمية بدقة بعد القياس." },
       { q: "كم سعر متر الموكيت للمنازل؟", a: "يبدأ من 15 ريال للمتر المربع. السعر النهائي يعتمد على الموديل والكمية، ونؤكده بعد القياس." },
     ],
+    works: {
+      intro: "رولات موكيت المنازل في المحل بنقشات وألوان مختلفة: سادة ومنقوش ومحفور.",
+      images: ["home-01", "home-02", "home-03", "home-04", "home-05", "home-06", "home-07", "home-08", "home-09", "home-10", "home-11", "home-12", "home-13", "home-14", "home-15"],
+    },
+    samples: {
+      intro: "عينات موكيت المنازل في المحل: وبر محفور بألوان مختلفة، وسادة، ونقشات هندسية.",
+      images: ["home-swatch-01", "home-swatch-02", "home-swatch-03", "home-swatch-04", "home-swatch-05", "home-swatch-06", "home-swatch-07", "home-swatch-08", "home-swatch-09", "home-swatch-10", "home-swatch-11", "home-swatch-12", "home-swatch-13", "home-swatch-14", "home-swatch-15", "home-swatch-16", "home-swatch-17", "home-swatch-18", "home-swatch-19", "home-swatch-20"],
+    },
     related: ["parket", "office-carpet", "foam-flooring"],
   },
   {
@@ -305,7 +330,7 @@ export const products: Product[] = [
     lead:
       "باركيه SPC ألواح صلبة تتعشّق ببعضها، قلبها من خليط حجري مضغوط لا ينتفخ مع الماء، ووجهها مطبوع بشكل الخشب. لذلك يُطلب للمطبخ المفتوح على الصالة والملحق وغرفة الغسيل، حيث يتأثر الباركيه الخشب العادي.",
     priceFrom: 75,
-    images: ["spc-cat-01", "spc-cat-03", "spc-cat-06", "spc-cat-02", "spc-cat-05", "spc-cat-04"],
+    images: ["spc-02", "spc-03", "spc-05", "spc-01", "spc-board-01"],
     facts: [
       { label: "يبدأ من", value: "75 ريال للمتر" },
       { label: "النوع", value: "ألواح SPC بالتعشيق" },
@@ -345,6 +370,14 @@ export const products: Product[] = [
       { q: "هل يصلح لأرضية الحمام؟", a: "الحمام الذي يبقى مبللًا طوال اليوم يناسبه ربل الحمامات ضد الانزلاق. باركيه SPC مكانه المطبخ والملحق والمدخل، حيث يكون الماء انسكابًا عابرًا." },
       { q: "كم سعر متر باركيه SPC؟", a: "يبدأ من 75 ريال للمتر المربع. السعر النهائي يعتمد على الموديل والكمية، ونؤكده بعد القياس." },
     ],
+    works: {
+      intro: "باركيه بنقشة الهرم (السنبلة) بعد الفرش في الغرف والصالات.",
+      images: ["spc-01", "spc-02", "spc-03", "spc-04", "spc-05", "spc-06"],
+    },
+    samples: {
+      intro: "لوحة عينات نقشة الهرم في المحل، وألوان من كتالوج المورّد.",
+      images: ["spc-board-01", "spc-cat-01", "spc-cat-02", "spc-cat-03", "spc-cat-04", "spc-cat-05", "spc-cat-06", "spc-cat-07"],
+    },
     related: ["parket", "vinyl-roll", "non-slip-rubber"],
   },
   {
@@ -424,7 +457,7 @@ export const products: Product[] = [
     lead:
       "أرضية المنشأة الصحية تُمسح مرات كثيرة في اليوم، وتمر عليها الكراسي المتحركة والأسرّة والعربات. لذلك يُفرش الفينيل الطبي رولات عريضة بوصلات قليلة، ويُختار نوعه حسب استخدام كل غرفة لا بنوع واحد للمنشأة كلها.",
     priceFrom: 60,
-    images: ["art-medical"],
+    images: ["medical-02", "medical-05", "medical-swatch-07", "medical-07", "medical-09"],
     facts: [
       { label: "يبدأ من", value: "60 ريال للمتر" },
       { label: "النوع", value: "متجانس وغير متجانس" },
@@ -465,6 +498,14 @@ export const products: Product[] = [
       { q: "هل يمكن التركيب والعيادة تعمل؟", a: "يمكن ترتيب التركيب على مراحل: تُغلق غرفة أو جناح ويُفرش ثم يعود للعمل قبل الانتقال إلى التالي. نرتب الجدول معك في المعاينة." },
       { q: "كم سعر متر الفينيل الطبي؟", a: "يبدأ من 60 ريال للمتر المربع. السعر النهائي يعتمد على النوع والكمية، ونؤكده بعد القياس." },
     ],
+    works: {
+      intro: "الفينيل الطبي في الممرات وغرف المنشآت الصحية، والوزرة المقعّرة عند الجدار، ورولات قبل الفرش.",
+      images: ["medical-01", "medical-02", "medical-03", "medical-04", "medical-05", "medical-06", "medical-07", "medical-08", "medical-09"],
+    },
+    samples: {
+      intro: "عينات الفينيل الطبي في المحل بدرجات الأزرق والرمادي والأخضر وغيرها.",
+      images: ["medical-swatch-01", "medical-swatch-02", "medical-swatch-03", "medical-swatch-04", "medical-swatch-05", "medical-swatch-06", "medical-swatch-07", "medical-swatch-08", "medical-swatch-09"],
+    },
     related: ["vinyl-roll", "non-slip-rubber", "office-carpet"],
   },
   {
@@ -528,7 +569,7 @@ export const products: Product[] = [
     related: ["non-slip-rubber", "foam-flooring", "artificial-grass"],
     works: {
       intro: "أرضية جيم بعد الفرش، ورولات المطاط كما تصل إلى المحل.",
-      images: ["gym-06", "gym-08", "gym-04", "gym-05", "showroom-rubber-01", "showroom-rubber-02"],
+      images: ["gym-06", "gym-08", "gym-04", "gym-05", "showroom-rubber-01", "showroom-rubber-02", "gym-10", "gym-11", "gym-12", "gym-13", "gym-14", "gym-15", "gym-16", "gym-17", "gym-18"],
     },
   },
   {
@@ -589,7 +630,7 @@ export const products: Product[] = [
     related: ["rabal-gem", "hospital-flooring", "mosque-carpets"],
     works: {
       intro: "قطع مثقّبة ورولات شبكية بألوانها، وأرضيات بعد الفرش.",
-      images: ["bath-07", "bath-08", "bath-02", "bath-03", "bath-04", "bath-05"],
+      images: ["bath-07", "bath-08", "bath-02", "bath-03", "bath-04", "bath-05", "bath-10", "bath-11", "bath-12"],
     },
   },
   {
@@ -608,7 +649,7 @@ export const products: Product[] = [
     lead:
       "أرضيات الفوم قطع خفيفة من الإسفنج المضغوط، حوافها مقصوصة كالبازل فتتعشّق ببعضها. تُفرش فوق البلاط في غرفة الأطفال أو ركن اللعب، فتصبح الأرض ألين وأدفأ عند الجلوس والحبو واللعب.",
     priceFrom: null,
-    images: ["art-foam"],
+    images: ["foam-01", "foam-04", "foam-03", "foam-02"],
     facts: [
       { label: "السعر", value: "حسب المقاس والكمية" },
       { label: "الشكل", value: "قطع بازل متعشّقة" },
@@ -647,6 +688,10 @@ export const products: Product[] = [
       { q: "هل يصلح الفوم لصالة الأوزان؟", a: "لا، الفوم يتأثر بسقوط الأوزان وأرجل الأجهزة الثقيلة. للجيم اختر ربل الجيم، وله صفحة مستقلة." },
       { q: "كم سعر أرضيات الفوم؟", a: "السعر حسب المقاس والسماكة والكمية. أرسل مقاس المكان على الواتساب، ويصلك عرض السعر بعد القياس." },
     ],
+    samples: {
+      intro: "قطع الفوم والبازل في المحل بألوانها وسماكاتها.",
+      images: ["foam-01", "foam-02", "foam-03", "foam-04", "foam-05", "foam-06", "foam-07", "foam-08", "foam-09", "foam-10"],
+    },
     related: ["rabal-gem", "artificial-grass", "mokite"],
   },
   {
@@ -665,7 +710,7 @@ export const products: Product[] = [
     lead:
       "العشب الصناعي رولات من شعيرات خضراء تُفرش فوق البلاط أو الأرض المسوّاة، فيتحول السطح المكشوف أو الحوش إلى جلسة خضراء لا تحتاج سقيًا ولا قصًا. نبدأ بزيارة المكان لنراجع الميول ومكان تصريف الماء، ثم تختار من العينات.",
     priceFrom: 10,
-    images: ["art-grass"],
+    images: ["grass-01", "grass-02", "grass-03"],
     facts: [
       { label: "يبدأ من", value: "10 ريال للمتر" },
       { label: "الخامة", value: "بولي إيثيلين" },
@@ -705,6 +750,10 @@ export const products: Product[] = [
       { q: "كم سعر متر العشب الصناعي؟", a: "يبدأ من 10 ريال للمتر المربع. السعر النهائي يعتمد على النوع والكمية، ونؤكده بعد القياس." },
       { q: "هل تورّدون العشب الصناعي خارج الرياض؟", a: "نعم، نورّد لكل مدن المملكة. المعاينة المجانية داخل الرياض، ومن خارجها أرسل المقاسات والصور على الواتساب." },
     ],
+    samples: {
+      intro: "عينات العشب الصناعي في المحل بأطوال وبر وكثافات مختلفة.",
+      images: ["grass-01", "grass-02", "grass-03", "grass-04", "grass-05"],
+    },
     related: ["foam-flooring", "rabal-gem", "vinyl-roll"],
   },
 ];

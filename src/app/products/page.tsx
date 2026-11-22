@@ -33,8 +33,8 @@ const RING: { label: string; photo?: string; tex?: string }[] = [
   { label: "ربل جيم", tex: "/textures/tex-rubber.webp" },
   { label: "موكيت مساجد", photo: "mosque-swatch-04" },
   { label: "مشمع باركيه", tex: "/textures/tex-vinyl.webp" },
-  { label: "باركيه SPC", photo: "spc-cat-03" },
-  { label: "عشب صناعي", photo: "art-grass" },
+  { label: "باركيه SPC", photo: "spc-04" },
+  { label: "عشب صناعي", photo: "grass-02" },
   { label: "باركيه خشب", tex: "/textures/tex-parquet.webp" },
   { label: "ربل حمامات", photo: "bath-01" },
 ];
